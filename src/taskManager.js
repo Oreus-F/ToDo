@@ -23,7 +23,9 @@ class Task {
 
     get priority(){
         return this._priority;
-    }                    
+    }
+    
+
 
 };
 
@@ -32,7 +34,8 @@ class Task {
 const TaskManager = function(){
     
     const createTask = function(title, priority, date, description){
-        return new Task(title, priority, date, description);
+        const task = new Task(title, priority, date, description);
+        return task
     }
 
     
