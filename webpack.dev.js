@@ -7,6 +7,6 @@ module.exports = merge(common, {
 
     devtool: 'eval-source-map',
     devServer: {
-        watchfile: ['./src/template.html'],
+        watchFiles: ['./src/template.html'],
     },
 });
