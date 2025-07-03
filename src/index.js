@@ -1,5 +1,7 @@
-import { createTask } from "./createTask";
+import { TaskManager } from "./taskManager";
 
-const task1  = createTask('title', 'low', 'hier', 'la decadence du peuple');
+const control = TaskManager();
 
-console.log(task1.priority)
+const task1 = control.createTask('title', 'low', 'demain', 'oui')
+
+console.log(task1)
