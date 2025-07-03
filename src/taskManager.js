@@ -4,7 +4,8 @@ class Task {
         this.title = title,
         this.priority = priority,
         this.date = date,
-        this.description = description
+        this.description = description,
+        this.status = 'to-do'
     };
 
 
@@ -22,14 +23,24 @@ class Task {
 
     get priority(){
         return this._priority;
-    }
+    }                    
 
 };
 
 
 
-const createTask = function(title, priority, date, description){
-    return new Task(title, priority, date, description);
+const TaskManager = function(){
+    
+    const createTask = function(title, priority, date, description){
+        return new Task(title, priority, date, description);
+    }
+
+    
+
+    return {createTask}
 }
 
-export {createTask}
+
+
+
+export {TaskManager}
