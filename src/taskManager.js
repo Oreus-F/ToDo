@@ -1,9 +1,9 @@
 class Task {
 
-    constructor(title, priority, date, description){
+    constructor(title, priority, dueDate, description){
         this.title = title,
         this.priority = priority,
-        this.date = date,
+        this.dueDate = dueDate,
         this.description = description,
         this.status = 'to-do'
     };
@@ -16,7 +16,7 @@ class Task {
         if(newPriority === possibilies[0] || newPriority === possibilies[1] || newPriority === possibilies[2]){
             this._priority = newPriority;
         } else {
-            console.error('Priority attribute must be either "low" "medium" or "high"');
+            console.error('Priority attribute must be "low", "medium" or "high"');
         }
     }
 
