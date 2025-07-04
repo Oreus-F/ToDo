@@ -33,6 +33,11 @@ class Project {
     completeTask = function(task){
         this.complete.push(task)
     }
+
+
+    getCompleteTasks = function(){
+        return this.complete
+    }
 };
 
 
@@ -95,9 +100,15 @@ const ProjectManager = function(){
     }
 
 
+    const getProjectCompleteTasks = function(){
+        return activeProject.getCompleteTasks();
+    }
+
+
+
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
-    removeSelectedTask, completeSelectedTask}
+    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks}
 }
 
 
