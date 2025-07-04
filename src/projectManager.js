@@ -42,7 +42,7 @@ const ProjectManager = function(){
     };
 
 
-    const createTask = function(title, priority, date, description, project = getProjectList(0)){
+    const createTask = function(title, priority, date, description, project = getProject(0)){
         const task = taskControl.createTask(title, priority, date, description);
         project.addTask(task);
     }
