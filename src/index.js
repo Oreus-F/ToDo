@@ -22,3 +22,8 @@ console.log(control.getProjectSpecificTask(1));
 
 control.removeSelectedTask(1);
 console.table(control.getProjectTasksList())
+
+
+control.changeProject(0);
+control.completeSelectedTask(2);
+console.table(control.getProjectCompleteTasks())
