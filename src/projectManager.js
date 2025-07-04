@@ -48,13 +48,8 @@ const ProjectManager = function(){
     }
 
 
-    const getTasksList = function(project = getProject(0)){
-        return project.tasks
-    }
 
-
-
-    return {newProject, getProject, createTask, getTasksList}
+    return {newProject, getProject, createTask}
 }
 
 
