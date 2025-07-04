@@ -2,9 +2,9 @@ import { ProjectManager } from "./projectManager";
 
 const control = ProjectManager();
 
-control.createTask('ranger les cerises', 'low', 'demain', 'oui')
-control.createTask('rincer le cocotier', 'medium', '2h', 'il va mourir');
-control.createTask('visiter les grands-parents', 'high', '30/09', 'ils vont mourir');
+control.createTask('ranger les cerises', 'low', '05/07/25', 'par intensité de la couleur')
+control.createTask('rincer le cocotier', 'medium', '04/07/25', 'arroser à la base du cocotier avec le sceau dans le garage');
+control.createTask('visiter les grands-parents', 'high', '21/07', 'rapporter des fleurs pour leur anniversaire de mariage');
 
 
 console.table(control.getProjectTasksList());
@@ -20,5 +20,5 @@ control.createTask('transmettre à la team', 'high', '05/07/25', 'Eux ils savent
 console.table(control.getProjectTasksList());
 console.log(control.getProjectSpecificTask(1));
 
-control.removeTask(1);
+control.removeSelectedTask(1);
 console.table(control.getProjectTasksList())
