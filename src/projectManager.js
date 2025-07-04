@@ -9,7 +9,7 @@ class Project {
     }
 
 
-    getTasks = function(){
+    getTasksList = function(){
         return this.tasks
     }
 
@@ -18,9 +18,6 @@ class Project {
         this.tasks.push(task)
     }
 };
-
-
-
 
 
 
