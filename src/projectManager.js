@@ -5,7 +5,8 @@ class Project {
 
     constructor(title){
         this.title = title,
-        this.tasks = []
+        this.tasks = [],
+        this.complete = []
     }
 
 
@@ -26,6 +27,11 @@ class Project {
 
     removeTask = function(task){
         this.tasks.splice(task, 1)
+    }
+
+
+    completeTask = function(task){
+        this.complete.push(task)
     }
 };
 
@@ -83,10 +89,16 @@ const ProjectManager = function(){
     }
 
 
+    const completeSelectedTask = function(x){
+        const taskSelected = getProjectSpecificTask(x);
+        activeProject.completeTask(x);
+        activeProject.removeTask(x)
+    }
+
 
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
-    removeSelectedTask}
+    removeSelectedTask, completeSelectedTask}
 }
 
 
