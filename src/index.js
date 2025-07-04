@@ -1,7 +1,15 @@
-import { TaskManager } from "./taskManager";
+import { ProjectManager } from "./projectManager";
 
-const control = TaskManager();
+const control = ProjectManager();
 
-const task1 = control.createTask('title', 'low', 'demain', 'oui')
+control.createTask('ranger les cerises', 'low', 'demain', 'oui')
+control.createTask('rincer le cocotier', 'medium', '2h', 'il va mourir');
+control.createTask('visiter les grands-parents', 'high', '30/09', 'ils vont mourir');
 
-console.log(task1)
+
+console.log(control.getTasksList());
+
+
+control.newProject('ToDoList');
+
+console.log(control.getProject(1))
