@@ -13,6 +13,11 @@ class Project {
         return this.tasks
     }
 
+
+    getTask = function(x){
+        return getTasksList()[x]
+    }
+
     
     addTaskIntoProject = function(task){
         this.tasks.push(task)
@@ -24,6 +29,7 @@ class Project {
 const ProjectManager = function(){
     const defaultProject = new Project('default');
     const projectList = [defaultProject];
+    let actualProject = defaultProject;
     
     const taskControl = TaskManager();
 
@@ -39,14 +45,26 @@ const ProjectManager = function(){
     };
 
 
-    const createTask = function(title, priority, date, description, project = getProject(0)){
+    const getActualProject = function(){
+        return actualProject
+    };
+
+
+    const changeProject = function(x){
+        actualProject = getProject(x);
+    };
+
+
+    const createTask = function(title, priority, date, description){
         const task = taskControl.createTask(title, priority, date, description);
-        project.addTaskIntoProject(task);
+        actualProject.addTaskIntoProject(task);
     }
 
 
 
-    return {newProject, getProject, createTask}
+
+
+    return {newProject, getActualProject, changeProject, createTask}
 }
 
 
