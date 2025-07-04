@@ -50,6 +50,7 @@ const ProjectManager = function(){
     };
 
 
+    // Maybe not needed will see
     const getActiveProject = function(){
         return activeProject
     };
@@ -76,7 +77,7 @@ const ProjectManager = function(){
     }
 
 
-    const removeTask = function(x){
+    const removeSelectedTask = function(x){
         const taskSelected = getProjectSpecificTask(x);
         activeProject.removeTask(taskSelected)
     }
@@ -85,7 +86,7 @@ const ProjectManager = function(){
 
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
-    removeTask}
+    removeSelectedTask}
 }
 
 
