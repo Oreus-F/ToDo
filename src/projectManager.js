@@ -91,8 +91,7 @@ const ProjectManager = function(){
 
     const completeSelectedTask = function(x){
         const taskSelected = getProjectSpecificTask(x);
-        activeProject.completeTask(x);
-        activeProject.removeTask(x)
+        activeProject.completeTask(taskSelected);
     }
 
 
