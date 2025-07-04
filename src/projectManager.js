@@ -15,12 +15,17 @@ class Project {
 
 
     getTask = function(x){
-        return getTasksList()[x]
+        return this.tasks[x]
     }
 
     
     addTaskIntoProject = function(task){
         this.tasks.push(task)
+    }
+
+
+    removeTask = function(task){
+        this.tasks.splice(task, 1)
     }
 };
 
@@ -29,7 +34,7 @@ class Project {
 const ProjectManager = function(){
     const defaultProject = new Project('default');
     const projectList = [defaultProject];
-    let actualProject = defaultProject;
+    let activeProject = defaultProject;
     
     const taskControl = TaskManager();
 
@@ -45,26 +50,42 @@ const ProjectManager = function(){
     };
 
 
-    const getActualProject = function(){
-        return actualProject
+    const getActiveProject = function(){
+        return activeProject
     };
 
 
     const changeProject = function(x){
-        actualProject = getProject(x);
+        activeProject = getProject(x);
     };
 
 
     const createTask = function(title, priority, date, description){
         const task = taskControl.createTask(title, priority, date, description);
-        actualProject.addTaskIntoProject(task);
+        activeProject.addTaskIntoProject(task);
+    }
+
+
+    const getProjectTasksList = function(){
+        return activeProject.getTasksList();
+    }
+
+
+    const getProjectSpecificTask = function(x){
+        return activeProject.getTask(x)
+    }
+
+
+    const removeTask = function(x){
+        const taskSelected = getProjectSpecificTask(x);
+        activeProject.removeTask(taskSelected)
     }
 
 
 
-
-
-    return {newProject, getActualProject, changeProject, createTask}
+    return {newProject, getActiveProject, changeProject, 
+        createTask, getProjectTasksList, getProjectSpecificTask,
+    removeTask}
 }
 
 
