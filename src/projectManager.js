@@ -8,38 +8,42 @@ class Project {
         this.tasks = [],
         this.complete = []
     }
-
-
-    getTasksList = function(){
-        return this.tasks
-    }
-
-
-    getTask = function(x){
-        return this.tasks[x]
-    }
-
-    
-    addTaskIntoProject = function(task){
-        this.tasks.push(task)
-    }
-
-
-    removeTask = function(task){
-        this.tasks.splice(task, 1)
-    }
-
-
-    completeTask = function(task){
-        this.complete.push(task)
-    }
-
-
-    getCompleteTasks = function(){
-        return this.complete
-    }
 };
 
+
+Project.prototype.getTasksList = function(){
+    return this.tasks
+}
+
+
+Project.prototype.addTaskIntoProject = function(task){
+    this.tasks.push(task)
+}
+
+
+Project.prototype.getTask = function(x){
+    return this.tasks[x]
+}
+
+
+Project.prototype.addTaskIntoProject = function(task){
+    this.tasks.push(task)
+}
+
+
+Project.prototype.removeTask = function(task){
+    this.tasks.splice(task, 1)
+}
+
+
+Project.prototype.completeTask = function(task){
+    this.complete.push(task)
+}
+
+
+Project.prototype.getCompleteTasks = function(){
+    return this.complete
+}
 
 
 const ProjectManager = function(){
@@ -103,7 +107,6 @@ const ProjectManager = function(){
     const getProjectCompleteTasks = function(){
         return activeProject.getCompleteTasks();
     }
-
 
 
     return {newProject, getActiveProject, changeProject, 
