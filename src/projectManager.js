@@ -3,9 +3,9 @@ import { TaskManager } from "./taskManager"
 
 class Project {
 
-    constructor(title){
+    constructor(title, tasks = []){
         this.title = title,
-        this.tasks = [],
+        this.tasks = tasks,
         this.complete = []
     }
 };
@@ -43,6 +43,16 @@ Project.prototype.completeTask = function(task){
 
 Project.prototype.getCompleteTasks = function(){
     return this.complete
+}
+
+
+Project.prototype.ParsingTasks = function(){
+    for(let x=0; x < this.tasks.length; x++){
+        let task = this.tasks[x]
+        task = new Task(task.name, task.priority, task.dueDate, task.description);
+        task.newDate()
+        this.tasks[x] = task
+    }
 }
 
 
