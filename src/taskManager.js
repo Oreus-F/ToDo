@@ -28,10 +28,14 @@ class Task {
         return this._priority;
     }
     
-
-    
+ 
 
 };
+
+
+Task.prototype.newDate = function(){
+    console.log(this.dueDate)
+}
 
 
 const TaskManager = function(){
