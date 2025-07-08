@@ -1,4 +1,4 @@
-
+import {format, intlFormatDistance} from 'date-fns'
 
 
 class Task {
@@ -6,10 +6,18 @@ class Task {
     constructor(title, priority, dueDate, description){
         this.title = title,
         this.priority = priority,
-        this.dueDate = dueDate,
+        this.dueDate = Task.dateInstance(dueDate);
+        this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy')
         this.description = description,
         this.status = 'to-do'
     };
+
+
+    static dateInstance(date){
+        date = date.split('/');
+        const _date = new Date(date[2], (date[1] - 1), date[0])
+        return _date
+    }
 
 
     set priority(newPriority) {
@@ -19,7 +27,7 @@ class Task {
         if(newPriority === possibilies[0] || newPriority === possibilies[1] || newPriority === possibilies[2]){
             this._priority = newPriority;
         } else {
-            console.error('Priority attribute must be "low", "medium" or "high"');
+            console.error('The priority must be "low", "medium" or "high"');
         }
     }
 
@@ -33,8 +41,8 @@ class Task {
 };
 
 
-Task.prototype.newDate = function(){
-    console.log(this.dueDate)
+Task.prototype.getTimeLeft = function(){
+    return intlFormatDistance(new Date(), this.dueDate)
 }
 
 
