@@ -1,17 +1,16 @@
+import './style.css'
 import { ProjectManager } from "./projectManager";
-
-import { formatDistance, format } from "date-fns";
 
 const control = ProjectManager();
 
-control.createTask('ranger les cerises', 'low', '05/07/2025', 'par intensité de la couleur')
+control.createTask('ranger les cerises', 'low', '05/07/2025')
 control.createTask('rincer le cocotier', 'medium', '04/07/2025', 'arroser à la base du cocotier avec le sceau dans le garage');
 control.createTask('visiter les grands-parents', 'high', '21/07/2025', 'rapporter des fleurs pour leur anniversaire de mariage');
 
 
 console.table(control.getProjectTasksList());
 
-control.newProject('ToDoList');
+control.newProject('TaMereKiwi');
 control.changeProject(1);
 
 control.createTask('dessiner le projet', 'high', '04/07/2025', 'better plans better futur')
@@ -20,19 +19,8 @@ control.createTask('transmettre à la team', 'high', '05/07/2025', 'Eux ils save
 
 
 console.table(control.getProjectTasksList());
-console.log(control.getProjectSpecificTask(1));
-
-control.removeSelectedTask(1);
-console.table(control.getProjectTasksList())
-
 
 control.changeProject(0);
-control.completeSelectedTask(2);
-console.table(control.getProjectCompleteTasks())
-
-
-console.log(control.getProjectSpecificTask(0).getTimeLeft())
-
 
 
 // FOR PARSING INFORMATIONS
@@ -41,3 +29,15 @@ console.log(control.getProjectSpecificTask(0).getTimeLeft())
 //     instance.ParsingTasks();
 //     return instance
 // }
+
+
+console.table(control.getAllTasks())
+
+const Kiwi = control.getProject(1);
+const task = control.getProjectSpecificTask(1)
+
+control.changeTaskProject(Kiwi, task);
+
+console.table(control.getAllTasks())
+
+
