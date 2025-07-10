@@ -3,13 +3,14 @@ import {format, intlFormatDistance} from 'date-fns'
 
 class Task {
 
-    constructor(title, priority, dueDate, description){
+    constructor(title, priority, dueDate, description = '', origin = 'default'){
         this.title = title,
         this.priority = priority,
         this.dueDate = Task.dateInstance(dueDate);
         this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy')
         this.description = description,
-        this.status = 'to-do'
+        this.status = 'to-do',
+        this.origin = origin
     };
 
 
@@ -46,10 +47,15 @@ Task.prototype.getTimeLeft = function(){
 }
 
 
+Task.prototype.changeOrigin = function(_newOrigin){
+    this.origin = _newOrigin
+}
+
+
 const TaskManager = function(){
     
-    const createTask = function(title, priority, date, description){
-        const task = new Task(title, priority, date, description);
+    const createTask = function(title, priority, date, description, origin){
+        const task = new Task(title, priority, date, description, origin);
         return task
     }
 
