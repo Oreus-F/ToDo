@@ -33,9 +33,7 @@ Project.prototype.addTaskIntoProject = function(task){
 
 
 Project.prototype.removeTask = function(task){
-    console.log(task)
     this.tasks.splice(task, 1);
-    console.log(this.tasks)
 }
 
 
@@ -111,14 +109,23 @@ const ProjectManager = function(){
     }
 
 
-    const getProjectSpecificTask = function(x){
-        return activeProject.getTask(x)
+    const getProjectSpecificTask = function(index){
+        return activeProject.getTask(index)
+    }
+
+
+    const getTasksIndex = function(task){
+        return activeProject.tasks.indexOf(task)
     }
 
 
     const removeSelectedTask = function(x){
-        console.log(x);
-        const taskSelected = getProjectSpecificTask(x);
+        let taskSelected
+        if(typeof(x) === 'number'){
+            taskSelected = getProjectSpecificTask(x);
+        } else {
+            taskSelected = getTasksIndex(x);
+        }
         console.log(taskSelected)
         activeProject.removeTask(taskSelected)
     }
@@ -153,10 +160,7 @@ const ProjectManager = function(){
 
 
     const changeTaskProject = function(project, task){
-        let index = activeProject.tasks.indexOf(task)
-
-
-        removeSelectedTask(index)
+        removeSelectedTask(task)
         console.log(activeProject.getTasksList())
         project.addTaskIntoProject(task)
 
