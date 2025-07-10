@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+#mainContainer{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    
+}
+
+
+#menu{
+    border: 2px solid blue;
+}
+
+
+#¢ontent{
+    border: 2px solid red;
+}
