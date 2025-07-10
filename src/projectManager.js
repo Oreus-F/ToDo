@@ -161,9 +161,7 @@ const ProjectManager = function(){
 
     const changeTaskProject = function(project, task){
         removeSelectedTask(task)
-        console.log(activeProject.getTasksList())
         project.addTaskIntoProject(task)
-
     }
 
     return {newProject, getActiveProject, changeProject, 
