@@ -5,11 +5,11 @@
     box-sizing: border-box;
 }
 
+#mainContainer {
 
-#mainContainer{
+    min-height: 100dvh;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    
+    grid-template-columns: 1fr 3fr;
 }
 
 
@@ -18,6 +18,6 @@
 }
 
 
-#¢ontent{
+#content{
     border: 2px solid red;
 }
