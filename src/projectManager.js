@@ -27,12 +27,15 @@ Project.prototype.getTask = function(x){
 
 
 Project.prototype.addTaskIntoProject = function(task){
-    this.tasks.push(task)
+    this.tasks.push(task);
+    task.changeOrigin(this.title)
 }
 
 
 Project.prototype.removeTask = function(task){
-    this.tasks.splice(task, 1)
+    console.log(task)
+    this.tasks.splice(task, 1);
+    console.log(this.tasks)
 }
 
 
@@ -56,10 +59,12 @@ Project.prototype.ParsingTasks = function(){
 }
 
 
+
 const ProjectManager = function(){
     const taskControl = TaskManager();
 
     const defaultProject = new Project('default');
+    
     const projectList = [defaultProject];
     
     let activeProject = defaultProject;
@@ -70,6 +75,12 @@ const ProjectManager = function(){
         const project = new Project(title);
         projectList.push(project);
     };
+
+
+
+    const getProjectList = function(){
+        return projectList
+    }
 
 
     const getProject = function(x){
@@ -90,6 +101,7 @@ const ProjectManager = function(){
 
     const createTask = function(title, priority, date, description){
         const task = taskControl.createTask(title, priority, date, description);
+        task.changeOrigin(activeProject.title)
         activeProject.addTaskIntoProject(task);
     }
 
@@ -105,7 +117,9 @@ const ProjectManager = function(){
 
 
     const removeSelectedTask = function(x){
+        console.log(x);
         const taskSelected = getProjectSpecificTask(x);
+        console.log(taskSelected)
         activeProject.removeTask(taskSelected)
     }
 
@@ -121,9 +135,37 @@ const ProjectManager = function(){
     }
 
 
+    const getAllTasks = function(){
+        const projects = getProjectList();
+
+        const Alltasks = [];
+
+        projects.forEach(project => {
+            const tasks = project.getTasksList();
+            tasks.forEach(task => {
+                Alltasks.push(task)
+            })
+        })
+
+        return Alltasks;
+    }
+
+
+
+    const changeTaskProject = function(project, task){
+        let index = activeProject.tasks.indexOf(task)
+
+
+        removeSelectedTask(index)
+        console.log(activeProject.getTasksList())
+        project.addTaskIntoProject(task)
+
+    }
+
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
-    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks}
+    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
+changeTaskProject, getProject}
 }
 
 
