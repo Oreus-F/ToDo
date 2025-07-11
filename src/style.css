@@ -1,3 +1,10 @@
+:root{
+    --main-white: #ffffff;
+    --main-light-grey: #f4f4f4;
+    --ascent-color: #306B34;
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -8,19 +15,26 @@
 #mainContainer {
 
     min-height: 100dvh;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex
 }
 
 
 #menu{
-    border: 2px solid blue;
 
-    display: grid;
-    grid-template-rows: 1fr 2fr 3fr;
+    min-width: 310px;
+    max-width: 420px;
+    flex-shrink: 0;
+}
+
+
+
+#menu > div:first-child{
+    background-color: var(--main-light-grey);
+    height: 100%;
 }
 
 
 #content{
     border: 2px solid red;
+    flex-grow: 1;
 }
