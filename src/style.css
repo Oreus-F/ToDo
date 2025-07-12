@@ -18,6 +18,11 @@
 }
 
 
+.full-h{
+    height: 100%;
+}
+
+
 .flex-display{
     display: flex
 }
@@ -25,6 +30,11 @@
 
 .flex-first-grow{
     flex-grow: 1;
+}
+
+
+#plus{
+    background-image: url(../asset/ressource/plus-circle.svg);
 }
 
 
@@ -41,14 +51,7 @@
 }
 
 
-#menu > div:first-child{
-    height: 100%;
-
-}
-
-
 #menu nav {
-    height: inherit;
 
     flex-direction: column;
     gap: 12px;
