@@ -15,7 +15,21 @@
 #mainContainer {
 
     min-height: 100dvh;
+}
+
+
+.flex-display{
     display: flex
+}
+
+
+.flex-first-grow{
+    flex-grow: 1;
+}
+
+
+.bgc-mlg{
+    background-color: var(--main-light-grey);
 }
 
 
@@ -27,14 +41,42 @@
 }
 
 
-
 #menu > div:first-child{
-    background-color: var(--main-light-grey);
     height: 100%;
+
+}
+
+
+#menu nav {
+    height: inherit;
+
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+
+#menu nav > div:first-child{
+    flex-basis: 40px;
+    margin-top: 20px;
+}
+
+
+#menu nav > div:nth-child(2){
+    flex-basis: 60px;
+}
+
+
+#menu nav > div:last-child{
+    flex-grow: 2;
+}
+
+
+#menu nav > div > div:first-child{
+    margin: 0% 10%;
 }
 
 
 #content{
     border: 2px solid red;
-    flex-grow: 1;
 }
