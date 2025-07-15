@@ -40,30 +40,75 @@
 }
 
 
-.icon-menu{
-    width: 50px;
-    height: 50px;
+.flex-basis40px{
+    flex-basis: 40px;
 }
 
 
-ul.column-direction{
-    gap: 10px;
+.icon-menu{
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: var(--hundred-percent);
+    height: var(--hundred-percent);
+
+}
+
+
+.gap-12{
+    gap: 12px
+}
+
+
+.aligned-item{
+    align-items: center;
 }
 
 
 .menu-button{
-    height: 50px;
+    height: 60px;
     width: var(--hundred-percent);
     text-align: left;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    padding: 12px;
 }
 
 
-#plus{
+.icon-menu-add-task{
     background-image: url(../asset/ressource/plus-circle.svg);
-    background-size: 50px 50px;
+    background-size: 35px;
+}
+
+
+.icon-menu-search{
+    background-image: url(../asset/ressource/search.svg);
+}
+
+
+.icon-menu-today{
+    background-image: url(../asset/ressource/calendar-event.svg);
+}
+
+
+.icon-menu-upcomming{
+    background-image: url(../asset/ressource/calendar-clock.svg);
+}
+
+
+.icon-menu-completed{
+    background-image: url(../asset/ressource/progress-check.svg);
+}
+
+
+.icon-menu-projects{
+    background-image: url(../asset/ressource/folders.svg);
+}
+
+
+.icon-menu-one-project{
+    background-image: url(../asset/ressource/clipboard-text.svg)
 }
 
 
