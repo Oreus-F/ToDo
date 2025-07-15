@@ -76,9 +76,14 @@
 }
 
 
+.bigger-icon{
+    background-size: 35px;
+}
+
+
+
 .icon-menu-add-task{
     background-image: url(../asset/ressource/plus-circle.svg);
-    background-size: 35px;
 }
 
 
