@@ -62,8 +62,7 @@
 
 
 .gap-8{
-    gap: 0px;
-    /* gap: var(--px8) */
+    gap: var(--px8)
 }
 
 .gap-4{
