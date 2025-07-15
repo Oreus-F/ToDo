@@ -1,9 +1,15 @@
 :root{
     --main-white: #ffffff;
     --main-light-grey: #f4f4f4;
+    --secondary-light-grey: #ececec;
     --ascent-color: #306B34;
 
     --hundred-percent : 100%;
+    --fs11: 1.1rem;
+    --fs14: 1.4rem;
+
+
+    --px8: 8px;
 }
 
 
@@ -55,15 +61,27 @@
 }
 
 
-.gap-12{
-    gap: 12px
+.gap-8{
+    gap: var(--px8)
 }
 
+.gap-4{
+    gap: calc(var(--px8)/2)
+}
 
 .aligned-item{
     align-items: center;
 }
 
+
+.fs11{
+    font-size: var(--fs11);
+}
+
+
+.fs14{
+    font-size: var(--fs14);
+}
 
 .menu-button{
     height: 60px;
@@ -76,8 +94,14 @@
 }
 
 
+.menu-button:hover{
+    background-color: var(--secondary-light-grey);
+    border-radius: var(--px8);
+}
+
+
 .bigger-icon{
-    background-size: 35px;
+    background-size: 32px;
 }
 
 
@@ -124,7 +148,7 @@
 
 #menu{
 
-    min-width: 310px;
+    min-width: 420px;
     max-width: 420px;
     flex-shrink: 0;
 }
