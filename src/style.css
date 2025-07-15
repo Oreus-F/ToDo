@@ -2,7 +2,8 @@
     --main-white: #ffffff;
     --main-light-grey: #f4f4f4;
     --secondary-light-grey: #ececec;
-    --ascent-color: #306B34;
+    --ascent-pastel-color: #eed2bb;
+    --ascent-color: #b13924;
 
     --hundred-percent : 100%;
     --fs11: 1.1rem;
@@ -91,6 +92,7 @@
     background-color: transparent;
     cursor: pointer;
     padding: 12px;
+    border-radius: var(--px8);
 }
 
 
@@ -101,8 +103,8 @@
 
 .menu-button:hover{
     background-color: var(--secondary-light-grey);
-    border-radius: var(--px8);
 }
+
 
 
 .bigger-icon{
@@ -111,8 +113,45 @@
 
 
 
+[data-active = "true"]{
+    background-color: var(--ascent-pastel-color);
+
+}
+
+
+
+[data-active = "true"] > span.icon-menu{
+    background-color: var(--ascent-color);
+    background-image: none;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 24px;
+}
+
+
+[data-active = "true"] span.fs11{
+    color: var(--ascent-color);
+} 
+
+
+
+button[data-active = "true"]:hover{
+    background-color: var(--ascent-pastel-color);
+}
+
+
+
 .icon-menu-add-task{
-    background-image: url(../asset/ressource/plus-circle.svg);
+    mask-image: url(../asset/ressource/plus-circle.svg);
+    background-color: var(--ascent-color);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 32px;
+}
+
+
+.icon-menu-add-task ~ div > span{
+    color: var(--ascent-color);
 }
 
 
@@ -121,8 +160,17 @@
 }
 
 
+[data-active = "true"] > span.icon-menu-search{
+    mask-image: url(../asset/ressource/search.svg);
+}
+
 .icon-menu-today{
     background-image: url(../asset/ressource/calendar-event.svg);
+}
+
+
+[data-active = "true"] > span.icon-menu-today{
+    mask-image: url(../asset/ressource/calendar-event.svg);
 }
 
 
@@ -131,18 +179,27 @@
 }
 
 
+[data-active = "true"] > span.icon-menu-upcomming{
+    mask-image: url(../asset/ressource/calendar-clock.svg);
+}
+
+
 .icon-menu-completed{
     background-image: url(../asset/ressource/progress-check.svg);
 }
 
 
-.icon-menu-projects{
-    background-image: url(../asset/ressource/folders.svg);
+[data-active = "true"] > span.icon-menu-completed{
+    mask-image: url(../asset/ressource/progress-check.svg);
 }
-
 
 .icon-menu-one-project{
     background-image: url(../asset/ressource/clipboard-text.svg)
+}
+
+
+[data-active = "true"] > span.icon-menu-one-project{
+    mask-image: url(../asset/ressource/clipboard-text.svg);
 }
 
 
