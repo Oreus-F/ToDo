@@ -48,7 +48,12 @@
 
 
 .flex-basis40px{
-    flex-basis: 40px;
+    flex-basis: calc(var(--px8)*5);
+}
+
+
+.flex-basis20px{
+    flex-basis: 20px;
 }
 
 
@@ -200,6 +205,15 @@ button[data-active = "true"]:hover{
 
 [data-active = "true"] > span.icon-menu-one-project{
     mask-image: url(../asset/ressource/clipboard-text.svg);
+}
+
+.icon-menu-add-project{
+    background-image: url(../asset/ressource/plus.svg);
+}
+
+
+.icon-menu-chevron{
+    background-image: url(../asset/ressource/chevron-down.svg);
 }
 
 
