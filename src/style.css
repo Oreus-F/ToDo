@@ -62,7 +62,8 @@
 
 
 .gap-8{
-    gap: var(--px8)
+    gap: 0px;
+    /* gap: var(--px8) */
 }
 
 .gap-4{
@@ -84,13 +85,18 @@
 }
 
 .menu-button{
-    height: 60px;
+    height: 50px;
     width: var(--hundred-percent);
     text-align: left;
     border: none;
     background-color: transparent;
     cursor: pointer;
     padding: 12px;
+}
+
+
+.menu-bigger-button{
+    height: 60px;
 }
 
 
