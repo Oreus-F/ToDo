@@ -128,6 +128,11 @@
 }
 
 
+.menu-bigger-button > button:nth-child(2){
+    opacity: 0;
+}
+
+
 button.menu-button-help:hover{
     background-color: var(--darker-grey);
 }
@@ -142,6 +147,12 @@ button.menu-button-help:hover{
     background-color: var(--secondary-light-grey);
 }
 
+
+
+.menu-button:hover > button:nth-child(2){
+    opacity: 1;
+    transition: 300ms;
+}
 
 
 .bigger-icon{
