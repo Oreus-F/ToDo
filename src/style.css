@@ -92,6 +92,11 @@
 }
 
 
+.self-aligned{
+    align-self: center;
+}
+
+
 .fs11{
     font-size: var(--fs11);
 }
@@ -113,7 +118,7 @@
 
 .profil-picture {
     height: 100%;
-    border: black 1px solid;
+    border: none;
     border-radius: 40px;
 }
 
