@@ -49,6 +49,11 @@
 }
 
 
+.flex-basis80px{
+    flex-basis: calc(var(--px8)*10);
+}
+
+
 .flex-basis40px{
     flex-basis: calc(var(--px8)*5);
 }
@@ -101,6 +106,18 @@
     position: relative;
 }
 
+
+.pos-abs{
+    position: absolute;
+}
+
+.profil-picture {
+    height: 100%;
+    border: black 1px solid;
+    border-radius: 40px;
+}
+
+
 .menu-button{
     height: 50px;
     width: var(--hundred-percent);
@@ -121,7 +138,6 @@
 
 
 .menu-button-projects{
-    position: absolute;
     inset: 0;
     background-color: transparent;
     border: none;
@@ -282,7 +298,6 @@ button[data-active = "true"]:hover{
 
 
 #menu nav > div:first-child{
-    flex-basis: 40px;
     margin-top: 20px;
 }
 
