@@ -281,6 +281,16 @@ button[data-active = "true"]:hover{
 }
 
 
+.icon-menu-dots{
+    background-image: url(../asset/ressource/dots-vertical.svg);
+}
+
+
+.icon-menu-sidebar{
+    background-image: url(../asset/ressource/layout-sidebar.svg);
+}
+
+
 .bgc-mlg{
     background-color: var(--main-light-grey);
 }
