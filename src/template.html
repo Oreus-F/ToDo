@@ -73,17 +73,19 @@
                     </div>
                     <div>
                         <div class="full-h">
-                            <button class="menu-button flex-display gap-4 aligned-item menu-bigger-button">
+                            <div class="menu-button flex-display gap-4 aligned-item menu-bigger-button pos-rel">
                                 <div class="flex-first-grow">
                                     <span class="fs14">My Projects</span>
                                 </div>
 
-                                <!-- can't nest a button in a button / find solution ::before clickable ? -->
-                                <button class="flex-basis20px">
+                                <button id="addproject" class="flex-basis40px menu-button menu-button-help">
                                     <span class="icon-menu-add-project icon-menu-help icon-menu"></span>
                                 </button>
-                                <span class="icon-menu-chevron icon-menu-help icon-menu flex-basis20px"></span>
-                            </button>
+                                <button id="chevron" class="flex-basis40px menu-button menu-button-help">
+                                    <span class="icon-menu-chevron icon-menu-help icon-menu"></span>
+                                </button>
+                                <button id="project" class="menu-button-projects"></button>
+                            </div>
                             <div>
                                 <ul>
                                     <li>
@@ -106,4 +108,5 @@
         </div>
     </div>
 </body>
+
 </html>

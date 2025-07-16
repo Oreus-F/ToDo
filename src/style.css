@@ -2,6 +2,7 @@
     --main-white: #ffffff;
     --main-light-grey: #f4f4f4;
     --secondary-light-grey: #ececec;
+    --darker-grey: #dddddd;
     --ascent-pastel-color: #eed2bb;
     --ascent-color: #b13924;
 
@@ -19,6 +20,7 @@
     padding: 0;
     list-style: none;
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #mainContainer {
@@ -67,6 +69,11 @@
 }
 
 
+.icon-menu-help{
+    display: block;
+}
+
+
 .gap-8{
     gap: var(--px8)
 }
@@ -89,6 +96,11 @@
     font-size: var(--fs14);
 }
 
+
+.pos-rel{
+    position: relative;
+}
+
 .menu-button{
     height: 50px;
     width: var(--hundred-percent);
@@ -98,6 +110,26 @@
     cursor: pointer;
     padding: 12px;
     border-radius: var(--px8);
+}
+
+
+.menu-button-help{
+    width: 0;
+    padding: 0;
+    z-index: 2;
+}
+
+
+.menu-button-projects{
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    border: none;
+}
+
+
+button.menu-button-help:hover{
+    background-color: var(--darker-grey);
 }
 
 
