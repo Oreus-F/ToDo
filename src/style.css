@@ -383,4 +383,19 @@ button[data-active = "true"]:hover{
 
 .button-project-name{
     height: 50px;
+    width: 220px;
+    border: none;
+    border-radius: var(--px8);
+    background-color: var(--ascent-pastel-color);
+    font-size: 1rem;
+
+    transition: 200ms;
+}
+
+
+.button-project-name:hover{
+    background-color: var(--ascent-color);
+    color: var(--main-white);
+
+    transition: 200ms;
 }
