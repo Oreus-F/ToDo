@@ -1,4 +1,5 @@
-import { TaskManager } from "./taskManager"
+import { TaskManager } from "./taskManager";
+import { updateSidebarProjectList } from "./updateDOMProjectSidebar";
 
 
 class Project {
@@ -51,7 +52,7 @@ Project.prototype.ParsingTasks = function(){
     for(let x=0; x < this.tasks.length; x++){
         let task = this.tasks[x]
         task = new Task(task.name, task.priority, task.dueDate, task.description);
-        task.newDate()
+        task.newDate();
         this.tasks[x] = task
     }
 }
@@ -72,8 +73,10 @@ const ProjectManager = function(){
     const newProject = function(title){
         const project = new Project(title);
         projectList.push(project);
-    };
 
+
+        updateSidebarProjectList(getProjectList())
+    };
 
 
     const getProjectList = function(){
