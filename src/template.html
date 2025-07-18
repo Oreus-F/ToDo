@@ -100,15 +100,7 @@
                                 <button id="project" class="menu-button-projects pos-abs"></button>
                             </div>
                             <div>
-                                <ul>
-                                    <li>
-                                        <button class="menu-button flex-display gap-4 aligned-item" data-active="false">
-                                            <span class="icon-menu-one-project icon-menu flex-basis40px"></span>
-                                            <div class="flex-first-grow">
-                                                <span class="fs11">Default</span>
-                                            </div>
-                                        </button>
-                                    </li>
+                                <ul id= "sidebarProjectList">
                                 </ul>
                             </div>
                         </div>
@@ -120,6 +112,17 @@
             
         </div>
     </div>
+
+
+    <dialog id="getProjectName">
+        <form action="" class="full-h">
+            <div class="flex-display column-direction gap-16 full-h">
+                <label for="newProjectName" class="fs14">New project name :</label>
+                <input type="text" id="newProjectName" name="newProjectName" placeholder="Name Project" class="flex-first-grow fs11 input-project-name">
+                <button class="button-project-name">Create</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 
 </html>

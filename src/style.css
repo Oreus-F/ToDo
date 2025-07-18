@@ -84,6 +84,12 @@
     gap: var(--px8)
 }
 
+
+.gap-16{
+    gap: calc(var(--px8)*2);
+}
+
+
 .gap-4{
     gap: calc(var(--px8)/2)
 }
@@ -343,4 +349,38 @@ button[data-active = "true"]:hover{
 
 #content{
     border: 2px solid red;
+}
+
+
+
+#getProjectName{
+    margin: auto auto auto auto;
+    margin-bottom: 40%;
+    width: 480px;
+    height: max-content;
+
+
+    border: none;
+    border-radius: var(--px8);
+    background-color: var(--main-light-grey);
+}
+
+
+#getProjectName > form {
+    padding: 5%;
+    padding-bottom: 10%;
+    color: var(--ascent-color);
+}
+
+
+.input-project-name{
+    padding-left: 16px;
+    border: none;
+    border-radius: var(--px8);
+    outline: var(--ascent-color) 1px solid;
+    height: 50px;
+}
+
+.button-project-name{
+    height: 50px;
 }
