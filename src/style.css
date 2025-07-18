@@ -10,7 +10,6 @@
     --fs11: 1.1rem;
     --fs14: 1.4rem;
 
-
     --px8: 8px;
 }
 
@@ -149,7 +148,8 @@
 }
 
 
-.menu-bigger-button > button:nth-child(2){
+.menu-bigger-button > button:nth-child(2),
+nav > div:first-child button:nth-child(3){
     opacity: 0;
 }
 
@@ -170,7 +170,8 @@ button.menu-button-help:hover{
 
 
 
-.menu-button:hover > button:nth-child(2){
+.menu-button:hover > button:nth-child(2),
+nav > div:first-child:hover button:nth-child(3){
     opacity: 1;
     transition: 300ms;
 }
