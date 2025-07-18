@@ -1,8 +1,9 @@
 const buttonClass =  'menu-button flex-display gap-4 aligned-item';
-const iconClass = 'icon-menu-one-project icon-menu flex-basis40px';
+const iconClass = 'icon-menu-one-project flex-noshrink icon-menu flex-basis40px';
 
 
 const createProjectButton = function(projectName){
+    
     const listedItem = document.createElement('li');
 
     const button = document.createElement("button");
@@ -15,9 +16,9 @@ const createProjectButton = function(projectName){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-first-grow');
 
-    const nameSpan = document.createElement('span');
-    nameSpan.setAttribute('class', 'fs11');
-    nameSpan.textContent =projectName;
+    const nameSpan = document.createElement('p');
+    nameSpan.setAttribute('class', 'fs11 text-overflow');
+    nameSpan.textContent = projectName;
 
     div.appendChild(nameSpan);
 
@@ -32,6 +33,8 @@ const createProjectButton = function(projectName){
 
 
 const updateSidebarProjectList = function(projectsList){
+
+
     const sidebarList = document.querySelector('#sidebarProjectList');
     sidebarList.replaceChildren();
 

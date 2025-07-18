@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="mainContainer" class="flex-display">
-        <div id="menu">
+        <div id="menu" class="flex-noshrink">
             <div class="bgc-mlg full-h">
                 <nav class="flex-display full-h">
                     <div class="flex-basis80px">
@@ -115,11 +115,11 @@
 
 
     <dialog id="getProjectName">
-        <form action="" class="full-h">
+        <form action="" class="full-h" id="newProject">
             <div class="flex-display column-direction gap-16 full-h">
-                <label for="newProjectName" class="fs14">New project name :</label>
-                <input type="text" required="true" id="newProjectName" name="newProjectName" placeholder="Name Project" class="flex-first-grow fs11 input-project-name">
-                <button class="button-project-name">Create</button>
+                <label for="name" class="fs14">New project name :</label>
+                <input type="text" required="true" id="name" name="name" placeholder="Name Project" class="flex-first-grow fs11 input-project-name">
+                <button  class="button-project-name">Create</button>
             </div>
         </form>
     </dialog>

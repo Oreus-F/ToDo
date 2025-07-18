@@ -1,6 +1,5 @@
 import { TaskManager } from "./taskManager";
-import { updateSidebarProjectList } from "./updateDOMProjectSidebar";
-
+import { updateSidebarProjectList } from "./updateDOMProjectSidebar"
 
 class Project {
 
@@ -170,7 +169,7 @@ const ProjectManager = function(){
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
-changeTaskProject, getProject}
+changeTaskProject, getProject, getProjectList}
 }
 
 

@@ -50,6 +50,11 @@
 }
 
 
+.flex-noshrink{
+    flex-shrink: 0;
+}
+
+
 .flex-basis80px{
     flex-basis: calc(var(--px8)*10);
 }
@@ -139,6 +144,15 @@
     cursor: pointer;
     padding: 12px;
     border-radius: var(--px8);
+}
+
+
+.text-overflow{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    width: 70%;
 }
 
 
@@ -306,10 +320,8 @@ button[data-active = "true"]:hover{
 
 
 #menu{
-
     width: var(--sidebar);
     transition: 300ms ease-out;
-    flex-shrink: 0;
 }
 
 
