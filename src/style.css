@@ -6,6 +6,8 @@
     --ascent-pastel-color: #eed2bb;
     --ascent-color: #b13924;
 
+
+    --sidebar: 420px;
     --hundred-percent : 100%;
     --fs11: 1.1rem;
     --fs14: 1.4rem;
@@ -299,9 +301,15 @@ button[data-active = "true"]:hover{
 
 #menu{
 
-    min-width: 420px;
-    max-width: 420px;
+    width: var(--sidebar);
+    transition: 300ms ease-out;
     flex-shrink: 0;
+}
+
+
+#menu[data-sidebar = "false"]{
+    margin-left: calc(-1 * var(--sidebar));
+    transition: 300ms ease-in;
 }
 
 
