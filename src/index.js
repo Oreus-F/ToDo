@@ -1,5 +1,6 @@
 import './style.css'
 import { ProjectManager } from "./projectManager";
+import { updateSidebarProjectList } from './updateDOMProjectSidebar';
 
 const control = ProjectManager();
 
@@ -20,9 +21,6 @@ control.createTask('transmettre à la team', 'high', '05/07/2025', 'Eux ils save
 
 console.table(control.getProjectTasksList());
 
-control.changeProject(0);
-
-
 // FOR PARSING INFORMATIONS
 // const newInstance = function(value){
 //     const instance = new Project(value.title, value.tasks);
@@ -30,14 +28,5 @@ control.changeProject(0);
 //     return instance
 // }
 
-
-console.table(control.getAllTasks())
-
-const Kiwi = control.getProject(1);
-const task = control.getProjectSpecificTask(1)
-
-control.changeTaskProject(Kiwi, task);
-
-console.table(control.getAllTasks())
-
-
+const getProjectName = document.querySelector('#getProjectName');
+getProjectName.showModal();
