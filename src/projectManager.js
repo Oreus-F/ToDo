@@ -1,13 +1,40 @@
 import { TaskManager } from "./taskManager";
-import { updateSidebarProjectList } from "./updateDOMProjectSidebar"
+import { updateSidebarProjectList } from "./updateDOMProjectSidebar";
+
+const taskControl = TaskManager();
+
 
 class Project {
 
-    constructor(title, tasks = []){
+    constructor(title, tasks){
         this.title = title,
-        this.tasks = tasks,
+        this.tasks = Project.parsingTasks(tasks, this.title),
         this.complete = []
     }
+
+    static parsingTasks(tasks, origin){
+        
+        const _tasks = [];
+        
+        if(tasks === undefined) {
+            return _tasks
+        } else {
+            
+            for(let x=0; x < tasks.length; x++){
+                let newTask = tasks[x];
+                newTask = taskControl.createTask(newTask.title, newTask._priority, newTask.formatedDueDate, newTask.description);
+
+                newTask.changeOrigin(origin);
+
+                _tasks.push(newTask)
+            };
+
+            return _tasks
+        }
+
+
+
+}
 };
 
 
@@ -18,17 +45,12 @@ Project.prototype.getTasksList = function(){
 
 Project.prototype.addTaskIntoProject = function(task){
     this.tasks.push(task)
+    task.changeOrigin(this.title)
 }
 
 
 Project.prototype.getTask = function(x){
     return this.tasks[x]
-}
-
-
-Project.prototype.addTaskIntoProject = function(task){
-    this.tasks.push(task);
-    task.changeOrigin(this.title)
 }
 
 
@@ -47,19 +69,8 @@ Project.prototype.getCompleteTasks = function(){
 }
 
 
-Project.prototype.ParsingTasks = function(){
-    for(let x=0; x < this.tasks.length; x++){
-        let task = this.tasks[x]
-        task = new Task(task.name, task.priority, task.dueDate, task.description);
-        task.newDate();
-        this.tasks[x] = task
-    }
-}
-
-
 
 const ProjectManager = function(){
-    const taskControl = TaskManager();
 
     const defaultProject = new Project('default');
     
@@ -69,10 +80,10 @@ const ProjectManager = function(){
     
 
 
-    const newProject = function(title){
-        const project = new Project(title);
+    const newProject = function(title, tasks){
+        const project = new Project(title, tasks);
         projectList.push(project);
-
+        changeProject(project);
 
         updateSidebarProjectList(getProjectList())
     };
@@ -88,6 +99,11 @@ const ProjectManager = function(){
     };
 
 
+    const getProjectIndex = function(project){
+        return projectList.indexOf(project)
+    }
+
+
     // Maybe not needed will see
     const getActiveProject = function(){
         return activeProject
@@ -95,13 +111,29 @@ const ProjectManager = function(){
 
 
     const changeProject = function(x){
-        activeProject = getProject(x);
+        let projectSelected;
+        if(typeof(x) === 'number'){
+            projectSelected = getProject(x);
+        } else {
+            let index = getProjectIndex(x)
+            projectSelected = getProject(index);
+        }
+        activeProject = projectSelected;
     };
+
+
+
+    // TEMPORARY METHOD
+
+
+    const deleteALLPROJECT = function(){
+        projectList.splice(0, getProjectList().length);
+        updateSidebarProjectList(getProjectList());
+    }
 
 
     const createTask = function(title, priority, date, description){
         const task = taskControl.createTask(title, priority, date, description);
-        task.changeOrigin(activeProject.title)
         activeProject.addTaskIntoProject(task);
     }
 
@@ -128,7 +160,6 @@ const ProjectManager = function(){
         } else {
             taskSelected = getTasksIndex(x);
         }
-        console.log(taskSelected)
         activeProject.removeTask(taskSelected)
     }
 
@@ -166,10 +197,15 @@ const ProjectManager = function(){
         project.addTaskIntoProject(task)
     }
 
+
+
+
+
+
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
-changeTaskProject, getProject, getProjectList}
+changeTaskProject, getProject, getProjectList, deleteALLPROJECT}
 }
 
 
