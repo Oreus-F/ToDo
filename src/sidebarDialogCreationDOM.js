@@ -1,5 +1,4 @@
 import { ProjectManager } from "./projectManager";
-import {updateSidebarProjectList } from "./updateDOMProjectSidebar.js"
 
 const control = ProjectManager();
 
@@ -18,7 +17,7 @@ const createDialogProjectName = function(){
 
     const label = document.createElement('label');
     label.setAttribute('class', 'fs14');
-    label.setAttribute('for', 'newProjectName');
+    label.setAttribute('for', 'name');
     label.textContent = 'New project name :';
 
     const input = document.createElement('input');
@@ -44,13 +43,16 @@ const createDialogProjectName = function(){
     dialog.appendChild(form);
 
     const body = document.querySelector('body');
-    body.appendChild(dialog)
+    body.appendChild(dialog);
+
+    dialog.showModal();
 }
 
 
 
 const sendNewProject = function(event){
     const dialog = document.querySelector('#getProjectName');
+    const body = document.querySelector('body');
 
     event.preventDefault();
 
@@ -59,7 +61,8 @@ const sendNewProject = function(event){
 
     control.newProject(formData.name);  
     
-    dialog.close()
+    dialog.close();
+    body.removeChild(dialog);
 }
 
 
@@ -72,4 +75,4 @@ const activateFormNewProject = function(){
 
 
 
-export {activateFormNewProject}
+export {createDialogProjectName, activateFormNewProject}
