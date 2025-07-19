@@ -321,14 +321,36 @@ button[data-active = "true"]:hover{
 
 #menu{
     width: var(--sidebar);
-    transition: 300ms ease-out;
+    transition: 1s ease-out;
 }
 
 
-#menu[data-sidebar = "false"]{
+#menu:has(#displaySidebarButton[data-sidebar = "false"]){
     margin-left: calc(-1 * var(--sidebar));
-    transition: 300ms ease-in;
+    transition: 1s ease-in;
+    position: relative;
 }
+
+
+#displaySidebarButton[data-sidebar = "false"]{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+
+    left: 102%;
+
+    transition-delay: 500ms;
+    transition-property: left;
+    transition: 1s ease-in-out;
+}
+
+
+#displaySidebarButton{
+    transition-delay: 500ms;
+    transition-property: left;
+    transition: 1s ease-in-out;
+}
+
 
 
 #menu nav {
