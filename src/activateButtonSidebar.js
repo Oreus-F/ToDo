@@ -10,5 +10,8 @@ const setUpAddProjectButton = function(){
 };
 
 
+const activateSidebarButtons = function(){
+    setUpAddProjectButton()
+}
 
-export {setUpAddProjectButton}
+export {activateSidebarButtons}
