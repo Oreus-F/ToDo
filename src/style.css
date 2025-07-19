@@ -353,17 +353,28 @@ button[data-active = "true"]:hover{
 
 
 #projects-container{
-    height: max-content;
+    max-height: 100%;
     overflow: hidden;
 
     transition: 1s;
+
 }
 
 
 #projects-container[data-projects = "false"]{
-    height: 0;
+    transition: 0.5s;
+    max-height: 0%;
+}
 
-    transition: 1s;
+
+#chevron-icon{
+    transition: 400ms ease-in-out;
+}
+
+
+#chevron-icon[data-projects = "false"]{
+    transform: rotate(90deg);
+    transition: 400ms ease-in-out;
 }
 
 
