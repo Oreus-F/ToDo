@@ -352,6 +352,20 @@ button[data-active = "true"]:hover{
 }
 
 
+#projects-container{
+    height: max-content;
+    overflow: hidden;
+
+    transition: 1s;
+}
+
+
+#projects-container[data-projects = "false"]{
+    height: 0;
+
+    transition: 1s;
+}
+
 
 #menu nav {
 
