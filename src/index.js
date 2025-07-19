@@ -1,7 +1,7 @@
 import './style.css'
 import { ProjectManager } from "./projectManager";
 import { updateSidebarProjectList } from './updateDOMProjectSidebar';
-import { activateFormNewProject } from './dialogDOMcreation';
+import { activateSidebarButtons } from './activateButtonSidebar';
 
 const control = ProjectManager();
 updateSidebarProjectList(control.getProjectList())
@@ -13,8 +13,4 @@ updateSidebarProjectList(control.getProjectList())
 //     return instance
 // }
 
-const getProjectName = document.querySelector('#getProjectName');
-getProjectName.showModal();
-
-
-activateFormNewProject()
+activateSidebarButtons();
