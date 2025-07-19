@@ -13,7 +13,11 @@ const newProjectInstance = function(value){
 }
 
 
-const ParsingProject = function(Json){
+const parsingProject = function(Json){
+    
+    // delete them not to cause error
+    control.deleteALLPROJECT();
+
     const parsed = JSON.parse(Json);
     
     for(let x=0; x < parsed.length; x++){
@@ -46,14 +50,23 @@ const populateStorage = function(){
 
 
 const setStorage = function(){
-    const user = document.querySelector('#username');
-    const userPicture = document.querySelector('userPicture');
-    const projectList = control.getProjectList();
+    let user = document.querySelector('#username');
+    // let userPicture = document.querySelector('#userPicture');
+    // console.log(userPicture.src)
+    let projectList = control.getProjectList();
 
     const currentUsername = localStorage.getItem('username');
-    const currentUserPicture = localStorage.getItem('userPicture');
+    // const currentUserPicture = localStorage.getItem('userPicture');
     const currentProject = localStorage.getItem('projectList');
+
+
+    user.textContent = currentUsername;
+    // userPicture.src = currentUserPicture;
+    projectList = parsingProject(currentProject)
 }
+
+
+export {launchStorage}
 
 
 
