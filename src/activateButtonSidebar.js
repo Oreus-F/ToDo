@@ -1,5 +1,5 @@
 import { createDialogProjectName, activateFormNewProject } from "./sidebarDialogCreationDOM";
-import { displaySidebar } from "./sidebarButtonHelperDOM";
+import { displayContent } from "./sidebarButtonHelperDOM";
 
 const setUpAddProjectButton = function(){
     const addProjectButton = document.querySelector('#addProjectButton');
@@ -18,14 +18,29 @@ const setUpDisplaySidebar = function(){
         let target = event.target;
         target = target.parentElement;
 
-        displaySidebar(target)
+        displayContent(target, 'sidebar')
     });
 }
+
+
+const setUpDisplayProjects = function(){
+    const displayProjectsButton = document.querySelector('#displayProjectsButton');
+    
+    displayProjectsButton.addEventListener('click', () => {
+        const projectContainer = document.querySelector('#projects-container');
+        const chevronIcon = document.querySelector('#chevron-icon');
+
+        displayContent(projectContainer, 'projects');
+        displayContent(chevronIcon, 'projects');
+    })
+}
+
 
 
 const activateSidebarButtons = function(){
     setUpAddProjectButton()
     setUpDisplaySidebar();
+    setUpDisplayProjects();
 }
 
 export {activateSidebarButtons}
