@@ -1,12 +1,11 @@
 import './style.css'
 import { launchPage } from './launch'
+import { ProjectManager } from './projectManager';
 
+const control = ProjectManager();
 
 // FOR PARSING INFORMATIONS
-// const newInstance = function(value){
-//     const instance = new Project(value.title, value.tasks);
-//     instance.ParsingTasks();
-//     return instance
-// }
 
-launchPage()
+
+
+launchPage();
