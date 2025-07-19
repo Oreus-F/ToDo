@@ -1,10 +1,6 @@
 import './style.css'
-import { ProjectManager } from "./projectManager";
-import { updateSidebarProjectList } from './updateDOMProjectSidebar';
-import { activateSidebarButtons } from './activateButtonSidebar';
+import { launchPage } from './launch'
 
-const control = ProjectManager();
-updateSidebarProjectList(control.getProjectList())
 
 // FOR PARSING INFORMATIONS
 // const newInstance = function(value){
@@ -13,4 +9,4 @@ updateSidebarProjectList(control.getProjectList())
 //     return instance
 // }
 
-activateSidebarButtons();
+launchPage()
