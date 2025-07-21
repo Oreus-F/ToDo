@@ -60,27 +60,14 @@ const createDialogEditUser = function(){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display gap-16 full-h');
 
-    const label = document.createElement('label');
-    label.setAttribute('class', 'fs14');
-    label.setAttribute('for', 'name');
-    label.textContent = 'New project name :';
 
-    const input = document.createElement('input');
-    input.setAttribute('type', 'text');
-    input.setAttribute('required', 'true');
-    input.setAttribute('id', 'name');
-    input.setAttribute('name', 'name');
-    input.setAttribute('placeholder', 'Project 404');
-    input.setAttribute('class', 'flex-first-grow fs11 input-project-name');
 
     const button = document.createElement('button');
 
     button.setAttribute('class', 'button-project-name');
-    button.textContent = 'Create';
+    button.textContent = 'Edit Account';
 
 
-    div.appendChild(label);
-    div.appendChild(input);
     div.appendChild(button);
 
     form.appendChild(div);

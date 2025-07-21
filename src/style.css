@@ -412,7 +412,7 @@ button[data-active = "true"]:hover{
 
 
 
-#getProjectName{
+#getProjectName, #editUserDialog{
     margin: auto auto auto auto;
     margin-bottom: 40%;
     width: 480px;
@@ -425,7 +425,7 @@ button[data-active = "true"]:hover{
 }
 
 
-#getProjectName > form {
+#getProjectName > form, #editUserForm {
     padding: 5%;
     padding-bottom: 10%;
     color: var(--ascent-color);

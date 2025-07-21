@@ -48,7 +48,7 @@ const setUpDisplayProjects = function(){
 
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
-    setUpEditUserButton();
+    // setUpEditUserButton();
     setUpDisplaySidebar();
     setUpDisplayProjects();
 }

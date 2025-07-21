@@ -7,3 +7,7 @@ const control = ProjectManager();
 // FOR PARSING INFORMATIONS
 
 launchPage();
+
+
+const editUserDialog = document.querySelector('#editUserDialog');
+editUserDialog.showModal();
