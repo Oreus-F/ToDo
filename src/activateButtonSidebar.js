@@ -1,4 +1,4 @@
-import { createDialogProjectName, activateFormNewProject } from "./sidebarDialogCreationDOM";
+import { createDialogProjectName, activateFormNewProject, createDialogEditUser } from "./sidebarDialogCreationDOM";
 import { displayContent } from "./sidebarButtonHelperDOM";
 
 const setUpAddProjectButton = function(){
@@ -9,6 +9,15 @@ const setUpAddProjectButton = function(){
         activateFormNewProject();
     })
 };
+
+
+const setUpEditUserButton = function(){
+    const editUserButton  = document.querySelector('#editUserButton');
+
+    editUserButton.addEventListener('click', () => {
+        createDialogEditUser();
+    })
+}
 
 
 const setUpDisplaySidebar = function(){
@@ -38,7 +47,8 @@ const setUpDisplayProjects = function(){
 
 
 const activateSidebarButtons = function(){
-    setUpAddProjectButton()
+    setUpAddProjectButton();
+    setUpEditUserButton();
     setUpDisplaySidebar();
     setUpDisplayProjects();
 }
