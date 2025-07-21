@@ -31,11 +31,11 @@ const setStorage = function(){
     const userPicture = document.querySelector('#userPicture');
     
     const currentUsername = localStorage.getItem('username');
-    const currentUserPicture = localStorage.getItem('userPicture');
+    const currentUserPicture = JSON.stringify(localStorage.getItem('profilePicture'));
     const currentProject = localStorage.getItem('projectList');
 
     user.textContent = currentUsername;
-    userPicture.src = currentUserPicture;
+    userPicture.src = JSON.parse(currentUserPicture);
     control.parsingProject(currentProject)
 
 }
