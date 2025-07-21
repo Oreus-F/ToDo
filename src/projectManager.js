@@ -1,6 +1,7 @@
 import { TaskManager } from "./taskManager";
 import { updateSidebarProjectList } from "./updateDOMProjectSidebar";
 
+
 const taskControl = TaskManager();
 
 
@@ -85,7 +86,8 @@ const ProjectManager = function(){
         projectList.push(project);
         changeProject(project);
 
-        updateSidebarProjectList(getProjectList())
+        updateLocalStorageProjectList();
+        updateSidebarProjectList(getProjectList());
     };
 
 
@@ -198,14 +200,39 @@ const ProjectManager = function(){
     }
 
 
+    const updateLocalStorageProjectList = function(){
+        const _updateList = setProjectsIntoJSON();
+        localStorage.setItem('projectList', _updateList)
+    }
 
+    const setProjectsIntoJSON = function(){
+        return JSON.stringify(getProjectList())
+    }
+
+
+    const newProjectInstance = function(value){
+        newProject(value.title, value.tasks);
+    }
+    
+    
+    const parsingProject = function(Json){
+        
+        // delete them not to cause error
+        deleteALLPROJECT();
+    
+        const parsed = JSON.parse(Json);
+        
+        for(let x=0; x < parsed.length; x++){
+            newProjectInstance(parsed[x])
+        }
+    }
 
 
 
     return {newProject, getActiveProject, changeProject, 
         createTask, getProjectTasksList, getProjectSpecificTask,
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
-changeTaskProject, getProject, getProjectList, deleteALLPROJECT}
+changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON}
 }
 
 

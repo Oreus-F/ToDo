@@ -6,6 +6,4 @@ const control = ProjectManager();
 
 // FOR PARSING INFORMATIONS
 
-
-
 launchPage();
