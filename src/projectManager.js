@@ -73,7 +73,7 @@ Project.prototype.getCompleteTasks = function(){
 
 const ProjectManager = function(){
 
-    const defaultProject = new Project('default');
+    const defaultProject = new Project('Default');
     
     const projectList = [defaultProject];
     
