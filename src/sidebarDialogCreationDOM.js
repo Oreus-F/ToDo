@@ -52,6 +52,7 @@ const createDialogProjectName = function(){
 const createDialogEditUser = function(){
     const dialog = document.createElement('dialog');
     dialog.setAttribute("id", "editUserDialog");
+    dialog.setAttribute('class', "dialog")
 
     const form = document.createElement('form');
     form.setAttribute('class', 'full-h');

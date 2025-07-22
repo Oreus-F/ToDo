@@ -14,7 +14,7 @@
                         <div class="full-h">
                             <div class="flex-display full-h gap-8">
                                 <div class="flex-basis80px pos-rel">
-                                    <img src="../asset/ressource/boy.png" alt="user profile img" class="pos-abs profil-picture" id="userPicture">
+                                    <img src="../asset/ressource/boy.png" alt="user profile img" class="pos-abs profil-picture sidebar-picture" id="userPicture">
                                 </div>
                                 <div class="flex-first-grow self-aligned fs14"><span id="username">User_01</span></div>
                                 <button id="editUserButton" class="menu-button-help menu-button flex-basis40px self-aligned">
@@ -29,7 +29,7 @@
                     <div>
                         <div class="full-h">
                             <div>
-                                <button id="addTaskSidebarButton" class="menu-button flex-display gap-4 aligned-item menu-bigger-button">
+                                <button id="addTaskSidebarButton" class="menu-button flex-display gap-4 aligned-item-center menu-bigger-button">
                                     <span class="icon-menu-add-task icon-menu flex-basis40px bigger-icon"></span>
                                     <div class="flex-first-grow">
                                         <span class="fs14">Add tasks</span>
@@ -43,7 +43,7 @@
                             <ul class="flex-display column-direction">
                                 <li>
                                     <div>
-                                        <button class="menu-button flex-display gap-4 aligned-item" data-active="false">
+                                        <button class="menu-button flex-display gap-4 aligned-item-center" data-active="false">
                                             <span class="icon-menu-search icon-menu flex-basis40px"></span>
                                             <div class="flex-first-grow">
                                                 <span class="fs11">Search</span>
@@ -53,7 +53,7 @@
                                 </li>
                                 <li>
                                     <div>
-                                        <button class="menu-button flex-display gap-4 aligned-item" data-active="true">
+                                        <button class="menu-button flex-display gap-4 aligned-item-center" data-active="true">
                                             <span class="icon-menu-today icon-menu flex-basis40px"></span>
                                             <div class="flex-first-grow">
                                                 <span class="fs11">Today</span>
@@ -63,7 +63,7 @@
                                 </li>
                                 <li>
                                     <div>
-                                        <button class="menu-button flex-display gap-4 aligned-item" data-active="false">
+                                        <button class="menu-button flex-display gap-4 aligned-item-center" data-active="false">
                                             <span class="icon-menu-upcomming icon-menu flex-basis40px"></span>
                                             <div class="flex-first-grow">
                                                 <span class="fs11">Upcomming</span>
@@ -73,7 +73,7 @@
                                 </li>
                                 <li>
                                     <div>
-                                        <button class="menu-button flex-display gap-4 aligned-item" data-active="false">
+                                        <button class="menu-button flex-display gap-4 aligned-item-center" data-active="false">
                                             <span class="icon-menu-completed icon-menu flex-basis40px"></span>
                                             <div class="flex-first-grow">
                                                 <span class="fs11">Completed</span>
@@ -86,7 +86,7 @@
                     </div>
                     <div>
                         <div class="full-h">
-                            <div class="menu-button flex-display gap-4 aligned-item menu-bigger-button pos-rel">
+                            <div class="menu-button flex-display gap-4 aligned-item-center menu-bigger-button pos-rel">
                                 <div class="flex-first-grow">
                                     <span class="fs14">My Projects</span>
                                 </div>
@@ -114,13 +114,19 @@
     </div>
 
 
-    <dialog id="editUserDialog">
-        <form action="" id="editUserForm">
-            <div>
-                <div></div>
-                <div><span><input type="image"></span></div>
+    <dialog id="editUserDialog" class="dialog dialog-edit-user">
+        <form action="" id="editUserForm" class="flex-display">
+            <div class="flex-first-grow flex-display column-direction ">
+                <div class="user-profile-container">
+                    <div class="pos-rel full-h flex-display aligned-item-center ">
+                        <img src="../asset/ressource/boy.png" alt="" id="userPreviewPicture" class="profil-picture pos-abs user-profile">
+                    </div>
+                </div>
+                <div>
+                    <span><input type="file" id="fileUploader"></span>
+                </div>
             </div>
-            <div>
+            <div class="flex-first-grow">
                 <div>
                     <div><label for="username">username</label></div>
                     <div><input type="text"></div>

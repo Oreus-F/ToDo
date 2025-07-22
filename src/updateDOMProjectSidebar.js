@@ -1,4 +1,4 @@
-const buttonClass =  'menu-button flex-display gap-4 aligned-item';
+const buttonClass =  'menu-button flex-display gap-4 aligned-item-center-center';
 const iconClass = 'icon-menu-one-project flex-noshrink icon-menu flex-basis40px';
 
 

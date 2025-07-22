@@ -99,7 +99,7 @@
     gap: calc(var(--px8)/2)
 }
 
-.aligned-item{
+.aligned-item-center{
     align-items: center;
 }
 
@@ -128,11 +128,32 @@
     position: absolute;
 }
 
+
 .profil-picture {
-    height: 100%;
+    height: var(--hundred-percent);
+    width: var(--hundred-percent);
     border: none;
     border-radius: 40px;
 }
+
+
+.sidebar-picture {
+    border: calc(var(--px8)/2) var(--ascent-color) solid;
+}
+
+
+.user-profile{
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+}
+
+
+.user-profile-container{
+    flex-basis: 200px;
+    height: 200px;
+}
+
 
 
 .menu-button{
@@ -411,21 +432,30 @@ button[data-active = "true"]:hover{
 }
 
 
-
-#getProjectName, #editUserDialog{
+.dialog{
     margin: auto auto auto auto;
-    margin-bottom: 40%;
-    width: 480px;
-    height: max-content;
-
-
     border: none;
     border-radius: var(--px8);
     background-color: var(--main-light-grey);
+    
+    height: max-content;
 }
 
 
-#getProjectName > form, #editUserForm {
+/* .dialog-edit-user{
+
+} */
+
+
+
+#getProjectName{
+    margin-bottom: 40%;
+    width: 480px;
+
+}
+
+
+#getProjectName > form {
     padding: 5%;
     padding-bottom: 10%;
     color: var(--ascent-color);
