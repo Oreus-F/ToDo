@@ -34,6 +34,9 @@ fileUploader.addEventListener('change', () => {
 const readFileReader = function(file, fileReader){
     fileReader.addEventListener('load', () => {
         editPreview.setAttribute('src', fileReader.result);
+
+
+        // return a value and do this when submit the form instead of save it with the preview only
         localStorage.setItem('profilePicture', fileReader.result)
     });
     
