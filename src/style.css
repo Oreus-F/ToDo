@@ -35,6 +35,11 @@
 }
 
 
+.full-w{
+    width: var(--hundred-percent);
+}
+
+
 .flex-display{
     display: flex
 }
@@ -67,6 +72,39 @@
 
 .flex-basis20px{
     flex-basis: 20px;
+}
+
+
+.grid-display{
+    display: grid;
+}
+
+
+.edit-user-grid{
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr 20px;
+
+    grid-template-areas: 
+    "header interaction"
+    "header explaination";
+}
+
+
+
+
+
+.grid-area-header{
+    grid-area: header;
+}
+
+
+.grid-area-interaction{
+    grid-area: interaction;
+}
+
+
+.grid-area-explaination{
+    grid-area: explaination;
 }
 
 
@@ -149,14 +187,8 @@
 
 .user-profile{
     overflow: hidden;
-    height: 200px;
-    width: 200px;
-}
-
-
-.user-profile-container{
-    flex-basis: 200px;
-    height: 200px;
+    height: 100px;
+    width: 100px;
 }
 
 
@@ -448,9 +480,14 @@ button[data-active = "true"]:hover{
 
 
 .dialog-edit-user{
-    padding: 1.5rem;
-    height: 35%;
+    padding: 2rem;
+    height: 65%;
     width: 55%;
+}
+
+
+.pad1rem{
+    padding:0.5rem
 }
 
 

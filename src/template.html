@@ -116,25 +116,25 @@
 
     <dialog id="editUserDialog" class="dialog dialog-edit-user">
         <form action="" id="editUserForm" class="flex-display full-h">
-            <div id="container">
-                <div id="UnEncadreFlex">
-                    <div>
+            <div id="container" class="full-h flex-display column-direction full-w">
+                <div id="UnEncadreFlex" class="flex-display column-direction gap-8 pad1rem">
+                    <div class="flex-basis40px">
                         <span>Profile Picture</span>
                     </div>
-                    <div> 
-                        <div>
-                            <img src="../asset/ressource/boy.png" alt="">
+                    <div class="grid-display edit-user-grid flex-first-grow pad1rem"> 
+                        <div class="grid-area-header">
+                            <img src="../asset/ressource/boy.png" alt="" class="user-profile">
                         </div>
-                        <div>
+                        <div class="grid-area-interaction">
                             <input type="file">
                         </div>
-                        <div>
+                        <div class="grid-area-explaination">
                             <span>Change your profile picture</span>
                         </div>
                     </div>
                 </div>
 
-                <div id="DeuxEncadreFlex">
+                <div id="DeuxEncadreFlex" class="flex-display column-direction gap-8 pad1rem">
                     <div>
                         <span>User informations</span>
                     </div>
