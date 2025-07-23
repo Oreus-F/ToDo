@@ -36,6 +36,7 @@ const setStorage = function(){
 
     user.textContent = currentUsername;
     userPicture.src = JSON.parse(currentUserPicture);
+    
     control.parsingProject(currentProject)
 
 }

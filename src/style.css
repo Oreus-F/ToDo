@@ -5,6 +5,7 @@
     --darker-grey: #dddddd;
     --ascent-pastel-color: #eed2bb;
     --ascent-color: #b13924;
+    --ascent-typo-color: #ec5e45;
 
 
     --sidebar: 420px;
@@ -60,6 +61,16 @@
 }
 
 
+.flex-basis120px{
+    flex-basis: calc((var(--px8)*30)/10);
+}
+
+
+.flex-basis200px{
+    flex-basis: 200px;
+}
+
+
 .flex-basis80px{
     flex-basis: calc(var(--px8)*10);
 }
@@ -80,9 +91,19 @@
 }
 
 
+
+.bgc-ascent{
+    background-color: var(--ascent-color);
+}
+
+
 .edit-user-grid{
+    height: 120px;
+    border: var(--ascent-color) 1px solid;
+    border-radius: 6px;
+
     grid-template-columns: 150px 1fr;
-    grid-template-rows: 1fr 20px;
+    grid-template-rows: repeat(2, 1fr);
 
     grid-template-areas: 
     "header interaction"
@@ -90,7 +111,9 @@
 }
 
 
-
+.edit-user-data{
+    grid-template-rows: 25px 1fr;
+}
 
 
 .grid-area-header{
@@ -137,13 +160,24 @@
     gap: calc(var(--px8)/2)
 }
 
+
 .aligned-item-center{
     align-items: center;
 }
 
 
+.aligned-item-end{
+    align-items: flex-end;
+}
+
+
 .justif-content-center{
     justify-content: center;
+}
+
+
+.justif-content-end{
+    justify-content: flex-end;
 }
 
 
@@ -159,6 +193,11 @@
 
 .fs14{
     font-size: var(--fs14);
+}
+
+
+.fs-09rem{
+    font-size: 0.9rem;
 }
 
 
@@ -180,7 +219,12 @@
 }
 
 
-.sidebar-picture {
+.edit-preview-radius{
+    border-radius: 52px;
+}
+
+
+.border-picture {
     border: calc(var(--px8)/2) var(--ascent-color) solid;
 }
 
@@ -253,7 +297,7 @@ button.menu-button-help:hover{
 .menu-button:hover > button:nth-child(2),
 nav > div:first-child:hover button:nth-child(3){
     opacity: 1;
-    transition: 300ms;
+    transition: 150ms;
 }
 
 
@@ -293,7 +337,6 @@ button[data-active = "true"]:hover{
 
 .icon-menu-add-task{
     mask-image: url(../asset/ressource/plus-circle.svg);
-    background-color: var(--ascent-color);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 32px;
@@ -472,30 +515,99 @@ button[data-active = "true"]:hover{
 .dialog{
     margin: auto auto auto auto;
     border: none;
-    border-radius: var(--px8);
-    background-color: var(--main-light-grey);
+    border-radius: calc(var(--px8)*2);
     
     height: max-content;
+
+
+    box-shadow: rgb(151, 151, 151) 0px 0px calc(var(--px8)*3) var(--px8);
 }
 
 
 .dialog-edit-user{
-    padding: 2rem;
-    height: 65%;
-    width: 55%;
+    padding: 1.5rem;
+    height: 50%;
+    width: 65%;
 }
 
 
+.edit-user-title-content{
+    font-size: 1rem;
+    color: var(--ascent-typo-color);
+
+}
+
+
+.edit-user-title-container{
+    font-size: 1.2rem;
+    color: var(--ascent-color);
+}
+
+
+.button-reset-data{
+    height: 40px;
+    border: var(--ascent-color) 1px solid;
+    background-color: var(--ascent-pastel-color);
+    border-radius: 18px;
+
+
+    transition: 150ms;
+}
+
+
+
+.button-edit-account{
+    background-color: var(--ascent-pastel-color);
+    border: var(--ascent-color) 1px solid;
+    height: 60px;
+    width: 260px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+
+    transition: 150ms;
+}
+
+
+
+
 .pad1rem{
-    padding:0.5rem
+    padding: 1rem
+}
+
+
+
+input#fileUploader{
+    width: 100%;
 }
 
 
 input#fileUploader::file-selector-button{
-    padding: 0.5rem 1rem;
-    border: var(--ascent-color) 2px solid;
+    width: 35%;
+    height: 30px;
+    border-radius: 18px;
+    border: var(--ascent-color) 1px solid;
     background-color: var(--ascent-pastel-color);
+
+
+    transition: 150ms;
     
+}
+
+
+
+input#fileUploader::file-selector-button:hover,
+.button-reset-data:hover,
+.button-edit-account:hover{
+    background-color: var(--ascent-color);
+    border-color: var(--ascent-pastel-color);
+    color: white;
+
+    transition: 150ms;
+}
+
+
+button{
+    border: none;
 }
 
 
@@ -514,18 +626,27 @@ input#fileUploader::file-selector-button{
 }
 
 
-.input-project-name{
+.input-look{
+    height: 20px;
+    width: 90%;
     padding-left: 16px;
-    border: none;
-    border-radius: var(--px8);
+    border: var(--ascent-typo-color) 1px solid;
+    border-radius: var(--px8);   
+}
+
+
+.input-look:focus{
+    border-color: none;
     outline: var(--ascent-color) 1px solid;
+}
+
+.input-project-name{
     height: 50px;
 }
 
 .button-project-name{
     height: 50px;
     width: 220px;
-    border: none;
     border-radius: var(--px8);
     background-color: var(--ascent-pastel-color);
     font-size: 1rem;

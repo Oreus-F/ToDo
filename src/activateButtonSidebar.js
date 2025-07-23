@@ -1,4 +1,4 @@
-import { createDialogProjectName, activateFormNewProject, createDialogEditUser } from "./sidebarDialogCreationDOM";
+import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./sidebarDialogCreationDOM";
 import { displayContent } from "./sidebarButtonHelperDOM";
 
 const setUpAddProjectButton = function(){
@@ -16,6 +16,20 @@ const setUpEditUserButton = function(){
 
     editUserButton.addEventListener('click', () => {
         createDialogEditUser();
+        activateEditUser();
+        activateButtonResetLocalStorage();
+    })
+}
+
+
+const activateButtonResetLocalStorage = function(){
+    const resetData = document.querySelector('#reset-personnal-data');
+
+    resetData.addEventListener('click', () => {
+        if(window.confirm('Warning : You will reset your actual username, profile picture and delete all of you projects and tasks. Do you want to continue ?')){
+            localStorage.clear();
+            window.location.reload();
+        }
     })
 }
 
@@ -48,7 +62,7 @@ const setUpDisplayProjects = function(){
 
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
-    // setUpEditUserButton();
+    setUpEditUserButton();
     setUpDisplaySidebar();
     setUpDisplayProjects();
 }
