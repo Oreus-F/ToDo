@@ -115,23 +115,59 @@
 
 
     <dialog id="editUserDialog" class="dialog dialog-edit-user">
-        <form action="" id="editUserForm" class="flex-display">
-            <div class="flex-first-grow flex-display column-direction ">
-                <div class="user-profile-container">
-                    <div class="pos-rel full-h flex-display aligned-item-center ">
-                        <img src="../asset/ressource/boy.png" alt="" id="userPreviewPicture" class="profil-picture pos-abs user-profile">
+        <form action="" id="editUserForm" class="flex-display full-h">
+            <div id="container">
+                <div id="UnEncadreFlex">
+                    <div>
+                        <span>Profile Picture</span>
+                    </div>
+                    <div> 
+                        <div>
+                            <img src="../asset/ressource/boy.png" alt="">
+                        </div>
+                        <div>
+                            <input type="file">
+                        </div>
+                        <div>
+                            <span>Change your profile picture</span>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <span><input type="file" id="fileUploader"></span>
+
+                <div id="DeuxEncadreFlex">
+                    <div>
+                        <span>User informations</span>
+                    </div>
+                    <div> 
+                        <div>
+                            <span>Username</span>
+                        </div>
+                        <div>
+                            <input type="text" >
+                        </div>
+                        <div>
+                            <span>You can change your username here</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex-first-grow">
-                <div>
-                    <div><label for="username">username</label></div>
-                    <div><input type="text"></div>
-                <div>
-                    <button>Edit Account</button>
+
+                <div id="TroisEncadreFlex">
+                    <div>
+                        <span>Delete informations</span>
+                    </div>
+                    <div> 
+                        <div>
+                            <span>Reset projects</span>
+                        </div>
+                        <div>
+                            <button>Personnal informations</button>
+                            <button>Projects and tasks</button>
+                            <button>All</button>
+                        </div>
+                        <div>
+                            <span>You can delete personnal informations or the projects and tasks</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

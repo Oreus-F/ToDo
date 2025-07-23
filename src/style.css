@@ -104,6 +104,11 @@
 }
 
 
+.justif-content-center{
+    justify-content: center;
+}
+
+
 .self-aligned{
     align-self: center;
 }
@@ -442,9 +447,19 @@ button[data-active = "true"]:hover{
 }
 
 
-/* .dialog-edit-user{
+.dialog-edit-user{
+    padding: 1.5rem;
+    height: 35%;
+    width: 55%;
+}
 
-} */
+
+input#fileUploader::file-selector-button{
+    padding: 0.5rem 1rem;
+    border: var(--ascent-color) 2px solid;
+    background-color: var(--ascent-pastel-color);
+    
+}
 
 
 
