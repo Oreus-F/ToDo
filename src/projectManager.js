@@ -73,11 +73,11 @@ Project.prototype.getCompleteTasks = function(){
 
 const ProjectManager = function(){
 
-    const defaultProject = new Project('Default');
+    const inbox = new Project('Inbox');
     
-    const projectList = [defaultProject];
+    const projectList = [inbox];
     
-    let activeProject = defaultProject;
+    let activeProject = inbox;
     
 
 
@@ -226,6 +226,16 @@ const ProjectManager = function(){
             newProjectInstance(parsed[x])
         }
     }
+
+
+    createTask('Change username', 'low', '01/09/2025', 'click on the button next to the username to open the edit user window');
+    createTask('Change profile picture', 'medium', '02/09/2025', 'click on the button next to the username to open the edit user window');
+    createTask('Create a new project', 'high', '03/09/2025', 'click on the "+" button next to "My Projects"');
+    createTask('create a new tasks', 'high', '04/09/2025', '');
+    createTask('modify this task', 'medium', '05/09/2025', "btw the due date it's my birthday, i hope you will finish before that and come celebrate with me");
+
+
+    console.log(getAllTasks())
 
 
 

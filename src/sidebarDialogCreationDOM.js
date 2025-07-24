@@ -348,7 +348,6 @@ const sendNewUserData = function(event){
 }
 
 
-
 const sendNewProject = function(event){
     const dialog = document.querySelector('#getProjectName');
     const body = document.querySelector('body');
@@ -377,11 +376,6 @@ const activateFormNewProject = function(){
 
     form.addEventListener('submit', sendNewProject)
 }
-
-
-
-
-
 
 
 const readFileReader = function(file, fileReader, target){
