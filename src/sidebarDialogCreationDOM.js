@@ -193,7 +193,7 @@ const createEditUser_DivUsername = function(){
 
     //content
     const div_content = document.createElement('div');
-    div_content.setAttribute('class', 'grid-display edit-user-grid edit-user-data flex-first-grow pad1rem gap-8');
+    div_content.setAttribute('class', 'grid-display edit-user-grid flex-first-grow pad1rem gap-8');
 
     const div_title_h3 = document.createElement('div');
     div_title_h3.setAttribute('class', 'grid-area-header');

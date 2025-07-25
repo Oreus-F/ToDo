@@ -1,5 +1,12 @@
 import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./sidebarDialogCreationDOM";
-import { displayContent } from "./sidebarButtonHelperDOM";
+
+
+const switchDataAttribute = function(target, content){
+    let data = target.getAttribute(`data-${content}`);
+    data = data === 'true' ? false : true;
+    target.setAttribute(`data-${content}`, data)
+}
+
 
 const setUpAddProjectButton = function(){
     const addProjectButton = document.querySelector('#addProjectButton');
@@ -41,7 +48,7 @@ const setUpDisplaySidebar = function(){
         let target = event.target;
         target = target.parentElement;
 
-        displayContent(target, 'sidebar')
+        switchDataAttribute(target, 'sidebar')
     });
 }
 
@@ -53,8 +60,8 @@ const setUpDisplayProjects = function(){
         const projectContainer = document.querySelector('#projects-container');
         const chevronIcon = document.querySelector('#chevron-icon');
 
-        displayContent(projectContainer, 'projects');
-        displayContent(chevronIcon, 'projects');
+        switchDataAttribute(projectContainer, 'projects');
+        switchDataAttribute(chevronIcon, 'projects');
     })
 }
 

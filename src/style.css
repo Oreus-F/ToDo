@@ -36,8 +36,14 @@
 }
 
 
+
 .full-w{
     width: var(--hundred-percent);
+}
+
+
+.auto-h{
+    height: auto;
 }
 
 
@@ -62,7 +68,7 @@
 
 
 .flex-basis120px{
-    flex-basis: calc((var(--px8)*30)/10);
+    flex-basis: calc((var(--px8)*30)/2);
 }
 
 
@@ -109,12 +115,6 @@
     "header interaction"
     "header explaination";
 }
-
-
-.edit-user-data{
-    grid-template-rows: 25px 1fr;
-}
-
 
 .grid-area-header{
     grid-area: header;
@@ -208,6 +208,18 @@
 
 .pos-abs{
     position: absolute;
+}
+
+
+
+.over-hidd{
+    overflow: hidden;
+}
+
+
+.padd-template-content{
+    padding: 10%;
+    padding-bottom: 0%;
 }
 
 
@@ -356,6 +368,17 @@ button[data-active = "true"]:hover{
 [data-active = "true"] > span.icon-menu-search{
     mask-image: url(../asset/ressource/search.svg);
 }
+
+
+.icon-menu-inbox{
+    background-image: url(../asset/ressource/inbox.svg);
+}
+
+
+[data-active = "true"] > span.icon-menu-inbox{
+    mask-image: url(../asset/ressource/inbox.svg);
+}
+
 
 .icon-menu-today{
     background-image: url(../asset/ressource/calendar-event.svg);
@@ -507,11 +530,6 @@ button[data-active = "true"]:hover{
 }
 
 
-#content{
-    border: 2px solid red;
-}
-
-
 .dialog{
     margin: auto auto auto auto;
     border: none;
@@ -527,7 +545,7 @@ button[data-active = "true"]:hover{
 .dialog-edit-user{
     padding: 1.5rem;
     height: 50%;
-    width: 65%;
+    width: 45%;
 }
 
 
@@ -627,7 +645,7 @@ button{
 
 
 .input-look{
-    height: 20px;
+    height: 35px;
     width: 90%;
     padding-left: 16px;
     border: var(--ascent-typo-color) 1px solid;

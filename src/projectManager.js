@@ -228,15 +228,13 @@ const ProjectManager = function(){
     }
 
 
-    createTask('Change username', 'low', '01/09/2025', 'click on the button next to the username to open the edit user window');
-    createTask('Change profile picture', 'medium', '02/09/2025', 'click on the button next to the username to open the edit user window');
-    createTask('Create a new project', 'high', '03/09/2025', 'click on the "+" button next to "My Projects"');
-    createTask('create a new tasks', 'high', '04/09/2025', '');
-    createTask('modify this task', 'medium', '05/09/2025', "btw the due date it's my birthday, i hope you will finish before that and come celebrate with me");
-
-
-    console.log(getAllTasks())
-
+    createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
+    createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
+    createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
+    createTask('Create a new task', 'medium', '04/09/2025', '');
+    createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
+    createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
+    createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
 
 
     return {newProject, getActiveProject, changeProject, 
