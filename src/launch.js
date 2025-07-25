@@ -8,11 +8,11 @@ import { createTemplate_Today } from "./todayButton";
 const control = ProjectManager();
 
 const launchPage = function(){
+    
+    launchStorage();
     activateSidebarButtons();
 
-    launchStorage();
 
-    
 
 }
 
