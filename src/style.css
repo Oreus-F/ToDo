@@ -695,6 +695,6 @@ button{
 
 
 .today-titleDiv-limits{
-    border-bottom : var(--darker-grey) 1px solid;
+    border-bottom : var(--ascent-color) 1px solid;
     padding-bottom: 1rem;
 }
