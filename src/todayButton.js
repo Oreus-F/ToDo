@@ -1,10 +1,39 @@
-import { createContentTemplate } from "./contentTemplate";
+import { createContentTemplate, taskTemplate } from "./contentTemplate";
+import { ProjectManager } from "./projectManager";
 
-const displayTodayContent = function(){
+const control = ProjectManager()
+
+const displayToday = function(){
     const content = document.querySelector('#content');
 
     content.appendChild(createContentTemplate('Today', '05/09/2025', 'x tasks for today'));
+
+
+    createAddTask();
+    
+    
+    // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
+    const taskOfToday = control.getAllTasks();
+    
+    if(taskOfToday.length > 0){displayTasksToday(taskOfToday)}
+
 }
 
 
-export {displayTodayContent}
+const createAddTask = function(){
+    console.log('creéer un bouton pour ajouter une nouvelle tasks')
+}
+
+
+const displayTasksToday = function(tasks){
+
+    for(let x=0; tasks.length; x++){
+
+
+    }
+
+}
+
+
+
+export {displayToday}

@@ -69,4 +69,16 @@ const createContentTemplate = function(title, date, text){
 }
 
 
-export {createContentTemplate}
+const taskTemplate = function(task){
+
+    const div = document.createElement('div');
+
+    const upDiv = document.createElement('div');
+
+
+    const downDiv = document.createElement('div');
+
+}
+
+
+export {createContentTemplate, taskTemplate}
