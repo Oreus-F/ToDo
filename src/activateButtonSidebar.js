@@ -1,5 +1,12 @@
 import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./sidebarDialogCreationDOM";
-import { displayContent } from "./sidebarButtonHelperDOM";
+
+
+const displayContent = function(target, content){
+    let data = target.getAttribute(`data-${content}`);
+    data = data === 'true' ? false : true;
+    target.setAttribute(`data-${content}`, data)
+}
+
 
 const setUpAddProjectButton = function(){
     const addProjectButton = document.querySelector('#addProjectButton');
