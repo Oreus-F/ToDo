@@ -73,11 +73,11 @@ Project.prototype.getCompleteTasks = function(){
 
 const ProjectManager = function(){
 
-    const defaultProject = new Project('Default');
+    const inbox = new Project('Inbox');
     
-    const projectList = [defaultProject];
+    const projectList = [inbox];
     
-    let activeProject = defaultProject;
+    let activeProject = inbox;
     
 
 
