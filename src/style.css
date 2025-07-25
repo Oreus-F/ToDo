@@ -222,6 +222,16 @@
 }
 
 
+.overY-scroll{
+    overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+
 .padd-template-content{
     padding: 10%;
     padding-bottom: 0%;
