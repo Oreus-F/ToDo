@@ -110,12 +110,6 @@
     "header explaination";
 }
 
-
-.edit-user-data{
-    grid-template-rows: 25px 1fr;
-}
-
-
 .grid-area-header{
     grid-area: header;
 }
@@ -627,7 +621,7 @@ button{
 
 
 .input-look{
-    height: 20px;
+    height: 35px;
     width: 90%;
     padding-left: 16px;
     border: var(--ascent-typo-color) 1px solid;
