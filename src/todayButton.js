@@ -10,9 +10,12 @@ const createToday = function(){
     headerDiv.setAttribute('class', 'flex-basis120px flex-display');
 
     const titleDiv = document.createElement('div');
-    titleDiv.setAttribute('class', 'flex-first-grow')
+    titleDiv.setAttribute('class', 'flex-first-grow');
 
+    const titleSpan = document.createElement('span');
+    const h1Title = document.createElement('h1');
 
+    
 
     
 
