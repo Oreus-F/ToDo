@@ -14,7 +14,6 @@ const createContentTemplate = function(title, date, text){
 
     const h1Title = document.createElement('h1');
     h1Title.setAttribute('class', 'fs4r');
-    h1Title.setAttribute('id', 'h1Title')
     h1Title.textContent = title;
 
 
@@ -31,7 +30,6 @@ const createContentTemplate = function(title, date, text){
 
     const spanTextReminder = document.createElement('span');
     spanTextReminder.setAttribute('class', 'flex-first-grow');
-    spanTextReminder.setAttribute('id', 'headerMessageReminder');
     spanTextReminder.textContent = text;
 
 
@@ -47,7 +45,6 @@ const createContentTemplate = function(title, date, text){
     const dateSpan = document.createElement('span');
 
     const h3Date = document.createElement('h3');
-    h3Date.setAttribute('id', 'todayActualDate');
     h3Date.textContent = date;
 
 
