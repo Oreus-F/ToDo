@@ -52,6 +52,11 @@ Task.prototype.changeOrigin = function(_newOrigin){
 }
 
 
+Task.prototype.changeStatus = function(){
+    this.status = this.status === 'to-do' ? 'completed' : 'to-do';
+}
+
+
 const TaskManager = function(){
     
     const createTask = function(title, priority, date, description, origin){

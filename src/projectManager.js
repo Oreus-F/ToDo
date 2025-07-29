@@ -145,7 +145,7 @@ const ProjectManager = function(){
     }
 
 
-    const getProjectSpecificTask = function(index){
+    const getTaskFromIndex = function(index){
         return activeProject.getTask(index)
     }
 
@@ -155,19 +155,34 @@ const ProjectManager = function(){
     }
 
 
-    const removeSelectedTask = function(x){
+    const getTasksFromObject = function(object){
+        const index = getTasksIndex(object);
+        const result = getTaskFromIndex(index);
+        return result
+    }
+
+
+    const getTaskActiveProject = function(x){
         let taskSelected
         if(typeof(x) === 'number'){
-            taskSelected = getProjectSpecificTask(x);
+            taskSelected = getTaskFromIndex(x);
         } else {
-            taskSelected = getTasksIndex(x);
+            taskSelected = getTasksFromObject(x);
         }
+
+        return taskSelected
+    } 
+
+
+    const removeSelectedTask = function(x){
+        const taskSelected = getTaskActiveProject(x)
         activeProject.removeTask(taskSelected)
     }
 
 
     const completeSelectedTask = function(x){
-        const taskSelected = getProjectSpecificTask(x);
+        const taskSelected = getTaskActiveProject(x);
+        taskSelected.changeStatus();
         activeProject.completeTask(taskSelected);
     }
 
@@ -238,7 +253,6 @@ const ProjectManager = function(){
 
 
     return {newProject, getActiveProject, changeProject, 
-        createTask, getProjectTasksList, getProjectSpecificTask,
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
 changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON}
 }

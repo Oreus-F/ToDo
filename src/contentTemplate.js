@@ -1,3 +1,8 @@
+import { ProjectManager } from "./projectManager";
+
+const control = ProjectManager();
+
+
 const createContentTemplate = function(title, date, text){
     const div = document.createElement('div');
     div.setAttribute('class', 'full-h flex-display column-direction');
@@ -57,7 +62,7 @@ const createContentTemplate = function(title, date, text){
 
     const contentDiv = document.createElement('div');
     contentDiv.setAttribute('class', 'flex-first-grow');
-    contentDiv.setAttribute('id', 'contentContainer');
+    contentDiv.setAttribute('id', 'taskContainer');
 
     
 
@@ -70,15 +75,44 @@ const createContentTemplate = function(title, date, text){
 
 
 const taskTemplate = function(task){
-
     const div = document.createElement('div');
 
     const upDiv = document.createElement('div');
+    upDiv.appendChild(completeTaskButton(task));
 
 
     const downDiv = document.createElement('div');
 
+
+
+    div.appendChild(upDiv);
+    div.appendChild(downDiv);
+
+    return div
+
 }
 
+
+const completeTaskButton = function(task){
+    const div = document.createElement('div');
+
+    const button = document.createElement('button');
+    button.textContent = 'CLICK ON ME '
+    
+    button.addEventListener('click', () => {
+        // task.status = 'completed';
+        console.log(task.title)
+        console.log(task instanceof Object);
+        // control.completeSelectedTask(task);
+
+        // Fin a way to complete the task / With ProjectManager / TaskManager ? / Prototype / InstanceOf / Réchéflis !
+
+    })
+
+    div.appendChild(button)
+
+    return div
+
+}
 
 export {createContentTemplate, taskTemplate}

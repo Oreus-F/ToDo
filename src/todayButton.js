@@ -26,9 +26,10 @@ const createAddTask = function(){
 
 
 const displayTasksToday = function(tasks){
+    const taskContainer = document.querySelector('#taskContainer')
 
     for(let x=0; x < tasks.length; x++){
-
+        taskContainer.appendChild(taskTemplate(tasks[x]))
     }
 
 }
