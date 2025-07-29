@@ -27,8 +27,7 @@ const createAddTask = function(){
 
 const displayTasksToday = function(tasks){
 
-    for(let x=0; tasks.length; x++){
-
+    for(let x=0; x < tasks.length; x++){
 
     }
 
