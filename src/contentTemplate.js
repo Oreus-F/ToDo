@@ -100,10 +100,13 @@ const completeTaskButton = function(task){
     button.textContent = 'CLICK ON ME '
     
     button.addEventListener('click', () => {
-        // task.status = 'completed';
-        console.log(task.title)
-        console.log(task instanceof Object);
-        // control.completeSelectedTask(task);
+        console.log(task.status)
+
+        // task.changeStatus();
+        control.completeSelectedTask(task);
+
+        console.log(task.status)
+
 
         // Fin a way to complete the task / With ProjectManager / TaskManager ? / Prototype / InstanceOf / Réchéflis !
 

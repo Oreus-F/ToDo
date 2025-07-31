@@ -180,10 +180,9 @@ const ProjectManager = function(){
     }
 
 
-    const completeSelectedTask = function(x){
-        const taskSelected = getTaskActiveProject(x);
-        taskSelected.changeStatus();
-        activeProject.completeTask(taskSelected);
+    const completeSelectedTask = function(task){
+        task.changeStatus();
+        activeProject.completeTask(task);
     }
 
 
