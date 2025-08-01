@@ -108,7 +108,7 @@ const completeTaskButton = function(task){
         const taskContainer = document.querySelector('#taskContainer');
 
         taskContainer.removeChild(actualTaskDiv);
-        
+
     })
 
     div.appendChild(button)

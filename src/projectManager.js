@@ -73,11 +73,11 @@ Project.prototype.getCompleteTasks = function(){
 
 const ProjectManager = function(){
 
-    const inbox = new Project('Inbox');
+    const Inbox = new Project('Inbox');
     
-    const projectList = [inbox];
+    const projectList = [Inbox];
     
-    let activeProject = inbox;
+    let activeProject = Inbox;
     
 
 
@@ -112,6 +112,23 @@ const ProjectManager = function(){
     };
 
 
+
+    const getProjectFromTask = function(task){
+        const target = task.origin;
+        const projectList = getProjectList();
+        let result;
+
+        projectList.forEach(project => {
+            const title = project.title;
+
+            if (title === target) result = project
+        });
+
+
+        return result;
+    }
+
+
     const changeProject = function(x){
         let projectSelected;
         if(typeof(x) === 'number'){
@@ -137,6 +154,8 @@ const ProjectManager = function(){
     const createTask = function(title, priority, date, description){
         const task = taskControl.createTask(title, priority, date, description);
         activeProject.addTaskIntoProject(task);
+
+        updateLocalStorageProjectList();
     }
 
 
@@ -176,13 +195,30 @@ const ProjectManager = function(){
 
     const removeSelectedTask = function(x){
         const taskSelected = getTaskActiveProject(x)
-        activeProject.removeTask(taskSelected)
+        activeProject.removeTask(taskSelected);
+
+        updateLocalStorageProjectList();
     }
 
 
     const completeSelectedTask = function(task){
-        task.changeStatus();
-        activeProject.completeTask(task);
+
+        if (task.status === 'completed'){
+            console.error('This task is already completed')
+        } else {
+
+            task.changeStatus();
+
+            if (task.origin == activeProject.title){
+                activeProject.completeTask(task);
+            } else {
+                const tempProject = getProjectFromTask(task);
+                tempProject.completeTask(task);
+            }
+
+
+            updateLocalStorageProjectList(); 
+        }
     }
 
 
@@ -245,12 +281,16 @@ const ProjectManager = function(){
     createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
     createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
     createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
+
+    
+    newProject('Test')
+    
+
     createTask('Create a new task', 'medium', '04/09/2025', '');
     createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
     createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
     createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
-
-
+    
     return {newProject, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
 changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON}
