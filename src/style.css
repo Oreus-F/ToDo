@@ -692,7 +692,7 @@ button{
     background-color: var(--ascent-pastel-color);
     font-size: 1rem;
 
-    transition: 200ms;
+    transition: 150ms;
 }
 
 
@@ -700,7 +700,7 @@ button{
     background-color: var(--ascent-color);
     color: var(--main-white);
 
-    transition: 200ms;
+    transition: 150ms;
 }
 
 
