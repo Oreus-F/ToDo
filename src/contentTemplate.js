@@ -76,6 +76,7 @@ const createContentTemplate = function(title, date, text){
 
 const taskTemplate = function(task){
     const div = document.createElement('div');
+    div.setAttribute('data-id', task.id);
 
     const upDiv = document.createElement('div');
     upDiv.appendChild(completeTaskButton(task));
@@ -97,19 +98,17 @@ const completeTaskButton = function(task){
     const div = document.createElement('div');
 
     const button = document.createElement('button');
-    button.textContent = 'CLICK ON ME '
+    button.textContent = task.title
     
     button.addEventListener('click', () => {
-        console.log(task.status)
-
-        // task.changeStatus();
         control.completeSelectedTask(task);
+        
 
-        console.log(task.status)
+        const actualTaskDiv = document.querySelector(`[data-id='${task.id}']`);
+        const taskContainer = document.querySelector('#taskContainer');
 
-
-        // Fin a way to complete the task / With ProjectManager / TaskManager ? / Prototype / InstanceOf / Réchéflis !
-
+        taskContainer.removeChild(actualTaskDiv);
+        
     })
 
     div.appendChild(button)
