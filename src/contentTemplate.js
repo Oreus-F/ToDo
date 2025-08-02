@@ -94,6 +94,11 @@ const taskTemplate = function(task){
 }
 
 
+const removeTaskDOM = function(container, task){
+    container.removeChild(task)
+}
+
+
 const completeTaskButton = function(task){
     const div = document.createElement('div');
 
@@ -103,11 +108,8 @@ const completeTaskButton = function(task){
     button.addEventListener('click', () => {
         control.completeSelectedTask(task);
         
-
-        const actualTaskDiv = document.querySelector(`[data-id='${task.id}']`);
-        const taskContainer = document.querySelector('#taskContainer');
-
-        taskContainer.removeChild(actualTaskDiv);
+        
+        // removeTaskDOM(container, div);
 
     })
 
