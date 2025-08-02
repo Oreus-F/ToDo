@@ -309,6 +309,59 @@ const createEditUser_DivResetStorage = function(){
 }
 
 
+const createDialogNewTask = function(){
+    const dialog = document.createElement('dialog');
+
+
+    const form = document.createElement('form');
+
+
+    const container = document.createElement('div');
+
+    container.appendChild(createNewTask_divTitle());
+    container.appendChild(createNewTask_divDescription());
+
+
+
+}
+
+
+const createNewTask_divTitle = function(){
+    const div = document.createElement('div');
+
+    const input = document.createElement('input');
+    input.setAttribute('placeholder', 'Deliver food to grandma');
+
+    div.appendChild(input);
+    return div
+}
+
+
+const createNewTask_divDescription = function(){
+    const div = document.createElement('div');
+
+    const textarea = document.createElement('textarea');
+
+
+    div.appendChild(textarea);
+
+    return div
+}
+
+
+const createNewTask_divExtra = function(){
+    const div = document.createElement('div');
+
+
+}
+
+
+const extraNewTask_Date = function(){
+    const button = document.createElement('button');
+    
+}
+
+
 const sendNewUserData = function(event){
     const dialog = document.querySelector('#editUserDialog');
     const body = document.querySelector('body');
