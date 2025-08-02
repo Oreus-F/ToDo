@@ -34,9 +34,8 @@ class Project {
             return _tasks
         }
 
+    }
 
-
-}
 };
 
 
@@ -204,11 +203,12 @@ const ProjectManager = function(){
 
     const completeSelectedTask = function(task){
 
+
         if (task.status === 'completed'){
             console.error('This task is already completed')
         } else {
-
             task.changeStatus();
+            console.log(task.status)
 
             if (task.origin == activeProject.title){
                 activeProject.completeTask(task);
@@ -279,18 +279,18 @@ const ProjectManager = function(){
     }
 
 
-    createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
-    createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
-    createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
+    // createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
+    // createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
+    // createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
 
     
-    newProject('Test')
+    // newProject('Test')
     
 
-    createTask('Create a new task', 'medium', '04/09/2025', '');
-    createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
-    createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
-    createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
+    // createTask('Create a new task', 'medium', '04/09/2025', '');
+    // createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
+    // createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
+    // createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
     
     return {newProject, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
