@@ -22,8 +22,9 @@ class Project {
         } else {
             
             for(let x=0; x < tasks.length; x++){
-                let newTask = tasks[x];
-                newTask = taskControl.createTask(newTask.title, newTask._priority, newTask.formatedDueDate, newTask.description);
+                const actualTask = tasks[x];
+                
+                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
 
                 newTask.changeOrigin(origin);
 
