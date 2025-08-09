@@ -38,7 +38,7 @@ const updateSidebarProjectList = function(projectsList){
     const sidebarList = document.querySelector('#sidebarProjectList');
     sidebarList.replaceChildren();
 
-    for(let project=0; project < projectsList.length; project++){
+    for(let project= 0; project < projectsList.length; project++){
         const listedProject = createProjectButton(projectsList[project].title)
         sidebarList.appendChild(listedProject)
     }
