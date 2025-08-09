@@ -34,6 +34,8 @@ const setStorage = function(){
     const currentUserPicture = JSON.stringify(localStorage.getItem('profilePicture'));
     const currentProject = localStorage.getItem('projectList');
 
+    
+
     user.textContent = currentUsername;
     userPicture.src = JSON.parse(currentUserPicture);
     
