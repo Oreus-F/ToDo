@@ -12,6 +12,17 @@ const launchPage = function(){
     launchStorage();
     activateSidebarButtons();
 
+    const allTasks = control.getAllTasks();
+    const allComplete = control.getAllCompleteTasks();
+
+    if(allTasks.length === 0 && allComplete.length === 0){
+        control.createFirstTask()
+    }
+    // METTRE CREATEFIRSTTASK IN LOCALSTORAGE FIRST LAUNCH
+
+    const newtasks = control.getAllTasks();
+    console.log(newtasks)
+
     displayToday();
 }
 
