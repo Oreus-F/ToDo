@@ -14,14 +14,14 @@ class Project {
     }
 
     static parsingTasks(tasks, origin){
-        
+
+
         const _tasks = [];
         
-        if(tasks === undefined) {
-            return _tasks
-        } else {
+        if(arguments[0]){
             
             for(let x=0; x < tasks.length; x++){
+
                 const actualTask = tasks[x];
                 
                 const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
@@ -30,6 +30,15 @@ class Project {
 
                 _tasks.push(newTask)
             };
+
+
+
+
+
+            return _tasks
+
+
+        } else {
 
             return _tasks
         }
@@ -85,6 +94,8 @@ const ProjectManager = function(){
         const project = new Project(title, tasks);
         projectList.push(project);
         changeProject(project);
+
+        console.log(project)
 
         updateLocalStorageProjectList();
         updateSidebarProjectList(getProjectList());
@@ -228,6 +239,22 @@ const ProjectManager = function(){
     }
 
 
+    const getAllCompleteTasks = function(){
+        const projects = getProjectList();
+
+        const AllComleted = [];
+
+        projects.forEach(project => {
+            const tasks = project.getCompleteTasks();
+            tasks.forEach(task => {
+                AllComleted.push(task)
+            });
+        });
+
+        return AllComleted
+    }
+
+
     const getAllTasks = function(){
         const projects = getProjectList();
 
@@ -267,11 +294,15 @@ const ProjectManager = function(){
     
     
     const parsingProject = function(Json){
-        
+
+        console.log(Json)
+
         // delete them not to cause error
         deleteALLPROJECT();
     
         const parsed = JSON.parse(Json);
+
+        console.log(parsed)
         
         for(let x=0; x < parsed.length; x++){
             newProjectInstance(parsed[x])
@@ -279,22 +310,33 @@ const ProjectManager = function(){
     }
 
 
-    // createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
-    // createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
-    // createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
 
-    
-    // newProject('Test')
-    
 
-    // createTask('Create a new task', 'medium', '04/09/2025', '');
-    // createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
-    // createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
-    // createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
+    const createFirstTask = function(){
+
+        console.log('init new tasks')
+        
+        createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
+        createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
+        createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
     
+        
+        newProject('Test')
+        
+    
+        createTask('Create a new task', 'medium', '04/09/2025', '');
+        createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
+        createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
+        createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
+
+
+        createTask('test', 'low', '01/01/2011', 'oui')
+        
+    }
+
     return {newProject, getActiveProject, changeProject, 
-    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks,
-changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON}
+    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
+changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, createFirstTask}
 }
 
 
