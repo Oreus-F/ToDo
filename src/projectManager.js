@@ -34,7 +34,6 @@ class Project {
 
 
 
-
             return _tasks
 
 
@@ -79,14 +78,14 @@ Project.prototype.getCompleteTasks = function(){
 }
 
 
+const Inbox = new Project('Inbox');
+
+const projectList = [Inbox];
+
+let activeProject = Inbox;
 
 const ProjectManager = function(){
 
-    const Inbox = new Project('Inbox');
-    
-    const projectList = [Inbox];
-    
-    let activeProject = Inbox;
     
 
 
@@ -95,7 +94,6 @@ const ProjectManager = function(){
         projectList.push(project);
         changeProject(project);
 
-        console.log(project)
 
         updateLocalStorageProjectList();
         updateSidebarProjectList(getProjectList());
@@ -219,7 +217,6 @@ const ProjectManager = function(){
             console.error('This task is already completed')
         } else {
             task.changeStatus();
-            console.log(task.status)
 
             if (task.origin == activeProject.title){
                 activeProject.completeTask(task);
@@ -295,14 +292,12 @@ const ProjectManager = function(){
     
     const parsingProject = function(Json){
 
-        console.log(Json)
 
         // delete them not to cause error
         deleteALLPROJECT();
     
         const parsed = JSON.parse(Json);
 
-        console.log(parsed)
         
         for(let x=0; x < parsed.length; x++){
             newProjectInstance(parsed[x])
@@ -314,7 +309,6 @@ const ProjectManager = function(){
 
     const createFirstTask = function(){
 
-        console.log('init new tasks')
         
         createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
         createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
