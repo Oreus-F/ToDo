@@ -4,7 +4,7 @@ import { ProjectManager } from "./projectManager";
 const control = ProjectManager()
 
 
-const launchStorage = function(target){
+const launchStorage = function(){
     if(!localStorage.getItem('username')){
         populateStorage();
         setStorage();
@@ -15,14 +15,17 @@ const launchStorage = function(target){
 
 
 const populateStorage = function(){
+    control.createFirstTask();
     
     const user = document.querySelector('#username');
     const userPicture = document.querySelector('#userPicture');
     const projectList = control.setProjectsIntoJSON();
+
     
     localStorage.setItem('username', user.textContent);
     localStorage.setItem('profilePicture', userPicture.src);
     localStorage.setItem('projectList', projectList);
+
 }
 
 
