@@ -14,7 +14,6 @@ const displayToday = function(){
     // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
 
     const tasksList = control.getAllTasks();
-    console.log(tasksList);
 
     
     displayTasksToday(tasksList)
@@ -31,10 +30,10 @@ const displayTasksToday = function(tasksList){
     const taskContainer = document.querySelector('#taskContainer');
     // const TODAY = Date();
 
+
     for(let x=0; x < tasksList.length; x++){
 
         
-        console.log(tasksList[x])
         taskContainer.appendChild(taskTemplate(tasksList[x]))
     }
 
