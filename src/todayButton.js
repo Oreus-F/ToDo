@@ -10,13 +10,14 @@ const displayToday = function(){
 
 
     createAddTask();
-    
-    
+        
     // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
-    const taskOfToday = control.getAllTasks();
-    console.log(taskOfToday)
+
+    const tasksList = control.getAllTasks();
+    console.log(tasksList);
+
     
-    if(taskOfToday.length > 0){displayTasksToday(taskOfToday)}
+    displayTasksToday(tasksList)
 
 }
 
@@ -26,15 +27,15 @@ const createAddTask = function(){
 }
 
 
-const displayTasksToday = function(tasks){
+const displayTasksToday = function(tasksList){
     const taskContainer = document.querySelector('#taskContainer');
     // const TODAY = Date();
 
-    for(let x=0; x < tasks.length; x++){
+    for(let x=0; x < tasksList.length; x++){
 
         
-        console.log(tasks[x])
-        taskContainer.appendChild(taskTemplate(tasks[x]))
+        console.log(tasksList[x])
+        taskContainer.appendChild(taskTemplate(tasksList[x]))
     }
 
 }
