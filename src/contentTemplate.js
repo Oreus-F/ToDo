@@ -76,6 +76,8 @@ const createContentTemplate = function(title, date, text){
 
 const taskTemplate = function(task){
     const div = document.createElement('div');
+
+    // is this really necessary ? 
     div.setAttribute('data-id', task.id);
 
     const upDiv = document.createElement('div');
@@ -103,7 +105,9 @@ const completeTaskButton = function(task){
     const div = document.createElement('div');
 
     const button = document.createElement('button');
-    button.textContent = task.title
+
+    // temporary text in oirder to see the button
+    button.textContent = task.title;
     
     button.addEventListener('click', () => {
         control.completeSelectedTask(task);
