@@ -81,7 +81,7 @@ const taskTemplate = function(task){
     taskContent.setAttribute('data-id', task.id);
 
     const upDiv = document.createElement('div');
-    upDiv.appendChild(completeTaskButton(task));
+    upDiv.appendChild(completeTaskButton(task, taskContent));
 
 
     const downDiv = document.createElement('div');
@@ -96,12 +96,14 @@ const taskTemplate = function(task){
 }
 
 
-const removeTaskDOM = function(container, task){
-    container.removeChild(task)
+const removeTaskDOM = function(task){
+    const taskContainer = document.querySelector('#taskContainer');
+
+    taskContainer.removeChild(task)
 }
 
 
-const completeTaskButton = function(task){
+const completeTaskButton = function(task, taskContent){
     const div = document.createElement('div');
 
     const button = document.createElement('button');
@@ -113,7 +115,7 @@ const completeTaskButton = function(task){
         control.completeSelectedTask(task);
         
         
-        // removeTaskDOM(container, div);
+        removeTaskDOM(taskContent);
 
     })
 
