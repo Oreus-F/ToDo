@@ -113,7 +113,7 @@ const completeTaskButton = function(task){
         control.completeSelectedTask(task);
         
         
-        removeTaskDOM(container, div);
+        // removeTaskDOM(container, div);
 
     })
 
