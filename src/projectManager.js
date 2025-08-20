@@ -7,46 +7,41 @@ const taskControl = TaskManager();
 
 class Project {
 
-    constructor(title, tasks){
+    constructor(title, tasks, complete){
         this.title = title,
         this.tasks = Project.parsingTasks(tasks, this.title),
-        this.complete = Project.parsingCompletedTasks(tasks, this.title)
+        this.complete = Project.parsingCompletedTasks(complete, this.title)
     }
 
     static parsingTasks(tasks, origin){
 
-
         const _tasks = [];
         
         if(arguments[0]){
+
+            console.log(arguments[0])
             
             for(let x=0; x < tasks.length; x++){
 
                 const actualTask = tasks[x];
                 
-                if(actualTask.status === 'to-do'){
-                    const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
-                    newTask.changeOrigin(origin);
-                    _tasks.push(newTask);
-
-                } else {
-
-                    return _tasks
-                }
-
+                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                newTask.changeOrigin(origin);
+                _tasks.push(newTask);
 
             };
 
             return _tasks
 
         } else {
+
             return _tasks
         }
 
     }
 
 
-    static parsingCompletedTasks(tasks, origin){
+    static parsingCompletedTasks(completedTasks, origin){
 
         const _complete = [];
 
@@ -54,21 +49,17 @@ class Project {
         if(arguments[0]){
 
             
-            for(let x=0; x < tasks.length; x++){
+            for(let x=0; x < completedTasks.length; x++){
 
-                const actualTask = tasks[x];
-                
-                if(actualTask.status === 'completed'){
+                const actualTask = completedTasks[x];
 
-                    const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
-                    newTask.changeOrigin(origin);
-                    newTask.changeStatus();
-                    _complete.push(newTask);
+                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                newTask.changeOrigin(origin);
+                newTask.changeStatus();
+                _complete.push(newTask);
+       
 
-                } else {
-                                   
-                    return _complete
-                }
+                return _complete
 
             };
 
@@ -128,8 +119,8 @@ const ProjectManager = function(){
     
 
 
-    const newProject = function(title, tasks){
-        const project = new Project(title, tasks);
+    const newProject = function(title, tasks, completed){
+        const project = new Project(title, tasks, completed);
         projectList.push(project);
         changeProject(project);
 
@@ -327,8 +318,7 @@ const ProjectManager = function(){
 
 
     const newProjectInstance = function(value){
-        console.log(value)
-        newProject(value.title, value.tasks);
+        newProject(value.title, value.tasks, value.complete);
     }
     
     
@@ -339,6 +329,8 @@ const ProjectManager = function(){
         deleteALLPROJECT();
     
         const parsed = JSON.parse(Json);
+
+        console.log(parsed)
 
         
         for(let x=0; x < parsed.length; x++){
