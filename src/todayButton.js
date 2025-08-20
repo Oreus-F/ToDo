@@ -13,10 +13,8 @@ const displayToday = function(){
         
     // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
 
-    const tasksList = control.getAllTasks();
-
     
-    displayTasksToday(tasksList)
+    displayTasksToday()
 
 }
 
@@ -26,9 +24,12 @@ const createAddTask = function(){
 }
 
 
-const displayTasksToday = function(tasksList){
+const displayTasksToday = function(){
     const taskContainer = document.querySelector('#taskContainer');
     // const TODAY = Date();
+
+    const tasksList = control.getAllTasks();
+
 
 
     for(let x=0; x < tasksList.length; x++){
