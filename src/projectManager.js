@@ -10,7 +10,7 @@ class Project {
     constructor(title, tasks){
         this.title = title,
         this.tasks = Project.parsingTasks(tasks, this.title),
-        this.complete = []
+        this.complete = Project.parsingCompletedTasks(tasks, this.title)
     }
 
     static parsingTasks(tasks, origin){
@@ -26,20 +26,50 @@ class Project {
                 
                 const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
 
+                if (actualTask.status){console.log(actualTask.status)}
+
+
                 newTask.changeOrigin(origin);
 
                 _tasks.push(newTask)
             };
 
 
-
-
             return _tasks
-
 
         } else {
-
             return _tasks
+        }
+
+    }
+
+
+    static parsingCompletedTasks(tasks, origin){
+
+
+        const _complete = [];
+        
+        if(arguments[0]){
+            
+            for(let x=0; x < tasks.length; x++){
+
+                const actualTask = tasks[x];
+                
+                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+
+                if (actualTask.status){console.log(actualTask.status)}
+
+
+                newTask.changeOrigin(origin);
+
+                _complete.push(newTask)
+            };
+
+
+            return _complete
+
+        } else {
+            return _complete
         }
 
     }
