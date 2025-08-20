@@ -75,10 +75,10 @@ const createContentTemplate = function(title, date, text){
 
 
 const taskTemplate = function(task){
-    const taskContainer = document.createElement('div');
+    const taskContent = document.createElement('div');
 
     // is this really necessary ? 
-    taskContainer.setAttribute('data-id', task.id);
+    taskContent.setAttribute('data-id', task.id);
 
     const upDiv = document.createElement('div');
     upDiv.appendChild(completeTaskButton(task));
@@ -88,10 +88,10 @@ const taskTemplate = function(task){
 
 
 
-    taskContainer.appendChild(upDiv);
-    taskContainer.appendChild(downDiv);
+    taskContent.appendChild(upDiv);
+    taskContent.appendChild(downDiv);
 
-    return taskContainer
+    return taskContent
 
 }
 
