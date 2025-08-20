@@ -24,16 +24,18 @@ class Project {
 
                 const actualTask = tasks[x];
                 
-                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                if(actualTask.status === 'to-do'){
+                    const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                    newTask.changeOrigin(origin);
+                    _tasks.push(newTask);
 
-                if (actualTask.status){console.log(actualTask.status)}
+                } else {
+
+                    return _tasks
+                }
 
 
-                newTask.changeOrigin(origin);
-
-                _tasks.push(newTask)
             };
-
 
             return _tasks
 
@@ -46,30 +48,37 @@ class Project {
 
     static parsingCompletedTasks(tasks, origin){
 
-
         const _complete = [];
+
         
         if(arguments[0]){
+
             
             for(let x=0; x < tasks.length; x++){
 
                 const actualTask = tasks[x];
                 
-                const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                if(actualTask.status === 'completed'){
 
-                if (actualTask.status){console.log(actualTask.status)}
+                    const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                    newTask.changeOrigin(origin);
+                    newTask.changeStatus();
+                    _complete.push(newTask);
 
+                } else {
+                                   
+                    return _complete
+                }
 
-                newTask.changeOrigin(origin);
-
-                _complete.push(newTask)
             };
 
 
             return _complete
 
         } else {
+
             return _complete
+
         }
 
     }
@@ -250,9 +259,11 @@ const ProjectManager = function(){
 
             if (task.origin == activeProject.title){
                 activeProject.completeTask(task);
+                activeProject.removeTask(task)
             } else {
                 const tempProject = getProjectFromTask(task);
                 tempProject.completeTask(task);
+                tempProject.removeTask(task);
             }
 
 
@@ -316,6 +327,7 @@ const ProjectManager = function(){
 
 
     const newProjectInstance = function(value){
+        console.log(value)
         newProject(value.title, value.tasks);
     }
     
@@ -332,6 +344,7 @@ const ProjectManager = function(){
         for(let x=0; x < parsed.length; x++){
             newProjectInstance(parsed[x])
         }
+
     }
 
 
@@ -360,7 +373,8 @@ const ProjectManager = function(){
 
     return {newProject, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
-changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, createFirstTask}
+changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, 
+createFirstTask, updateLocalStorageProjectList}
 }
 
 
