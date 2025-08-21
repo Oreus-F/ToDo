@@ -80,19 +80,39 @@ const taskTemplate = function(task){
     // is this really necessary ? 
     taskContent.setAttribute('data-id', task.id);
 
+
+    taskContent.appendChild(createUpDiv(task, taskContent));
+    taskContent.appendChild(createDownDiv(task, taskContent));
+    
+    return taskContent
+    
+}
+
+
+const createUpDiv = function(task, container){
+    
     const upDiv = document.createElement('div');
-    upDiv.appendChild(completeTaskButton(task, taskContent));
+    upDiv.setAttribute('class', 'flex-display')
+    
+    upDiv.appendChild(completeTaskButton(task, container));
+
+    const divTitle = document.createElement('div');
+    const titleText = document.createElement('p');
+
+    titleText.textContent = task.title;
+
+    divTitle.appendChild(titleText);
+    upDiv.appendChild(divTitle)
+
+    return upDiv
+}
 
 
+const createDownDiv = function(task){
     const downDiv = document.createElement('div');
 
 
-
-    taskContent.appendChild(upDiv);
-    taskContent.appendChild(downDiv);
-
-    return taskContent
-
+    return downDiv
 }
 
 
