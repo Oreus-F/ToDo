@@ -47,7 +47,7 @@ const displayTasksToday = function(todayList){
         }
 
     } else {
-        console.log('NO TASK FOR TODAY')
+        taskContainer.appendChild(displayNoTask());
     }
 
 
@@ -55,14 +55,38 @@ const displayTasksToday = function(todayList){
 
 
 const displayNoTask = function(){
-   
-    const taskContainer = document.querySelector('#taskContainer');
-
 
     const div = document.createElement('div');
-    div.setAttribute('id', 'noTaskContainer')
+    div.setAttribute('id', 'noTaskContainer');
+    div.setAttribute('class', 'flex-display full-h aligned-item-center justif-content-center');
+
+    div.appendChild(displayNoTaskText())
+    
+    return div
 }
 
+
+const displayNoTaskText = function(){
+
+    const div = document.createElement('div');
+    div.setAttribute('class', 'text-align-center')
+    
+    const p1 = document.createElement('p');
+    p1.textContent = 'No task today ?';
+    
+    const p2 = document.createElement('p');
+    p2.textContent = 'You can create a new one by clicking on "Add Task"';
+
+    const p3 = document.createElement('p');
+    p3.textContent = "Or maybe it's a sign to relax, take your time";
+
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+    div.appendChild(p3);
+
+    return div
+}
 
 
 export {displayToday}
