@@ -715,3 +715,13 @@ button{
     border-bottom : var(--ascent-color) 1px solid;
     padding-bottom: 1rem;
 }
+
+
+.completed-button{
+    height: 30px;
+    width: 30px;
+
+    border-radius: 48px;
+    
+    border: #b13924 2px solid;
+}
