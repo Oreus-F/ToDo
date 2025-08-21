@@ -19,9 +19,6 @@ const displayToday = function(){
 
 
     createAddTask();
-        
-    // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
-
     
     displayTasksToday(todayList)
 
