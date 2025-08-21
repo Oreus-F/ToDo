@@ -45,12 +45,17 @@ const displayTasksToday = function(todayList){
             
             taskContainer.appendChild(taskTemplate(actualTask))
         }
-        
+
     } else {
         console.log('NO TASK FOR TODAY')
     }
 
 
+}
+
+
+const displayNoTask = function(){
+    
 }
 
 
