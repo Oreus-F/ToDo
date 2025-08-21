@@ -19,7 +19,6 @@ class Project {
         
         if(arguments[0]){
 
-            console.log(arguments[0])
             
             for(let x=0; x < tasks.length; x++){
 
@@ -330,7 +329,6 @@ const ProjectManager = function(){
     
         const parsed = JSON.parse(Json);
 
-        console.log(parsed)
 
         
         for(let x=0; x < parsed.length; x++){
