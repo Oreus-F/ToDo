@@ -127,9 +127,7 @@ const completeTaskButton = function(task, taskContent){
     const div = document.createElement('div');
 
     const button = document.createElement('button');
-
-    // temporary text in oirder to see the button
-    button.textContent = task.title;
+    button.setAttribute('class', 'completed-button')
     
     button.addEventListener('click', () => {
         control.completeSelectedTask(task);
