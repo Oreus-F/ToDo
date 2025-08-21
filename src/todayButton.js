@@ -69,10 +69,11 @@ const displayNoTask = function(){
 const displayNoTaskText = function(){
 
     const div = document.createElement('div');
-    div.setAttribute('class', 'text-align-center')
+    div.setAttribute('class', 'text-align-center fs11')
     
     const p1 = document.createElement('p');
     p1.textContent = 'No task today ?';
+    p1.setAttribute('class', 'fs14 bold-text text-color-ascent')
     
     const p2 = document.createElement('p');
     p2.textContent = 'You can create a new one by clicking on "Add Task"';
