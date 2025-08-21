@@ -44,7 +44,7 @@ class Task {
 
 
 Task.prototype.getTimeLeft = function(){
-    return intlFormatDistance(new Date(), this.dueDate)
+    return intlFormatDistance(this.dueDate, new Date())
 }
 
 
