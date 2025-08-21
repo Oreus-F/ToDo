@@ -20,7 +20,11 @@ const displayToday = function(){
 
     createAddTask();
     
-    displayTasksToday(todayList)
+    // displayTasksToday(todayList)
+
+    // FOR NOW DISPLAY ALL TASK IN ORDER TO WORK ON THEM / DELETE THIS PART WHEN NOT NECESSARY ANYMORE
+    displayTasksToday(tasksList)
+
 
 }
 
