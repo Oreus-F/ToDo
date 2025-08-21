@@ -97,6 +97,9 @@
 }
 
 
+.text-align-center{
+    text-align: center;
+}
 
 .bgc-ascent{
     background-color: var(--ascent-color);
@@ -205,6 +208,15 @@
     font-size: 4rem;
 }
 
+
+.bold-text{
+    font-weight: bold;
+}
+
+
+.text-color-ascent{
+    color: var(--ascent-color);
+}
 
 .pos-rel{
     position: relative;
@@ -367,11 +379,6 @@ button[data-active = "true"]:hover{
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 32px;
-}
-
-
-.icon-menu-add-task ~ div > span{
-    color: var(--ascent-color);
 }
 
 
