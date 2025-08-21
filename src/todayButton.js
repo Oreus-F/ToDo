@@ -1,12 +1,21 @@
 import { createContentTemplate, taskTemplate } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
+import { format } from "date-fns";
 
 const control = ProjectManager()
 
 const displayToday = function(){
     const content = document.querySelector('#content');
 
-    content.appendChild(createContentTemplate('Today', '05/09/2025', 'x tasks for today'));
+    
+    const tasksList = control.getAllTasks();
+    const todayList = tasksList.filter(task => task.getTimeLeft() === 'now');
+    
+    const TITLE_SECTION = "Today";
+    const TODAY_DATE = format(new Date(), 'dd/MM/yyyy');
+    const HEADER_DESCRIPTION = `${todayList.length} tasks for today !`
+
+    content.appendChild(createContentTemplate(TITLE_SECTION, TODAY_DATE, HEADER_DESCRIPTION));
 
 
     createAddTask();
@@ -14,7 +23,7 @@ const displayToday = function(){
     // DOIS CHERCHER LES TACHES DU JOURS PAS TOUTES LES TASKS SA MERE
 
     
-    displayTasksToday()
+    displayTasksToday(todayList)
 
 }
 
@@ -24,19 +33,23 @@ const createAddTask = function(){
 }
 
 
-const displayTasksToday = function(){
+const displayTasksToday = function(todayList){
+
     const taskContainer = document.querySelector('#taskContainer');
-    // const TODAY = Date();
 
-    const tasksList = control.getAllTasks();
-
-
-
-    for(let x=0; x < tasksList.length; x++){
-
+    if(todayList.length > 0){
         
-        taskContainer.appendChild(taskTemplate(tasksList[x]))
+        for(let x=0; x < todayList.length; x++){
+
+            const actualTask = todayList[x];
+            
+            taskContainer.appendChild(taskTemplate(actualTask))
+        }
+        
+    } else {
+        console.log('NO TASK FOR TODAY')
     }
+
 
 }
 
