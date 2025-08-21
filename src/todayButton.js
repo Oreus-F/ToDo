@@ -55,7 +55,12 @@ const displayTasksToday = function(todayList){
 
 
 const displayNoTask = function(){
-    
+   
+    const taskContainer = document.querySelector('#taskContainer');
+
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'noTaskContainer')
 }
 
 
