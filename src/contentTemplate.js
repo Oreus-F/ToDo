@@ -76,6 +76,7 @@ const createContentTemplate = function(title, date, text){
 
 const taskTemplate = function(task){
     const taskContent = document.createElement('div');
+    taskContent.setAttribute('class', 'flex-display column-direction');
 
     // is this really necessary ? 
     taskContent.setAttribute('data-id', task.id);
@@ -92,27 +93,23 @@ const taskTemplate = function(task){
 const createUpDiv = function(task, container){
     
     const upDiv = document.createElement('div');
-    upDiv.setAttribute('class', 'flex-display')
+    upDiv.setAttribute('class', 'flex-display flex-basis60px aligned-item-center')
     
     upDiv.appendChild(completeTaskButton(task, container));
 
     const divTitle = document.createElement('div');
+    divTitle.setAttribute('class', 'flex-first-grow')
     const titleText = document.createElement('p');
 
     titleText.textContent = task.title;
 
     divTitle.appendChild(titleText);
-    upDiv.appendChild(divTitle)
+    upDiv.appendChild(divTitle);
+
+
+    upDiv.appendChild(createTaskButtons(task));
 
     return upDiv
-}
-
-
-const createDownDiv = function(task){
-    const downDiv = document.createElement('div');
-
-
-    return downDiv
 }
 
 
@@ -130,8 +127,8 @@ const completeTaskButton = function(task, taskContent){
     button.setAttribute('class', 'completed-button')
     
     button.addEventListener('click', () => {
+
         control.completeSelectedTask(task);
-        
         
         removeTaskDOM(taskContent);
 
@@ -141,6 +138,92 @@ const completeTaskButton = function(task, taskContent){
 
     return div
 
+}
+
+
+
+const createTaskButtons = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end')
+
+    div.appendChild(createEditTaskButton(task));
+    div.appendChild(createDeleteTaskButton(task));
+
+    return div
+}
+
+
+const createEditTaskButton = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-display full-w')
+
+    const button = document.createElement('button');
+    button.setAttribute('class', 'flex-display justif-content-center full-w')
+
+    const span = document.createElement('span');
+    span.setAttribute('class', 'edit-task-icon task-icon-displayed flex-basis40px');
+
+
+    button.appendChild(span);
+    div.appendChild(button);
+
+    return div
+}
+
+
+const createDeleteTaskButton = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-display full-w')
+
+    const button = document.createElement('button');
+    button.setAttribute('class', 'flex-display full-w justif-content-center')
+
+    const span = document.createElement('span');
+    span.setAttribute('class', 'delete-task-icon task-icon-displayed flex-basis40px');
+
+
+    button.appendChild(span);
+    div.appendChild(button);
+
+    return div
+}
+
+
+
+const createDownDiv = function(task){
+    const downDiv = document.createElement('div');
+    downDiv.setAttribute('class', 'flex-display flex-basis40px task-down-div')
+
+    downDiv.appendChild(createTimeLeftSection(task));
+    downDiv.appendChild(createOriginSection(task))
+
+
+    return downDiv
+}
+
+
+const createTimeLeftSection = function(task){
+    const div = document.createElement('div');
+
+    const p = document.createElement('p');
+    p.textContent = task.getTimeLeft();
+
+    div.appendChild(p)
+
+    return div
+}
+
+
+const createOriginSection = function(task){
+    const div = document.createElement('div')
+
+    const p = document.createElement('p');
+    p.textContent = task.origin;
+
+
+    div.appendChild(p)
+    
+    return div
 }
 
 export {createContentTemplate, taskTemplate}
