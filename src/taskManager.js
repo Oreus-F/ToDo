@@ -10,8 +10,7 @@ class Task {
         this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy')
         this.description = description,
         this.status = 'to-do',
-        this.origin = origin,
-        this.id = crypto.randomUUID()
+        this.origin = origin
     };
 
 

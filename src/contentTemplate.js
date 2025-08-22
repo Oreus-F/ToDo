@@ -76,11 +76,7 @@ const createContentTemplate = function(title, date, text){
 
 const taskTemplate = function(task){
     const taskContent = document.createElement('div');
-    taskContent.setAttribute('class', 'flex-display column-direction gap-8');
-
-    // is this really necessary ? 
-    taskContent.setAttribute('data-id', task.id);
-
+    taskContent.setAttribute('class', 'flex-display column-direction gap-8 task-class');
 
     taskContent.appendChild(createUpDiv(task, taskContent));
     taskContent.appendChild(createDownDiv(task, taskContent));
@@ -93,7 +89,7 @@ const taskTemplate = function(task){
 const createUpDiv = function(task, container){
     
     const upDiv = document.createElement('div');
-    upDiv.setAttribute('class', 'flex-display flex-basis60px aligned-item-center gap-8')
+    upDiv.setAttribute('class', 'flex-display flex-basis40px aligned-item-center gap-8')
     
     upDiv.appendChild(completeTaskButton(task, container));
 
@@ -144,7 +140,7 @@ const completeTaskButton = function(task, taskContent){
 
 const createTaskButtons = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end')
+    div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end hide-task-button')
 
     div.appendChild(createEditTaskButton(task));
     div.appendChild(createDeleteTaskButton(task));
