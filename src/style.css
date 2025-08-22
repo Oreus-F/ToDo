@@ -25,6 +25,12 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
+body{
+    overflow: hidden;
+}
+
+
 #mainContainer {
 
     min-height: 100dvh;
@@ -84,6 +90,11 @@
 
 .flex-basis40px{
     flex-basis: calc(var(--px8)*5);
+}
+
+
+.flex-basis60px{
+    flex-basis: 60px;
 }
 
 
@@ -718,10 +729,51 @@ button{
 
 
 .completed-button{
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
 
-    border-radius: 48px;
+    border-radius: 24px;
     
-    border: #b13924 2px solid;
+    border: var(--darker-grey) 2px solid;
+}
+
+
+.completed-button:hover{
+    background-color: var(--darker-grey);
+    border-color: black;
+}
+
+
+
+.task-icon-displayed{
+    background-repeat: no-repeat;
+    background-position: center;
+    height: var(--hundred-percent);
+    width: var(--hundred-percent);
+}
+
+
+
+.edit-task-icon{
+    background-image: url(../asset/ressource/edit.svg);
+}
+
+
+.delete-task-icon{
+    background-image: url(../asset/ressource/trash.svg);
+}
+
+.justify-self-end{
+    justify-self: end;
+}
+
+
+.margin-left-auto{
+    margin-left: auto;
+}
+
+
+.task-down-div{
+    align-items: center;
+    justify-content: space-between;
 }
