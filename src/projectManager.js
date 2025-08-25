@@ -342,23 +342,17 @@ const ProjectManager = function(){
 
     const createFirstTask = function(){
 
-        
         createTask('Change username', 'low', '01/09/2025', 'In the sidebar you will find a button next to your actual username');
         createTask('Change profile picture', 'low', '02/09/2025', 'In the sidebar you will find a button next to your actual username');
         createTask('Create a new project', 'medium', '03/09/2025', 'In the sidebar you will find a button next to My Projects');
     
-        
         newProject('Test')
         
-    
         createTask('Create a new task', 'medium', '04/09/2025', '');
         createTask('Remove and complete a task', 'high', '05/09/2025', 'Do both in order to complete this one');
         createTask('Change a task', 'high', '06/09/2025', 'change the title, priority, description, date or all of it');
         createTask('Reset your data', 'low', '07/09/2025', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
 
-
-        createTask('test', 'low', '01/01/2011', 'oui')
-        
     }
 
     return {newProject, getActiveProject, changeProject, 
