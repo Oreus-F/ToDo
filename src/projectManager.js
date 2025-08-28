@@ -202,24 +202,28 @@ const ProjectManager = function(){
     }
 
 
-    const getTaskFromIndex = function(index){
-        return activeProject.getTask(index)
+    const getTaskFromIndex = function(index, project){
+        return project.getTask(index)
     }
 
 
-    const getTasksIndex = function(task){
-        return activeProject.tasks.indexOf(task)
+    const getTasksIndex = function(task, project){
+        return project.tasks.indexOf(task)
     }
 
 
     const getTasksFromObject = function(object){
-        const index = getTasksIndex(object);
-        const result = getTaskFromIndex(index);
+        const thisProject = getProjectFromTask(object);
+        
+        const index = getTasksIndex(object, thisProject);
+
+        const result = getTaskFromIndex(index, thisProject);
+
         return result
     }
 
 
-    const getTaskActiveProject = function(x){
+    const selectThisTask = function(x){
         let taskSelected
         if(typeof(x) === 'number'){
             taskSelected = getTaskFromIndex(x);
@@ -232,8 +236,12 @@ const ProjectManager = function(){
 
 
     const removeSelectedTask = function(x){
-        const taskSelected = getTaskActiveProject(x)
-        activeProject.removeTask(taskSelected);
+
+        const taskSelected = selectThisTask(x);
+        
+        const thisProject = getProjectFromTask(taskSelected);
+
+        thisProject.removeTask(taskSelected);
 
         updateLocalStorageProjectList();
     }
