@@ -41,6 +41,7 @@ const displayTasksToday = function(todayList){
     if(todayList.length > 0){
 
         const taskListContainer = document.createElement('ul');
+        taskListContainer.setAttribute('id', 'taskListContainer')
         taskListContainer.setAttribute('class', 'taskList-container')
         
         for(let x=0; x < todayList.length; x++){

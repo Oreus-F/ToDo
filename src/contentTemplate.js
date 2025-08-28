@@ -81,8 +81,8 @@ const taskTemplate = function(task){
     const taskContent = document.createElement('div');
     taskContent.setAttribute('class', 'flex-display column-direction gap-8 task-class');
 
-    taskContent.appendChild(createUpDiv(task, taskContent));
-    taskContent.appendChild(createDownDiv(task, taskContent));
+    taskContent.appendChild(createUpDiv(task, taskListElement));
+    taskContent.appendChild(createDownDiv(task, taskListElement));
     
     taskListElement.appendChild(taskContent)
 
@@ -115,9 +115,9 @@ const createUpDiv = function(task, container){
 
 
 const removeTaskDOM = function(task){
-    const taskContainer = document.querySelector('#taskContainer');
+    const taskListContainer = document.querySelector('#taskListContainer');
 
-    taskContainer.removeChild(task)
+    taskListContainer.removeChild(task)
 }
 
 
