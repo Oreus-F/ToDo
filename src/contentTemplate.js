@@ -125,7 +125,10 @@ const completeTaskButton = function(task, taskContent){
     const div = document.createElement('div');
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'completed-button')
+    button.setAttribute('class', 'completed-button');
+
+    const priority = task.priority;
+    button.setAttribute('data-priority', priority);
     
     button.addEventListener('click', () => {
 
