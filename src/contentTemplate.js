@@ -75,13 +75,18 @@ const createContentTemplate = function(title, date, text){
 
 
 const taskTemplate = function(task){
+    const taskListElement = document.createElement('li');
+    taskListElement.setAttribute('class', 'taskList-Element');
+
     const taskContent = document.createElement('div');
     taskContent.setAttribute('class', 'flex-display column-direction gap-8 task-class');
 
     taskContent.appendChild(createUpDiv(task, taskContent));
     taskContent.appendChild(createDownDiv(task, taskContent));
     
-    return taskContent
+    taskListElement.appendChild(taskContent)
+
+    return taskListElement
     
 }
 
@@ -94,7 +99,7 @@ const createUpDiv = function(task, container){
     upDiv.appendChild(completeTaskButton(task, container));
 
     const divTitle = document.createElement('div');
-    divTitle.setAttribute('class', 'flex-first-grow')
+    divTitle.setAttribute('class', 'flex-first-grow fs12rem')
     const titleText = document.createElement('p');
 
     titleText.textContent = task.title;
@@ -154,7 +159,7 @@ const createEditTaskButton = function(task){
     div.setAttribute('class', 'flex-display full-w')
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'flex-display justif-content-center full-w')
+    button.setAttribute('class', 'flex-display justif-content-center full-w inside-task-button')
 
     const span = document.createElement('span');
     span.setAttribute('class', 'edit-task-icon task-icon-displayed flex-basis40px');
@@ -172,7 +177,7 @@ const createDeleteTaskButton = function(task){
     div.setAttribute('class', 'flex-display full-w')
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'flex-display full-w justif-content-center')
+    button.setAttribute('class', 'flex-display full-w justif-content-center inside-task-button')
 
     const span = document.createElement('span');
     span.setAttribute('class', 'delete-task-icon task-icon-displayed flex-basis40px');
@@ -202,6 +207,7 @@ const createTimeLeftSection = function(task){
     const div = document.createElement('div');
 
     const p = document.createElement('p');
+    p.setAttribute('class', 'fs-09rem')
     p.textContent = task.getTimeLeft();
 
     div.appendChild(p)

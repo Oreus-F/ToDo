@@ -39,13 +39,18 @@ const displayTasksToday = function(todayList){
     const taskContainer = document.querySelector('#taskContainer');
 
     if(todayList.length > 0){
+
+        const taskListContainer = document.createElement('ul');
+        taskListContainer.setAttribute('class', 'taskList-container')
         
         for(let x=0; x < todayList.length; x++){
 
             const actualTask = todayList[x];
             
-            taskContainer.appendChild(taskTemplate(actualTask))
+            taskListContainer.appendChild(taskTemplate(actualTask))
         }
+
+        taskContainer.appendChild(taskListContainer)
 
     } else {
         taskContainer.appendChild(displayNoTask());

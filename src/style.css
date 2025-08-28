@@ -210,6 +210,11 @@ body{
 }
 
 
+.fs12{
+    font-size: 1.2rem;
+}
+
+
 .fs-09rem{
     font-size: 0.9rem;
 }
@@ -783,6 +788,40 @@ button{
     opacity: 0;
 }
 
+
+.inside-task-button{
+    background-color: transparent;
+}
+
+
+.inside-task-button:hover{
+    background-color: var(--main-light-grey);
+    border-radius: 8px;
+}
+
+
+.taskList-Element{
+    border-bottom: var(--darker-grey) 1px solid;
+}
+
+
+.taskList-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* .taskList-Element:hover{
+    border-bottom: none;
+    box-shadow: var(--darker-grey) 0px 2px 2px;
+    border-radius: 8px;
+    
+
+    transition: 200ms;
+} */
+
+
 .task-class:hover .hide-task-button{
     opacity: 1;
     transition: 200ms;
@@ -790,6 +829,6 @@ button{
 
 
 .task-class{
-    padding: 0px 8px;
-    height: 90px;
+    padding: 12px 12px 12px 0;
+    height: 100px;
 }
