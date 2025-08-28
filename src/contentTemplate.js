@@ -210,7 +210,7 @@ const createTimeLeftSection = function(task){
     const div = document.createElement('div');
 
     const p = document.createElement('p');
-    p.setAttribute('class', 'fs-09rem')
+    p.setAttribute('class', 'fs-09rem time-left')
     p.textContent = task.getTimeLeft();
 
     div.appendChild(p)

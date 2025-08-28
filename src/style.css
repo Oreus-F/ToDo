@@ -772,9 +772,19 @@ button[data-priority='medium']{
 }
 
 
+button[data-priority='medium']:hover{
+    background-color: var(--medium-prio-border);
+}
+
+
 button[data-priority='high']{
     background-color: var(--high-prio-color);
     border-color: var(--high-prio-border);
+}
+
+
+button[data-priority='high']:hover{
+    background-color: var(--high-prio-border);
 }
 
 
@@ -794,6 +804,11 @@ button[data-priority='high']{
 
 .delete-task-icon{
     background-image: url(../asset/ressource/trash.svg);
+}
+
+
+.time-left{
+    padding-left: 6px;
 }
 
 .justify-self-end{
