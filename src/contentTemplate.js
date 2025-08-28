@@ -91,12 +91,12 @@ const taskTemplate = function(task){
 }
 
 
-const createUpDiv = function(task, container){
+const createUpDiv = function(task, taskContent){
     
     const upDiv = document.createElement('div');
     upDiv.setAttribute('class', 'flex-display flex-first-grow aligned-item-center gap-8')
     
-    upDiv.appendChild(completeTaskButton(task, container));
+    upDiv.appendChild(completeTaskButton(task, taskContent));
 
     const divTitle = document.createElement('div');
     divTitle.setAttribute('class', 'flex-first-grow fs12')
@@ -108,7 +108,7 @@ const createUpDiv = function(task, container){
     upDiv.appendChild(divTitle);
 
 
-    upDiv.appendChild(createTaskButtons(task));
+    upDiv.appendChild(createTaskButtons(task, taskContent));
 
     return upDiv
 }
@@ -146,12 +146,12 @@ const completeTaskButton = function(task, taskContent){
 
 
 
-const createTaskButtons = function(task){
+const createTaskButtons = function(task, taskContent){
     const div = document.createElement('div');
     div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end hide-task-button')
 
     div.appendChild(createEditTaskButton(task));
-    div.appendChild(createDeleteTaskButton(task));
+    div.appendChild(createDeleteTaskButton(task, taskContent));
 
     return div
 }
@@ -175,16 +175,28 @@ const createEditTaskButton = function(task){
 }
 
 
-const createDeleteTaskButton = function(task){
+const createDeleteTaskButton = function(task, taskContent){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display full-w')
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'flex-display full-w justif-content-center inside-task-button')
+    button.setAttribute('class', 'flex-display full-w justif-content-center inside-task-button');
 
     const span = document.createElement('span');
     span.setAttribute('class', 'delete-task-icon task-icon-displayed flex-basis40px');
 
+
+    button.addEventListener('click', () => {
+
+
+        if (window.confirm("Do you really want to delete this task ?")){
+            removeTaskDOM(taskContent);
+            control.removeSelectedTask(task);
+
+        }
+
+
+    })
 
     button.appendChild(span);
     div.appendChild(button);
