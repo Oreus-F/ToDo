@@ -99,7 +99,7 @@ const createUpDiv = function(task, container){
     upDiv.appendChild(completeTaskButton(task, container));
 
     const divTitle = document.createElement('div');
-    divTitle.setAttribute('class', 'flex-first-grow fs12rem')
+    divTitle.setAttribute('class', 'flex-first-grow fs12')
     const titleText = document.createElement('p');
 
     titleText.textContent = task.title;

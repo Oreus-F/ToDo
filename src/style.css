@@ -9,13 +9,16 @@
 
 
 
-    --low-prio-color: #3e77ad;
+    --low-prio-color: #6da4d8;
+    --low-prio-border: #1f6eb8;
 
 
-    --medium-prio-color: #f7bc4e;
+    --medium-prio-border: #f7bc4e;
+    --medium-prio-color: #ffd78d;
 
 
-    --high-prio-color: #e72e2e;
+    --high-prio-color: #ee6f6f;
+    --high-prio-border: #e72e2e;
 
     --sidebar: 420px;
     --hundred-percent : 100%;
@@ -743,20 +746,36 @@ button{
 
 
 .completed-button{
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
 
     border-radius: 24px;
     
-    border: var(--darker-grey) 2px solid;
+    border: var(--darker-grey) 3px solid;
 }
 
 
-.completed-button:hover{
-    background-color: var(--darker-grey);
-    border-color: black;
+button[data-priority='low']{
+    background-color: var(--low-prio-color);
+    border-color: var(--low-prio-border);
 }
 
+
+button[data-priority='low']:hover{
+    background-color: var(--low-prio-border);
+}
+
+
+button[data-priority='medium']{
+    background-color: var(--medium-prio-color);
+    border-color: var(--medium-prio-border);
+}
+
+
+button[data-priority='high']{
+    background-color: var(--high-prio-color);
+    border-color: var(--high-prio-border);
+}
 
 
 .task-icon-displayed{
