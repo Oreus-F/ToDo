@@ -89,7 +89,7 @@ const taskTemplate = function(task){
 const createUpDiv = function(task, container){
     
     const upDiv = document.createElement('div');
-    upDiv.setAttribute('class', 'flex-display flex-basis40px aligned-item-center gap-8')
+    upDiv.setAttribute('class', 'flex-display flex-first-grow aligned-item-center gap-8')
     
     upDiv.appendChild(completeTaskButton(task, container));
 
@@ -223,5 +223,6 @@ const createOriginSection = function(task){
     
     return div
 }
+
 
 export {createContentTemplate, taskTemplate}
