@@ -320,6 +320,7 @@ const createDialogNewTask = function(){
 
     container.appendChild(createNewTask_divTitle());
     container.appendChild(createNewTask_divDescription());
+    container.appendChild(createNewTask_divExtra());
 
 
 
@@ -331,6 +332,8 @@ const createNewTask_divTitle = function(){
 
     const input = document.createElement('input');
     input.setAttribute('placeholder', 'Deliver food to grandma');
+    input.setAttribute('name', 'newTask-title');
+    input.setAttribute('id', 'newTask-title');
 
     div.appendChild(input);
     return div
@@ -341,6 +344,9 @@ const createNewTask_divDescription = function(){
     const div = document.createElement('div');
 
     const textarea = document.createElement('textarea');
+    textarea.setAttribute('name', 'newTask-description');
+    textarea.setAttribute('id', 'newTask-description');
+    textarea.setAttribute('placeholder', 'Bring the food to her house inside the woods, be carefull to the wolf !');
 
 
     div.appendChild(textarea);
@@ -352,14 +358,25 @@ const createNewTask_divDescription = function(){
 const createNewTask_divExtra = function(){
     const div = document.createElement('div');
 
+    div.appendChild(extraNewTask_Date());
 
+
+
+    return div
 }
 
 
 const extraNewTask_Date = function(){
+    const div = document.createElement('div');
+
+
     const button = document.createElement('button');
     
+
+    return div
 }
+
+
 
 
 const sendNewUserData = function(event){
