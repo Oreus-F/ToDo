@@ -63,7 +63,7 @@ const createContentTemplate = function(title, date, text){
     const contentDiv = document.createElement('div');
     contentDiv.setAttribute('class', 'flex-first-grow');
     contentDiv.setAttribute('id', 'taskContainer');
-
+ 
     
 
     div.appendChild(headerDiv);

@@ -39,7 +39,8 @@
 
 
 body{
-    overflow: hidden;
+    overflow-y: scroll;
+
 }
 
 
@@ -127,7 +128,6 @@ body{
 .bgc-ascent{
     background-color: var(--ascent-color);
 }
-
 
 .edit-user-grid{
     height: 120px;
@@ -274,7 +274,7 @@ body{
 
 .padd-template-content{
     padding: 10%;
-    padding-bottom: 0%;
+    padding-bottom: 2%;
 }
 
 
