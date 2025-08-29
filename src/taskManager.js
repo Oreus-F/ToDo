@@ -3,7 +3,7 @@ import {format, intlFormatDistance} from 'date-fns'
 
 class Task {
 
-    constructor(title, priority, dueDate, description = '', origin = 'default'){
+    constructor(title, priority, dueDate, description = ''){
         this.title = title,
         this.priority = priority,
         this.dueDate = Task.dateInstance(dueDate);
@@ -23,13 +23,12 @@ class Task {
 
     set priority(newPriority) {
         newPriority = newPriority.toLowerCase();
-        const possibilies = ['low', 'medium', 'high'];
+        const choices = ['none', 'low', 'medium', 'high'];
 
-        if(newPriority === possibilies[0] || newPriority === possibilies[1] || newPriority === possibilies[2]){
-            this._priority = newPriority;
-        } else {
-            console.error('The priority must be "low", "medium" or "high"');
+        for(let x=0; x< choices.length; x++){
+            if(newPriority === choices[x]){this._priority = newPriority;}
         }
+
     }
 
 
