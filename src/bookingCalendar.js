@@ -1,7 +1,7 @@
 import { eachDayOfInterval, startOfMonth, endOfMonth, addMonths, subMonths } from "date-fns";
 
-
-
+const MONTHS = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 const getCalendarDays = function(temoin = new Date()){
 
@@ -41,4 +41,10 @@ const subOneMonth = function(temoin){
 }
 
 
-export {getCalendarDays, addOneMonth, subOneMonth}
+
+const createCalendar = function(calendarDays){
+    
+}
+
+
+export {getCalendarDays, addOneMonth, subOneMonth, createCalendar}

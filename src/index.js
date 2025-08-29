@@ -3,7 +3,7 @@ import { launchPage } from './launch'
 import { ProjectManager } from './projectManager';
 import { displayToday } from "./todayButton";
 
-import { getCalendarDays, addOneMonth, subOneMonth } from './bookingCalendar';
+import { getCalendarDays, addOneMonth, subOneMonth, createCalendar } from './bookingCalendar';
 
 
 
@@ -12,3 +12,6 @@ launchPage();
 
 displayToday();
 
+const todayCalendar = getCalendarDays();
+
+createCalendar(todayCalendar)
