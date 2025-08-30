@@ -1,10 +1,11 @@
-import { eachDayOfInterval, startOfMonth, endOfMonth, addMonths, subMonths, subDays, addDays } from "date-fns";
+import { eachDayOfInterval, startOfMonth, endOfMonth, addMonths, subMonths} from "date-fns";
 
 const MONTHS = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const NUMB_OF_WEEKS = 6;
 
 const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 const EU_DAYS = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
 
 const getCalendarDays = function(temoin = new Date()){
 
@@ -42,7 +43,6 @@ const subOneMonth = function(temoin){
 
     return calendar
 }
-
 
 
 const checkDay = function(date, day){
