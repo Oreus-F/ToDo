@@ -23,7 +23,7 @@ const getCalendarDays = function(temoin = new Date()){
 
 const addOneMonth = function(temoin){
 
-    const dayTemoin = temoin[0];
+    const dayTemoin = temoin instanceof Date ? temoin : temoin[0];
 
     const dateOneMonthLater = addMonths(dayTemoin, 1);
 
@@ -35,9 +35,7 @@ const addOneMonth = function(temoin){
 
 const subOneMonth = function(temoin){
 
-    let dayTemoin = temoin instanceof Date ? temoin : temoin[0];
-
-    console.log(dayTemoin)
+    const dayTemoin = temoin instanceof Date ? temoin : temoin[0];
 
     const dateOneMonthBefore = subMonths(dayTemoin, 1);
 
