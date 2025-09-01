@@ -168,4 +168,4 @@ const getOneMonthAfter = function(calendarDays){
 }
 
 
-export {createCalendarArray, getOneMonthBefore, getOneMonthAfter}
+export {getCalendarDays, createCalendarArray, getOneMonthBefore, getOneMonthAfter}
