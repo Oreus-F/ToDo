@@ -168,4 +168,14 @@ const getOneMonthAfter = function(calendarDays){
 }
 
 
-export {getCalendarDays, createCalendarArray, getOneMonthBefore, getOneMonthAfter}
+const getThisMonth = function(calendar){
+
+    const firstDay = calendar[0];
+    const monthIndex = firstDay.getMonth();
+    const thisMonth = MONTHS[monthIndex]
+
+    return thisMonth
+}
+
+
+export {getCalendarDays, createCalendarArray, getOneMonthBefore, getOneMonthAfter, getThisMonth}
