@@ -1,4 +1,4 @@
-import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./sidebarDialogCreationDOM";
+import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./dialogCreationDOM";
 
 
 const switchDataAttribute = function(target, content){
