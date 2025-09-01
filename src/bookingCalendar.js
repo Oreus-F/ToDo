@@ -146,15 +146,25 @@ const getFirstDay = function(calendarDays){
 const getOneMonthBefore = function(calendarDays){
 
     const firstDay = getFirstDay(calendarDays);
-
     
     const monthBefore = subOneMonth(firstDay);
 
-    // console.log(monthBefore)
+    const newBookingGrid = createCalendarArray(monthBefore);
 
-    // const newBookingGrid = createCalendarArray(monthBefore);
+    return newBookingGrid
 
-    // return newBookingGrid
+}
+
+
+const getOneMonthAfter = function(calendarDays){
+
+    const firstDay = getFirstDay(calendarDays);
+
+    const monthAfter = addOneMonth(firstDay);
+
+    const newBookingGrid = createCalendarArray(monthAfter);
+
+    return newBookingGrid
 }
 
 
