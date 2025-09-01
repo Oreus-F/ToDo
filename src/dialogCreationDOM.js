@@ -1,3 +1,4 @@
+import { createCalendarArray, getCalendarDays } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 
 const control = ProjectManager();
@@ -318,16 +319,16 @@ const createDialogNewTask = function(){
 
     const container = document.createElement('div');
 
-    container.appendChild(createNewTask_divTitle());
-    container.appendChild(createNewTask_divDescription());
-    container.appendChild(createNewTask_divExtra());
+    container.appendChild(task_DivTitle());
+    container.appendChild(task_Description());
+    container.appendChild(task_Extra());
 
 
 
 }
 
 
-const createNewTask_divTitle = function(){
+const task_DivTitle = function(task){
     const div = document.createElement('div');
 
     const input = document.createElement('input');
@@ -340,7 +341,7 @@ const createNewTask_divTitle = function(){
 }
 
 
-const createNewTask_divDescription = function(){
+const task_Description = function(task){
     const div = document.createElement('div');
 
     const textarea = document.createElement('textarea');
@@ -355,10 +356,10 @@ const createNewTask_divDescription = function(){
 }
 
 
-const createNewTask_divExtra = function(){
+const task_Extra = function(task){
     const div = document.createElement('div');
 
-    div.appendChild(extraNewTask_Date());
+    div.appendChild(extraTask_Date(task));
 
 
 
@@ -366,7 +367,7 @@ const createNewTask_divExtra = function(){
 }
 
 
-const extraNewTask_Date = function(){
+const extraTask_Date = function(task){
     const div = document.createElement('div');
 
 
@@ -377,6 +378,36 @@ const extraNewTask_Date = function(){
 }
 
 
+const newDate_Panel = function(task){
+    const div = document.createElement('div');
+    
+
+    if(task){
+        const dueDate = task.dueDate;
+        const calendarMonth = getCalendarDays(dueDate);
+        const bookingCalendar = createCalendarArray(calendarMonth);
+
+        console.log('A FAIRE QUAND ON VOUDRA EDITER LA TACHE');
+
+    } else {
+        const calendarMonth = getCalendarDays();
+        const bookingCalendar = createCalendarArray(calendarMonth);
+        // const container = "fonction création booking calendar";
+        
+        //changer div pour container qui recevra l'id
+        div.setAttribute('id', 'bookingContainer')
+    }
+
+    // div.appendChild(container);
+
+    return div
+}
+
+
+const newDate_BookingCalendar = function(calendarDays){
+
+    const monthTitle = document.createElement('div');
+}
 
 
 const sendNewUserData = function(event){
@@ -460,4 +491,8 @@ const readFileReader = function(file, fileReader, target){
 
 
 
-export {createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser}
+export {createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser,
+
+
+    newDate_Panel
+}
