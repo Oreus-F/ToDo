@@ -35,7 +35,9 @@ const addOneMonth = function(temoin){
 
 const subOneMonth = function(temoin){
 
-    const dayTemoin = temoin[0];
+    let dayTemoin = temoin instanceof Date ? temoin : temoin[0];
+
+    console.log(dayTemoin)
 
     const dateOneMonthBefore = subMonths(dayTemoin, 1);
 
@@ -129,4 +131,33 @@ const inputPreviousDay = function(firstDay, previousMonth, index){
 }
 
 
-export {getCalendarDays, addOneMonth, subOneMonth, createCalendarArray}
+const getFirstDay = function(calendarDays){
+    let result;
+    
+    calendarDays.forEach(rows => {
+        if(result === undefined){
+            result = rows.find(date => date.getDate() == 1);
+        }  
+    });
+    
+
+    return result
+}
+
+
+const getOneMonthBefore = function(calendarDays){
+
+    const firstDay = getFirstDay(calendarDays);
+
+    
+    const monthBefore = subOneMonth(firstDay);
+
+    // console.log(monthBefore)
+
+    // const newBookingGrid = createCalendarArray(monthBefore);
+
+    // return newBookingGrid
+}
+
+
+export {getCalendarDays, addOneMonth, subOneMonth, createCalendarArray, getOneMonthBefore}
