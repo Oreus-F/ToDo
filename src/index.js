@@ -3,7 +3,7 @@ import { launchPage } from './launch'
 import { ProjectManager } from './projectManager';
 import { displayToday } from "./todayButton";
 
-import { getCalendarDays, addOneMonth, subOneMonth, createCalendar, createCalendarArray, getOneMonthBefore } from './bookingCalendar';
+import { getCalendarDays, addOneMonth, subOneMonth, createCalendar, createCalendarArray, getOneMonthBefore, getOneMonthAfter } from './bookingCalendar';
 
 
 launchPage();
@@ -19,4 +19,9 @@ console.log(todayBookingCalendar);
 
 const previousMonth = getOneMonthBefore(todayBookingCalendar);
 
-console.log(previousMonth)
+console.log(previousMonth);
+
+
+const monthAfter = getOneMonthAfter(todayBookingCalendar);
+
+console.log(monthAfter)
