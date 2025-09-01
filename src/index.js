@@ -4,7 +4,6 @@ import { ProjectManager } from './projectManager';
 import { displayToday } from "./todayButton";
 
 import { getCalendarDays, addOneMonth, subOneMonth, createCalendar, createCalendarArray } from './bookingCalendar';
-import { addMonths } from 'date-fns';
 
 
 launchPage();
@@ -17,5 +16,3 @@ const todayCalendar = getCalendarDays();
 const todayBookingCalendar = createCalendarArray(todayCalendar)
 
 console.log(todayBookingCalendar);
-
-
