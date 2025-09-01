@@ -1,4 +1,4 @@
-import { createCalendarArray, getCalendarDays } from "./bookingCalendar";
+import { createCalendarArray, getCalendarDays, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 
 const control = ProjectManager();
@@ -385,13 +385,17 @@ const newDate_Panel = function(task){
     if(task){
         const dueDate = task.dueDate;
         const calendarMonth = getCalendarDays(dueDate);
+        const thisMonth = getThisMonth(calendarMonth)
         const bookingCalendar = createCalendarArray(calendarMonth);
 
         console.log('A FAIRE QUAND ON VOUDRA EDITER LA TACHE');
 
     } else {
         const calendarMonth = getCalendarDays();
+        const thisMonth = getThisMonth(calendarMonth)
         const bookingCalendar = createCalendarArray(calendarMonth);
+
+
         // const container = "fonction création booking calendar";
         
         //changer div pour container qui recevra l'id
