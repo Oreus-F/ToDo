@@ -56,6 +56,12 @@ Task.prototype.changeStatus = function(){
 }
 
 
+Task.prototype.changeDate = function(_newDate){
+    this.dueDate = _newDate;
+    this.formatedDueDate = format(_newDate, 'dd/MM/yyyy');
+}
+
+
 const TaskManager = function(){
     
     const createTask = function(title, priority, date, description, origin){
