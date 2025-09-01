@@ -314,6 +314,13 @@ const ProjectManager = function(){
     }
 
 
+    const changeTaskDueDate = function(task, newDate){
+        task.changeDate(newDate);
+
+        updateLocalStorageProjectList()
+    }
+
+
     const updateLocalStorageProjectList = function(){
         const _updateList = setProjectsIntoJSON();
         localStorage.setItem('projectList', _updateList)
@@ -366,7 +373,7 @@ const ProjectManager = function(){
     return {newProject, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
 changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, 
-createFirstTask, updateLocalStorageProjectList}
+createFirstTask, updateLocalStorageProjectList, changeTaskDueDate}
 }
 
 
