@@ -3,8 +3,8 @@ import { eachDayOfInterval, startOfMonth, endOfMonth, addMonths, subMonths} from
 const MONTHS = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const NUMB_OF_WEEKS = 6;
 
+const WEEK = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-const EU_DAYS = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 
 const getCalendarDays = function(temoin = new Date()){
@@ -108,7 +108,7 @@ const createCalendarArray = function(calendarDays){
 const inputPreviousDay = function(firstDay, previousMonth, index){
     const firstDayIndex = firstDay.getDay();
     const dayOfWeek = DAYS[firstDayIndex];
-    const daysBefore = EU_DAYS.indexOf(dayOfWeek);
+    const daysBefore = WEEK.indexOf(dayOfWeek);
 
     const result = {}
     result.newIndex = daysBefore;
