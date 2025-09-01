@@ -875,3 +875,16 @@ button[data-priority='high']:hover{
     padding: 12px 12px 12px 0;
     height: 100px;
 }
+
+
+.bookingCalendar-grid{
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+}
+
+
+.bookingButtons{
+    height: 100px;
+    width: 100px;
+}

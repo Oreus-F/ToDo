@@ -170,7 +170,7 @@ const getOneMonthAfter = function(calendarDays){
 
 const getThisMonth = function(calendar){
 
-    const firstDay = calendar[0];
+    const firstDay = getFirstDay(calendar)
     const monthIndex = firstDay.getMonth();
     const thisMonth = MONTHS[monthIndex]
 

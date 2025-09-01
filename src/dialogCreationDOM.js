@@ -1,4 +1,4 @@
-import { createCalendarArray, getCalendarDays, getThisMonth } from "./bookingCalendar";
+import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefore, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 
 const control = ProjectManager();
@@ -380,29 +380,26 @@ const extraTask_Date = function(task){
 
 const newDate_Panel = function(task){
     const div = document.createElement('div');
-    
+    const container = document.createElement('div')
+    container.setAttribute('id', 'bookingContainer');
 
     if(task){
         const dueDate = task.dueDate;
         const calendarMonth = getCalendarDays(dueDate);
-        const thisMonth = getThisMonth(calendarMonth)
         const bookingCalendar = createCalendarArray(calendarMonth);
 
         console.log('A FAIRE QUAND ON VOUDRA EDITER LA TACHE');
 
     } else {
         const calendarMonth = getCalendarDays();
-        const thisMonth = getThisMonth(calendarMonth)
         const bookingCalendar = createCalendarArray(calendarMonth);
 
 
-        // const container = "fonction création booking calendar";
+        container.appendChild(newDate_BookingCalendar(bookingCalendar));
         
-        //changer div pour container qui recevra l'id
-        div.setAttribute('id', 'bookingContainer')
     }
-
-    // div.appendChild(container);
+    
+    div.appendChild(container)
 
     return div
 }
@@ -410,8 +407,79 @@ const newDate_Panel = function(task){
 
 const newDate_BookingCalendar = function(calendarDays){
 
+    const month = getThisMonth(calendarDays)
+    
+    const div = document.createElement('div')
+
     const monthTitle = document.createElement('div');
+    const h3 = document.createElement('h3');
+    h3.textContent = month;
+
+    monthTitle.appendChild(h3);
+
+    // 
+
+    const switchMonthContainer = document.createElement('div');
+    
+    const buttonGetMonthBefore = document.createElement('button');
+
+    buttonGetMonthBefore.textContent = 'MONTH BEFORE';
+    buttonGetMonthBefore.addEventListener("click", () => {
+        removeCalendarPanel();
+        const newCalendar = getOneMonthBefore(calendarDays);
+
+        const container = document.querySelector('#bookingContainer');
+        container.appendChild(newDate_BookingCalendar(newCalendar))
+
+    });
+
+    const buttonGetMonthAfter = document.createElement('button');
+
+    buttonGetMonthAfter.textContent = 'MONTH AFTER';
+    buttonGetMonthAfter.addEventListener('click', ()=> {
+        removeCalendarPanel();
+        const newCalendar = getOneMonthAfter(calendarDays);
+
+        const container = document.querySelector('#bookingContainer');
+        container.appendChild(newDate_BookingCalendar(newCalendar))
+    })
+
+    switchMonthContainer.appendChild(buttonGetMonthBefore);
+    switchMonthContainer.appendChild(buttonGetMonthAfter)
+
+    //
+    
+    
+    const gridContainer = document.createElement('div');
+    gridContainer.setAttribute('class', 'bookingCalendar-grid')
+    
+    calendarDays.forEach(row => {
+        row.forEach(date => {
+            const button = document.createElement('button');
+            button.setAttribute('class', 'bookingButtons')
+            button.textContent = date.getDate();
+            gridContainer.appendChild(button);
+
+            button.addEventListener('click', () => {
+                console.log(date)
+            })
+        })
+    });
+
+    div.appendChild(monthTitle);
+    div.appendChild(switchMonthContainer)
+    div.appendChild(gridContainer)
+
+    return div
 }
+
+
+const removeCalendarPanel = function(){
+    const container = document.querySelector('#bookingContainer');
+    
+    container.replaceChildren()
+}
+
 
 
 const sendNewUserData = function(event){
