@@ -168,12 +168,19 @@ const getOneMonthAfter = function(calendarDays){
 }
 
 
-const getThisMonth = function(calendar){
+const getThisMonth = function(x){
+    let thisMonth
 
-    const firstDay = getFirstDay(calendar)
-    const monthIndex = firstDay.getMonth();
-    const thisMonth = MONTHS[monthIndex]
-
+    if (x instanceof Date){
+        const monthIndex = x.getMonth();
+        thisMonth = MONTHS[monthIndex];
+    } else {
+        const firstDay = getFirstDay(x)
+        const monthIndex = firstDay.getMonth();
+        thisMonth = MONTHS[monthIndex];
+    }
+    
+    
     return thisMonth
 }
 

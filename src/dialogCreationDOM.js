@@ -405,25 +405,39 @@ const newDate_Panel = function(task){
 }
 
 
+
 const newDate_BookingCalendar = function(calendarDays){
 
     const month = getThisMonth(calendarDays)
     
-    const div = document.createElement('div')
+    const div = document.createElement('div');
 
+    div.appendChild(bookingCalendar_titleMonth(month));
+    div.appendChild(bookingCalendar_switchMonthsButtons(calendarDays))
+    div.appendChild(bookingCalendar_buttonsGrid(calendarDays, month))
+
+    return div
+}
+
+
+const bookingCalendar_titleMonth = function(month){
     const monthTitle = document.createElement('div');
     const h3 = document.createElement('h3');
     h3.textContent = month;
 
     monthTitle.appendChild(h3);
 
-    // 
+    return monthTitle
+}
 
+
+
+const bookingCalendar_switchMonthsButtons = function(calendarDays){
     const switchMonthContainer = document.createElement('div');
     
     const buttonGetMonthBefore = document.createElement('button');
-
-    buttonGetMonthBefore.textContent = 'MONTH BEFORE';
+    
+    buttonGetMonthBefore.setAttribute('class', 'arrow-button arrow-monthBefore')
     buttonGetMonthBefore.addEventListener("click", () => {
         removeCalendarPanel();
         const newCalendar = getOneMonthBefore(calendarDays);
@@ -435,7 +449,7 @@ const newDate_BookingCalendar = function(calendarDays){
 
     const buttonGetMonthAfter = document.createElement('button');
 
-    buttonGetMonthAfter.textContent = 'MONTH AFTER';
+    buttonGetMonthAfter.setAttribute('class', 'arrow-button arrow-monthAfter')
     buttonGetMonthAfter.addEventListener('click', ()=> {
         removeCalendarPanel();
         const newCalendar = getOneMonthAfter(calendarDays);
@@ -445,19 +459,31 @@ const newDate_BookingCalendar = function(calendarDays){
     })
 
     switchMonthContainer.appendChild(buttonGetMonthBefore);
-    switchMonthContainer.appendChild(buttonGetMonthAfter)
+    switchMonthContainer.appendChild(buttonGetMonthAfter);
 
-    //
-    
-    
+
+    return switchMonthContainer
+}
+
+
+const bookingCalendar_buttonsGrid = function(calendarDays, month){
+
     const gridContainer = document.createElement('div');
     gridContainer.setAttribute('class', 'bookingCalendar-grid')
     
     calendarDays.forEach(row => {
+
         row.forEach(date => {
+
             const button = document.createElement('button');
-            button.setAttribute('class', 'bookingButtons')
+            button.setAttribute('class', 'bookingButtons');
             button.textContent = date.getDate();
+
+            const thisMonth = getThisMonth(date);
+            if (thisMonth !== month){
+                button.setAttribute('disabled', 'true')
+            }
+
             gridContainer.appendChild(button);
 
             button.addEventListener('click', () => {
@@ -466,11 +492,7 @@ const newDate_BookingCalendar = function(calendarDays){
         })
     });
 
-    div.appendChild(monthTitle);
-    div.appendChild(switchMonthContainer)
-    div.appendChild(gridContainer)
-
-    return div
+    return gridContainer
 }
 
 

@@ -888,3 +888,23 @@ button[data-priority='high']:hover{
     height: 100px;
     width: 100px;
 }
+
+
+.arrow-button{
+    height: 50px;
+    width: 50px;
+    background-size: 100%;
+
+}
+
+
+.arrow-monthBefore{
+    background-image: url(../asset/ressource/chevron-left.svg);
+
+}
+
+
+
+.arrow-monthAfter{
+    background-image: url(../asset/ressource/chevron-right.svg);
+}
