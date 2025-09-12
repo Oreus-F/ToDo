@@ -408,6 +408,7 @@ const extraTask_Date = function(task){
 
     const button = document.createElement('button');
     button.setAttribute('class', 'extraTask-button flex-display');
+    button.setAttribute('type', 'button')
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
@@ -418,12 +419,16 @@ const extraTask_Date = function(task){
     const buttonText = document.createElement('p');
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
-
     if (task) {
         buttonText.textContent = task.dueDate
     } else {
         buttonText.textContent = 'Date'
     }
+
+
+    button.addEventListener('click', () => {
+        div.appendChild(newDate_Panel(task))
+    })
 
     buttonContent.appendChild(buttonIcon);
     buttonContent.appendChild(buttonText);

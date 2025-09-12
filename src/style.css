@@ -987,4 +987,13 @@ button[data-priority='high']:hover{
 }
 
 
+.bookingContainer{
+    position: absolute;
+    inset: 0px auto auto 0px;
 
+
+    background-color: blue;
+
+    height: 600px;
+    width: 200px;
+}
