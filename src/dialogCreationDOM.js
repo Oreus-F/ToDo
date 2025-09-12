@@ -324,7 +324,13 @@ const createDialogNewTask = function(){
     container.appendChild(task_Extra());
 
 
+    form.appendChild(container);
+    dialog.appendChild(form);
 
+    const body = document.querySelector('body');
+    body.appendChild(dialog);
+    
+    dialog.showModal()
 }
 
 
@@ -588,5 +594,5 @@ const readFileReader = function(file, fileReader, target){
 export {createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser,
 
 
-    newDate_Panel
+    newDate_Panel, createDialogNewTask
 }
