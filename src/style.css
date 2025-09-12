@@ -607,6 +607,21 @@ button[data-active = "true"]:hover{
 }
 
 
+.dialog-newTask{
+    padding: 1.5rem;
+    height: clamp(600px, 60%, 800px);
+    width: clamp(1000px, 60%, 1200px);
+}
+
+
+.newTask-titleInput{
+    height: 4rem;
+    font-size: 2.5rem;
+    border: none;
+    outline: none;
+}
+
+
 .edit-user-title-content{
     font-size: 1rem;
     color: var(--ascent-typo-color);
@@ -908,3 +923,6 @@ button[data-priority='high']:hover{
 .arrow-monthAfter{
     background-image: url(../asset/ressource/chevron-right.svg);
 }
+
+
+

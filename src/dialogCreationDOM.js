@@ -310,18 +310,20 @@ const createEditUser_DivResetStorage = function(){
 }
 
 
-const createDialogNewTask = function(){
+const createDialogNewTask = function(task){
     const dialog = document.createElement('dialog');
+    dialog.setAttribute('class', 'dialog dialog-newTask')
 
 
     const form = document.createElement('form');
+    form.setAttribute('class', 'full-h')
 
 
     const container = document.createElement('div');
 
-    container.appendChild(task_DivTitle());
-    container.appendChild(task_Description());
-    container.appendChild(task_Extra());
+    container.appendChild(task_DivTitle(task));
+    container.appendChild(task_Description(task));
+    container.appendChild(task_Extra(task));
 
 
     form.appendChild(container);
@@ -338,9 +340,18 @@ const task_DivTitle = function(task){
     const div = document.createElement('div');
 
     const input = document.createElement('input');
-    input.setAttribute('placeholder', 'Deliver food to grandma');
+    input.setAttribute('class', 'newTask-titleInput')
     input.setAttribute('name', 'newTask-title');
     input.setAttribute('id', 'newTask-title');
+    
+
+    if(task){
+        input.textContent = task.title;
+    } else {
+        input.setAttribute('placeholder', 'Deliver food to grandma');
+    }
+
+
 
     div.appendChild(input);
     return div
