@@ -319,15 +319,24 @@ const createDialogNewTask = function(task){
     form.setAttribute('class', 'full-h')
 
 
-    const container = document.createElement('div');
-    container.setAttribute('class', 'flex-display column-direction gap-16 full-h')
+    const mainContainer = document.createElement('div');
+    mainContainer.setAttribute('class', 'flex-display column-direction gap-16 full-h pad1andHalfRem mainContainer-border')
 
-    container.appendChild(task_DivTitle(task));
-    container.appendChild(task_Description(task));
-    container.appendChild(task_Extra(task));
+    mainContainer.appendChild(task_DivTitle(task));
+    mainContainer.appendChild(task_Description(task));
+    mainContainer.appendChild(task_Extra(task));
 
 
-    form.appendChild(container);
+    const secondContainer = document.createElement('div');
+    secondContainer.setAttribute('class', 'flex-display pad1andHalfRem');
+
+    const testy = document.createElement('p');
+    testy.textContent = 'AAAAAAAAAAAAAAAAAH';
+
+    secondContainer.appendChild(testy);
+
+    form.appendChild(mainContainer);
+    form.appendChild(secondContainer)
     dialog.appendChild(form);
 
     const body = document.querySelector('body');
@@ -383,7 +392,7 @@ const task_Description = function(task){
 
 const task_Extra = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-display gap-16');
+    div.setAttribute('class', 'flex-display gap-16 taskExtra-border');
 
     div.appendChild(extraTask_Date(task));
     div.appendChild(extraTask_Priority(task))
@@ -395,18 +404,19 @@ const task_Extra = function(task){
 
 const extraTask_Date = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-basis200')
 
 
     const button = document.createElement('button');
     button.setAttribute('class', 'extraTask-button flex-display');
 
     const buttonContent = document.createElement('div');
-    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center');
+    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
 
     const buttonIcon = document.createElement('span');
+    buttonIcon.setAttribute('class', 'calendar-date full-h flex-basis20px')
 
     const buttonText = document.createElement('p');
+    buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
 
     if (task) {
@@ -427,18 +437,20 @@ const extraTask_Date = function(task){
 
 const extraTask_Priority = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-basis200')
 
 
     const button = document.createElement('button');
     button.setAttribute('class', 'extraTask-button flex-display');
 
     const buttonContent = document.createElement('div');
-    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center');
+    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
 
     const buttonIcon = document.createElement('span');
+    buttonIcon.setAttribute('class', 'priority-icon full-h flex-basis20px')
 
     const buttonText = document.createElement('p');
+    buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
+
 
     if (task) {
         buttonText.textContent = task.priority
@@ -466,7 +478,7 @@ const newDate_Panel = function(task){
         const calendarMonth = getCalendarDays(dueDate);
         const bookingCalendar = createCalendarArray(calendarMonth);
 
-        console.log('A FAIRE QUAND ON VOUDRA EDITER LA TACHE');
+        container.appendChild(newDate_BookingCalendar(bookingCalendar));
 
     } else {
         const calendarMonth = getCalendarDays();
@@ -580,6 +592,11 @@ const removeCalendarPanel = function(){
     container.replaceChildren()
 }
 
+
+
+const priority_openWindow = function(task){
+
+}
 
 
 const sendNewUserData = function(event){

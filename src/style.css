@@ -2,7 +2,8 @@
     --main-white: #ffffff;
     --main-light-grey: #f4f4f4;
     --secondary-light-grey: #ececec;
-    --darker-grey: #dddddd;
+    --main-dark-grey: #dddddd;
+    --secondary-dark-grey: #5e5e5e;
     --ascent-pastel-color: #eed2bb;
     --ascent-color: #b13924;
     --ascent-typo-color: #ec5e45;
@@ -115,6 +116,9 @@ body{
     flex-basis: 20px;
 }
 
+.flex-basis10px{
+    flex-basis: 10px;
+}
 
 .grid-display{
     display: grid;
@@ -291,6 +295,10 @@ body{
 }
 
 
+.mainContainer-border{
+    border-bottom: var(--main-dark-grey) 1px solid;
+}
+
 .border-picture {
     border: calc(var(--px8)/2) var(--ascent-color) solid;
 }
@@ -346,7 +354,7 @@ nav > div:first-child button:nth-child(3){
 
 
 button.menu-button-help:hover{
-    background-color: var(--darker-grey);
+    background-color: var(--main-dark-grey);
 }
 
 
@@ -496,6 +504,23 @@ button[data-active = "true"]:hover{
 }
 
 
+.calendar-date{
+    background-color: var(--main-dark-grey);
+    mask-image: url(../asset/ressource/calendar-week.svg);
+    
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+
+.priority-icon{
+    background-color: var(--main-dark-grey);
+    mask-image: url(../asset/ressource/flag.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+
 .bgc-mlg{
     background-color: var(--main-light-grey);
 }
@@ -608,7 +633,6 @@ button[data-active = "true"]:hover{
 
 
 .dialog-newTask{
-    padding: 1.5rem;
     height: max-content;
     width: clamp(450px, 60%, 650px);
 }
@@ -641,14 +665,24 @@ button[data-active = "true"]:hover{
 
 
 .extraTask-button{
-    min-height: 2rem;
-    min-width: 5rem;
+    min-height: 2.5rem;
+    min-width: 6rem;
     width: max-content;
 
-    border: 1px solid var(--darker-grey);
-    padding: 3px;
+    border: 1px solid var(--main-dark-grey);
+    padding: 3px 3px 3px 5px;
     border-radius: 8px;
     background-color: transparent;
+}
+
+
+.extraTask-button:hover{
+    background-color: var(--main-light-grey);
+}
+
+.extraTask-text{
+    text-align: left;
+    color: var(--secondary-dark-grey);
 }
 
 
@@ -686,6 +720,11 @@ button[data-active = "true"]:hover{
 
 .pad1rem{
     padding: 1rem
+}
+
+
+.pad1andHalfRem{
+    padding: 1.5rem;
 }
 
 
@@ -789,7 +828,7 @@ button{
 
     border-radius: 24px;
     
-    border: var(--darker-grey) 2px solid;
+    border: var(--main-dark-grey) 2px solid;
 }
 
 
@@ -882,7 +921,7 @@ button[data-priority='high']:hover{
 
 
 .taskList-Element{
-    border-bottom: var(--darker-grey) 1px solid;
+    border-bottom: var(--main-dark-grey) 1px solid;
 }
 
 
@@ -895,7 +934,7 @@ button[data-priority='high']:hover{
 
 /* .taskList-Element:hover{
     border-bottom: none;
-    box-shadow: var(--darker-grey) 0px 2px 2px;
+    box-shadow: var(--main-dark-grey) 0px 2px 2px;
     border-radius: 8px;
     
 
