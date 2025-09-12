@@ -383,9 +383,10 @@ const task_Description = function(task){
 
 const task_Extra = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-display');
+    div.setAttribute('class', 'flex-display gap-16');
 
     div.appendChild(extraTask_Date(task));
+    div.appendChild(extraTask_Priority(task))
 
 
     return div
@@ -398,9 +399,56 @@ const extraTask_Date = function(task){
 
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'extraTask-button');
+    button.setAttribute('class', 'extraTask-button flex-display');
+
+    const buttonContent = document.createElement('div');
+    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center');
+
+    const buttonIcon = document.createElement('span');
+
+    const buttonText = document.createElement('p');
 
 
+    if (task) {
+        buttonText.textContent = task.dueDate
+    } else {
+        buttonText.textContent = 'Date'
+    }
+
+    buttonContent.appendChild(buttonIcon);
+    buttonContent.appendChild(buttonText);
+    button.appendChild(buttonContent);
+    div.appendChild(button);
+    
+
+    return div
+}
+
+
+const extraTask_Priority = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-basis200')
+
+
+    const button = document.createElement('button');
+    button.setAttribute('class', 'extraTask-button flex-display');
+
+    const buttonContent = document.createElement('div');
+    buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center');
+
+    const buttonIcon = document.createElement('span');
+
+    const buttonText = document.createElement('p');
+
+    if (task) {
+        buttonText.textContent = task.priority
+    } else {
+        buttonText.textContent = 'Priority'
+    }
+
+    buttonContent.appendChild(buttonIcon);
+    buttonContent.appendChild(buttonText);
+    button.appendChild(buttonContent);
     div.appendChild(button)
     
 
