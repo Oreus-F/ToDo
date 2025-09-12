@@ -320,6 +320,7 @@ const createDialogNewTask = function(task){
 
 
     const container = document.createElement('div');
+    container.setAttribute('class', 'flex-display column-direction gap-16 full-h')
 
     container.appendChild(task_DivTitle(task));
     container.appendChild(task_Description(task));
@@ -362,10 +363,17 @@ const task_Description = function(task){
     const div = document.createElement('div');
 
     const textarea = document.createElement('textarea');
+    textarea.setAttribute('maxlength', '500')
+    textarea.setAttribute('class', 'newTask-description full-w');
     textarea.setAttribute('name', 'newTask-description');
     textarea.setAttribute('id', 'newTask-description');
-    textarea.setAttribute('placeholder', 'Bring the food to her house inside the woods, be carefull to the wolf !');
+    
 
+    if(task){
+        textarea.textContent = task.title;
+    } else {
+        textarea.setAttribute('placeholder', 'Description');
+    }
 
     div.appendChild(textarea);
 
@@ -375,9 +383,9 @@ const task_Description = function(task){
 
 const task_Extra = function(task){
     const div = document.createElement('div');
+    div.setAttribute('class', 'flex-display');
 
     div.appendChild(extraTask_Date(task));
-
 
 
     return div
@@ -386,9 +394,14 @@ const task_Extra = function(task){
 
 const extraTask_Date = function(task){
     const div = document.createElement('div');
+    div.setAttribute('class', 'flex-basis200')
 
 
     const button = document.createElement('button');
+    button.setAttribute('class', 'extraTask-button');
+
+
+    div.appendChild(button)
     
 
     return div
