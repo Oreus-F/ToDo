@@ -655,15 +655,17 @@ button[data-active = "true"]:hover{
 
     text-align: center;
     font-size: 1rem;
-    background-color: var(--ascent-typo-color);
-    color: var(--ascent-pastel-color);
+    background-color: var(--ascent-pastel-color);
+    color: var(--ascent-typo-color);
+
 }
 
 
 
 .closing-button:hover{
-    background-color: var(--ascent-pastel-color);
-    color: var(--ascent-color);
+    background-color: var(--ascent-typo-color);
+    color: var(--ascent-pastel-color);
+    transition: all 0.2s ease-in-out;
 }
 
 
