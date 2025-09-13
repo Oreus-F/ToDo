@@ -311,12 +311,27 @@ const createEditUser_DivResetStorage = function(){
 
 
 const createDialogNewTask = function(task){
-    const dialog = document.createElement('dialog');
-    dialog.setAttribute('class', 'dialog dialog-newTask')
+    const body = document.querySelector('body');
 
+    const div = document.createElement('div');
+    div.setAttribute('id', 'newTaskModal');
+    div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
+
+
+    const closing = document.createElement('div');
+    closing.setAttribute('class', 'closing-div')
+    const button = document.createElement('button');
+    button.setAttribute('class', 'closing-button');
+    button.textContent = 'X';
+
+    button.addEventListener('click', () => {
+        body.removeChild(div)
+    });
+
+    closing.appendChild(button);
 
     const form = document.createElement('form');
-    form.setAttribute('class', 'full-h')
+    form.setAttribute('class', 'full-h neg-margin60TOP');
 
 
     const mainContainer = document.createElement('div');
@@ -331,18 +346,18 @@ const createDialogNewTask = function(task){
     secondContainer.setAttribute('class', 'flex-display pad1andHalfRem');
 
     const testy = document.createElement('p');
-    testy.textContent = 'AAAAAAAAAAAAAAAAAH';
+    testy.textContent = 'projects and buttons here';
 
     secondContainer.appendChild(testy);
 
     form.appendChild(mainContainer);
-    form.appendChild(secondContainer)
-    dialog.appendChild(form);
+    form.appendChild(secondContainer);
 
-    const body = document.querySelector('body');
-    body.appendChild(dialog);
+    div.appendChild(closing)
+    div.appendChild(form);
+
+    body.appendChild(div);
     
-    dialog.showModal()
 }
 
 
@@ -425,6 +440,7 @@ const extraTask_Date = function(task){
         buttonText.textContent = 'Date'
     }
 
+    
 
     button.addEventListener('click', () => {
         div.appendChild(newDate_Panel(task))

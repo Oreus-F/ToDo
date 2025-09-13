@@ -19,9 +19,6 @@ const todayBookingCalendar = createCalendarArray(todayCalendar);
 console.log(todayBookingCalendar);
 
 
-createDialogNewTask()
-
-
 // const dialog = document.createElement('dialog');
 // dialog.setAttribute('class', 'full-h full-w');
 // const body = document.querySelector('body');

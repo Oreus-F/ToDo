@@ -1,4 +1,4 @@
-import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser } from "./dialogCreationDOM";
+import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser, createDialogNewTask } from "./dialogCreationDOM";
 
 
 const switchDataAttribute = function(target, content){
@@ -66,12 +66,20 @@ const setUpDisplayProjects = function(){
 }
 
 
+const setUpAddTaskButton = function(){
+    const button = document.querySelector('#newTaskOpenModal');
+
+    button.addEventListener('click', () => {
+        createDialogNewTask();
+    })
+}
 
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
     setUpEditUserButton();
     setUpDisplaySidebar();
     setUpDisplayProjects();
+    setUpAddTaskButton();
 }
 
 export {activateSidebarButtons}
