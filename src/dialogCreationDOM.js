@@ -418,24 +418,26 @@ const task_Extra = function(task){
 
 
 const extraTask_Date = function(task){
-    const div = document.createElement('div');
 
+    const div = document.createElement('div');
+    div.setAttribute('id', 'dateContainer')
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'extraTask-button flex-display');
+    button.setAttribute('class', 'extraTask-button flex-display pos-rel');
     button.setAttribute('type', 'button')
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
 
     const buttonIcon = document.createElement('span');
-    buttonIcon.setAttribute('class', 'calendar-date full-h flex-basis20px')
+    buttonIcon.setAttribute('class', 'extraIcon calendar-date full-h flex-basis20px')
 
     const buttonText = document.createElement('p');
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
     if (task) {
         buttonText.textContent = task.dueDate
+        //need formated version of it DD/MM
     } else {
         buttonText.textContent = 'Date'
     }
@@ -443,7 +445,7 @@ const extraTask_Date = function(task){
     
 
     button.addEventListener('click', () => {
-        div.appendChild(newDate_Panel(task))
+        openBookingCalendar(task)
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -453,6 +455,15 @@ const extraTask_Date = function(task){
     
 
     return div
+}
+
+
+const openBookingCalendar = function(task){
+    const dateContainer = document.querySelector('#dateContainer');
+
+    const datePanel = document.querySelector('#date-panel');
+
+    datePanel === null ? dateContainer.appendChild(newDate_Panel(task)) : dateContainer.removeChild(datePanel)
 }
 
 
@@ -467,7 +478,7 @@ const extraTask_Priority = function(task){
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
 
     const buttonIcon = document.createElement('span');
-    buttonIcon.setAttribute('class', 'priority-icon full-h flex-basis20px')
+    buttonIcon.setAttribute('class', 'extraIcon priority-icon full-h flex-basis20px')
 
     const buttonText = document.createElement('p');
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
@@ -491,6 +502,8 @@ const extraTask_Priority = function(task){
 
 const newDate_Panel = function(task){
     const div = document.createElement('div');
+    div.setAttribute('class', 'dateEdit-modal');
+    div.setAttribute('id', 'date-panel')
     const container = document.createElement('div')
     container.setAttribute('id', 'bookingContainer');
 
@@ -547,9 +560,10 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
     const switchMonthContainer = document.createElement('div');
     
     const buttonGetMonthBefore = document.createElement('button');
+    buttonGetMonthBefore.setAttribute('type', 'button');
     
     buttonGetMonthBefore.setAttribute('class', 'arrow-button arrow-monthBefore')
-    buttonGetMonthBefore.addEventListener("click", () => {
+    buttonGetMonthBefore.addEventListener("click", (event) => {
         removeCalendarPanel();
         const newCalendar = getOneMonthBefore(calendarDays);
 
@@ -559,6 +573,7 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
     });
 
     const buttonGetMonthAfter = document.createElement('button');
+    buttonGetMonthAfter.setAttribute('type', 'button')
 
     buttonGetMonthAfter.setAttribute('class', 'arrow-button arrow-monthAfter')
     buttonGetMonthAfter.addEventListener('click', ()=> {

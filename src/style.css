@@ -509,6 +509,11 @@ button[data-active = "true"]:hover{
 }
 
 
+.extraIcon{
+    min-width: 20px;
+}
+
+
 .calendar-date{
     background-color: var(--main-dark-grey);
     mask-image: url(../asset/ressource/calendar-week.svg);
@@ -626,7 +631,7 @@ button[data-active = "true"]:hover{
     height: max-content;
 
 
-    box-shadow: rgb(151, 151, 151) 0px 0px calc(var(--px8)*3) var(--px8);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
 }
 
 
@@ -684,6 +689,17 @@ button[data-active = "true"]:hover{
 }
 
 
+.dateEdit-modal{
+    background-color: rgb(255, 255, 255);
+    inset: -200px 150px ;
+    position: absolute;
+    z-index: 1001; 
+
+    width: max-content;
+    height: 800px;
+}
+
+
 .modal-newTask{
     height: max-content;
     width: clamp(450px, 60%, 650px);
@@ -735,6 +751,7 @@ button[data-active = "true"]:hover{
 .extraTask-text{
     text-align: left;
     color: var(--secondary-dark-grey);
+    padding-right: 4px;
 }
 
 
@@ -1014,8 +1031,8 @@ button[data-priority='high']:hover{
 
 
 .bookingButtons{
-    height: 100px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
 }
 
 
