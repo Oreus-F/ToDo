@@ -366,8 +366,8 @@ const task_DivTitle = function(task){
 
     const input = document.createElement('input');
     input.setAttribute('class', 'newTask-titleInput')
-    input.setAttribute('name', 'newTask-title');
-    input.setAttribute('id', 'newTask-title');
+    input.setAttribute('name', 'task_title');
+    input.setAttribute('id', 'task_title');
     
 
     if(task){
@@ -389,8 +389,8 @@ const task_Description = function(task){
     const textarea = document.createElement('textarea');
     textarea.setAttribute('maxlength', '500')
     textarea.setAttribute('class', 'newTask-description full-w');
-    textarea.setAttribute('name', 'newTask-description');
-    textarea.setAttribute('id', 'newTask-description');
+    textarea.setAttribute('name', 'task_description');
+    textarea.setAttribute('id', 'task_description');
     
 
     if(task){
@@ -417,12 +417,14 @@ const task_Extra = function(task){
 }
 
 
-const extraTask_Date = function(task){
+const extraTask_Date = function(){
 
     const div = document.createElement('div');
     div.setAttribute('id', 'dateContainer')
 
     const button = document.createElement('button');
+    button.setAttribute('id', 'task_date');
+    button.setAttribute('name', 'task_date');
     button.setAttribute('class', 'extraTask-button flex-display pos-rel');
     button.setAttribute('type', 'button')
 
@@ -435,8 +437,10 @@ const extraTask_Date = function(task){
     const buttonText = document.createElement('p');
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
-    if (task) {
-        buttonText.textContent = task.dueDate
+    const value = button.value;
+
+    if (value) {
+        buttonText.textContent = value
         //need formated version of it DD/MM
     } else {
         buttonText.textContent = 'Date'
@@ -445,7 +449,8 @@ const extraTask_Date = function(task){
     
 
     button.addEventListener('click', () => {
-        openBookingCalendar(task)
+        const value = button.value;
+        openBookingCalendar(value)
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -458,12 +463,12 @@ const extraTask_Date = function(task){
 }
 
 
-const openBookingCalendar = function(task){
+const openBookingCalendar = function(value){
     const dateContainer = document.querySelector('#dateContainer');
 
     const datePanel = document.querySelector('#date-panel');
 
-    datePanel === null ? dateContainer.appendChild(newDate_Panel(task)) : dateContainer.removeChild(datePanel)
+    datePanel === null ? dateContainer.appendChild(newDate_Panel(value)) : dateContainer.removeChild(datePanel)
 }
 
 
@@ -472,6 +477,8 @@ const extraTask_Priority = function(task){
 
 
     const button = document.createElement('button');
+    button.setAttribute('id', 'task_priority');
+    button.setAttribute('name', 'task_priority');
     button.setAttribute('class', 'extraTask-button flex-display');
 
     const buttonContent = document.createElement('div');
@@ -500,15 +507,15 @@ const extraTask_Priority = function(task){
 }
 
 
-const newDate_Panel = function(task){
+const newDate_Panel = function(value){
     const div = document.createElement('div');
     div.setAttribute('class', 'dateEdit-modal');
     div.setAttribute('id', 'date-panel')
     const container = document.createElement('div')
     container.setAttribute('id', 'bookingContainer');
 
-    if(task){
-        const dueDate = task.dueDate;
+    if(value !== ''){
+        const dueDate = value;
         const calendarMonth = getCalendarDays(dueDate);
         const bookingCalendar = createCalendarArray(calendarMonth);
 
@@ -602,6 +609,7 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
         row.forEach(date => {
 
             const button = document.createElement('button');
+            button.setAttribute('type', 'button');
             button.setAttribute('class', 'bookingButtons');
             button.textContent = date.getDate();
 
@@ -613,7 +621,10 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
             gridContainer.appendChild(button);
 
             button.addEventListener('click', () => {
-                console.log(date)
+                const buttonDate = document.querySelector('#task_date');
+                buttonDate.setAttribute('value', date);
+                
+                openBookingCalendar()
             })
         })
     });
