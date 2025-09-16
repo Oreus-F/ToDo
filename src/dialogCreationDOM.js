@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefore, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 
@@ -434,14 +435,16 @@ const extraTask_Date = function(){
     const buttonIcon = document.createElement('span');
     buttonIcon.setAttribute('class', 'extraIcon calendar-date full-h flex-basis20px')
 
-    const buttonText = document.createElement('p');
-    buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
-
     const value = button.value;
 
+    const buttonText = document.createElement('p');
+    buttonText.setAttribute('id', 'task_dateTexte')
+    buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
+
+
     if (value) {
-        buttonText.textContent = value
-        //need formated version of it DD/MM
+        const displayedDate = format(value, 'dd MMM')
+        buttonText.textContent = displayedDate
     } else {
         buttonText.textContent = 'Date'
     }
@@ -623,8 +626,12 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
             button.addEventListener('click', () => {
                 const buttonDate = document.querySelector('#task_date');
                 buttonDate.setAttribute('value', date);
-                
-                openBookingCalendar()
+
+                const buttonText = document.querySelector('#task_dateTexte');
+                const displayedDate = format(date, 'dd MMM');
+                buttonText.textContent = displayedDate;
+
+                openBookingCalendar();
             })
         })
     });
