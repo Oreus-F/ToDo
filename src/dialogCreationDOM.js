@@ -517,7 +517,7 @@ const newDate_Panel = function(value){
     const container = document.createElement('div')
     container.setAttribute('id', 'bookingContainer');
 
-    if(value !== ''){
+    if(value){
         const dueDate = value;
         const calendarMonth = getCalendarDays(dueDate);
         const bookingCalendar = createCalendarArray(calendarMonth);
