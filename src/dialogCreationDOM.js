@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { addDays, compareAsc, format, isBefore, isToday, isTomorrow } from "date-fns";
 import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefore, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 
@@ -443,8 +443,7 @@ const extraTask_Date = function(){
 
 
     if (value) {
-        const displayedDate = format(value, 'dd MMM')
-        buttonText.textContent = displayedDate
+        buttonText.textContent = formatDateDisplayed(value)
     } else {
         buttonText.textContent = 'Date'
     }
@@ -605,7 +604,9 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
 const bookingCalendar_buttonsGrid = function(calendarDays, month){
 
     const gridContainer = document.createElement('div');
-    gridContainer.setAttribute('class', 'bookingCalendar-grid')
+    gridContainer.setAttribute('class', 'bookingCalendar-grid');
+
+    const TODAY = new Date;
     
     calendarDays.forEach(row => {
 
@@ -616,10 +617,15 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
             button.setAttribute('class', 'bookingButtons');
             button.textContent = date.getDate();
 
+            const isBeforeToday = isBefore(date, TODAY);
+            const dateOfToday = isToday(date)
             const thisMonth = getThisMonth(date);
+
             if (thisMonth !== month){
                 button.setAttribute('disabled', 'true')
-            }
+            } else if (isBeforeToday && !dateOfToday){
+                button.setAttribute('disabled', 'true');
+            } 
 
             gridContainer.appendChild(button);
 
@@ -628,8 +634,7 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
                 buttonDate.setAttribute('value', date);
 
                 const buttonText = document.querySelector('#task_dateTexte');
-                const displayedDate = format(date, 'dd MMM');
-                buttonText.textContent = displayedDate;
+                buttonText.textContent = formatDateDisplayed(date);
 
                 openBookingCalendar();
             })
@@ -646,6 +651,30 @@ const removeCalendarPanel = function(){
     container.replaceChildren()
 }
 
+
+const formatDateDisplayed = function(date){
+    let result;
+
+    const TODAY = new Date;
+
+    const dateOfToday = isToday(date);
+    const dateOfTomorrow = isTomorrow(date);
+
+    const lastDay = addDays(TODAY, 6);
+    const compareDate = compareAsc(lastDay, date)
+
+    if (dateOfToday){
+        result = 'Today'
+    } else if (dateOfTomorrow) {
+        result = 'Tomorrow'
+    } else if (compareDate === 1){
+        result = format(date, 'cccc');
+    } else {
+        result = format(date, 'dd MMM');
+    }
+
+    return result
+}
 
 
 const priority_openWindow = function(task){
