@@ -1037,8 +1037,8 @@ button[data-priority='high']:hover{
 
 
 .arrow-button{
-    height: 50px;
-    width: 50px;
+    height: 20px;
+    width: 20px;
     background-size: 100%;
 
 }

@@ -545,9 +545,17 @@ const newDate_BookingCalendar = function(calendarDays){
     
     const div = document.createElement('div');
 
-    div.appendChild(bookingCalendar_titleMonth(month));
-    div.appendChild(bookingCalendar_switchMonthsButtons(calendarDays))
-    div.appendChild(bookingCalendar_buttonsGrid(calendarDays, month))
+    const firstDiv = document.createElement('div');
+    firstDiv.setAttribute('class', 'flex-display');
+
+    const secondDiv = document.createElement('div')
+
+    firstDiv.appendChild(bookingCalendar_titleMonth(month));
+    firstDiv.appendChild(bookingCalendar_switchMonthsButtons(calendarDays));
+    secondDiv.appendChild(bookingCalendar_buttonsGrid(calendarDays, month));
+
+    div.appendChild(firstDiv);
+    div.appendChild(secondDiv)
 
     return div
 }
