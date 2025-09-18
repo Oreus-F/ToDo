@@ -211,6 +211,11 @@ body{
 }
 
 
+.justif-space-bet{
+    justify-content: space-between;
+}
+
+
 .self-aligned{
     align-self: center;
 }
@@ -651,6 +656,11 @@ button[data-active = "true"]:hover{
 }
 
 
+.closing-div[data-panel = 'date']{
+    flex-basis: 30px;
+}
+
+
 .closing-button{
     height: 40px;
     width: 40px;
@@ -663,6 +673,14 @@ button[data-active = "true"]:hover{
     background-color: var(--ascent-pastel-color);
     color: var(--ascent-typo-color);
 
+}
+
+
+
+.closing-button[data-panel = 'date']{
+    height: 25px;
+    width: 25px;
+    font-size: 10px;
 }
 
 
@@ -691,12 +709,16 @@ button[data-active = "true"]:hover{
 
 .dateEdit-modal{
     background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
+    border: none;
+    border-radius: 8px;
     inset: -200px 150px ;
     position: absolute;
-    z-index: 1001; 
+    z-index: 1001;
+    padding: 1rem;
 
     width: max-content;
-    height: 800px;
+    height: max-content;
 }
 
 
@@ -1027,14 +1049,25 @@ button[data-priority='high']:hover{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(7, 1fr);
+    row-gap: 1rem;
 }
 
 
 .bookingButtons{
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+    font-size: 1rem;
+    
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
+
+.bookingButtons[data-today='true']{
+    color: var(--ascent-color);
+    font-weight: bold;
+}
 
 .arrow-button{
     height: 20px;
