@@ -532,7 +532,28 @@ const newDate_Panel = function(value){
         
     }
     
-    div.appendChild(container)
+
+    const button = document.createElement('button');
+    button.setAttribute('class', 'closingOut');
+    button.setAttribute('id', 'closingButton-transparant');
+
+
+    const newTaskModal = document.querySelector('#newTaskModal');
+
+    const infoPanel = newTaskModal.getBoundingClientRect()
+    const X_Transform = infoPanel.left;
+    const Y_Transform = infoPanel.top;
+    button.setAttribute('style', `transform: translate(-${X_Transform}px, -${Y_Transform}px)`);
+
+
+    button.addEventListener('click', () => {
+        const dateContainer = document.querySelector('#dateContainer');
+        dateContainer.removeChild(div);
+        newTaskModal.removeChild(button);
+    })
+
+    div.appendChild(container);
+    newTaskModal.appendChild(button);
 
     return div
 }
@@ -547,33 +568,15 @@ const newDate_BookingCalendar = function(calendarDays){
 
 
     const firstDiv = document.createElement('div');
-    firstDiv.setAttribute('class', 'flex-display justif-space-bet');
+    firstDiv.setAttribute('class', 'first-div-style');
 
     const secondDiv = document.createElement('div');
 
-    const closing = document.createElement('div');
-    closing.setAttribute('class', 'closing-div');
-    closing.setAttribute('data-panel', 'date');
-
-    const button = document.createElement('button');
-    button.setAttribute('class', 'closing-button');
-    button.setAttribute('data-panel', 'date');
-    button.setAttribute('type', 'button');
-    button.textContent = 'X';
-
-    button.addEventListener('click', () => {
-        const dateContainer = document.querySelector('#dateContainer');
-        const datePanel = document.querySelector('#date-panel');
-        dateContainer.removeChild(datePanel)
-    });
-
-    closing.appendChild(button);
 
     firstDiv.appendChild(bookingCalendar_titleMonth(month));
     firstDiv.appendChild(bookingCalendar_switchMonthsButtons(calendarDays, month));
     secondDiv.appendChild(bookingCalendar_buttonsGrid(calendarDays, month));
 
-    div.appendChild(closing);
     div.appendChild(firstDiv);
     div.appendChild(secondDiv)
 
@@ -584,6 +587,7 @@ const newDate_BookingCalendar = function(calendarDays){
 const bookingCalendar_titleMonth = function(month){
     const monthTitle = document.createElement('div');
     const h3 = document.createElement('h3');
+    h3.setAttribute('class', 'title-month');
     month = month.toUpperCase();
     h3.textContent = month;
 
@@ -596,6 +600,7 @@ const bookingCalendar_titleMonth = function(month){
 
 const bookingCalendar_switchMonthsButtons = function(calendarDays){
     const switchMonthContainer = document.createElement('div');
+    switchMonthContainer.setAttribute('class', 'arrow-container')
     
     const buttonGetMonthBefore = document.createElement('button');
 
@@ -689,6 +694,11 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
                 buttonText.textContent = formatDateDisplayed(date);
 
                 openBookingCalendar();
+
+                const closingButton = document.querySelector('#closingButton-transparant');
+                const newTaskModal = document.querySelector('#newTaskModal');
+                newTaskModal.removeChild(closingButton)
+                
             })
         })
     });

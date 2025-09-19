@@ -666,7 +666,7 @@ button[data-active = "true"]:hover{
     width: 40px;
     border-radius: 24px;
     border: none;
-    z-index: 1000;
+    z-index: 850;
 
     text-align: center;
     font-size: 1rem;
@@ -696,7 +696,7 @@ button[data-active = "true"]:hover{
     background-color: rgb(255, 255, 255);
     inset: 0;
     position: fixed;
-    z-index: 999;
+    z-index: 800;
     transition: all 0.3s ease-in-out;
 
     margin: auto;
@@ -712,9 +712,9 @@ button[data-active = "true"]:hover{
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
     border: none;
     border-radius: 8px;
-    inset: -200px 150px ;
+    inset: 100px 120px ;
     position: absolute;
-    z-index: 1001;
+    z-index: 900;
     padding: 1rem;
 
     width: max-content;
@@ -1016,21 +1016,18 @@ button[data-priority='high']:hover{
 }
 
 
+.first-div-style{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: var(--ascent-color) 1px solid; 
+}
+
 .taskList-container{
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-
-
-/* .taskList-Element:hover{
-    border-bottom: none;
-    box-shadow: var(--main-dark-grey) 0px 2px 2px;
-    border-radius: 8px;
-    
-
-    transition: 200ms;
-} */
 
 
 .task-class:hover .hide-task-button{
@@ -1045,6 +1042,11 @@ button[data-priority='high']:hover{
 }
 
 
+.title-month{
+    font-size: 0.8rem;
+}
+
+
 .bookingCalendar-grid{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
@@ -1054,9 +1056,9 @@ button[data-priority='high']:hover{
 
 
 .bookingButtons{
-    height: 50px;
-    width: 50px;
-    font-size: 1rem;
+    height: 30px;
+    width: 30px;
+    font-size: 0.8rem;
     
     cursor: pointer;
     background-color: transparent;
@@ -1069,11 +1071,33 @@ button[data-priority='high']:hover{
     font-weight: bold;
 }
 
+
+.bookingButtons:not(:disabled):hover{
+    background-color: var(--ascent-pastel-color);
+    border-radius: 24px;
+}
+
+
+.arrow-container{
+    flex-basis: 60px;
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+}
+
+
 .arrow-button{
     height: 20px;
     width: 20px;
     background-size: 100%;
+    background-color: transparent;
 
+}
+
+
+.arrow-button:not(:disabled):hover{
+    background-color: var(--main-dark-grey);
+    border-radius: 6px;
 }
 
 
@@ -1098,4 +1122,13 @@ button[data-priority='high']:hover{
 
     height: 600px;
     width: 200px;
+}
+
+
+.closingOut{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 850;
+    background-color: transparent;
 }
