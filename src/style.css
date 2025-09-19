@@ -21,6 +21,12 @@
     --high-prio-color: #ee6f6f;
     --high-prio-border: #e72e2e;
 
+    --today-color: #408c40;
+    --tomorrow-color: #874343;
+    --week-color: #2c6aa3;
+    --date-color: #505050; 
+
+
     --sidebar: 420px;
     --hundred-percent : 100%;
     --fs11: 1.1rem;
@@ -765,10 +771,67 @@ button[data-active = "true"]:hover{
     background-color: transparent;
 }
 
+.extraTask-button:has(p[data-week='date']) p{
+    color: var(--date-color);
+}
+
+
+.extraTask-button:has(p[data-week='date']) span{
+    background-color: var(--date-color);
+}
+
+.extraTask-button:has(p[data-week='date']){
+    border-color: var(--date-color);
+} 
+
 
 .extraTask-button:hover{
     background-color: var(--main-light-grey);
 }
+
+
+.extraTask-button:has(p[data-week='today']) p{
+    color: var(--today-color);    
+}
+
+
+.extraTask-button:has(p[data-week='today']) span{
+    background-color: var(--today-color);
+}
+
+.extraTask-button:has(p[data-week='today']){
+    border-color: var(--today-color);
+} 
+
+
+.extraTask-button:has(p[data-week='tomorrow']) p{
+    color: var(--tomorrow-color);    
+}
+
+
+.extraTask-button:has(p[data-week='tomorrow']) span{
+    background-color: var(--tomorrow-color);
+}
+
+.extraTask-button:has(p[data-week='tomorrow']){
+    border-color: var(--tomorrow-color);
+} 
+
+
+.extraTask-button:has(p[data-week='week']) p{
+    color: var(--week-color);    
+}
+
+
+.extraTask-button:has(p[data-week='week']) span{
+    background-color: var(--week-color);
+}
+
+.extraTask-button:has(p[data-week='week']){
+    border-color: var(--week-color);
+} 
+
+
 
 .extraTask-text{
     text-align: left;

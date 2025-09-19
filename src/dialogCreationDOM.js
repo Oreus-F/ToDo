@@ -443,7 +443,7 @@ const extraTask_Date = function(){
 
 
     if (value) {
-        buttonText.textContent = formatDateDisplayed(value)
+        formatDateDisplayed(value, buttonText)
     } else {
         buttonText.textContent = 'Date'
     }
@@ -691,7 +691,7 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
                 buttonDate.setAttribute('value', date);
 
                 const buttonText = document.querySelector('#task_dateTexte');
-                buttonText.textContent = formatDateDisplayed(date);
+                formatDateDisplayed(date, buttonText);
 
                 openBookingCalendar();
 
@@ -714,7 +714,7 @@ const removeCalendarPanel = function(){
 }
 
 
-const formatDateDisplayed = function(date){
+const formatDateDisplayed = function(date, container){
     let result;
 
     const TODAY = new Date;
@@ -726,16 +726,20 @@ const formatDateDisplayed = function(date){
     const compareDate = compareAsc(lastDay, date)
 
     if (dateOfToday){
-        result = 'Today'
+        result = 'Today';
+        container.setAttribute('data-week', 'today');
     } else if (dateOfTomorrow) {
-        result = 'Tomorrow'
+        result = 'Tomorrow';
+        container.setAttribute('data-week', 'tomorrow');
     } else if (compareDate === 1){
         result = format(date, 'cccc');
+        container.setAttribute('data-week', 'week');
     } else {
         result = format(date, 'dd MMM');
+        container.setAttribute('data-week', 'date');
     }
 
-    return result
+    container.textContent = result
 }
 
 
