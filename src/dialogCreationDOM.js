@@ -476,12 +476,13 @@ const openBookingCalendar = function(value){
 
 const extraTask_Priority = function(task){
     const div = document.createElement('div');
-
+    div.setAttribute('id', 'priorityContainer');
 
     const button = document.createElement('button');
     button.setAttribute('id', 'task_priority');
     button.setAttribute('name', 'task_priority');
     button.setAttribute('class', 'extraTask-button flex-display');
+    button.setAttribute('type', 'button');
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
@@ -494,10 +495,16 @@ const extraTask_Priority = function(task){
 
 
     if (task) {
-        buttonText.textContent = task.priority
+        button.value = task.priority;
+        buttonText.textContent = task.priority;
     } else {
         buttonText.textContent = 'Priority'
     }
+
+    button.addEventListener('click', () => {
+        const value = button.value;
+        priority_openWindow(value);
+    })
 
     buttonContent.appendChild(buttonIcon);
     buttonContent.appendChild(buttonText);
@@ -511,7 +518,7 @@ const extraTask_Priority = function(task){
 
 const newDate_Panel = function(value){
     const div = document.createElement('div');
-    div.setAttribute('class', 'dateEdit-modal');
+    div.setAttribute('class', 'extra-modal');
     div.setAttribute('id', 'date-panel')
     const container = document.createElement('div')
     container.setAttribute('id', 'bookingContainer');
@@ -538,8 +545,8 @@ const newDate_Panel = function(value){
     button.setAttribute('id', 'closingButton-transparant');
 
 
+    
     const newTaskModal = document.querySelector('#newTaskModal');
-
     const infoPanel = newTaskModal.getBoundingClientRect()
     const X_Transform = infoPanel.left;
     const Y_Transform = infoPanel.top;
@@ -743,8 +750,55 @@ const formatDateDisplayed = function(date, container){
 }
 
 
-const priority_openWindow = function(task){
+const priority_openWindow = function(value){
+    const priorityContainer = document.querySelector('#priorityContainer');
 
+    const priorityPanel = document.querySelector('#priority-panel');
+
+    priorityPanel === null ? priorityContainer.appendChild(newPriority_panel(value)) : priorityContainer.removeChild(priorityPanel)
+}
+
+
+const newPriority_panel = function(value){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'extra-modal');
+    div.setAttribute('id', 'priority-panel');
+
+    const container = document.createElement('div')
+    container.setAttribute('id', 'priorityList');
+
+    if(value){
+
+
+    } else {
+
+        
+    }
+    
+
+    const button = document.createElement('button');
+    button.setAttribute('class', 'closingOut');
+    button.setAttribute('id', 'closingButton-transparant');
+
+
+    const newTaskModal = document.querySelector('#newTaskModal');
+
+    const infoPanel = newTaskModal.getBoundingClientRect()
+    const X_Transform = infoPanel.left;
+    const Y_Transform = infoPanel.top;
+    button.setAttribute('style', `transform: translate(-${X_Transform}px, -${Y_Transform}px)`);
+
+
+    button.addEventListener('click', () => {
+        const priorityContainer = document.querySelector('#priorityContainer');
+        priorityContainer.removeChild(div);
+        newTaskModal.removeChild(button);
+    })
+
+    div.appendChild(container);
+    newTaskModal.appendChild(button);
+
+    return div
 }
 
 

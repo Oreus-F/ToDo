@@ -713,12 +713,12 @@ button[data-active = "true"]:hover{
 }
 
 
-.dateEdit-modal{
+.extra-modal{
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
     border: none;
     border-radius: 8px;
-    inset: 100px 120px ;
+    inset: 0;
     position: absolute;
     z-index: 900;
     padding: 1rem;
