@@ -519,8 +519,10 @@ const extraTask_Priority = function(task){
 const newDate_Panel = function(value){
     const div = document.createElement('div');
     div.setAttribute('class', 'extra-modal');
-    div.setAttribute('id', 'date-panel')
-    const container = document.createElement('div')
+    div.setAttribute('id', 'date-panel');
+
+
+    const container = document.createElement('div');
     container.setAttribute('id', 'bookingContainer');
 
     if(value){
@@ -548,16 +550,28 @@ const newDate_Panel = function(value){
     
     const newTaskModal = document.querySelector('#newTaskModal');
     const infoPanel = newTaskModal.getBoundingClientRect()
-    const X_Transform = infoPanel.left;
-    const Y_Transform = infoPanel.top;
-    button.setAttribute('style', `transform: translate(-${X_Transform}px, -${Y_Transform}px)`);
+    const taskModalLeft = infoPanel.left;
+    const taskModalTop = infoPanel.top;
+    button.setAttribute('style', `transform: translate(-${taskModalLeft}px, -${taskModalTop}px)`);
 
 
     button.addEventListener('click', () => {
         const dateContainer = document.querySelector('#dateContainer');
         dateContainer.removeChild(div);
         newTaskModal.removeChild(button);
-    })
+    });
+
+
+    const dateContainer = document.querySelector('#dateContainer');
+    const dateContainerPosition = dateContainer.getBoundingClientRect();
+    const dateButtonRight = dateContainerPosition.right;
+    const dateButtonTop = dateContainerPosition.top;
+
+
+    const panelLeftPosition = dateButtonRight - taskModalLeft;
+    const panelTopPosition = dateButtonTop - taskModalTop;
+
+    div.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 
     div.appendChild(container);
     newTaskModal.appendChild(button);
@@ -784,9 +798,9 @@ const newPriority_panel = function(value){
     const newTaskModal = document.querySelector('#newTaskModal');
 
     const infoPanel = newTaskModal.getBoundingClientRect()
-    const X_Transform = infoPanel.left;
-    const Y_Transform = infoPanel.top;
-    button.setAttribute('style', `transform: translate(-${X_Transform}px, -${Y_Transform}px)`);
+    const taskModalLeft = infoPanel.left;
+    const taskModalTop = infoPanel.top;
+    button.setAttribute('style', `transform: translate(-${taskModalLeft}px, -${taskModalTop}px)`);
 
 
     button.addEventListener('click', () => {
@@ -794,6 +808,17 @@ const newPriority_panel = function(value){
         priorityContainer.removeChild(div);
         newTaskModal.removeChild(button);
     })
+
+    const priorityContainer = document.querySelector('#priorityContainer');
+    const priorityContainerPosition = priorityContainer.getBoundingClientRect();
+    const priorityButtonRight = priorityContainerPosition.right;
+    const priorityButtonTop = priorityContainerPosition.top;
+
+
+    const panelLeftPosition = priorityButtonRight - taskModalLeft;
+    const panelTopPosition = priorityButtonTop - taskModalTop;
+
+    div.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 
     div.appendChild(container);
     newTaskModal.appendChild(button);
