@@ -569,16 +569,49 @@ button[data-active = "true"]:hover{
 }
 
 
-li[data-priority = 'high'] span:first-child{
+li[data-priority = 'high'] span:first-child,
+button[data-priority = 'high'] span:first-child{
     background-color: var(--high-prio-border);
 }
 
-li[data-priority = 'medium'] span:first-child{
+li[data-priority = 'medium'] span:first-child,
+button[data-priority = 'medium'] span:first-child{
     background-color: var(--medium-prio-border);
 }
 
-li[data-priority = 'low'] span:first-child{
+li[data-priority = 'low'] span:first-child,
+button[data-priority = 'low'] span:first-child{
     background-color: var(--low-prio-border);
+}
+
+
+button[data-priority = 'high']{
+    border-color: var(--high-prio-border);
+}
+
+
+button[data-priority = 'medium']{
+    border-color: var(--medium-prio-border);
+}
+
+
+button[data-priority = 'low']{
+    border-color: var(--low-prio-border);
+}
+
+
+button[data-priority = 'high'] p{
+    color: var(--high-prio-color);
+}
+
+
+button[data-priority = 'medium'] p{
+    color: var(--medium-prio-border);
+}
+
+
+button[data-priority = 'low'] p{
+    color: var(--low-prio-color);
 }
 
 
@@ -1043,35 +1076,35 @@ button{
 }
 
 
-button[data-priority='low']{
+button.completed-button[data-priority='low']{
     background-color: var(--low-prio-color);
     border-color: var(--low-prio-border);
 }
 
 
-button[data-priority='low']:hover{
+button.completed-button[data-priority='low']:hover{
     background-color: var(--low-prio-border);
 }
 
 
-button[data-priority='medium']{
+button.completed-button[data-priority='medium']{
     background-color: var(--medium-prio-color);
     border-color: var(--medium-prio-border);
 }
 
 
-button[data-priority='medium']:hover{
+button.completed-button[data-priority='medium']:hover{
     background-color: var(--medium-prio-border);
 }
 
 
-button[data-priority='high']{
+button.completed-button[data-priority='high']{
     background-color: var(--high-prio-color);
     border-color: var(--high-prio-border);
 }
 
 
-button[data-priority='high']:hover{
+button.completed-button[data-priority='high']:hover{
     background-color: var(--high-prio-border);
 }
 

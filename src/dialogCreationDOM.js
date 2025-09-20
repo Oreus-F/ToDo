@@ -491,6 +491,7 @@ const extraTask_Priority = function(task){
     buttonIcon.setAttribute('class', 'extraIcon priority-icon full-h flex-basis20px')
 
     const buttonText = document.createElement('p');
+    buttonText.setAttribute('id', 'priority_text_button');
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
 
@@ -847,13 +848,7 @@ const create_priority_element = function(array, index, value){
     button.setAttribute('class', 'priority-button');
 
 
-    button.addEventListener('click', ()=> {
-        const priorityButton = document.querySelector('#task_priority');
-        priorityButton.setAttribute('value', result);
-        
-        const closingButton = document.querySelector('#closingButton-transparant');
-        closingButton.click()
-    })
+
 
     const spanFlag = document.createElement('span');
     spanFlag.setAttribute('class', 'priority-icon priority-icons-panel');
@@ -865,7 +860,10 @@ const create_priority_element = function(array, index, value){
     text = text.join("");
 
     p.textContent = text;
-    p.setAttribute('class', 'priority-text')
+    p.setAttribute('class', 'priority-text');
+
+
+
 
 
     const spanSelection = document.createElement('span');
@@ -873,6 +871,17 @@ const create_priority_element = function(array, index, value){
 
     if(value === result){spanSelection.setAttribute('data-selected', 'true')};
 
+    button.addEventListener('click', ()=> {
+        const priorityButton = document.querySelector('#task_priority');
+        priorityButton.setAttribute('value', result);
+        priorityButton.setAttribute('data-priority', result);
+
+        const buttonText = document.querySelector('#priority_text_button');
+        buttonText.textContent = text;
+        
+        const closingButton = document.querySelector('#closingButton-transparant');
+        closingButton.click()
+    })
 
     button.appendChild(spanFlag);
     button.appendChild(p);
