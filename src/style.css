@@ -534,11 +534,64 @@ button[data-active = "true"]:hover{
 }
 
 
+.priority-button{
+    display: flex;
+    gap: 8px;
+    flex-grow: 1;
+
+    height: 100%;
+
+    background-color: transparent;
+    border: none;
+    padding: 12px 8px;
+    padding-left: 16px;
+}
+
+
+.priority-button:hover{
+    background-color: var(--main-light-grey);
+}
+
+
+.priority-text{
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-dark-grey);
+    font-size: 0.9rem;
+}
+
+
 .priority-icon{
     background-color: var(--main-dark-grey);
     mask-image: url(../asset/ressource/flag.svg);
     mask-position: center;
     mask-repeat: no-repeat;
+}
+
+
+li[data-priority = 'high'] span:first-child{
+    background-color: var(--high-prio-border);
+}
+
+li[data-priority = 'medium'] span:first-child{
+    background-color: var(--medium-prio-border);
+}
+
+li[data-priority = 'low'] span:first-child{
+    background-color: var(--low-prio-border);
+}
+
+
+li[data-selected = 'true'] span:last-child{
+    background-color: var(--ascent-color);
+}
+
+
+.priority-icons-panel{
+    min-width: 20px;
+    min-height: 20px;
+    flex-basis: 20px;
 }
 
 
@@ -725,6 +778,10 @@ button[data-active = "true"]:hover{
 
     width: max-content;
     height: max-content;
+}
+
+.extra-modal#priority-panel{
+    padding: 0;
 }
 
 

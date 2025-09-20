@@ -503,7 +503,7 @@ const extraTask_Priority = function(task){
 
     button.addEventListener('click', () => {
         const value = button.value;
-        priority_openWindow(value);
+        priority_togglePanel(value);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -713,11 +713,8 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
                 const buttonText = document.querySelector('#task_dateTexte');
                 formatDateDisplayed(date, buttonText);
 
-                openBookingCalendar();
-
                 const closingButton = document.querySelector('#closingButton-transparant');
-                const newTaskModal = document.querySelector('#newTaskModal');
-                newTaskModal.removeChild(closingButton)
+                closingButton.click()
                 
             })
         })
@@ -763,7 +760,7 @@ const formatDateDisplayed = function(date, container){
 }
 
 
-const priority_openWindow = function(value){
+const priority_togglePanel = function(value){
     const priorityContainer = document.querySelector('#priorityContainer');
 
     const priorityPanel = document.querySelector('#priority-panel');
@@ -780,22 +777,15 @@ const newPriority_panel = function(value){
     const container = document.createElement('div')
     container.setAttribute('id', 'priorityList');
 
-    if(value){
-
-
-    } else {
-
-        
-    }
-    
+    container.appendChild(create_priority_list(value))    
 
     const button = document.createElement('button');
     button.setAttribute('class', 'closingOut');
     button.setAttribute('id', 'closingButton-transparant');
 
 
+    //use theses info to set up the button behind the panel but on all the viewport
     const newTaskModal = document.querySelector('#newTaskModal');
-
     const infoPanel = newTaskModal.getBoundingClientRect()
     const taskModalLeft = infoPanel.left;
     const taskModalTop = infoPanel.top;
@@ -808,6 +798,7 @@ const newPriority_panel = function(value){
         newTaskModal.removeChild(button);
     })
 
+    //then use theses one to position the panel next to their buttons even if it append to a previous parent
     const priorityContainer = document.querySelector('#priorityContainer');
     const priorityContainerPosition = priorityContainer.getBoundingClientRect();
     const priorityButtonRight = priorityContainerPosition.right;
@@ -825,6 +816,72 @@ const newPriority_panel = function(value){
     return div
 }
 
+
+const create_priority_list = function(value){
+    const ul = document.createElement('ul');
+    ul.setAttribute('class', 'flex-display column-direction')
+    
+    const priorityChoices = ['high', 'medium', 'low', 'none'];
+
+    for(let x=0; x < priorityChoices.length; x++){
+        ul.appendChild(create_priority_element(priorityChoices, x, value))        
+    }
+
+
+    return ul
+}
+
+
+const create_priority_element = function(array, index, value){
+    const result = array[index];
+
+    const li = document.createElement('li');
+    li.setAttribute('data-priority', result);
+    li.setAttribute('class', 'flex-display');
+    
+    if(value === result){li.setAttribute('data-selected', 'true')};
+
+    
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('class', 'priority-button');
+
+
+    button.addEventListener('click', ()=> {
+        const priorityButton = document.querySelector('#task_priority');
+        priorityButton.setAttribute('value', result);
+        
+        const closingButton = document.querySelector('#closingButton-transparant');
+        closingButton.click()
+    })
+
+    const spanFlag = document.createElement('span');
+    spanFlag.setAttribute('class', 'priority-icon priority-icons-panel');
+
+    const p = document.createElement('p'); 
+    
+    let text = result.split('');
+    text[0] = text[0].toUpperCase();
+    text = text.join("");
+
+    p.textContent = text;
+    p.setAttribute('class', 'priority-text')
+
+
+    const spanSelection = document.createElement('span');
+    spanSelection.setAttribute('class', 'priority-icons-panel');
+
+    if(value === result){spanSelection.setAttribute('data-selected', 'true')};
+
+
+    button.appendChild(spanFlag);
+    button.appendChild(p);
+    button.appendChild(spanSelection);
+
+    li.appendChild(button)
+    
+    return li
+}
 
 const sendNewUserData = function(event){
     const dialog = document.querySelector('#editUserDialog');
