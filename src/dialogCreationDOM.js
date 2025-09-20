@@ -346,10 +346,8 @@ const createDialogNewTask = function(task){
     const secondContainer = document.createElement('div');
     secondContainer.setAttribute('class', 'flex-display pad1andHalfRem');
 
-    const testy = document.createElement('p');
-    testy.textContent = 'projects and buttons here';
 
-    secondContainer.appendChild(testy);
+    secondContainer.appendChild(task_choose_project(task));
 
     form.appendChild(mainContainer);
     form.appendChild(secondContainer);
@@ -891,6 +889,20 @@ const create_priority_element = function(array, index, value){
     
     return li
 }
+
+
+const task_choose_project = function(task){
+    const div = document.createElement('div');
+
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+
+    const span = document.createElement('span');
+    
+
+    return div
+}
+
 
 const sendNewUserData = function(event){
     const dialog = document.querySelector('#editUserDialog');

@@ -484,12 +484,12 @@ button[data-active = "true"]:hover{
 }
 
 .icon-menu-one-project{
-    background-image: url(../asset/ressource/clipboard-text.svg)
+    background-image: url(../asset/ressource/briefcase-2.svg)
 }
 
 
 [data-active = "true"] > span.icon-menu-one-project{
-    mask-image: url(../asset/ressource/clipboard-text.svg);
+    mask-image: url(../asset/ressource/briefcase-2.svg);
 }
 
 .icon-menu-add-project{
