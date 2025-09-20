@@ -543,8 +543,7 @@ button[data-active = "true"]:hover{
 
     background-color: transparent;
     border: none;
-    padding: 12px 8px;
-    padding-left: 16px;
+    padding: 12px 16px;
 }
 
 
@@ -584,7 +583,8 @@ li[data-priority = 'low'] span:first-child{
 
 
 li[data-selected = 'true'] span:last-child{
-    background-color: var(--ascent-color);
+    background-color: var(--ascent-typo-color);
+    mask-image: url(../asset/ressource/check.svg);
 }
 
 
