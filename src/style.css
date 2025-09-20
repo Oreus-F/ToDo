@@ -754,14 +754,14 @@ li[data-selected = 'true'] span:last-child{
 
 
 .closing-button{
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     border-radius: 24px;
     border: none;
     z-index: 850;
 
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
     background-color: var(--ascent-pastel-color);
     color: var(--ascent-typo-color);
 
@@ -966,9 +966,8 @@ li[data-selected = 'true'] span:last-child{
     padding: 1rem
 }
 
-
-.pad1andHalfRem{
-    padding: 1.5rem;
+.padAddTaskContainer{
+    padding: .8rem 1.5rem;
 }
 
 
@@ -1284,4 +1283,39 @@ button.completed-button[data-priority='high']:hover{
     width: 100vw;
     z-index: 850;
     background-color: transparent;
+}
+
+
+.task-project-icons-button{
+    min-width: 20px;
+    min-height: 20px;
+
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 18px;
+}
+
+.task-project-button{
+    background-color: transparent;
+    border: none;
+    gap: 8px;
+    font-size: 1rem;
+    color: var(--secondary-dark-grey);
+}
+
+
+.icon-task-project{
+    mask-image: url(../asset/ressource/briefcase-2.svg);
+    background-color: var(--secondary-dark-grey);
+}
+
+.icon-task-inbox{
+    mask-image: url(../asset/ressource/inbox.svg);
+    background-color: var(--secondary-dark-grey);
+}
+
+
+.icon-task-chevron{
+    mask-image: url(../asset/ressource/chevron-down.svg);
+    background-color: var(--secondary-dark-grey);
 }

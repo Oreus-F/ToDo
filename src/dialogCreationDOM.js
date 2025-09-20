@@ -336,7 +336,7 @@ const createDialogNewTask = function(task){
 
 
     const mainContainer = document.createElement('div');
-    mainContainer.setAttribute('class', 'flex-display column-direction gap-16 full-h pad1andHalfRem mainContainer-border')
+    mainContainer.setAttribute('class', 'flex-display column-direction gap-16 full-h padAddTaskContainer mainContainer-border')
 
     mainContainer.appendChild(task_DivTitle(task));
     mainContainer.appendChild(task_Description(task));
@@ -344,7 +344,7 @@ const createDialogNewTask = function(task){
 
 
     const secondContainer = document.createElement('div');
-    secondContainer.setAttribute('class', 'flex-display pad1andHalfRem');
+    secondContainer.setAttribute('class', 'flex-display padAddTaskContainer');
 
 
     secondContainer.appendChild(task_choose_project(task));
@@ -892,13 +892,44 @@ const create_priority_element = function(array, index, value){
 
 
 const task_choose_project = function(task){
+
     const div = document.createElement('div');
 
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
+    button.setAttribute('id', 'task_project');
+    button.setAttribute('class', 'flex-display aligned-item-center task-project-button');
 
-    const span = document.createElement('span');
+    const spanIcon = document.createElement('span');
+    spanIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
+
+    const p = document.createElement('p');
+    p.setAttribute('class', 'flex-first-grow')
     
+    if(task){
+        const value = task.origin;
+        p.textContent = value;
+        button.setAttribute('value', value)
+    } else {
+        const value = 'Inbox';
+        p.textContent = value;
+        button.setAttribute('value', value)
+    }
+
+
+    if(button.value === 'Inbox'){
+        spanIcon.classList.toggle('icon-task-project')
+        spanIcon.classList.toggle('icon-task-inbox')
+    }
+
+    const spanToggle = document.createElement('span');
+    spanToggle.setAttribute('class', 'icon-task-chevron task-project-icons-button')
+
+    button.appendChild(spanIcon);
+    button.appendChild(p);
+    button.appendChild(spanToggle);
+
+    div.appendChild(button)
 
     return div
 }
