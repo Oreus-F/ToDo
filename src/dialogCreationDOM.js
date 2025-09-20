@@ -539,41 +539,16 @@ const newDate_Panel = function(value){
         container.appendChild(newDate_BookingCalendar(bookingCalendar));
         
     }
-    
-
-    const button = document.createElement('button');
-    button.setAttribute('class', 'closingOut');
-    button.setAttribute('id', 'closingButton-transparant');
-
-
-    
-    const newTaskModal = document.querySelector('#newTaskModal');
-    const infoPanel = newTaskModal.getBoundingClientRect()
-    const taskModalLeft = infoPanel.left;
-    const taskModalTop = infoPanel.top;
-    button.setAttribute('style', `transform: translate(-${taskModalLeft}px, -${taskModalTop}px)`);
-
-
-    button.addEventListener('click', () => {
-        const dateContainer = document.querySelector('#dateContainer');
-        dateContainer.removeChild(div);
-        newTaskModal.removeChild(button);
-    });
-
 
     const dateContainer = document.querySelector('#dateContainer');
-    const dateContainerPosition = dateContainer.getBoundingClientRect();
-    const dateButtonRight = dateContainerPosition.right;
-    const dateButtonTop = dateContainerPosition.top;
+    const newTaskModal = document.querySelector('#newTaskModal');
+    
+    createClosingButton(div, dateContainer, newTaskModal)
+    positionPanel(div, newTaskModal, dateContainer)
+    
 
-
-    const panelLeftPosition = dateButtonRight - taskModalLeft;
-    const panelTopPosition = dateButtonTop - taskModalTop;
-
-    div.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 
     div.appendChild(container);
-    newTaskModal.appendChild(button);
 
     return div
 }
@@ -778,12 +753,41 @@ const newPriority_panel = function(value){
 
     container.appendChild(create_priority_list(value))    
 
+    const newTaskModal = document.querySelector('#newTaskModal');
+    const priorityContainer = document.querySelector('#priorityContainer');
+
+    createClosingButton(div, priorityContainer, newTaskModal)
+    positionPanel(div, newTaskModal, priorityContainer)
+
+    div.appendChild(container);
+
+    return div
+}
+
+
+const newProject_panel = function(value){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'extra-modal');
+    div.setAttribute('id', 'project-panel');
+
+
+    const container = document.createElement('div');
+    container.setAttribute('id', 'projectContainer');
+
+    if(value){
+
+
+    } else {
+        
+    }
+    
+
     const button = document.createElement('button');
     button.setAttribute('class', 'closingOut');
     button.setAttribute('id', 'closingButton-transparant');
 
 
-    //use theses info to set up the button behind the panel but on all the viewport
+    
     const newTaskModal = document.querySelector('#newTaskModal');
     const infoPanel = newTaskModal.getBoundingClientRect()
     const taskModalLeft = infoPanel.left;
@@ -792,20 +796,20 @@ const newPriority_panel = function(value){
 
 
     button.addEventListener('click', () => {
-        const priorityContainer = document.querySelector('#priorityContainer');
-        priorityContainer.removeChild(div);
+        const dateContainer = document.querySelector('#dateContainer');
+        dateContainer.removeChild(div);
         newTaskModal.removeChild(button);
-    })
-
-    //then use theses one to position the panel next to their buttons even if it append to a previous parent
-    const priorityContainer = document.querySelector('#priorityContainer');
-    const priorityContainerPosition = priorityContainer.getBoundingClientRect();
-    const priorityButtonRight = priorityContainerPosition.right;
-    const priorityButtonTop = priorityContainerPosition.top;
+    });
 
 
-    const panelLeftPosition = priorityButtonRight - taskModalLeft;
-    const panelTopPosition = priorityButtonTop - taskModalTop;
+    const dateContainer = document.querySelector('#dateContainer');
+    const dateContainerPosition = dateContainer.getBoundingClientRect();
+    const dateButtonRight = dateContainerPosition.right;
+    const dateButtonTop = dateContainerPosition.top;
+
+
+    const panelLeftPosition = dateButtonRight - taskModalLeft;
+    const panelTopPosition = dateButtonTop - taskModalTop;
 
     div.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 
@@ -1012,6 +1016,45 @@ const readFileReader = function(file, fileReader, target){
     fileReader.readAsDataURL(file);
 
     
+}
+
+
+
+const createClosingButton = function(target, container, parent){
+    const button = document.createElement('button');
+    button.setAttribute('class', 'closingOut');
+    button.setAttribute('id', 'closingButton-transparant');
+
+
+    const parentPosition = parent.getBoundingClientRect()
+    const parentLeft = parentPosition.left;
+    const parentTop = parentPosition.top;
+    button.setAttribute('style', `transform: translate(-${parentLeft}px, -${parentTop}px)`);
+
+
+    button.addEventListener('click', () => {
+        container.removeChild(target);
+        parent.removeChild(button);
+    });
+
+
+    parent.appendChild(button);
+}
+
+
+const positionPanel = function(panel, targetOne, targetTwo){
+    const T1Position = targetOne.getBoundingClientRect()
+    const T1Left = T1Position.left;
+    const T1Top = T1Position.top;
+
+    const T2Position = targetTwo.getBoundingClientRect();
+    const T2Right = T2Position.right;
+    const T2Top = T2Position.top;
+
+    const panelLeftPosition = T2Right - T1Left;
+    const panelTopPosition = T2Top - T1Top;
+
+    panel.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 }
 
 
