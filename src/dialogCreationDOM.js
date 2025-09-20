@@ -627,8 +627,15 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
 
     buttonGetMonthBefore.setAttribute('type', 'button');
     buttonGetMonthBefore.setAttribute('id', 'previousMonth');
-    buttonGetMonthBefore.setAttribute('disabled', "true")
     buttonGetMonthBefore.setAttribute('class', 'arrow-button arrow-monthBefore');
+
+
+    const TODAY = new Date;
+    const TodaysMonth = getThisMonth(TODAY);
+
+    const monthDisplayed = getThisMonth(calendarDays);
+    
+    TodaysMonth === monthDisplayed ? buttonGetMonthBefore.setAttribute('disabled', "true") : buttonGetMonthBefore.removeAttribute("disabled");  
 
     
     buttonGetMonthBefore.addEventListener("click", (event) => {
@@ -670,7 +677,6 @@ const disableMonthBefore = function(newCalendar){
     const monthDisplayed = getThisMonth(newCalendar);
 
     const buttonGetMonthBefore = document.querySelector('#previousMonth');
-
     
     TodaysMonth === monthDisplayed ? buttonGetMonthBefore.setAttribute('disabled', "true") : buttonGetMonthBefore.removeAttribute("disabled");  
 
