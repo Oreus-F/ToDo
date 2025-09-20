@@ -781,40 +781,13 @@ const newProject_panel = function(value){
         
     }
     
-
-    const button = document.createElement('button');
-    button.setAttribute('class', 'closingOut');
-    button.setAttribute('id', 'closingButton-transparant');
-
-
-    
     const newTaskModal = document.querySelector('#newTaskModal');
-    const infoPanel = newTaskModal.getBoundingClientRect()
-    const taskModalLeft = infoPanel.left;
-    const taskModalTop = infoPanel.top;
-    button.setAttribute('style', `transform: translate(-${taskModalLeft}px, -${taskModalTop}px)`);
+    const projectContainer = document.querySelector('#projectContainer');
 
-
-    button.addEventListener('click', () => {
-        const dateContainer = document.querySelector('#dateContainer');
-        dateContainer.removeChild(div);
-        newTaskModal.removeChild(button);
-    });
-
-
-    const dateContainer = document.querySelector('#dateContainer');
-    const dateContainerPosition = dateContainer.getBoundingClientRect();
-    const dateButtonRight = dateContainerPosition.right;
-    const dateButtonTop = dateContainerPosition.top;
-
-
-    const panelLeftPosition = dateButtonRight - taskModalLeft;
-    const panelTopPosition = dateButtonTop - taskModalTop;
-
-    div.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
+    createClosingButton(div, projectContainer, newTaskModal);
+    positionPanel(div, newTaskModal, projectContainer)
 
     div.appendChild(container);
-    newTaskModal.appendChild(button);
 
     return div
 }
@@ -898,6 +871,7 @@ const create_priority_element = function(array, index, value){
 const task_choose_project = function(task){
 
     const div = document.createElement('div');
+    div.setAttribute('id', 'projectContainer');
 
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
@@ -1055,6 +1029,15 @@ const positionPanel = function(panel, targetOne, targetTwo){
     const panelTopPosition = T2Top - T1Top;
 
     panel.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
+}
+
+
+const project_togglePanel = function(value){
+    const priorityContainer = document.querySelector('#priorityContainer');
+
+    const priorityPanel = document.querySelector('#priority-panel');
+
+    priorityPanel === null ? priorityContainer.appendChild(newPriority_panel(value)) : priorityContainer.removeChild(priorityPanel)
 }
 
 
