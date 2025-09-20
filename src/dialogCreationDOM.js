@@ -630,12 +630,7 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
     buttonGetMonthBefore.setAttribute('class', 'arrow-button arrow-monthBefore');
 
 
-    const TODAY = new Date;
-    const TodaysMonth = getThisMonth(TODAY);
-
-    const monthDisplayed = getThisMonth(calendarDays);
-    
-    TodaysMonth === monthDisplayed ? buttonGetMonthBefore.setAttribute('disabled', "true") : buttonGetMonthBefore.removeAttribute("disabled");  
+    disableMonthBefore(calendarDays, buttonGetMonthBefore)
 
     
     buttonGetMonthBefore.addEventListener("click", (event) => {
@@ -644,7 +639,7 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
 
         const container = document.querySelector('#bookingContainer');
         container.appendChild(newDate_BookingCalendar(newCalendar));
-        disableMonthBefore(newCalendar)
+        disableMonthBefore(newCalendar, buttonGetMonthBefore)
 
     });
 
@@ -659,7 +654,7 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
 
         const container = document.querySelector('#bookingContainer');
         container.appendChild(newDate_BookingCalendar(newCalendar));
-        disableMonthBefore(newCalendar)
+        disableMonthBefore(newCalendar, buttonGetMonthBefore)
     })
 
     switchMonthContainer.appendChild(buttonGetMonthBefore);
@@ -670,15 +665,13 @@ const bookingCalendar_switchMonthsButtons = function(calendarDays){
 }
 
 
-const disableMonthBefore = function(newCalendar){
+const disableMonthBefore = function(newCalendar, button){
     const TODAY = new Date;
     const TodaysMonth = getThisMonth(TODAY);
 
     const monthDisplayed = getThisMonth(newCalendar);
 
-    const buttonGetMonthBefore = document.querySelector('#previousMonth');
-    
-    TodaysMonth === monthDisplayed ? buttonGetMonthBefore.setAttribute('disabled', "true") : buttonGetMonthBefore.removeAttribute("disabled");  
+    TodaysMonth === monthDisplayed ? button.setAttribute('disabled', "true") : button.removeAttribute("disabled");  
 
 }
 
