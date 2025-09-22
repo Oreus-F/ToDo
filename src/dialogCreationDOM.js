@@ -318,20 +318,8 @@ const createDialogNewTask = function(task){
     div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
 
 
-    const closing = document.createElement('div');
-    closing.setAttribute('class', 'closing-div')
-    const button = document.createElement('button');
-    button.setAttribute('class', 'closing-button');
-    button.textContent = 'X';
-
-    button.addEventListener('click', () => {
-        body.removeChild(div)
-    });
-
-    closing.appendChild(button);
-
     const form = document.createElement('form');
-    form.setAttribute('class', 'full-h neg-margin60TOP');
+    form.setAttribute('class', 'full-h');
 
 
     const mainContainer = document.createElement('div');
@@ -347,11 +335,11 @@ const createDialogNewTask = function(task){
 
 
     secondContainer.appendChild(task_choose_project(task));
+    secondContainer.appendChild(task_buttons(body, div))
 
     form.appendChild(mainContainer);
     form.appendChild(secondContainer);
 
-    div.appendChild(closing)
     div.appendChild(form);
 
     body.appendChild(div);
@@ -951,6 +939,29 @@ const task_choose_project = function(task){
     button.appendChild(spanToggle);
 
     div.appendChild(button)
+
+    return div
+}
+
+
+const task_buttons = function(container, target){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-display gap-8')
+
+    const closingButton = document.createElement('button');
+    closingButton.setAttribute('type', 'button');
+    closingButton.textContent = 'Cancel';
+
+    closingButton.addEventListener('click', () => {
+        container.removeChild(target)
+    });
+
+    const validateButton = document.createElement('button');
+    validateButton.textContent = 'Create new task';
+
+
+    div.appendChild(closingButton)
+    div.appendChild(validateButton)
 
     return div
 }
