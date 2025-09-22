@@ -770,18 +770,24 @@ li[data-selected = 'true'] span:last-child{
 }
 
 
-.closing-button{
-    height: 25px;
-    width: 25px;
-    border-radius: 24px;
-    border: none;
-    z-index: 850;
+.taskPanel-lastButton{
+    font-size: 1rem;
+    height: 40px;
+    width: 120px;
+    border-radius: 8px;
+}
 
-    text-align: center;
-    font-size: 0.8rem;
-    background-color: var(--ascent-pastel-color);
-    color: var(--ascent-typo-color);
 
+.cancel-button{
+    background-color: var(--secondary-light-grey);
+}
+
+.cancel-button:hover
+
+
+.validate-button{
+    background-color: var(--ascent-color);
+    color: var(--main-white);
 }
 
 
@@ -790,6 +796,14 @@ li[data-selected = 'true'] span:last-child{
     height: 25px;
     width: 25px;
     font-size: 10px;
+    border-radius: 24px;
+    border: none;
+    z-index: 850;
+
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: var(--ascent-pastel-color);
+    color: var(--ascent-typo-color);
 }
 
 

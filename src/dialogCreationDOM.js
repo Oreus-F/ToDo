@@ -331,7 +331,7 @@ const createDialogNewTask = function(task){
 
 
     const secondContainer = document.createElement('div');
-    secondContainer.setAttribute('class', 'flex-display padAddTaskContainer');
+    secondContainer.setAttribute('class', 'flex-display padAddTaskContainer justif-space-bet');
 
 
     secondContainer.appendChild(task_choose_project(task));
@@ -950,6 +950,7 @@ const task_buttons = function(container, target){
 
     const closingButton = document.createElement('button');
     closingButton.setAttribute('type', 'button');
+    closingButton.setAttribute('class', 'taskPanel-lastButton cancel-button')
     closingButton.textContent = 'Cancel';
 
     closingButton.addEventListener('click', () => {
@@ -957,7 +958,8 @@ const task_buttons = function(container, target){
     });
 
     const validateButton = document.createElement('button');
-    validateButton.textContent = 'Create new task';
+    validateButton.textContent = 'Create task';
+    validateButton.setAttribute('class', 'taskPanel-lastButton validate-button')
 
 
     div.appendChild(closingButton)
