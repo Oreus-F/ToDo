@@ -1001,7 +1001,8 @@ const readFileReader = function(file, fileReader, target){
 
 
 
-const createClosingButton = function(target, container, parent){
+const createClosingButton = function(parent, container, target){
+
     const button = document.createElement('button');
     button.setAttribute('class', 'closingOut');
     button.setAttribute('id', 'closingButton-transparant');
@@ -1015,7 +1016,7 @@ const createClosingButton = function(target, container, parent){
 
     button.addEventListener('click', () => {
         container.removeChild(target);
-        parent.removeChild(button);
+        parent.removeChild(button)
     });
 
 
@@ -1054,7 +1055,7 @@ const togglePanel = function(data, panelsInfos, buttonValue){
 
     for(const [key, value] of Object.entries(panelsInfos)){
         if (key === data){
-            wantedPanel = value
+            wantedPanel = value;
         }
     };
 
@@ -1066,9 +1067,14 @@ const togglePanel = function(data, panelsInfos, buttonValue){
 
     if (panel === null){
         container.appendChild(panelFunction(buttonValue));
+
+        const activeContainer = document.querySelector(`#${wantedPanel.container}`)
         const activePanel = document.querySelector(`#${wantedPanel.panel}`);
         const parent = document.querySelector(`#${wantedPanel.parent}`);
-        positionPanel(activePanel, parent, container)
+
+        positionPanel(activePanel, parent, container);
+        createClosingButton(parent, activeContainer, activePanel);
+
     } else { 
         container.removeChild(panel)
     }
