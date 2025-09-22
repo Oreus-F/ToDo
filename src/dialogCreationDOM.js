@@ -1064,7 +1064,14 @@ const togglePanel = function(data, panelsInfos, buttonValue){
     const panel = document.querySelector(`#${wantedPanel.panel}`);
     const panelFunction = wantedPanel.function;
 
-    panel === null ? container.appendChild(panelFunction(buttonValue)) : container.removeChild(panel)
+    if (panel === null){
+        container.appendChild(panelFunction(buttonValue));
+        const activePanel = document.querySelector(`#${wantedPanel.panel}`);
+        const parent = document.querySelector(`#${wantedPanel.parent}`);
+        positionPanel(activePanel, parent, container)
+    } else { 
+        container.removeChild(panel)
+    }
 }
 
 
@@ -1073,16 +1080,19 @@ const PANELS = {
     'date' : {
         'container': 'dateContainer',
         'panel': 'date-panel',
+        'parent': 'newTaskModal',
         'function': newDate_Panel
     },
     'priority' : {
         'container': 'priorityContainer',
         'panel': 'priority-panel',
+        'parent': 'newTaskModal',
         'function': newPriority_panel
     },
     'projects' : {
         'container': 'projectContainer',
         'panel': 'project-panel',
+        'parent': 'newTaskModal',
         'function': newPriority_panel
     }
 }
