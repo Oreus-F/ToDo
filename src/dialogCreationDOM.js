@@ -460,6 +460,7 @@ const extraTask_Date = function(){
     return div
 }
 
+
 const extraTask_Priority = function(task){
     const div = document.createElement('div');
     div.setAttribute('id', 'priorityContainer');
@@ -736,21 +737,84 @@ const newProject_panel = function(value){
     div.setAttribute('class', 'extra-modal');
     div.setAttribute('id', 'project-panel');
 
-
     const container = document.createElement('div');
     container.setAttribute('id', 'projectContainer');
 
-    if(value){
-
-
-    } else {
-        
-    }
-    
+    container.appendChild(create_project_list(value))
 
     div.appendChild(container);
 
     return div
+}
+
+
+const create_project_list = function(value){
+    const ul = document.createElement('ul');
+
+    const projectList = control.getProjectList();
+
+    for(let x=0; x < projectList.length; x++){
+        ul.appendChild(create_project_element(projectList, x, value))        
+    }
+
+    return ul
+}
+
+
+const create_project_element = function(array, index, value){
+    const result = array[index].title;
+
+    const li = document.createElement('li');
+    li.setAttribute('data-project', result);
+    li.setAttribute('class', 'flex-display');
+
+    if(value === result){li.setAttribute('data-selected', 'true')};
+    
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('class', 'priority-projects-button');
+
+    const spanIcon = document.createElement('span');
+    if(result === 'Inbox'){
+        spanIcon.setAttribute('class', 'icon-inbox priority-project-icons-panel extra-project-icons-panels');
+    } else {
+        spanIcon.setAttribute('class', 'icon-one-project priority-project-icons-panel extra-project-icons-panels');
+    }
+
+    const p = document.createElement('p'); 
+    
+    let text = result.split('');
+    text[0] = text[0].toUpperCase();
+    text = text.join("");
+
+    p.textContent = text;
+    p.setAttribute('class', 'priority-project-text');
+
+
+    const spanSelection = document.createElement('span');
+    spanSelection.setAttribute('class', 'priority-project-icons-panel');
+
+    if(value === result){spanSelection.setAttribute('data-selected', 'true')};
+
+    button.addEventListener('click', ()=> {
+        const projectButton = document.querySelector('#task_project');
+        projectButton.setAttribute('value', result);
+        projectButton.setAttribute('data-priority', result);
+
+        const buttonText = document.querySelector('#project_text_button');
+        buttonText.textContent = text;
+        
+        const closingButton = document.querySelector('#closingButton-transparant');
+        closingButton.click();
+    })
+
+    button.appendChild(spanIcon);
+    button.appendChild(p);
+    button.appendChild(spanSelection);
+
+    li.appendChild(button)
+    
+    return li
 }
 
 
@@ -781,13 +845,11 @@ const create_priority_element = function(array, index, value){
     
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
-    button.setAttribute('class', 'priority-button');
+    button.setAttribute('class', 'priority-projects-button');
 
-
-
-
+    
     const spanFlag = document.createElement('span');
-    spanFlag.setAttribute('class', 'priority-icon priority-icons-panel');
+    spanFlag.setAttribute('class', 'priority-icon priority-project-icons-panel');
 
     const p = document.createElement('p'); 
     
@@ -796,14 +858,14 @@ const create_priority_element = function(array, index, value){
     text = text.join("");
 
     p.textContent = text;
-    p.setAttribute('class', 'priority-text');
+    p.setAttribute('class', 'priority-project-text');
 
 
 
 
 
     const spanSelection = document.createElement('span');
-    spanSelection.setAttribute('class', 'priority-icons-panel');
+    spanSelection.setAttribute('class', 'priority-project-icons-panel');
 
     if(value === result){spanSelection.setAttribute('data-selected', 'true')};
 
@@ -843,7 +905,8 @@ const task_choose_project = function(task){
     spanIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
 
     const p = document.createElement('p');
-    p.setAttribute('class', 'flex-first-grow')
+    p.setAttribute('class', 'flex-first-grow');
+    p.setAttribute('id', 'project_text_button');
     
     if(task){
         const value = task.origin;

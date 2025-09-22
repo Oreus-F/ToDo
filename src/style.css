@@ -534,7 +534,7 @@ button[data-active = "true"]:hover{
 }
 
 
-.priority-button{
+.priority-projects-button{
     display: flex;
     gap: 8px;
     flex-grow: 1;
@@ -547,12 +547,12 @@ button[data-active = "true"]:hover{
 }
 
 
-.priority-button:hover{
+.priority-projects-button:hover{
     background-color: var(--main-light-grey);
 }
 
 
-.priority-text{
+.priority-project-text{
     min-width: 80px;
     display: flex;
     align-items: center;
@@ -566,6 +566,23 @@ button[data-active = "true"]:hover{
     mask-image: url(../asset/ressource/flag.svg);
     mask-position: center;
     mask-repeat: no-repeat;
+}
+
+
+.extra-project-icons-panels{
+    background-color: var(--secondary-dark-grey);
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+
+.extra-project-icons-panels.icon-one-project{
+    mask-image: url(../asset/ressource/briefcase-2.svg);
+}
+
+
+.extra-project-icons-panels.icon-inbox{
+    mask-image: url(../asset/ressource/inbox.svg);
 }
 
 
@@ -621,7 +638,7 @@ li[data-selected = 'true'] span:last-child{
 }
 
 
-.priority-icons-panel{
+.priority-project-icons-panel{
     min-width: 20px;
     min-height: 20px;
     flex-basis: 20px;
@@ -813,7 +830,8 @@ li[data-selected = 'true'] span:last-child{
     height: max-content;
 }
 
-.extra-modal#priority-panel{
+.extra-modal#priority-panel,
+.extra-modal#project-panel{
     padding: 0;
 }
 

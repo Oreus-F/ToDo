@@ -11,9 +11,3 @@ launchPage();
 
 
 displayToday();
-
-const todayCalendar = getCalendarDays();
-
-const todayBookingCalendar = createCalendarArray(todayCalendar);
-
-console.log(todayBookingCalendar);
