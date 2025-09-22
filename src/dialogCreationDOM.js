@@ -5,6 +5,24 @@ import { ProjectManager } from "./projectManager";
 const control = ProjectManager();
 
 
+const PANELS = {
+    'date' : {
+        'container': 1,
+        'panel': 2,
+        'function': 3
+    },
+    'priority' : {
+        'container': 1,
+        'panel': 2,
+        'function': 3
+    },
+    'projects' : {
+        'container': 1,
+        'panel': 2,
+        'function': 3
+    }
+}
+
 
 const createDialogProjectName = function(){
     const dialog = document.createElement('dialog');
