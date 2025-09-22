@@ -5,25 +5,6 @@ import { ProjectManager } from "./projectManager";
 const control = ProjectManager();
 
 
-const PANELS = {
-    'date' : {
-        'container': 'dateContainer',
-        'panel': 'date-panel',
-        'function': newDate_Panel()
-    },
-    'priority' : {
-        'container': 'priorityContainer',
-        'panel': 'priority-panel',
-        'function': newPriority_panel()
-    },
-    'projects' : {
-        'container': 'projectContainer',
-        'panel': 'project-panel',
-        'function': newPriority_panel() 
-    }
-}
-
-
 const createDialogProjectName = function(){
     const dialog = document.createElement('dialog');
     dialog.setAttribute("id", "getProjectName");
@@ -468,7 +449,10 @@ const extraTask_Date = function(){
 
     button.addEventListener('click', () => {
         const value = button.value;
-        openBookingCalendar(value)
+
+
+        
+        // openBookingCalendar(value)
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -520,7 +504,11 @@ const extraTask_Priority = function(task){
 
     button.addEventListener('click', () => {
         const value = button.value;
-        priority_togglePanel(value);
+
+
+
+
+        // priority_togglePanel(value);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -561,8 +549,9 @@ const newDate_Panel = function(value){
     const dateContainer = document.querySelector('#dateContainer');
     const newTaskModal = document.querySelector('#newTaskModal');
     
-    createClosingButton(div, dateContainer, newTaskModal)
-    positionPanel(div, newTaskModal, dateContainer)
+    
+    // createClosingButton(div, dateContainer, newTaskModal)
+    // positionPanel(div, newTaskModal, dateContainer)
     
 
 
@@ -774,8 +763,8 @@ const newPriority_panel = function(value){
     const newTaskModal = document.querySelector('#newTaskModal');
     const priorityContainer = document.querySelector('#priorityContainer');
 
-    createClosingButton(div, priorityContainer, newTaskModal)
-    positionPanel(div, newTaskModal, priorityContainer)
+    // createClosingButton(div, priorityContainer, newTaskModal)
+    // positionPanel(div, newTaskModal, priorityContainer)
 
     div.appendChild(container);
 
@@ -802,8 +791,8 @@ const newProject_panel = function(value){
     const newTaskModal = document.querySelector('#newTaskModal');
     const projectContainer = document.querySelector('#projectContainer');
 
-    createClosingButton(div, projectContainer, newTaskModal);
-    positionPanel(div, newTaskModal, projectContainer)
+    // createClosingButton(div, projectContainer, newTaskModal);
+    // positionPanel(div, newTaskModal, projectContainer)
 
     div.appendChild(container);
 
@@ -1060,8 +1049,42 @@ const project_togglePanel = function(value){
 
 
 
-const togglePanel = function(value, data){
+const togglePanel = function(data, panelsInfos, buttonValue){
+    let wantedPanel;
 
+    for(const [key, value] of Object.entries(panelsInfos)){
+        if (key === data){
+            wantedPanel = value
+        }
+    };
+
+    if(buttonValue){console.log(buttonValue)}
+
+    const containerID = wantedPanel.container;
+    const panelID = wantedPanel.panel;
+    const panelFunction = wantedPanel.function;
+
+    console.log(`container : ${containerID}, panelID : ${panelID}, panelFunction : ${panelFunction}`)
+}
+
+
+
+const PANELS = {
+    'date' : {
+        'container': 'dateContainer',
+        'panel': 'date-panel',
+        'function': newDate_Panel()
+    },
+    'priority' : {
+        'container': 'priorityContainer',
+        'panel': 'priority-panel',
+        'function': newPriority_panel()
+    },
+    'projects' : {
+        'container': 'projectContainer',
+        'panel': 'project-panel',
+        'function': newPriority_panel() 
+    }
 }
 
 
