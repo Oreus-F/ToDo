@@ -1,11 +1,13 @@
 :root{
     --main-white: #ffffff;
     --main-light-grey: #f4f4f4;
+    --secondary-light-grey-hover: #e0e0e0;
     --secondary-light-grey: #ececec;
     --main-dark-grey: #dddddd;
     --secondary-dark-grey: #5e5e5e;
     --ascent-pastel-color: #eed2bb;
-    --ascent-color: #b13924;
+    --ascent-color: #cf543e;
+    --ascent-color-hover: #b13924;
     --ascent-typo-color: #ec5e45;
 
 
@@ -778,11 +780,14 @@ li[data-selected = 'true'] span:last-child{
 }
 
 
+.cancel-button:hover{
+    background-color: var(--secondary-light-grey-hover);
+}
+
+
 .cancel-button{
     background-color: var(--secondary-light-grey);
 }
-
-.cancel-button:hover
 
 
 .validate-button{
@@ -790,7 +795,9 @@ li[data-selected = 'true'] span:last-child{
     color: var(--main-white);
 }
 
-
+.validate-button:hover{
+    background-color: var(--ascent-color-hover);
+}
 
 .closing-button[data-panel = 'date']{
     height: 25px;
@@ -1328,6 +1335,8 @@ button.completed-button[data-priority='high']:hover{
 }
 
 .task-project-button{
+    height: 40px;
+    min-width: 120px;
     background-color: transparent;
     border: none;
     gap: 8px;
@@ -1335,6 +1344,7 @@ button.completed-button[data-priority='high']:hover{
     color: var(--secondary-dark-grey);
     padding: 6px;
     border-radius: 8px;
+    text-align: left;
 }
 
 

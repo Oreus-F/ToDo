@@ -959,7 +959,7 @@ const task_buttons = function(container, target){
 
     const validateButton = document.createElement('button');
     validateButton.textContent = 'Create task';
-    validateButton.setAttribute('class', 'taskPanel-lastButton validate-button')
+    validateButton.setAttribute('class', 'taskPanel-lastButton validate-button');
 
 
     div.appendChild(closingButton)
