@@ -451,7 +451,7 @@ const extraTask_Date = function(){
         const value = button.value;
 
 
-        
+        togglePanel('date', PANELS, value)
         // openBookingCalendar(value)
     })
 
@@ -507,7 +507,7 @@ const extraTask_Priority = function(task){
 
 
 
-
+        togglePanel('priority', PANELS, value)
         // priority_togglePanel(value);
     })
 
@@ -1060,11 +1060,11 @@ const togglePanel = function(data, panelsInfos, buttonValue){
 
     if(buttonValue){console.log(buttonValue)}
 
-    const containerID = wantedPanel.container;
-    const panelID = wantedPanel.panel;
+    const container = document.querySelector(`#${wantedPanel.container}`);
+    const panel = document.querySelector(`#${wantedPanel.panel}`);
     const panelFunction = wantedPanel.function;
 
-    console.log(`container : ${containerID}, panelID : ${panelID}, panelFunction : ${panelFunction}`)
+    panel === null ? container.appendChild(panelFunction(buttonValue)) : container.removeChild(panel)
 }
 
 
@@ -1073,17 +1073,17 @@ const PANELS = {
     'date' : {
         'container': 'dateContainer',
         'panel': 'date-panel',
-        'function': newDate_Panel()
+        'function': newDate_Panel
     },
     'priority' : {
         'container': 'priorityContainer',
         'panel': 'priority-panel',
-        'function': newPriority_panel()
+        'function': newPriority_panel
     },
     'projects' : {
         'container': 'projectContainer',
         'panel': 'project-panel',
-        'function': newPriority_panel() 
+        'function': newPriority_panel
     }
 }
 
