@@ -446,13 +446,9 @@ const extraTask_Date = function(){
     }
 
     
-
     button.addEventListener('click', () => {
         const value = button.value;
-
-
-        togglePanel('date', PANELS, value)
-        // openBookingCalendar(value)
+        togglePanel('date', PANELS, value);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -463,16 +459,6 @@ const extraTask_Date = function(){
 
     return div
 }
-
-
-const openBookingCalendar = function(value){
-    const dateContainer = document.querySelector('#dateContainer');
-
-    const datePanel = document.querySelector('#date-panel');
-
-    datePanel === null ? dateContainer.appendChild(newDate_Panel(value)) : dateContainer.removeChild(datePanel)
-}
-
 
 const extraTask_Priority = function(task){
     const div = document.createElement('div');
@@ -504,11 +490,7 @@ const extraTask_Priority = function(task){
 
     button.addEventListener('click', () => {
         const value = button.value;
-
-
-
-        togglePanel('priority', PANELS, value)
-        // priority_togglePanel(value);
+        togglePanel('priority', PANELS, value);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -545,15 +527,7 @@ const newDate_Panel = function(value){
         container.appendChild(newDate_BookingCalendar(bookingCalendar));
         
     }
-
-    const dateContainer = document.querySelector('#dateContainer');
-    const newTaskModal = document.querySelector('#newTaskModal');
-    
-    
-    // createClosingButton(div, dateContainer, newTaskModal)
-    // positionPanel(div, newTaskModal, dateContainer)
-    
-
+ 
 
     div.appendChild(container);
 
@@ -597,7 +571,6 @@ const bookingCalendar_titleMonth = function(month){
 
     return monthTitle
 }
-
 
 
 const bookingCalendar_switchMonthsButtons = function(calendarDays){
@@ -741,15 +714,6 @@ const formatDateDisplayed = function(date, container){
 }
 
 
-const priority_togglePanel = function(value){
-    const priorityContainer = document.querySelector('#priorityContainer');
-
-    const priorityPanel = document.querySelector('#priority-panel');
-
-    priorityPanel === null ? priorityContainer.appendChild(newPriority_panel(value)) : priorityContainer.removeChild(priorityPanel)
-}
-
-
 const newPriority_panel = function(value){
     const div = document.createElement('div');
     div.setAttribute('class', 'extra-modal');
@@ -760,11 +724,6 @@ const newPriority_panel = function(value){
 
     container.appendChild(create_priority_list(value))    
 
-    const newTaskModal = document.querySelector('#newTaskModal');
-    const priorityContainer = document.querySelector('#priorityContainer');
-
-    // createClosingButton(div, priorityContainer, newTaskModal)
-    // positionPanel(div, newTaskModal, priorityContainer)
 
     div.appendChild(container);
 
@@ -788,11 +747,6 @@ const newProject_panel = function(value){
         
     }
     
-    const newTaskModal = document.querySelector('#newTaskModal');
-    const projectContainer = document.querySelector('#projectContainer');
-
-    // createClosingButton(div, projectContainer, newTaskModal);
-    // positionPanel(div, newTaskModal, projectContainer)
 
     div.appendChild(container);
 
@@ -1038,16 +992,6 @@ const positionPanel = function(panel, targetOne, targetTwo){
 
     panel.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
 }
-
-
-const project_togglePanel = function(value){
-    const priorityContainer = document.querySelector('#priorityContainer');
-
-    const priorityPanel = document.querySelector('#priority-panel');
-
-    priorityPanel === null ? priorityContainer.appendChild(newPriority_panel(value)) : priorityContainer.removeChild(priorityPanel)
-}
-
 
 
 const togglePanel = function(data, panelsInfos, buttonValue){
