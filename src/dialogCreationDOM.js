@@ -775,6 +775,7 @@ const create_project_element = function(array, index, value){
     button.setAttribute('class', 'priority-projects-button');
 
     const spanIcon = document.createElement('span');
+    
     if(result === 'Inbox'){
         spanIcon.setAttribute('class', 'icon-inbox priority-project-icons-panel extra-project-icons-panels');
     } else {
@@ -800,6 +801,18 @@ const create_project_element = function(array, index, value){
         const projectButton = document.querySelector('#task_project');
         projectButton.setAttribute('value', result);
         projectButton.setAttribute('data-priority', result);
+
+
+        if(result !== 'Inbox'){
+            const buttonIcon = document.querySelector('#project_icon_button');
+            buttonIcon.classList.toggle('icon-task-project')
+            buttonIcon.classList.toggle('icon-task-inbox')
+        } else {
+            const buttonIcon = document.querySelector('#project_icon_button');
+            buttonIcon.classList.toggle('icon-task-project')
+            buttonIcon.classList.toggle('icon-task-inbox')
+        }
+
 
         const buttonText = document.querySelector('#project_text_button');
         buttonText.textContent = text;
@@ -903,6 +916,7 @@ const task_choose_project = function(task){
 
     const spanIcon = document.createElement('span');
     spanIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
+    spanIcon.setAttribute('id', 'project_icon_button')
 
     const p = document.createElement('p');
     p.setAttribute('class', 'flex-first-grow');
@@ -1071,7 +1085,6 @@ const togglePanel = function(data, panelsInfos, buttonValue){
         }
     };
 
-    if(buttonValue){console.log(buttonValue)}
 
     const container = document.querySelector(`#${wantedPanel.container}`);
     const panel = document.querySelector(`#${wantedPanel.panel}`);
