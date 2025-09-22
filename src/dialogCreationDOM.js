@@ -793,12 +793,10 @@ const create_project_element = function(array, index, value){
 
         if(result !== 'Inbox'){
             const buttonIcon = document.querySelector('#project_icon_button');
-            buttonIcon.classList.toggle('icon-task-project')
-            buttonIcon.classList.toggle('icon-task-inbox')
+            buttonIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
         } else {
             const buttonIcon = document.querySelector('#project_icon_button');
-            buttonIcon.classList.toggle('icon-task-project')
-            buttonIcon.classList.toggle('icon-task-inbox')
+            buttonIcon.setAttribute('class', 'icon-task-inbox task-project-icons-button');
         }
 
 
