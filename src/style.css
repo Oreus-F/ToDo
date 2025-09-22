@@ -1301,6 +1301,13 @@ button.completed-button[data-priority='high']:hover{
     gap: 8px;
     font-size: 1rem;
     color: var(--secondary-dark-grey);
+    padding: 6px;
+    border-radius: 8px;
+}
+
+
+.task-project-button:hover{
+    background-color: var(--main-light-grey);
 }
 
 
