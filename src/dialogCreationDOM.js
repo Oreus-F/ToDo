@@ -862,7 +862,12 @@ const task_choose_project = function(task){
     }
 
     const spanToggle = document.createElement('span');
-    spanToggle.setAttribute('class', 'icon-task-chevron task-project-icons-button')
+    spanToggle.setAttribute('class', 'icon-task-chevron task-project-icons-button');
+
+    button.addEventListener('click', ()=> {
+        const value = button.getAttribute('value');
+        togglePanel('projects', PANELS, value)
+    })
 
     button.appendChild(spanIcon);
     button.appendChild(p);
@@ -1043,7 +1048,7 @@ const PANELS = {
         'container': 'projectContainer',
         'panel': 'project-panel',
         'parent': 'newTaskModal',
-        'function': newPriority_panel
+        'function': newProject_panel
     }
 }
 
