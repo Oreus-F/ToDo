@@ -7,19 +7,19 @@ const control = ProjectManager();
 
 const PANELS = {
     'date' : {
-        'container': 1,
-        'panel': 2,
-        'function': 3
+        'container': 'dateContainer',
+        'panel': 'date-panel',
+        'function': newDate_Panel()
     },
     'priority' : {
-        'container': 1,
-        'panel': 2,
-        'function': 3
+        'container': 'priorityContainer',
+        'panel': 'priority-panel',
+        'function': newPriority_panel()
     },
     'projects' : {
-        'container': 1,
-        'panel': 2,
-        'function': 3
+        'container': 'projectContainer',
+        'panel': 'project-panel',
+        'function': newPriority_panel() 
     }
 }
 
@@ -1056,6 +1056,12 @@ const project_togglePanel = function(value){
     const priorityPanel = document.querySelector('#priority-panel');
 
     priorityPanel === null ? priorityContainer.appendChild(newPriority_panel(value)) : priorityContainer.removeChild(priorityPanel)
+}
+
+
+
+const togglePanel = function(value, data){
+
 }
 
 
