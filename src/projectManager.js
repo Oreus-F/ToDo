@@ -144,6 +144,21 @@ const ProjectManager = function(){
     }
 
 
+    const getProjectFromTitle = function(target){
+        const projectList = getProjectList();
+        
+        let result;
+
+        projectList.forEach(project => {
+            const title = project.title;
+
+            if (title === target) result = project
+        });
+
+        return result
+    }
+
+
     // Maybe not needed will see
     const getActiveProject = function(){
         return activeProject
@@ -171,6 +186,8 @@ const ProjectManager = function(){
         let projectSelected;
         if(typeof(x) === 'number'){
             projectSelected = getProject(x);
+        } else if (typeof(x) === 'string'){
+            projectSelected = getProjectFromTitle(x)
         } else {
             let index = getProjectIndex(x)
             projectSelected = getProject(index);
@@ -370,7 +387,7 @@ const ProjectManager = function(){
 
     }
 
-    return {newProject, getActiveProject, changeProject, 
+    return {newProject, createTask, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
 changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, 
 createFirstTask, updateLocalStorageProjectList, changeTaskDueDate}
