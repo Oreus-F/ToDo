@@ -354,6 +354,7 @@ const task_DivTitle = function(task){
     input.setAttribute('class', 'newTask-titleInput')
     input.setAttribute('name', 'task_title');
     input.setAttribute('id', 'task_title');
+    input.setAttribute('required', 'true');
     
 
     if(task){
