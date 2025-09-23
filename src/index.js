@@ -9,5 +9,4 @@ import { getCalendarDays, createCalendarArray, getOneMonthBefore, getOneMonthAft
 
 launchPage();
 
-
 displayToday();

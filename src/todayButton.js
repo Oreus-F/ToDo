@@ -1,6 +1,6 @@
 import { createContentTemplate, taskTemplate } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
-import { format } from "date-fns";
+import { format, isToday } from "date-fns";
 
 const control = ProjectManager()
 
@@ -9,7 +9,7 @@ const displayToday = function(){
 
     
     const tasksList = control.getAllTasks();
-    const todayList = tasksList.filter(task => task.getTimeLeft() === 'now');
+    const todayList = tasksList.filter(task => isToday(task.dueDate));
     
     const TITLE_SECTION = "Today";
     const TODAY_DATE = format(new Date(), 'dd/MM/yyyy');
@@ -20,10 +20,8 @@ const displayToday = function(){
 
     createAddTask();
     
-    // displayTasksToday(todayList)
+    displayTasksToday(todayList)
 
-    // FOR NOW DISPLAY ALL TASK IN ORDER TO WORK ON THEM / DELETE THIS PART WHEN NOT NECESSARY ANYMORE
-    displayTasksToday(tasksList)
 
 
 }
