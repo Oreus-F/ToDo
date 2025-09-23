@@ -223,7 +223,13 @@ const createTimeLeftSection = function(task){
 
     const p = document.createElement('p');
     p.setAttribute('class', 'fs-09rem time-left')
-    p.textContent = task.getTimeLeft();
+    
+    let result = task.getTimeLeft().split('');
+    result[0] = result[0].toUpperCase();
+    result = result.join('');
+
+    p.textContent = result
+    
 
     div.appendChild(p)
 

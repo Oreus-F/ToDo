@@ -15,13 +15,25 @@ class Task {
 
 
     static dateInstance(date){
-        date = date.split('/');
-        const _date = new Date(date[2], (date[1] - 1), date[0])
+
+        let _date;
+
+        if(date.length === 0){
+            _date = new Date();
+        } else {
+            date = date.split('/');
+            _date = new Date(date[2], (date[1] - 1), date[0])
+
+        }
+
+
         return _date
     }
 
 
     set priority(newPriority) {
+        if(newPriority === undefined){newPriority = 'none'}
+
         newPriority = newPriority.toLowerCase();
         const choices = ['none', 'low', 'medium', 'high'];
 

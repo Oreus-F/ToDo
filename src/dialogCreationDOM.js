@@ -319,6 +319,7 @@ const createDialogNewTask = function(task){
 
 
     const form = document.createElement('form');
+    form.setAttribute('id', 'task_form')
     form.setAttribute('class', 'full-h');
 
 
@@ -343,6 +344,8 @@ const createDialogNewTask = function(task){
     div.appendChild(form);
 
     body.appendChild(div);
+
+    activateNewTask()
     
 }
 
@@ -407,13 +410,18 @@ const task_Extra = function(task){
 const extraTask_Date = function(){
 
     const div = document.createElement('div');
-    div.setAttribute('id', 'dateContainer')
+    div.setAttribute('id', 'dateContainer');
 
+    const hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('class', 'hidden');
+    hiddenInput.setAttribute('id', 'task_date');
+    hiddenInput.setAttribute('name', 'task_date');
+    
+    
     const button = document.createElement('button');
-    button.setAttribute('id', 'task_date');
-    button.setAttribute('name', 'task_date');
+    button.setAttribute('id', 'task_date_button')
     button.setAttribute('class', 'extraTask-button flex-display pos-rel');
-    button.setAttribute('type', 'button')
+    button.setAttribute('type', 'button');
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
@@ -442,6 +450,7 @@ const extraTask_Date = function(){
 
     buttonContent.appendChild(buttonIcon);
     buttonContent.appendChild(buttonText);
+    buttonContent.appendChild(hiddenInput)
     button.appendChild(buttonContent);
     div.appendChild(button);
     
@@ -454,9 +463,13 @@ const extraTask_Priority = function(task){
     const div = document.createElement('div');
     div.setAttribute('id', 'priorityContainer');
 
+    const hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('class', 'hidden');
+    hiddenInput.setAttribute('id', 'task_priority');
+    hiddenInput.setAttribute('name', 'task_priority');
+
     const button = document.createElement('button');
-    button.setAttribute('id', 'task_priority');
-    button.setAttribute('name', 'task_priority');
+    button.setAttribute('id', 'task_priority_button')
     button.setAttribute('class', 'extraTask-button flex-display');
     button.setAttribute('type', 'button');
 
@@ -485,6 +498,7 @@ const extraTask_Priority = function(task){
 
     buttonContent.appendChild(buttonIcon);
     buttonContent.appendChild(buttonText);
+    buttonContent.appendChild(hiddenInput)
     button.appendChild(buttonContent);
     div.appendChild(button)
     
@@ -651,8 +665,12 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
             gridContainer.appendChild(button);
 
             button.addEventListener('click', () => {
-                const buttonDate = document.querySelector('#task_date');
+                const buttonDate = document.querySelector('#task_date_button');
                 buttonDate.setAttribute('value', date);
+
+                const inputDate = document.querySelector('#task_date');
+                const formatedDateForTask = format(date, 'dd/MM/yyyy')
+                inputDate.setAttribute('value', formatedDateForTask);
 
                 const buttonText = document.querySelector('#task_dateTexte');
                 formatDateDisplayed(date, buttonText);
@@ -787,8 +805,11 @@ const create_project_element = function(array, index, value){
     if(value === result){spanSelection.setAttribute('data-selected', 'true')};
 
     button.addEventListener('click', ()=> {
-        const projectButton = document.querySelector('#task_project');
-        projectButton.setAttribute('value', result);
+        
+        const projectInput = document.querySelector('#task_project');
+        projectInput.setAttribute('value', result);
+
+        const projectButton = document.querySelector('#task_project_button');
         projectButton.setAttribute('data-priority', result);
 
 
@@ -870,8 +891,10 @@ const create_priority_element = function(array, index, value){
     if(value === result){spanSelection.setAttribute('data-selected', 'true')};
 
     button.addEventListener('click', ()=> {
-        const priorityButton = document.querySelector('#task_priority');
-        priorityButton.setAttribute('value', result);
+        const priorityInput = document.querySelector('#task_priority');
+        priorityInput.setAttribute('value', result);
+
+        const priorityButton = document.querySelector('#task_priority_button')
         priorityButton.setAttribute('data-priority', result);
 
         const buttonText = document.querySelector('#priority_text_button');
@@ -896,9 +919,14 @@ const task_choose_project = function(task){
     const div = document.createElement('div');
     div.setAttribute('id', 'projectContainer');
 
+    const hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('class', 'hidden');
+    hiddenInput.setAttribute('id', 'task_project');
+    hiddenInput.setAttribute('name', 'task_project');
+
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
-    button.setAttribute('id', 'task_project');
+    button.setAttribute('id', 'task_project_button');
     button.setAttribute('class', 'flex-display aligned-item-center task-project-button');
 
     const spanIcon = document.createElement('span');
@@ -912,15 +940,15 @@ const task_choose_project = function(task){
     if(task){
         const value = task.origin;
         p.textContent = value;
-        button.setAttribute('value', value)
+        hiddenInput.setAttribute('value', value)
     } else {
         const value = 'Inbox';
         p.textContent = value;
-        button.setAttribute('value', value)
+        hiddenInput.setAttribute('value', value)
     }
 
 
-    if(button.value === 'Inbox'){
+    if(hiddenInput.value === 'Inbox'){
         spanIcon.classList.toggle('icon-task-project')
         spanIcon.classList.toggle('icon-task-inbox')
     }
@@ -936,6 +964,7 @@ const task_choose_project = function(task){
     button.appendChild(spanIcon);
     button.appendChild(p);
     button.appendChild(spanToggle);
+    button.appendChild(hiddenInput)
 
     div.appendChild(button)
 
@@ -949,7 +978,8 @@ const task_buttons = function(container, target){
 
     const closingButton = document.createElement('button');
     closingButton.setAttribute('type', 'button');
-    closingButton.setAttribute('class', 'taskPanel-lastButton cancel-button')
+    closingButton.setAttribute('class', 'taskPanel-lastButton cancel-button');
+    closingButton.setAttribute('id', 'closing_task_panel')
     closingButton.textContent = 'Cancel';
 
     closingButton.addEventListener('click', () => {
@@ -1023,6 +1053,31 @@ const sendNewProject = function(event){
 }
 
 
+const sendNewTask = function(event){
+    event.preventDefault();
+
+    let formData = new FormData(event.target);
+    formData = Object.fromEntries(formData.entries());
+
+    const project = formData.task_project;
+
+    control.changeProject(project);
+
+    const title = formData.task_title;
+    const priority = formData.task_priority;
+    const date = formData.task_date;
+    const description = formData.task_description;
+
+    control.createTask(title, priority, date, description)
+
+    const closingButton = document.querySelector('#closing_task_panel');
+    closingButton.click();
+
+    
+    location.reload()
+}
+
+
 const activateEditUser = function(){
     const form = document.querySelector('#editUserForm');
 
@@ -1034,6 +1089,13 @@ const activateFormNewProject = function(){
     const form = document.querySelector('#newProject');
 
     form.addEventListener('submit', sendNewProject)
+}
+
+
+const activateNewTask = function(){
+    const form = document.querySelector('#task_form');
+
+    form.addEventListener('submit', sendNewTask)
 }
 
 

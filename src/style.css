@@ -59,6 +59,13 @@ body{
 }
 
 
+
+.hidden{
+    display: none;
+}
+
+
+
 .full-h{
     height: var(--hundred-percent);
 }
