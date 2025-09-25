@@ -21,9 +21,6 @@ const displayToday = function(){
     createAddTask();
     
     displayTasksToday(todayList)
-
-
-
 }
 
 

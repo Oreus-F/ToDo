@@ -70,7 +70,8 @@ const setUpAddTaskButton = function(){
     const button = document.querySelector('#newTaskOpenModal');
 
     button.addEventListener('click', () => {
-        createDialogNewTask();
+        const body = document.querySelector('body');
+        body.appendChild(createDialogNewTask())
     })
 }
 

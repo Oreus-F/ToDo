@@ -311,7 +311,6 @@ const createEditUser_DivResetStorage = function(){
 
 
 const createDialogNewTask = function(task){
-    const body = document.querySelector('body');
 
     const div = document.createElement('div');
     div.setAttribute('id', 'newTaskModal');
@@ -336,17 +335,16 @@ const createDialogNewTask = function(task){
 
 
     secondContainer.appendChild(task_choose_project(task));
-    secondContainer.appendChild(task_buttons(body, div))
+    secondContainer.appendChild(task_buttons(div))
 
     form.appendChild(mainContainer);
     form.appendChild(secondContainer);
 
     div.appendChild(form);
 
-    body.appendChild(div);
-
-    activateNewTask()
+    activateNewTask(form)
     
+    return div
 }
 
 
@@ -972,7 +970,7 @@ const task_choose_project = function(task){
 }
 
 
-const task_buttons = function(container, target){
+const task_buttons = function(target){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display gap-8')
 
@@ -983,7 +981,8 @@ const task_buttons = function(container, target){
     closingButton.textContent = 'Cancel';
 
     closingButton.addEventListener('click', () => {
-        container.removeChild(target)
+        const parent = target.parentElement;
+        parent.removeChild(target)
     });
 
     const validateButton = document.createElement('button');
@@ -1092,8 +1091,7 @@ const activateFormNewProject = function(){
 }
 
 
-const activateNewTask = function(){
-    const form = document.querySelector('#task_form');
+const activateNewTask = function(form){
 
     form.addEventListener('submit', sendNewTask)
 }
