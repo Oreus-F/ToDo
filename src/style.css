@@ -319,11 +319,6 @@ body{
     border-radius: 52px;
 }
 
-
-.mainContainer-border{
-    border-bottom: var(--main-dark-grey) 1px solid;
-}
-
 .border-picture {
     border: calc(var(--px8)/2) var(--ascent-color) solid;
 }
@@ -526,6 +521,12 @@ button[data-active = "true"]:hover{
     background-image: url(../asset/ressource/stack-2.svg);
     background-position: bottom;
     background-repeat: no-repeat;
+}
+
+
+div[data-inline='true'] .extraIcon{
+    mask-size: 18px;
+
 }
 
 
@@ -844,6 +845,13 @@ li[data-selected = 'true'] span:last-child{
 }
 
 
+.inline-modal{
+
+}
+
+
+
+
 .extra-modal{
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
@@ -864,9 +872,43 @@ li[data-selected = 'true'] span:last-child{
 }
 
 
+
 .modal-newTask{
     height: max-content;
     width: clamp(450px, 60%, 650px);
+}
+
+
+div[data-inline='true'] .main-container-style{
+    padding: 6px 12px;
+}
+
+
+.main-container-style{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    padding: .8rem 1.5rem;
+    border-bottom: var(--main-dark-grey) 1px solid;
+}
+
+
+div[data-inline='true'] .newTask-titleInput{
+    height: 1rem;
+    font-size: 0.9rem;
+}
+
+
+.second-container-style{
+    display: flex;
+    padding: .8rem 1.5rem;
+    justify-content: space-between;
+}
+
+
+div[data-inline='true'] .second-container-style{
+    padding: 6px 12px;
 }
 
 
@@ -876,6 +918,12 @@ li[data-selected = 'true'] span:last-child{
     font-weight: bold;
     border: none;
     outline: none;
+    width: 100%;
+}
+
+
+div[data-inline='true'] .newTask-description{
+    font-size: 0.8rem;
 }
 
 
@@ -893,6 +941,12 @@ li[data-selected = 'true'] span:last-child{
     font-size: 1rem;
     color: var(--ascent-typo-color);
 
+}
+
+
+div[data-inline='true'] .extraTask-button{
+    min-height: 1.8rem;
+    min-width: 5rem;
 }
 
 
@@ -967,6 +1021,10 @@ li[data-selected = 'true'] span:last-child{
     border-color: var(--week-color);
 } 
 
+
+div[data-inline='true'] .extraTask-text{
+    font-size: 0.7rem;
+}
 
 
 .extraTask-text{

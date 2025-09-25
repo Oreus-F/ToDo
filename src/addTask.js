@@ -10,16 +10,19 @@ const createAddTaskPanel = function(inline, task){
 
     const div = document.createElement('div');
     div.setAttribute('id', 'newTaskModal');
-    div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
-
-
+    div.setAttribute('data-inline', inline);
+    
+    inline === 'true' ? div.setAttribute('class', 'inline-modal flex-display column-direction') : div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
+    
     const form = document.createElement('form');
     form.setAttribute('id', 'task_form')
     form.setAttribute('class', 'full-h');
 
 
     const mainContainer = document.createElement('div');
-    mainContainer.setAttribute('class', 'flex-display column-direction gap-16 full-h padAddTaskContainer mainContainer-border')
+
+    mainContainer.setAttribute('class', 'main-container-style');
+    
 
     mainContainer.appendChild(task_DivTitle(task));
     mainContainer.appendChild(task_Description(task));
@@ -27,7 +30,7 @@ const createAddTaskPanel = function(inline, task){
 
 
     const secondContainer = document.createElement('div');
-    secondContainer.setAttribute('class', 'flex-display padAddTaskContainer justif-space-bet');
+    secondContainer.setAttribute('class', 'second-container-style');
 
 
     secondContainer.appendChild(task_choose_project(task));
@@ -48,11 +51,11 @@ const task_DivTitle = function(task){
     const div = document.createElement('div');
 
     const input = document.createElement('input');
-    input.setAttribute('class', 'newTask-titleInput')
     input.setAttribute('name', 'task_title');
     input.setAttribute('id', 'task_title');
     input.setAttribute('required', 'true');
     
+    input.setAttribute('class', 'newTask-titleInput');
 
     if(task){
         input.textContent = task.title;
@@ -123,12 +126,12 @@ const extraTask_Date = function(){
     const buttonIcon = document.createElement('span');
     buttonIcon.setAttribute('class', 'extraIcon calendar-date full-h flex-basis20px')
 
-    const value = button.value;
-
+    
     const buttonText = document.createElement('p');
     buttonText.setAttribute('id', 'task_dateTexte')
     buttonText.setAttribute('class', 'flex-first-grow extraTask-text');
 
+    const value = button.value
 
     if (value) {
         formatDateDisplayed(value, buttonText)

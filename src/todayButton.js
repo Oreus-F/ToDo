@@ -9,12 +9,13 @@ const displayToday = function(){
     const content = document.querySelector('#content');
     content.setAttribute('data-displayed', 'today');
 
+    const TODAY = new Date();
     
     const tasksList = control.getAllTasks();
     const todayList = tasksList.filter(task => isToday(task.dueDate));
     
     const TITLE_SECTION = "Today";
-    const TODAY_DATE = format(new Date(), 'dd/MM/yyyy');
+    const TODAY_DATE = format(TODAY, 'dd/MM/yyyy');
     const HEADER_DESCRIPTION = `${todayList.length} tasks for today !`
 
     content.appendChild(createContentTemplate(TITLE_SECTION, TODAY_DATE, HEADER_DESCRIPTION));
@@ -32,7 +33,7 @@ const createAddTask = function(){
 
     const button = document.createElement('button');
     button.textContent = 'Create a task';
-    button.setAttribute('data-inline', true)
+    button.setAttribute('data-inline', true);
 
     button.addEventListener('click', (event) => {
         const inline = event.target.getAttribute('data-inline');
