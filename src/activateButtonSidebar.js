@@ -1,4 +1,5 @@
-import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser, createDialogNewTask } from "./dialogCreationDOM";
+import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser} from "./dialogCreationDOM";
+import { createAddTaskPanel } from "./addTask";
 
 
 const switchDataAttribute = function(target, content){
@@ -71,7 +72,7 @@ const setUpAddTaskButton = function(){
 
     button.addEventListener('click', () => {
         const body = document.querySelector('body');
-        body.appendChild(createDialogNewTask())
+        body.appendChild(createAddTaskPanel())
     })
 }
 
