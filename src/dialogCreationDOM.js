@@ -1,6 +1,7 @@
 import { addDays, compareAsc, format, isBefore, isToday, isTomorrow } from "date-fns";
 import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefore, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
+import { displayToday } from "./todayButton";
 
 const control = ProjectManager();
 
@@ -1073,7 +1074,7 @@ const sendNewTask = function(event){
     closingButton.click();
 
     
-    location.reload()
+    updateTasksDisplayed()
 }
 
 
@@ -1092,7 +1093,6 @@ const activateFormNewProject = function(){
 
 
 const activateNewTask = function(form){
-
     form.addEventListener('submit', sendNewTask)
 }
 
@@ -1175,6 +1175,33 @@ const togglePanel = function(data, panelsInfos, buttonValue){
     } else { 
         container.removeChild(panel)
     }
+}
+
+
+
+const updateTasksDisplayed = function(){
+
+    const targets = {
+        'today' : displayToday,
+        'upcomming' : 'put tomorrow function',
+        'project' : 'put project function'
+
+    };
+
+
+    const content = document.querySelector('#content');
+    const dataContent = content.getAttribute('data-displayed');
+
+
+    let resultFunction;
+
+    for (const key in targets){
+        if(key == dataContent) resultFunction = targets[key];
+    }
+
+    content.replaceChildren();
+
+    resultFunction();
 }
 
 

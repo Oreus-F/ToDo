@@ -6,6 +6,7 @@ const control = ProjectManager()
 
 const displayToday = function(){
     const content = document.querySelector('#content');
+    content.setAttribute('data-displayed', 'today');
 
     
     const tasksList = control.getAllTasks();
