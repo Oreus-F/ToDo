@@ -6,7 +6,7 @@ import { displayToday } from "./todayButton";
 
 const control = ProjectManager();
 
-const createAddTaskPanel = function(task){
+const createAddTaskPanel = function(inline, task){
 
     const div = document.createElement('div');
     div.setAttribute('id', 'newTaskModal');

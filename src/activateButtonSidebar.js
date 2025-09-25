@@ -70,9 +70,10 @@ const setUpDisplayProjects = function(){
 const setUpAddTaskButton = function(){
     const button = document.querySelector('#newTaskOpenModal');
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        const inline = event.target.getAttribute('data-inline')
         const body = document.querySelector('body');
-        body.appendChild(createAddTaskPanel())
+        body.appendChild(createAddTaskPanel(inline))
     })
 }
 

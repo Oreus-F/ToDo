@@ -32,9 +32,11 @@ const createAddTask = function(){
 
     const button = document.createElement('button');
     button.textContent = 'Create a task';
+    button.setAttribute('data-inline', true)
 
-    button.addEventListener('click', () => {
-        div.appendChild(createAddTaskPanel())
+    button.addEventListener('click', (event) => {
+        const inline = event.target.getAttribute('data-inline');
+        div.appendChild(createAddTaskPanel(inline))
     })
 
     div.appendChild(button)
