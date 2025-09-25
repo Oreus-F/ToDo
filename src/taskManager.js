@@ -1,4 +1,4 @@
-import {format, intlFormatDistance} from 'date-fns'
+import {compareAsc, format, intlFormatDistance, isToday, isTomorrow, addDays} from 'date-fns'
 
 
 class Task {
@@ -54,7 +54,23 @@ class Task {
 
 
 Task.prototype.getTimeLeft = function(){
-    return intlFormatDistance(this.dueDate, new Date())
+
+    let result
+    const TODAY = new Date();
+    const sixDayLater = addDays(TODAY, 6);
+    const compareDate = (compareAsc(sixDayLater, this.dueDate) == true);
+    const noneOfPreviousOption = true
+
+    const test = [isToday(this.dueDate), isTomorrow(this.dueDate), compareDate, noneOfPreviousOption]
+    const display = ['Today', 'Tomorrow', format(this.dueDate, 'cccc'), intlFormatDistance(this.dueDate, TODAY)];
+
+
+    for(let x = 0; x < test.length; x++){
+        if (test[x] === true){
+            return result = display[x]
+        }
+    }
+
 }
 
 
