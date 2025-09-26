@@ -136,7 +136,6 @@ const completeTaskButton = function(task, taskContent){
         control.completeSelectedTask(task);
         
         updateTasksDisplayed()
-        // removeTaskDOM(taskContent);
 
     })
 
