@@ -827,11 +827,18 @@ const updateTasksDisplayed = function(){
 
 const createInlineAddTask = function(){
     const div = document.createElement('div');
+    div.setAttribute('class', 'full-w')
 
     const button = document.createElement('button');
-    button.textContent = 'Create a task';
+    button.setAttribute('class', 'add-task-inline-button')
     button.setAttribute('data-inline', true);
     button.setAttribute('data-hidden', false);
+
+    const spanIcon = document.createElement('span');
+    
+
+    const p = document.createElement('p');
+    p.textContent = 'Create a task';
 
     button.addEventListener('click', (event) => {
         const inline = event.target.getAttribute('data-inline');
@@ -840,6 +847,10 @@ const createInlineAddTask = function(){
         button.setAttribute('data-hidden', true);
 
     })
+
+
+    button.appendChild(spanIcon);
+    button.appendChild(p);
 
     div.appendChild(button)
 
