@@ -1,7 +1,7 @@
 import { createContentTemplate, taskTemplate } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
 import { format, isToday } from "date-fns";
-import { createAddTaskPanel } from "./addTask";
+import { createInlineAddTask } from "./addTask";
 
 const control = ProjectManager()
 
@@ -22,27 +22,9 @@ const displayToday = function(){
 
     const taskContainer = document.querySelector('#taskContainer');
 
-    taskContainer.appendChild(createAddTask());
+    taskContainer.appendChild(createInlineAddTask());
     
     displayTasksToday(todayList)
-}
-
-
-const createAddTask = function(){
-    const div = document.createElement('div');
-
-    const button = document.createElement('button');
-    button.textContent = 'Create a task';
-    button.setAttribute('data-inline', true);
-
-    button.addEventListener('click', (event) => {
-        const inline = event.target.getAttribute('data-inline');
-        div.appendChild(createAddTaskPanel(inline))
-    })
-
-    div.appendChild(button)
-
-    return div
 }
 
 

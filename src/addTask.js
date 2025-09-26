@@ -671,7 +671,7 @@ const task_choose_project = function(task){
 
 const task_buttons = function(target){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-display gap-8')
+    div.setAttribute('class', 'flex-display gap-8 aligned-item-center')
 
     const closingButton = document.createElement('button');
     closingButton.setAttribute('type', 'button');
@@ -680,8 +680,12 @@ const task_buttons = function(target){
     closingButton.textContent = 'Cancel';
 
     closingButton.addEventListener('click', () => {
+        const inline = target.getAttribute('data-inline');
         const parent = target.parentElement;
+
+        if (inline == 'true'){checkInlineButton(target)}
         parent.removeChild(target)
+
     });
 
     const validateButton = document.createElement('button');
@@ -694,6 +698,7 @@ const task_buttons = function(target){
 
     return div
 }
+
 
 const createClosingButton = function(parent, container, target){
 
@@ -820,6 +825,35 @@ const updateTasksDisplayed = function(){
 }
 
 
+const createInlineAddTask = function(){
+    const div = document.createElement('div');
+
+    const button = document.createElement('button');
+    button.textContent = 'Create a task';
+    button.setAttribute('data-inline', true);
+    button.setAttribute('data-hidden', false);
+
+    button.addEventListener('click', (event) => {
+        const inline = event.target.getAttribute('data-inline');
+        div.appendChild(createAddTaskPanel(inline));
+
+        button.setAttribute('data-hidden', true);
+
+    })
+
+    div.appendChild(button)
+
+    return div
+}
+
+
+
+const checkInlineButton = function(panel){
+    const buttonHidden = panel.previousElementSibling;
+    buttonHidden.setAttribute('data-hidden', 'false')
+}
+
+
 
 const PANELS = {
     'date' : {
@@ -843,4 +877,4 @@ const PANELS = {
 }
 
 
-export {createAddTaskPanel}
+export {createInlineAddTask, createAddTaskPanel}
