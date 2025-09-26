@@ -877,4 +877,4 @@ const PANELS = {
 }
 
 
-export {createInlineAddTask, createAddTaskPanel}
+export {createInlineAddTask, createAddTaskPanel, updateTasksDisplayed}

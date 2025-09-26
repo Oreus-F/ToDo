@@ -1,4 +1,5 @@
 import { ProjectManager } from "./projectManager";
+import { updateTasksDisplayed } from "./addTask";
 
 const control = ProjectManager();
 
@@ -134,7 +135,8 @@ const completeTaskButton = function(task, taskContent){
 
         control.completeSelectedTask(task);
         
-        removeTaskDOM(taskContent);
+        updateTasksDisplayed()
+        // removeTaskDOM(taskContent);
 
     })
 
