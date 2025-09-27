@@ -841,7 +841,7 @@ const createInlineAddTask = function(){
     p.textContent = 'Create a task';
 
     button.addEventListener('click', (event) => {
-        const inline = event.target.getAttribute('data-inline');
+        const inline = event.currentTarget.getAttribute('data-inline');
         div.appendChild(createAddTaskPanel(inline));
 
         button.setAttribute('data-hidden', true);
