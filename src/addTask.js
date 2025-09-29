@@ -41,7 +41,7 @@ const createAddTaskPanel = function(inline, task){
 
     div.appendChild(form);
 
-    activateNewTask(form)
+    task === undefined ? activateNewTask(form) :  console.log('not task pour kiwi le winki donkey phili mouli');
     
     return div
 }
@@ -58,14 +58,14 @@ const task_DivTitle = function(task){
     input.setAttribute('class', 'newTask-titleInput');
 
     if(task){
-        input.textContent = task.title;
+        input.value = task.title;
+
     } else {
         input.setAttribute('placeholder', 'Deliver food to grandma');
     }
 
-
-
     div.appendChild(input);
+
     return div
 }
 
@@ -81,7 +81,7 @@ const task_Description = function(task){
     
 
     if(task){
-        textarea.textContent = task.title;
+        textarea.textContent = task.description
     } else {
         textarea.setAttribute('placeholder', 'Description');
     }
