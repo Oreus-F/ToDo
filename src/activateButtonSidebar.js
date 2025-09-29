@@ -71,9 +71,14 @@ const setUpAddTaskButton = function(){
     const button = document.querySelector('#newTaskOpenModal');
 
     button.addEventListener('click', (event) => {
-        const inline = event.target.getAttribute('data-inline')
+        const inline = event.currentTarget.getAttribute('data-inline')
         const body = document.querySelector('body');
-        body.appendChild(createAddTaskPanel(inline))
+        
+        const checkPanel = body.lastElementChild
+        const checkPanelID = checkPanel.getAttribute('id');
+
+        checkPanelID === 'newTaskModal' ? body.removeChild(checkPanel) : body.appendChild(createAddTaskPanel(inline));
+
     })
 }
 
