@@ -104,7 +104,7 @@ const task_Extra = function(task){
 }
 
 
-const extraTask_Date = function(){
+const extraTask_Date = function(task){
 
     const div = document.createElement('div');
     div.setAttribute('id', 'dateContainer');
@@ -119,6 +119,8 @@ const extraTask_Date = function(){
     button.setAttribute('id', 'task_date_button')
     button.setAttribute('class', 'extraTask-button flex-display pos-rel');
     button.setAttribute('type', 'button');
+
+    if(task){button.setAttribute('value', task.dueDate)}
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
@@ -182,8 +184,13 @@ const extraTask_Priority = function(task){
 
 
     if (task) {
+        let priority = task.priority.split('')
+        priority[0] = priority[0].toUpperCase();
+        priority = priority.join('');
+
+        button.setAttribute('data-priority', task.priority)
         button.value = task.priority;
-        buttonText.textContent = task.priority;
+        buttonText.textContent = priority;
     } else {
         buttonText.textContent = 'Priority'
     }
