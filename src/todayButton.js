@@ -77,7 +77,7 @@ const displayNoTaskText = function(){
     p1.setAttribute('class', 'fs14 bold-text text-color-ascent')
     
     const p2 = document.createElement('p');
-    p2.textContent = 'You can create a new one by clicking on "Add Task"';
+    p2.textContent = 'You can create a new one !';
 
     const p3 = document.createElement('p');
     p3.textContent = "Or maybe it's a sign to relax, take your time";
