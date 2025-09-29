@@ -41,7 +41,7 @@ const createAddTaskPanel = function(inline, task){
 
     div.appendChild(form);
 
-    task === undefined ? activateNewTask(form) :  console.log('not task pour kiwi le winki donkey phili mouli');
+    task === undefined ? activateNewTask(form) :  activateEditTask(form);
     
     return div
 }
@@ -778,6 +778,18 @@ const togglePanel = function(data, panelsInfos, buttonValue){
 
 const activateNewTask = function(form){
     form.addEventListener('submit', sendNewTask)
+}
+
+
+const activateEditTask = function(form){
+    form.addEventListener('submit', sendEditTask);
+}
+
+
+const sendEditTask = function(event){
+    event.preventDefault();
+
+    console.log('edit the task')
 }
 
 
