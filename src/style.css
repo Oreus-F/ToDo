@@ -861,6 +861,7 @@ div[data-inline='true'] .taskPanel-lastButton{
 
 button[data-hidden='true']{
     opacity: 0;
+    margin-top: -18px;
 }
 
 
@@ -1469,4 +1470,39 @@ div[data-inline='true'] .task-project-button{
 .icon-task-chevron{
     mask-image: url(../asset/ressource/chevron-down.svg);
     background-color: var(--secondary-dark-grey);
+}
+
+
+.add-task-inline-button{
+    width: var(--hundred-percent);
+    height: 25px;
+    padding-top: 10px;
+
+    display: flex;
+    align-items: center;
+    
+    background-color: transparent;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+
+.add-task-inline-button:hover{
+    color: var(--ascent-color-hover);
+}
+
+
+.icon-inline-add-task{
+    flex-basis: 40px;
+    height: 100%;
+
+
+    background-color: var(--ascent-typo-color);
+    mask-image: url(../asset/ressource/plus.svg);
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.add-task-inline-button:hover .icon-inline-add-task{
+    background-color: var(--ascent-color);
 }

@@ -835,6 +835,7 @@ const createInlineAddTask = function(){
     button.setAttribute('data-hidden', false);
 
     const spanIcon = document.createElement('span');
+    spanIcon.setAttribute('class', 'icon-inline-add-task')
     
 
     const p = document.createElement('p');
