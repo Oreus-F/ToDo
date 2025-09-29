@@ -7,8 +7,7 @@ const control = ProjectManager()
 
 const displayToday = function(){
     const content = document.querySelector('#content');
-    content.setAttribute('data-displayed', 'today');
-
+    
     const TODAY = new Date();
     
     const tasksList = control.getAllTasks();
@@ -17,8 +16,9 @@ const displayToday = function(){
     const TITLE_SECTION = "Today";
     const TODAY_DATE = format(TODAY, 'dd/MM/yyyy');
     const HEADER_DESCRIPTION = `${todayList.length} tasks for today !`
-
+    
     content.appendChild(createContentTemplate(TITLE_SECTION, TODAY_DATE, HEADER_DESCRIPTION));
+    content.setAttribute('data-displayed', 'today');
 
     const taskContainer = document.querySelector('#taskContainer');
 

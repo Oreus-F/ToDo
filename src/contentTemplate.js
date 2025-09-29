@@ -4,7 +4,18 @@ import { updateTasksDisplayed } from "./addTask";
 const control = ProjectManager();
 
 
+const removeFromContent = function(){
+    const content = document.querySelector('#content');
+    content.removeAttribute('data-displayed')
+    content.replaceChildren();
+}
+
+
+
 const createContentTemplate = function(title, date, text){
+    removeFromContent()
+
+
     const div = document.createElement('div');
     div.setAttribute('class', 'full-h flex-display column-direction');
 

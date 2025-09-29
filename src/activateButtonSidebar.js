@@ -1,5 +1,6 @@
 import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser} from "./dialogCreationDOM";
 import { createAddTaskPanel } from "./addTask";
+import { displayToday } from "./todayButton";
 
 
 const switchDataAttribute = function(target, content){
@@ -82,12 +83,24 @@ const setUpAddTaskButton = function(){
     })
 }
 
+
+const setUpTodayButton = function(){
+    const todayButton = document.querySelector('#today_button');
+
+    todayButton.addEventListener('click', () => {
+        displayToday()
+    })
+}
+
+
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
     setUpEditUserButton();
     setUpDisplaySidebar();
     setUpDisplayProjects();
     setUpAddTaskButton();
+    setUpTodayButton();
 }
+
 
 export {activateSidebarButtons}
