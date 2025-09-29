@@ -1,5 +1,5 @@
 import { ProjectManager } from "./projectManager";
-import { updateTasksDisplayed } from "./addTask";
+import { createAddTaskPanel, updateTasksDisplayed } from "./addTask";
 
 const control = ProjectManager();
 
@@ -174,7 +174,14 @@ const createEditTaskButton = function(task){
     div.setAttribute('class', 'flex-display full-w')
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'flex-display justif-content-center full-w inside-task-button')
+    button.setAttribute('data-inline', 'false');
+    const inline = button.getAttribute('data-inline');
+    button.setAttribute('class', 'flex-display justif-content-center full-w inside-task-button');
+    
+    button.addEventListener('click', ()=> {
+        const body = document.querySelector('body');
+        body.appendChild(createAddTaskPanel(inline, task));
+    })
 
     const span = document.createElement('span');
     span.setAttribute('class', 'edit-task-icon task-icon-displayed flex-basis40px');

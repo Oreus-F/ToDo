@@ -11,7 +11,7 @@ const displayToday = function(){
     const TODAY = new Date();
     
     const tasksList = control.getAllTasks();
-    const todayList = tasksList.filter(task => (isToday(task.dueDate) && (task.status === 'to-do')));
+    const todayList = tasksList /* .filter(task => (isToday(task.dueDate) && (task.status === 'to-do'))); */
     
     const TITLE_SECTION = "Today";
     const TODAY_DATE = format(TODAY, 'dd/MM/yyyy');
