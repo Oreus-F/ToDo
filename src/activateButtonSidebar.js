@@ -76,9 +76,9 @@ const setUpAddTaskButton = function(){
         const body = document.querySelector('body');
         
         const checkPanel = body.lastElementChild
-        const checkPanelID = checkPanel.getAttribute('id');
+        const isDisplayed = checkPanel.getAttribute('data-taskPanel');
 
-        checkPanelID === 'newTaskModal' ? body.removeChild(checkPanel) : body.appendChild(createAddTaskPanel(inline));
+        isDisplayed === 'true' ? body.removeChild(checkPanel) : body.appendChild(createAddTaskPanel(inline));
 
     })
 }
