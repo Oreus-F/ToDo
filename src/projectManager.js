@@ -230,11 +230,15 @@ const ProjectManager = function(){
 
 
     const getTasksFromObject = function(object){
+        console.log(object)
         const thisProject = getProjectFromTask(object);
+        console.log(thisProject)
         
         const index = getTasksIndex(object, thisProject);
+        console.log(index)
 
         const result = getTaskFromIndex(index, thisProject);
+        console.log(result)
 
         return result
     }
@@ -253,6 +257,7 @@ const ProjectManager = function(){
 
 
     const removeSelectedTask = function(x){
+
 
         const taskSelected = selectThisTask(x);
         
@@ -390,7 +395,7 @@ const ProjectManager = function(){
     return {newProject, createTask, getActiveProject, changeProject, 
     removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
 changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, 
-createFirstTask, updateLocalStorageProjectList, changeTaskDueDate}
+createFirstTask, updateLocalStorageProjectList, changeTaskDueDate, getProjectFromTitle}
 }
 
 

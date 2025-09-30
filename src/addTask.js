@@ -41,7 +41,7 @@ const createAddTaskPanel = function(inline, task){
 
     div.appendChild(form);
 
-    task === undefined ? activateNewTask(form) :  activateEditTask(form);
+    task === undefined ? activateNewTask(form) :  activateEditTask(form, task);
     
     return div
 }
@@ -122,7 +122,10 @@ const extraTask_Date = function(task){
     button.setAttribute('class', 'extraTask-button flex-display pos-rel');
     button.setAttribute('type', 'button');
 
-    if(task){button.setAttribute('value', task.dueDate)}
+    if(task){
+        button.setAttribute('value', task.dueDate)
+        hiddenInput.setAttribute('value', task.dueDate)
+    }
 
     const buttonContent = document.createElement('div');
     buttonContent.setAttribute('class', 'flex-first-grow flex-display justif-content-center aligned-item-center gap-8');
@@ -194,6 +197,8 @@ const extraTask_Priority = function(task){
         button.setAttribute('data-priority', task.priority)
         button.value = task.priority;
         buttonText.textContent = priority;
+
+        hiddenInput.setAttribute('value', task.priority)
     } else {
         buttonText.textContent = 'Priority'
     }
@@ -797,9 +802,7 @@ const getFirstParent = function(target){
     let checkData = false;
 
     while(checkData === false){
-        console.log(actualTarget)
         const parent = actualTarget.parentElement;
-        console.log(parent)
         const dataParent = parent.getAttribute('data-taskPanel');
 
         dataParent === 'true' ? checkData = true : actualTarget = parent;
@@ -817,15 +820,44 @@ const activateNewTask = function(form){
 }
 
 
-const activateEditTask = function(form){
-    form.addEventListener('submit', sendEditTask);
+const activateEditTask = function(form, task){
+    form.addEventListener('submit', (event)=> {
+        sendEditTask(event, task)
+    });
 }
 
 
-const sendEditTask = function(event){
+const sendEditTask = function(event, task){
     event.preventDefault();
 
-    console.log('edit the task')
+    let formData = new FormData(event.target);
+    formData = Object.fromEntries(formData.entries());
+    
+    const newTitle = formData.task_title;
+    const newPriority = formData.task_priority;
+    const newDate = formData.task_date;
+    const newDescription = formData.task_description;
+    
+    task.title = newTitle;
+    task.priority = newPriority;
+    task.changeDate(newDate);
+    task.description = newDescription;
+    
+    const oldProject = task.origin;
+    const newProject = formData.task_project;
+
+    if(oldProject !== newProject){
+        task.changeOrigin(newProject);
+        const newProjectClass = control.getProjectFromTitle(newProject)
+
+        control.changeTaskProject(newProjectClass, task)
+    }
+
+    const closingButton = document.querySelector('#closing_task_panel');
+    closingButton.click();
+
+    
+    updateTasksDisplayed()
 }
 
 
