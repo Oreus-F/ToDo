@@ -81,7 +81,9 @@ const task_Description = function(task){
     
 
     if(task){
-        textarea.textContent = task.description
+        const description = task.description;
+
+        description === '' ? textarea.setAttribute('placeholder', 'Description') : textarea.textContent = description;
     } else {
         textarea.setAttribute('placeholder', 'Description');
     }
@@ -479,6 +481,7 @@ const create_project_element = function(array, index, value){
     li.setAttribute('data-project', result);
     li.setAttribute('class', 'flex-display');
 
+
     if(value === result){li.setAttribute('data-selected', 'true')};
     
     const button = document.createElement('button');
@@ -633,6 +636,7 @@ const task_choose_project = function(task){
     button.setAttribute('id', 'task_project_button');
     button.setAttribute('class', 'flex-display aligned-item-center task-project-button');
 
+
     const spanIcon = document.createElement('span');
     spanIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
     spanIcon.setAttribute('id', 'project_icon_button')
@@ -644,11 +648,12 @@ const task_choose_project = function(task){
     if(task){
         const value = task.origin;
         p.textContent = value;
-        hiddenInput.setAttribute('value', value)
+        hiddenInput.setAttribute('value', value);
     } else {
         const value = 'Inbox';
         p.textContent = value;
-        hiddenInput.setAttribute('value', value)
+        hiddenInput.setAttribute('value', value);
+
     }
 
 
