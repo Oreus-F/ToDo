@@ -34,7 +34,7 @@ const createAddTaskPanel = function(inline, task){
 
 
     secondContainer.appendChild(task_choose_project(task));
-    secondContainer.appendChild(task_buttons(div))
+    secondContainer.appendChild(task_buttons(div, task))
 
     form.appendChild(mainContainer);
     form.appendChild(secondContainer);
@@ -687,7 +687,7 @@ const task_choose_project = function(task){
 }
 
 
-const task_buttons = function(target){
+const task_buttons = function(target, task){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display gap-8 aligned-item-center')
 
@@ -707,7 +707,8 @@ const task_buttons = function(target){
     });
 
     const validateButton = document.createElement('button');
-    validateButton.textContent = 'Create task';
+
+    task ? validateButton.textContent = 'Edit Task' : validateButton.textContent = 'Create task';
     validateButton.setAttribute('class', 'taskPanel-lastButton validate-button');
 
 
@@ -796,7 +797,9 @@ const getFirstParent = function(target){
     let checkData = false;
 
     while(checkData === false){
+        console.log(actualTarget)
         const parent = actualTarget.parentElement;
+        console.log(parent)
         const dataParent = parent.getAttribute('data-taskPanel');
 
         dataParent === 'true' ? checkData = true : actualTarget = parent;
