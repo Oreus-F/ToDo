@@ -855,6 +855,7 @@ div[data-inline='true'] .taskPanel-lastButton{
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.295);
     border-radius: 12px;
     padding-top: 8px;
+    position: relative;
 
 }
 

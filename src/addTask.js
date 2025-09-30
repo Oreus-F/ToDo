@@ -9,7 +9,7 @@ const control = ProjectManager();
 const createAddTaskPanel = function(inline, task){
 
     const div = document.createElement('div');
-    div.setAttribute('id', 'newTaskModal');
+    div.setAttribute('data-taskPanel', 'true');
     div.setAttribute('data-inline', inline);
     
     inline === 'true' ? div.setAttribute('class', 'inline-modal flex-display column-direction') : div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
@@ -144,9 +144,10 @@ const extraTask_Date = function(task){
     }
 
     
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        const target = event.currentTarget;
         const value = button.value;
-        togglePanel('date', PANELS, value);
+        togglePanel('date', PANELS, value, target);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -197,9 +198,10 @@ const extraTask_Priority = function(task){
         buttonText.textContent = 'Priority'
     }
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        const target = event.currentTarget;
         const value = button.value;
-        togglePanel('priority', PANELS, value);
+        togglePanel('priority', PANELS, value, target);
     })
 
     buttonContent.appendChild(buttonIcon);
@@ -668,9 +670,10 @@ const task_choose_project = function(task){
     const spanToggle = document.createElement('span');
     spanToggle.setAttribute('class', 'icon-task-chevron task-project-icons-button');
 
-    button.addEventListener('click', ()=> {
+    button.addEventListener('click', (event)=> {
+        const target = event.currentTarget;
         const value = button.getAttribute('value');
-        togglePanel('projects', PANELS, value)
+        togglePanel('projects', PANELS, value, target)
     })
 
     button.appendChild(spanIcon);
@@ -738,23 +741,25 @@ const createClosingButton = function(parent, container, target){
 }
 
 
-const positionPanel = function(panel, targetOne, targetTwo){
-    const T1Position = targetOne.getBoundingClientRect()
-    const T1Left = T1Position.left;
-    const T1Top = T1Position.top;
+const positionPanel = function(panel, container, parent){
+    const containerPosition = container.getBoundingClientRect();
+    const containerRight = containerPosition.right;
+    const containerTop = containerPosition.top;
 
-    const T2Position = targetTwo.getBoundingClientRect();
-    const T2Right = T2Position.right;
-    const T2Top = T2Position.top;
 
-    const panelLeftPosition = T2Right - T1Left;
-    const panelTopPosition = T2Top - T1Top;
+    const parentPosition = parent.getBoundingClientRect()
+    const parentLeft = parentPosition.left;
+    const parentTop = parentPosition.top;
 
-    panel.setAttribute('style', `transform: translate(${panelLeftPosition}px, ${panelTopPosition}px)`)
+    const panelLeft = containerRight - parentLeft;
+    const panelTop = containerTop - parentTop;
+
+    panel.style.top = `${panelTop}px`;
+    panel.style.left = `${panelLeft}px`
 }
 
 
-const togglePanel = function(data, panelsInfos, buttonValue){
+const togglePanel = function(data, panelsInfos, buttonValue, target){
     let wantedPanel;
 
     for(const [key, value] of Object.entries(panelsInfos)){
@@ -764,23 +769,43 @@ const togglePanel = function(data, panelsInfos, buttonValue){
     };
 
 
-    const container = document.querySelector(`#${wantedPanel.container}`);
+    const container = target.parentElement
     const panel = document.querySelector(`#${wantedPanel.panel}`);
     const panelFunction = wantedPanel.function;
 
     if (panel === null){
+
         container.appendChild(panelFunction(buttonValue));
 
-        const activeContainer = document.querySelector(`#${wantedPanel.container}`)
-        const activePanel = document.querySelector(`#${wantedPanel.panel}`);
-        const parent = document.querySelector(`#${wantedPanel.parent}`);
+        const activePanel = container.lastChild;
 
-        positionPanel(activePanel, parent, container);
-        createClosingButton(parent, activeContainer, activePanel);
+        const parent = getFirstParent(target);
+
+        positionPanel(activePanel, container, parent);
+        createClosingButton(parent, container, activePanel);
 
     } else { 
         container.removeChild(panel)
     }
+}
+
+
+const getFirstParent = function(target){
+    let actualTarget = target
+    let result;
+    let checkData = false;
+
+    while(checkData === false){
+        const parent = actualTarget.parentElement;
+        const dataParent = parent.getAttribute('data-taskPanel');
+
+        dataParent === 'true' ? checkData = true : actualTarget = parent;
+
+        result = parent
+    }
+
+
+    return result
 }
 
 
@@ -896,19 +921,16 @@ const checkInlineButton = function(panel){
 
 const PANELS = {
     'date' : {
-        'container': 'dateContainer',
         'panel': 'date-panel',
         'parent': 'newTaskModal',
         'function': newDate_Panel
     },
     'priority' : {
-        'container': 'priorityContainer',
         'panel': 'priority-panel',
         'parent': 'newTaskModal',
         'function': newPriority_panel
     },
     'projects' : {
-        'container': 'projectContainer',
         'panel': 'project-panel',
         'parent': 'newTaskModal',
         'function': newProject_panel
