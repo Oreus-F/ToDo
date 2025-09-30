@@ -517,7 +517,7 @@ const create_project_element = function(array, index, value){
         projectInput.setAttribute('value', result);
 
         const projectButton = document.querySelector('#task_project_button');
-        projectButton.setAttribute('data-priority', result);
+        projectButton.setAttribute('value', result);
 
 
         if(result !== 'Inbox'){
@@ -636,6 +636,8 @@ const task_choose_project = function(task){
     button.setAttribute('id', 'task_project_button');
     button.setAttribute('class', 'flex-display aligned-item-center task-project-button');
 
+    const buttonValue = button.getAttribute('value');
+
 
     const spanIcon = document.createElement('span');
     spanIcon.setAttribute('class', 'icon-task-project task-project-icons-button');
@@ -645,15 +647,16 @@ const task_choose_project = function(task){
     p.setAttribute('class', 'flex-first-grow');
     p.setAttribute('id', 'project_text_button');
     
-    if(task){
+    if(task && (buttonValue === null)){
         const value = task.origin;
         p.textContent = value;
         hiddenInput.setAttribute('value', value);
+        button.setAttribute('value', value)
     } else {
         const value = 'Inbox';
         p.textContent = value;
         hiddenInput.setAttribute('value', value);
-
+        button.setAttribute('value', value)
     }
 
 
