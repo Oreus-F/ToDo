@@ -837,21 +837,10 @@ const sendEditTask = function(event, task){
     const newPriority = formData.task_priority;
     const newDate = formData.task_date;
     const newDescription = formData.task_description;
-    
-    task.title = newTitle;
-    task.priority = newPriority;
-    task.changeDate(newDate);
-    task.description = newDescription;
-    
-    const oldProject = task.origin;
     const newProject = formData.task_project;
+    
+    console.log(task)
 
-    if(oldProject !== newProject){
-        task.changeOrigin(newProject);
-        const newProjectClass = control.getProjectFromTitle(newProject)
-
-        control.changeTaskProject(newProjectClass, task)
-    }
 
     const closingButton = document.querySelector('#closing_task_panel');
     closingButton.click();

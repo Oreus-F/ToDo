@@ -10,7 +10,8 @@ class Task {
         this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy')
         this.description = description,
         this.status = 'to-do',
-        this.origin = origin
+        this.origin = origin;
+        this.id = crypto.randomUUID();
     };
 
 
@@ -86,6 +87,7 @@ Task.prototype.changeStatus = function(){
 
 Task.prototype.changeDate = function(_newDate){
     this.dueDate = _newDate;
+    console.log(_newDate)
     this.formatedDueDate = format(_newDate, 'dd/MM/yyyy');
 }
 

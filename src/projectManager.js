@@ -232,13 +232,9 @@ const ProjectManager = function(){
     const getTasksFromObject = function(object){
         console.log(object)
         const thisProject = getProjectFromTask(object);
-        console.log(thisProject)
-        
         const index = getTasksIndex(object, thisProject);
-        console.log(index)
 
         const result = getTaskFromIndex(index, thisProject);
-        console.log(result)
 
         return result
     }
@@ -260,6 +256,7 @@ const ProjectManager = function(){
 
 
         const taskSelected = selectThisTask(x);
+        console.log(taskSelected)
         
         const thisProject = getProjectFromTask(taskSelected);
 
