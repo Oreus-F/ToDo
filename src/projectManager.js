@@ -159,13 +159,6 @@ const ProjectManager = function(){
     }
 
 
-    // Maybe not needed will see
-    const getActiveProject = function(){
-        return activeProject
-    };
-
-
-
     const getProjectFromTask = function(task){
         const target = task.origin;
         const projectList = getProjectList();
