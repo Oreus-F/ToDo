@@ -183,6 +183,7 @@ const ProjectManager = function(){
 
 
     const changeProject = function(x){
+        console.log(typeof(x))
         let projectSelected;
         if(typeof(x) === 'number'){
             projectSelected = getProject(x);
@@ -194,10 +195,6 @@ const ProjectManager = function(){
         }
         activeProject = projectSelected;
     };
-
-
-
-    // TEMPORARY METHOD
 
 
     const deleteALLPROJECT = function(){
@@ -329,7 +326,9 @@ const ProjectManager = function(){
 
     const changeTaskProject = function(project, task){
         removeSelectedTask(task)
-        project.addTaskIntoProject(task)
+        project.addTaskIntoProject(task);
+
+        updateLocalStorageProjectList()
     }
 
 
@@ -372,8 +371,6 @@ const ProjectManager = function(){
     }
 
 
-
-
     const createFirstTask = function(){
 
         createTask('Edit username', 'low', '25/09/2025', 'In the sidebar you will find a button next to your actual username');
@@ -389,10 +386,10 @@ const ProjectManager = function(){
 
     }
 
-    return {newProject, createTask, getActiveProject, changeProject, 
-    removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllTasks, getAllCompleteTasks,
-changeTaskProject, getProject, getProjectList, deleteALLPROJECT, parsingProject, setProjectsIntoJSON, 
-createFirstTask, updateLocalStorageProjectList, changeTaskDueDate, getProjectFromTitle}
+
+    return {newProject, createTask, getProjectList, changeProject, removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllCompleteTasks,
+ getAllTasks, changeTaskProject, changeTaskDueDate, setProjectsIntoJSON,  parsingProject, 
+createFirstTask }
 }
 
 
