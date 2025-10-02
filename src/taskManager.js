@@ -3,7 +3,7 @@ import {compareAsc, format, intlFormatDistance, isToday, isTomorrow, addDays} fr
 
 class Task {
 
-    constructor(title, priority, dueDate, description = ''){
+    constructor(title, priority, dueDate, description = '', origin){
         this.title = title,
         this.priority = priority,
         this.dueDate = Task.dateInstance(dueDate);

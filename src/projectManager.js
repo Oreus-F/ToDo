@@ -121,8 +121,6 @@ const ProjectManager = function(){
     const newProject = function(title, tasks, completed){
         const project = new Project(title, tasks, completed);
         projectList.push(project);
-        changeProject(project);
-
 
         updateLocalStorageProjectList();
         updateSidebarProjectList(getProjectList());
@@ -173,21 +171,6 @@ const ProjectManager = function(){
 
         return result;
     }
-
-
-    const changeProject = function(x){
-        console.log(typeof(x))
-        let projectSelected;
-        if(typeof(x) === 'number'){
-            projectSelected = getProject(x);
-        } else if (typeof(x) === 'string'){
-            projectSelected = getProjectFromTitle(x)
-        } else {
-            let index = getProjectIndex(x)
-            projectSelected = getProject(index);
-        }
-        activeProject = projectSelected;
-    };
 
 
     const deleteALLPROJECT = function(){
@@ -380,7 +363,7 @@ const ProjectManager = function(){
     }
 
 
-    return {newProject, createTask, getProjectList, changeProject, removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllCompleteTasks,
+    return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllCompleteTasks,
  getAllTasks, changeTaskProject, changeTaskDueDate, setProjectsIntoJSON,  parsingProject, 
 createFirstTask }
 }

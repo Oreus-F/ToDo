@@ -856,16 +856,15 @@ const sendNewTask = function(event){
     let formData = new FormData(event.target);
     formData = Object.fromEntries(formData.entries());
 
-    const project = formData.task_project;
-
-    control.changeProject(project);
-
+    
+    
     const title = formData.task_title;
     const priority = formData.task_priority;
     const date = formData.task_date;
     const description = formData.task_description;
+    const project = formData.task_project;
 
-    control.createTask(title, priority, date, description)
+    control.createTask(title, priority, date, description, project);
 
     const closingButton = document.querySelector('#closing_task_panel');
     closingButton.click();
