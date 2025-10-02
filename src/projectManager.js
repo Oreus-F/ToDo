@@ -204,13 +204,8 @@ const ProjectManager = function(){
     }
 
 
-    const selectThisTask = function(x){
-        let taskSelected
-        if(typeof(x) === 'number'){
-            taskSelected = getTaskFromIndex(x);
-        } else {
-            taskSelected = getTasksFromObject(x);
-        }
+    const getTask = function(x){
+        const taskSelected = typeof(x) === 'number' ? taskSelected = getTaskFromIndex(x) : taskSelected = getTasksFromObject(x);
 
         return taskSelected
     } 
@@ -219,7 +214,7 @@ const ProjectManager = function(){
     const removeSelectedTask = function(x){
 
 
-        const taskSelected = selectThisTask(x);
+        const taskSelected = getTask(x);
         
         const thisProject = getProject(taskSelected);
 
