@@ -835,11 +835,18 @@ const sendEditTask = function(event, task){
     
     const newTitle = formData.task_title;
     const newPriority = formData.task_priority;
-    const newDate = formData.task_date;
+    let newDate = formData.task_date;
+    newDate = format(newDate, 'dd/MM/yyyy')
     const newDescription = formData.task_description;
     const newProject = formData.task_project;
     
-    console.log(task)
+    task.title = newTitle;
+    task.priority = newPriority;
+    task.changeDate(newDate);
+    task.description = newDescription;
+    task.changeOrigin(newProject);
+
+    control.updateLocalStorageProjectList()
 
 
     const closingButton = document.querySelector('#closing_task_panel');
