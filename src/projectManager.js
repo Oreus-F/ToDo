@@ -132,6 +132,16 @@ const ProjectManager = function(){
     }
 
 
+    const createTask = function(title, priority, date, description, origin){
+        const task = taskControl.createTask(title, priority, date, description, origin);
+
+        const project = getProject(task);
+        project.addTaskIntoProject(task);
+
+        updateLocalStorageProjectList();
+    }
+
+
     const getProject = function(x){
         const result = typeof(x) === 'string' ? getProjectFromTitle(x) : getProjectFromTask(x);
 
@@ -176,12 +186,7 @@ const ProjectManager = function(){
     }
 
 
-    const createTask = function(title, priority, date, description){
-        const task = taskControl.createTask(title, priority, date, description);
-        activeProject.addTaskIntoProject(task);
 
-        updateLocalStorageProjectList();
-    }
 
 
     const getProjectTasksList = function(){

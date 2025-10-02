@@ -855,8 +855,6 @@ const sendNewTask = function(event){
 
     let formData = new FormData(event.target);
     formData = Object.fromEntries(formData.entries());
-
-    
     
     const title = formData.task_title;
     const priority = formData.task_priority;
@@ -864,9 +862,9 @@ const sendNewTask = function(event){
     const description = formData.task_description;
     const project = formData.task_project;
 
+    
     control.createTask(title, priority, date, description, project);
 
-    
 
     const closingButton = document.querySelector('#closing_task_panel');
     closingButton.click();
