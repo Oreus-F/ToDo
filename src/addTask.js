@@ -835,8 +835,7 @@ const sendEditTask = function(event, task){
     
     const newTitle = formData.task_title;
     const newPriority = formData.task_priority;
-    let newDate = formData.task_date;
-    newDate = format(newDate, 'dd/MM/yyyy')
+    const newDate = formData.task_date;
     const newDescription = formData.task_description;
     const newProject = formData.task_project;
     
