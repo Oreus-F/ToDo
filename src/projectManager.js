@@ -207,8 +207,6 @@ const ProjectManager = function(){
 
 
     const removeSelectedTask = function(x){
-
-
         const taskSelected = getTask(x);
         
         const thisProject = getProject(taskSelected);
@@ -276,8 +274,11 @@ const ProjectManager = function(){
 
 
     const changeTaskProject = function(project, task){
-        removeSelectedTask(task)
-        project.addTaskIntoProject(task);
+        
+        removeSelectedTask(task);
+
+        const newProject = getProject(project)
+        newProject.addTaskIntoProject(task);
 
         updateLocalStorageProjectList()
     }
@@ -287,6 +288,7 @@ const ProjectManager = function(){
         const _updateList = setProjectsIntoJSON();
         localStorage.setItem('projectList', _updateList)
     }
+
 
     const setProjectsIntoJSON = function(){
         return JSON.stringify(getProjectList())
