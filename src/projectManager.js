@@ -133,7 +133,9 @@ const ProjectManager = function(){
 
 
     const getProject = function(x){
-        return projectList[x]
+        const result = typeof(x) === 'string' ? getProjectFromTitle(x) : getProjectFromTask(x);
+
+        return result
     };
 
 
@@ -198,8 +200,7 @@ const ProjectManager = function(){
 
 
     const getTasksFromObject = function(object){
-        console.log(object)
-        const thisProject = getProjectFromTask(object);
+        const thisProject = getProject(object);
         const index = getTasksIndex(object, thisProject);
 
         const result = getTaskFromIndex(index, thisProject);
@@ -224,9 +225,8 @@ const ProjectManager = function(){
 
 
         const taskSelected = selectThisTask(x);
-        console.log(taskSelected)
         
-        const thisProject = getProjectFromTask(taskSelected);
+        const thisProject = getProject(taskSelected);
 
         thisProject.removeTask(taskSelected);
 
@@ -246,7 +246,7 @@ const ProjectManager = function(){
                 activeProject.completeTask(task);
                 activeProject.removeTask(task)
             } else {
-                const tempProject = getProjectFromTask(task);
+                const tempProject = getProject(task);
                 tempProject.completeTask(task);
                 tempProject.removeTask(task);
             }
