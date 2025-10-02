@@ -111,8 +111,6 @@ const Inbox = new Project('Inbox');
 
 const projectList = [Inbox];
 
-let activeProject = Inbox;
-
 const ProjectManager = function(){
 
     
@@ -183,14 +181,6 @@ const ProjectManager = function(){
     const deleteALLPROJECT = function(){
         projectList.splice(0, getProjectList().length);
         updateSidebarProjectList(getProjectList());
-    }
-
-
-
-
-
-    const getProjectTasksList = function(){
-        return activeProject.getTasksList();
     }
 
 
