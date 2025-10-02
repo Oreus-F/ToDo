@@ -340,7 +340,7 @@ const ProjectManager = function(){
 
     return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
  getAllTasks, changeTaskProject, changeTaskDueDate, setProjectsIntoJSON,  parsingProject, 
-createFirstTask, getTask }
+createFirstTask, getTask, updateLocalStorageProjectList }
 }
 
 
