@@ -184,30 +184,25 @@ const ProjectManager = function(){
     }
 
 
-    const getTaskFromIndex = function(index, project){
-        return project.getTask(index)
-    }
+    const getTask = function(object){
+        const target = object.id;
 
+        const projectList = getProjectList();
+        let result;
 
-    const getTasksIndex = function(task, project){
-        return project.tasks.indexOf(task)
-    }
+        projectList.forEach(project => {
+            const tasks = project.getTasksList();
 
+            tasks.forEach(task => {
+                if (task.id === target){
+                    result = task
+                }
+            })
+        });
 
-    const getTasksFromObject = function(object){
-        const thisProject = getProject(object);
-        const index = getTasksIndex(object, thisProject);
-
-        const result = getTaskFromIndex(index, thisProject);
 
         return result
-    }
 
-
-    const getTask = function(x){
-        const taskSelected = typeof(x) === 'number' ? taskSelected = getTaskFromIndex(x) : taskSelected = getTasksFromObject(x);
-
-        return taskSelected
     } 
 
 
@@ -345,7 +340,7 @@ const ProjectManager = function(){
 
     return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
  getAllTasks, changeTaskProject, changeTaskDueDate, setProjectsIntoJSON,  parsingProject, 
-createFirstTask }
+createFirstTask, getTask }
 }
 
 
