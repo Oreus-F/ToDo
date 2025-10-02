@@ -210,7 +210,6 @@ const createDeleteTaskButton = function(task, taskContent){
 
         if (window.confirm("Do you really want to delete this task ?")){
             removeTaskDOM(taskContent);
-            console.log(task)
             control.removeSelectedTask(task);
 
         }
