@@ -866,6 +866,8 @@ const sendNewTask = function(event){
 
     control.createTask(title, priority, date, description, project);
 
+    
+
     const closingButton = document.querySelector('#closing_task_panel');
     closingButton.click();
 

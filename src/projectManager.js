@@ -137,11 +137,6 @@ const ProjectManager = function(){
     };
 
 
-    const getProjectIndex = function(project){
-        return projectList.indexOf(project)
-    }
-
-
     const getProjectFromTitle = function(target){
         const projectList = getProjectList();
         
