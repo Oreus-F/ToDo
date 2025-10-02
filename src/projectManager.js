@@ -252,11 +252,6 @@ const ProjectManager = function(){
     }
 
 
-    const getProjectCompleteTasks = function(){
-        return activeProject.getCompleteTasks();
-    }
-
-
     const getAllCompleteTasks = function(){
         const projects = getProjectList();
 
@@ -353,7 +348,7 @@ const ProjectManager = function(){
     }
 
 
-    return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getProjectCompleteTasks, getAllCompleteTasks,
+    return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
  getAllTasks, changeTaskProject, changeTaskDueDate, setProjectsIntoJSON,  parsingProject, 
 createFirstTask }
 }
