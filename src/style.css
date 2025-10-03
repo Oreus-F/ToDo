@@ -1348,9 +1348,17 @@ button.completed-button[data-priority='high']:hover{
 }
 
 
+.bookingButtons[data-selected='true']{
+    background-color: var(--ascent-color-hover);
+    border-radius: 24px;
+    color: white;
+}
+
+
 .bookingButtons:not(:disabled):hover{
     background-color: var(--ascent-pastel-color);
     border-radius: 24px;
+    color: black;
 }
 
 

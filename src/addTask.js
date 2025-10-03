@@ -377,8 +377,11 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
 
             gridContainer.appendChild(button);
 
+            const buttonDate = document.querySelector('#task_date_button');
+            const dateValue = buttonDate.getAttribute('value');
+            if (date == dateValue) button.setAttribute('data-selected', 'true')
             button.addEventListener('click', () => {
-                const buttonDate = document.querySelector('#task_date_button');
+                
                 buttonDate.setAttribute('value', date);
 
                 const inputDate = document.querySelector('#task_date');

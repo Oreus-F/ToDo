@@ -66,7 +66,6 @@ const createCalendarArray = function(calendarDays){
     let nextMonthIndex = 0;
 
     const previousMonth = subOneMonth(calendarDays);
-    console.log(previousMonth)
     const nextMonth = addOneMonth(calendarDays);
 
     for(let x=0; x < NUMB_OF_WEEKS; x++){
