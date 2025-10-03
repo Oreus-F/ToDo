@@ -35,8 +35,9 @@ const addOneMonth = function(temoin){
 
 const subOneMonth = function(temoin){
 
+    
     const dayTemoin = temoin instanceof Date ? temoin : temoin[0];
-
+    
     const dateOneMonthBefore = subMonths(dayTemoin, 1);
 
     const calendar = getCalendarDays(dateOneMonthBefore);
@@ -64,7 +65,8 @@ const createCalendarArray = function(calendarDays){
     let indexDay = 0;
     let nextMonthIndex = 0;
 
-    const previousMonth = subOneMonth(calendarDays)
+    const previousMonth = subOneMonth(calendarDays);
+    console.log(previousMonth)
     const nextMonth = addOneMonth(calendarDays);
 
     for(let x=0; x < NUMB_OF_WEEKS; x++){

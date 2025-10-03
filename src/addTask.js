@@ -230,7 +230,8 @@ const newDate_Panel = function(value){
     container.setAttribute('id', 'bookingContainer');
 
     if(value){
-        const dueDate = value;
+        const TODAY = new Date()
+        const dueDate = isBefore(value, TODAY) ? TODAY : value;
         const calendarMonth = getCalendarDays(dueDate);
         const bookingCalendar = createCalendarArray(calendarMonth);
 
@@ -239,7 +240,6 @@ const newDate_Panel = function(value){
     } else {
         const calendarMonth = getCalendarDays();
         const bookingCalendar = createCalendarArray(calendarMonth);
-
 
         container.appendChild(newDate_BookingCalendar(bookingCalendar));
         
