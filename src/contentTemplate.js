@@ -11,7 +11,6 @@ const removeFromContent = function(){
 }
 
 
-
 const createContentTemplate = function(title, date, text){
     removeFromContent()
 
@@ -157,7 +156,6 @@ const completeTaskButton = function(task, taskContent){
 }
 
 
-
 const createTaskButtons = function(task, taskContent){
     const div = document.createElement('div');
     div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end hide-task-button')
@@ -222,7 +220,6 @@ const createDeleteTaskButton = function(task, taskContent){
 
     return div
 }
-
 
 
 const createDownDiv = function(task){
