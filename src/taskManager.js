@@ -3,7 +3,7 @@ import {compareAsc, format, intlFormatDistance, isToday, isTomorrow, addDays} fr
 
 class Task {
 
-    constructor(title, priority, dueDate, description = '', origin){
+    constructor(title, priority, dueDate, description = '', origin = 'Inbox'){
         this.title = title,
         this.priority = priority,
         this.dueDate = Task.dateInstance(dueDate);
@@ -86,6 +86,7 @@ Task.prototype.changeStatus = function(){
 
 
 Task.prototype.changeDate = function(_newDate){
+    console.log(_newDate)
     this.dueDate = Task.dateInstance(_newDate);
     this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy');
 }
