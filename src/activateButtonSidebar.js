@@ -2,6 +2,7 @@ import { createDialogProjectName, activateFormNewProject, createDialogEditUser, 
 import { createAddTaskPanel } from "./addTask";
 import { displayToday } from "./todayButton";
 import { displayInbox } from "./inbox";
+import { displayUpcomming } from "./upcomming";
 
 
 const switchDataAttribute = function(target, content){
@@ -121,6 +122,16 @@ const setUpInboxButton = function(){
 }
 
 
+const setUpUpcommingButton = function(){
+    const upcommingButton = document.querySelector('#upcomming_button');
+
+    upcommingButton.addEventListener('click', () => {
+        displayUpcomming();
+        changeActiveAttribute();
+    })
+}
+
+
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
     setUpEditUserButton();
@@ -129,6 +140,7 @@ const activateSidebarButtons = function(){
     setUpAddTaskButton();
     setUpTodayButton();
     setUpInboxButton();
+    setUpUpcommingButton();
 }
 
 

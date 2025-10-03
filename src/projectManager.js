@@ -223,16 +223,9 @@ const ProjectManager = function(){
             console.error('This task is already completed')
         } else {
             task.changeStatus();
-
-            if (task.origin == activeProject.title){
-                activeProject.completeTask(task);
-                activeProject.removeTask(task)
-            } else {
-                const tempProject = getProject(task);
-                tempProject.completeTask(task);
-                tempProject.removeTask(task);
-            }
-
+            const project = getProject(task);
+            project.completeTask(task);
+            project.removeTask(task);
 
             updateLocalStorageProjectList(); 
         }
