@@ -124,7 +124,7 @@ const extraTask_Date = function(task){
 
     if(task){
         button.setAttribute('value', task.dueDate)
-        hiddenInput.setAttribute('value', task.dueDate)
+        hiddenInput.setAttribute('value', task.formatedDueDate)
     }
 
     const buttonContent = document.createElement('div');
@@ -141,7 +141,7 @@ const extraTask_Date = function(task){
     const value = button.value
 
     if (value) {
-        formatDateDisplayed(value, buttonText)
+        formatDateDisplayed(value, buttonText);
     } else {
         buttonText.textContent = 'Date'
     }
@@ -382,7 +382,7 @@ const bookingCalendar_buttonsGrid = function(calendarDays, month){
                 buttonDate.setAttribute('value', date);
 
                 const inputDate = document.querySelector('#task_date');
-                const formatedDateForTask = format(date, 'dd/MM/yyyy')
+                const formatedDateForTask = format(date, 'dd/MM/yyyy');
                 inputDate.setAttribute('value', formatedDateForTask);
 
                 const buttonText = document.querySelector('#task_dateTexte');
@@ -843,10 +843,11 @@ const sendEditTask = function(event, task){
     task.priority = newPriority;
     task.changeDate(newDate);
     task.description = newDescription;
+
+    control.changeTaskProject(newProject, task)
     task.changeOrigin(newProject);
 
-    control.updateLocalStorageProjectList()
-
+    control.updateLocalStorageProjectList();
 
     const closingButton = document.querySelector('#closing_task_panel');
     closingButton.click();

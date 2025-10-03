@@ -75,7 +75,7 @@ class Project {
 
 };
 
-
+ 
 Project.prototype.getTasksList = function(){
     return this.tasks
 }
@@ -206,12 +206,11 @@ const ProjectManager = function(){
     } 
 
 
-    const removeSelectedTask = function(x){
-        const taskSelected = getTask(x);
-        
-        const thisProject = getProject(taskSelected);
+    const removeSelectedTask = function(task){
 
-        thisProject.removeTask(taskSelected);
+        const thisProject = getProject(task);
+
+        thisProject.removeTask(task);
 
         updateLocalStorageProjectList();
     }

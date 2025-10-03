@@ -86,7 +86,6 @@ Task.prototype.changeStatus = function(){
 
 
 Task.prototype.changeDate = function(_newDate){
-    console.log(_newDate)
     this.dueDate = Task.dateInstance(_newDate);
     this.formatedDueDate = format(this.dueDate, 'dd/MM/yyyy');
 }
