@@ -2,6 +2,7 @@ import { addDays, compareAsc, format, isBefore, isToday, isTomorrow } from "date
 import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefore, getThisMonth } from "./bookingCalendar";
 import { ProjectManager } from "./projectManager";
 import { displayToday } from "./todayButton";
+import { displayInbox } from "./inbox";
 
 
 const control = ProjectManager();
@@ -887,6 +888,7 @@ const sendNewTask = function(event){
 const updateTasksDisplayed = function(){
 
     const targets = {
+        'inbox': displayInbox,
         'today' : displayToday,
         'upcomming' : 'put tomorrow function',
         'project' : 'put project function'

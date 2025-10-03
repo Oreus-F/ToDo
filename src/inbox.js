@@ -1,9 +1,10 @@
-import { createContentTemplate, taskTemplate } from "./contentTemplate";
+import { createContentTemplate, displayTasks } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
 import { format, isToday } from "date-fns";
 import { createInlineAddTask } from "./addTask";
 
 
+const control = ProjectManager();
 
 const displayInbox = function(){
     const content = document.querySelector('#content');
@@ -24,7 +25,7 @@ const displayInbox = function(){
 
     taskContainer.appendChild(createInlineAddTask());
     
-    // displayTasksToday(todayList)
+    displayTasks(inboxTasks)
 }
 
 

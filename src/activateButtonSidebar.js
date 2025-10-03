@@ -1,12 +1,30 @@
 import { createDialogProjectName, activateFormNewProject, createDialogEditUser, activateEditUser} from "./dialogCreationDOM";
 import { createAddTaskPanel } from "./addTask";
 import { displayToday } from "./todayButton";
+import { displayInbox } from "./inbox";
 
 
 const switchDataAttribute = function(target, content){
     let data = target.getAttribute(`data-${content}`);
     data = data === 'true' ? false : true;
     target.setAttribute(`data-${content}`, data)
+}
+
+
+const changeActiveAttribute = function(){
+    const content = document.querySelector('#content');
+    const displayed = content.getAttribute('data-displayed');
+
+    const menu = document.querySelector('#menu');
+    const buttons = menu.querySelectorAll('button');
+
+    buttons.forEach(button => {
+        const target = button.getAttribute('data-target');
+        const active = button.getAttribute('data-active');
+
+        if (active == 'true') switchDataAttribute(button, 'active');
+        if (target === displayed) switchDataAttribute(button, 'active');
+    })
 }
 
 
@@ -83,12 +101,22 @@ const setUpAddTaskButton = function(){
     })
 }
 
-
 const setUpTodayButton = function(){
     const todayButton = document.querySelector('#today_button');
 
     todayButton.addEventListener('click', () => {
-        displayToday()
+        displayToday();
+        changeActiveAttribute();
+    })
+}
+
+
+const setUpInboxButton = function(){
+    const inboxButton = document.querySelector('#inbox_button');
+
+    inboxButton.addEventListener('click', () => {
+        displayInbox();
+        changeActiveAttribute();
     })
 }
 
@@ -100,6 +128,7 @@ const activateSidebarButtons = function(){
     setUpDisplayProjects();
     setUpAddTaskButton();
     setUpTodayButton();
+    setUpInboxButton();
 }
 
 

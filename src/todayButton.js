@@ -1,4 +1,4 @@
-import { createContentTemplate, taskTemplate } from "./contentTemplate";
+import { createContentTemplate, displayTasks } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
 import { format, isToday } from "date-fns";
 import { createInlineAddTask } from "./addTask";
@@ -24,70 +24,7 @@ const displayToday = function(){
 
     taskContainer.appendChild(createInlineAddTask());
     
-    displayTasksToday(todayList)
-}
-
-
-const displayTasksToday = function(todayList){
-
-    const taskContainer = document.querySelector('#taskContainer');
-
-    if(todayList.length > 0){
-
-        const taskListContainer = document.createElement('ul');
-        taskListContainer.setAttribute('id', 'taskListContainer')
-        taskListContainer.setAttribute('class', 'taskList-container')
-        
-        for(let x=0; x < todayList.length; x++){
-
-            const actualTask = todayList[x];
-            
-            taskListContainer.appendChild(taskTemplate(actualTask))
-        }
-
-        taskContainer.appendChild(taskListContainer)
-
-    } else {
-        taskContainer.appendChild(displayNoTask());
-    }
-
-
-}
-
-
-const displayNoTask = function(){
-
-    const div = document.createElement('div');
-    div.setAttribute('id', 'noTaskContainer');
-    div.setAttribute('class', 'flex-display full-h aligned-item-center justif-content-center');
-
-    div.appendChild(displayNoTaskText())
-    
-    return div
-}
-
-
-const displayNoTaskText = function(){
-
-    const div = document.createElement('div');
-    div.setAttribute('class', 'text-align-center fs11')
-    
-    const p1 = document.createElement('p');
-    p1.textContent = 'No task today ?';
-    p1.setAttribute('class', 'fs14 bold-text text-color-ascent')
-    
-    const p2 = document.createElement('p');
-    p2.textContent = 'You can create a new one !';
-
-    const p3 = document.createElement('p');
-    p3.textContent = "Or maybe it's a sign to relax, take your time";
-
-
-    div.appendChild(p1);
-    div.appendChild(p2);
-    div.appendChild(p3);
-
-    return div
+    displayTasks(todayList)
 }
 
 

@@ -8,7 +8,8 @@ const createProjectButton = function(projectName){
 
     const button = document.createElement("button");
     button.setAttribute('class', buttonClass);
-    button.setAttribute('data-active', 'false')
+    button.setAttribute('data-active', 'false');
+    button.setAttribute('data-target', projectName)
 
     const iconSpan = document.createElement('span');
     iconSpan.setAttribute('class', iconClass);
