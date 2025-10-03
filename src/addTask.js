@@ -3,6 +3,8 @@ import { createCalendarArray, getCalendarDays, getOneMonthAfter, getOneMonthBefo
 import { ProjectManager } from "./projectManager";
 import { displayToday } from "./todayButton";
 import { displayInbox } from "./inbox";
+import { displayUpcomming } from "./upcomming";
+import { displayCompleted } from "./completed";
 
 
 const control = ProjectManager();
@@ -890,8 +892,9 @@ const updateTasksDisplayed = function(){
     const targets = {
         'inbox': displayInbox,
         'today' : displayToday,
-        'upcomming' : 'put tomorrow function',
-        'project' : 'put project function'
+        'upcomming' : displayUpcomming,
+        'project' : 'put project function',
+        'completed' : displayCompleted
 
     };
 

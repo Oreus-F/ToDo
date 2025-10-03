@@ -3,6 +3,7 @@ import { createAddTaskPanel } from "./addTask";
 import { displayToday } from "./todayButton";
 import { displayInbox } from "./inbox";
 import { displayUpcomming } from "./upcomming";
+import { displayCompleted } from "./completed";
 
 
 const switchDataAttribute = function(target, content){
@@ -132,6 +133,16 @@ const setUpUpcommingButton = function(){
 }
 
 
+const setUpCompletedButton = function(){
+    const completedButton = document.querySelector('#completed_button');
+
+    completedButton.addEventListener('click', () => {
+        displayCompleted();
+        changeActiveAttribute();
+    })
+}
+
+
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
     setUpEditUserButton();
@@ -141,6 +152,7 @@ const activateSidebarButtons = function(){
     setUpTodayButton();
     setUpInboxButton();
     setUpUpcommingButton();
+    setUpCompletedButton();
 }
 
 
