@@ -5,6 +5,7 @@ import { displayToday } from "./todayButton";
 import { displayInbox } from "./inbox";
 import { displayUpcomming } from "./upcomming";
 import { displayCompleted } from "./completed";
+import { displayProject } from "./projects";
 
 
 const control = ProjectManager();
@@ -893,15 +894,15 @@ const updateTasksDisplayed = function(){
         'inbox': displayInbox,
         'today' : displayToday,
         'upcomming' : displayUpcomming,
-        'project' : 'put project function',
-        'completed' : displayCompleted
+        'projects' : displayProject,
+        'completed' : displayCompleted,
 
     };
 
 
     const content = document.querySelector('#content');
     const dataContent = content.getAttribute('data-displayed');
-
+    const dataProject = content.getAttribute('data-project');
 
     let resultFunction;
 
@@ -910,8 +911,8 @@ const updateTasksDisplayed = function(){
     }
 
     content.replaceChildren();
-
-    resultFunction();
+    
+    dataContent === 'projects' ? resultFunction(dataProject) : resultFunction();
 }
 
 

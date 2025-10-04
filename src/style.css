@@ -423,6 +423,10 @@ nav > div:first-child:hover button:nth-child(3){
 } 
 
 
+[data-active = "true"] p.fs11{
+    color: var(--ascent-color);
+} 
+
 
 button[data-active = "true"]:hover{
     background-color: var(--ascent-pastel-color);

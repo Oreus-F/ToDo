@@ -4,6 +4,12 @@ import { displayToday } from "./todayButton";
 import { displayInbox } from "./inbox";
 import { displayUpcomming } from "./upcomming";
 import { displayCompleted } from "./completed";
+import { displayProject } from "./projects";
+import { ProjectManager } from "./projectManager";
+
+
+const control = ProjectManager()
+
 
 
 const switchDataAttribute = function(target, content){
@@ -24,8 +30,18 @@ const changeActiveAttribute = function(){
         const target = button.getAttribute('data-target');
         const active = button.getAttribute('data-active');
 
-        if (active == 'true') switchDataAttribute(button, 'active');
-        if (target === displayed) switchDataAttribute(button, 'active');
+        if(displayed === 'projects'){
+            if (active == 'true') switchDataAttribute(button, 'active');
+
+            const title = content.firstChild.firstChild.firstChild.firstChild.firstChild.textContent
+            if (target === title) switchDataAttribute(button, 'active');
+ 
+        } else {
+            
+            if (active == 'true') switchDataAttribute(button, 'active');
+            if (target === displayed) switchDataAttribute(button, 'active');
+        }
+
     })
 }
 
@@ -143,6 +159,56 @@ const setUpCompletedButton = function(){
 }
 
 
+const updateProjectButton = function(){
+    const sidebarList = document.querySelector('#sidebarProjectList');
+    const buttons = sidebarList.querySelectorAll('button');
+    
+    for(let x= 0; x<buttons.length;x++){
+        const button = buttons[x];
+        button.setAttribute('data-event-click', 'true');
+        const projectName = button.lastChild.lastChild.textContent
+
+        button.addEventListener('click', ()=> {
+            displayProject(projectName);
+            changeActiveAttribute()
+        })
+    } 
+    
+
+    const addButtonListener = function(records){
+        for (const record of records){
+            for (const addedNode of record.addedNodes){
+                const button = addedNode.lastChild;
+                const dataButton = button.getAttribute('data-event-click')
+                const projectName = button.lastChild.lastChild.textContent;
+
+
+                if(dataButton !== 'true'){
+                    button.addEventListener('click', ()=> {
+                        displayProject(projectName);
+                        changeActiveAttribute()
+                    })
+
+                }
+            }
+        }
+    }
+
+    const observerOptions = {
+        childList: true,
+        subtree: true
+    }
+
+    const observer = new MutationObserver(addButtonListener);
+    observer.observe(sidebarList, observerOptions)
+
+
+ 
+
+
+}
+
+
 const activateSidebarButtons = function(){
     setUpAddProjectButton();
     setUpEditUserButton();
@@ -153,7 +219,12 @@ const activateSidebarButtons = function(){
     setUpInboxButton();
     setUpUpcommingButton();
     setUpCompletedButton();
+    updateProjectButton();
 }
+
+
+
+
 
 
 export {activateSidebarButtons}

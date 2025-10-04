@@ -6,7 +6,8 @@ const control = ProjectManager();
 
 const removeFromContent = function(){
     const content = document.querySelector('#content');
-    content.removeAttribute('data-displayed')
+    content.removeAttribute('data-displayed');
+    content.removeAttribute('data-project');
     content.replaceChildren();
 }
 

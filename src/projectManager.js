@@ -325,7 +325,7 @@ const ProjectManager = function(){
     }
 
 
-    return {newProject, createTask, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
+    return {newProject, createTask, getProject, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
  getAllTasks, changeTaskProject, setProjectsIntoJSON,  parsingProject, 
 createFirstTask, getTask, updateLocalStorageProjectList }
 }
