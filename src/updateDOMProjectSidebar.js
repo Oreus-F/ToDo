@@ -23,9 +23,23 @@ const createProjectButton = function(projectName){
 
     div.appendChild(nameSpan);
 
+    const deleteSpan = document.createElement('span');
+    deleteSpan.style.height = '20px';
+    deleteSpan.style.width = '20px';
+    
+    const deleteButton = document.createElement('button');
+    deleteButton.setAttribute('class', 'full-w full-h');
+    deleteButton.style.background = 'red';
+
+    deleteButton.setAttribute('data-delete', 'true');
+
+    deleteSpan.appendChild(deleteButton)
+
+
 
     button.appendChild(iconSpan);
     button.appendChild(div);
+    button.appendChild(deleteSpan)
 
 
     listedItem.appendChild(button)
@@ -40,7 +54,7 @@ const updateSidebarProjectList = function(projectsList){
     const sidebarList = document.querySelector('#sidebarProjectList');
     sidebarList.replaceChildren();
 
-    for(let index= 0; index < projectsList.length; index++){
+    for(let index= 1; index < projectsList.length; index++){
         const listedProject = createProjectButton(projectsList[index].title)
         sidebarList.appendChild(listedProject)
     }

@@ -6,6 +6,7 @@ import { displayUpcomming } from "./upcomming";
 import { displayCompleted } from "./completed";
 import { displayProject } from "./projects";
 import { ProjectManager } from "./projectManager";
+import { updateSidebarProjectList } from "./updateDOMProjectSidebar";
 
 
 const control = ProjectManager()
@@ -161,17 +162,26 @@ const setUpCompletedButton = function(){
 
 const updateProjectButton = function(){
     const sidebarList = document.querySelector('#sidebarProjectList');
-    const buttons = sidebarList.querySelectorAll('button');
-    
+    const buttons = sidebarList.querySelectorAll('button.menu-button');
+
     for(let x= 0; x<buttons.length;x++){
         const button = buttons[x];
         button.setAttribute('data-event-click', 'true');
-        const projectName = button.lastChild.lastChild.textContent
+        const projectName = button.lastChild.previousSibling.lastChild.textContent
 
         button.addEventListener('click', ()=> {
             displayProject(projectName);
             changeActiveAttribute()
         })
+
+        // const deleteButton = button.lastChild.lastChild;
+        // deleteButton.addEventListener('click', ()=> {
+        //     const project = control.getProject(projectName);
+        //     control.removeProject(project);
+        //     const projectList = control.getProjectList()
+        //     updateSidebarProjectList(projectList)
+        //     displayToday();
+        // })
     } 
     
 

@@ -147,6 +147,13 @@ const ProjectManager = function(){
     };
 
 
+
+    const removeProject = function(project){
+        projectList.splice(project, 1);
+        updateLocalStorageProjectList()
+    }
+
+
     const getProjectFromTitle = function(target){
         const projectList = getProjectList();
         
@@ -325,7 +332,7 @@ const ProjectManager = function(){
     }
 
 
-    return {newProject, createTask, getProject, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
+    return {newProject, createTask, getProject, removeProject, getProjectList, removeSelectedTask, completeSelectedTask, getAllCompleteTasks,
  getAllTasks, changeTaskProject, setProjectsIntoJSON,  parsingProject, 
 createFirstTask, getTask, updateLocalStorageProjectList }
 }
