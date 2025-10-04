@@ -12,7 +12,8 @@ const displayUpcomming = function(){
     const TODAY = new Date();
     
     const tasksList = control.getAllTasks();
-    const upcommingList = tasksList.filter(task => (isAfter(TODAY) && (task.status === 'to-do')));
+    const upcommingList = tasksList.filter(task => (isAfter(task.dueDate,TODAY) && (task.status === 'to-do')));
+
     
     const TITLE_SECTION = "Upcomming";
     const TODAY_DATE = format(TODAY, 'dd/MM/yyyy');
