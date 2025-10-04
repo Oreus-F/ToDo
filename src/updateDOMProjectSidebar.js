@@ -1,3 +1,5 @@
+// import { displayProject } from "./projects";
+
 const buttonClass =  'menu-button flex-display gap-4 aligned-item-center';
 const iconClass = 'icon-menu-one-project flex-noshrink icon-menu flex-basis40px';
 
@@ -22,6 +24,10 @@ const createProjectButton = function(projectName){
     nameSpan.textContent = projectName;
 
     div.appendChild(nameSpan);
+
+    button.addEventListener('click', () => {
+        // displayProject(projectName);
+    })
 
     button.appendChild(iconSpan);
     button.appendChild(div);

@@ -17,7 +17,7 @@ const displayUpcomming = function(){
     
     const TITLE_SECTION = "Upcomming";
     const TODAY_DATE = format(TODAY, 'dd/MM/yyyy');
-    const HEADER_DESCRIPTION = `${upcommingList.length} tasks incomming !`
+    const HEADER_DESCRIPTION = `${upcommingList.length} tasks incomming !`;
     
     content.appendChild(createContentTemplate(TITLE_SECTION, TODAY_DATE, HEADER_DESCRIPTION));
     content.setAttribute('data-displayed', 'upcomming');
@@ -26,7 +26,7 @@ const displayUpcomming = function(){
 
     taskContainer.appendChild(createInlineAddTask());
     
-    displayTasks(upcommingList)
+    displayTasks(upcommingList);
 }
 
 
