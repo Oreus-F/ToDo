@@ -1,6 +1,6 @@
 import { createContentTemplate, displayTasks } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
-import { format, isToday } from "date-fns";
+import { format } from "date-fns";
 import { createInlineAddTask } from "./addTask";
 
 
