@@ -12,6 +12,7 @@ class Task {
         this.status = 'to-do',
         this.origin = origin;
         this.id = crypto.randomUUID();
+        this.completedDate = null;
     };
 
 
@@ -80,8 +81,10 @@ Task.prototype.changeOrigin = function(_newOrigin){
 }
 
 
-Task.prototype.changeStatus = function(){
+Task.prototype.changeStatus = function(newCompletedDate){
+    const TODAY = new Date;
     this.status = this.status === 'to-do' ? 'completed' : 'to-do';
+    newCompletedDate ? this.completedDate = newCompletedDate : this.completedDate = TODAY
 }
 
 
