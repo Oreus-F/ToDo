@@ -47,19 +47,18 @@ class Project {
         
         if(arguments[0]){
 
-            
+                        
             for(let x=0; x < completedTasks.length; x++){
 
                 const actualTask = completedTasks[x];
 
                 const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
+                console.log(actualTask.completedDate)
                 newTask.changeOrigin(origin);
                 newTask.changeStatus();
                 _complete.push(newTask);
+
        
-
-                return _complete
-
             };
 
 
@@ -226,13 +225,13 @@ const ProjectManager = function(){
     const completeSelectedTask = function(task){
 
 
-        if (task.status === 'completed'){
-            console.error('This task is already completed')
-        } else {
+        if (task.status !== 'completed'){
             task.changeStatus();
             const project = getProject(task);
             project.completeTask(task);
             project.removeTask(task);
+
+            console.log(task)
 
             updateLocalStorageProjectList(); 
         }
@@ -285,7 +284,7 @@ const ProjectManager = function(){
 
     const updateLocalStorageProjectList = function(){
         const _updateList = setProjectsIntoJSON();
-        localStorage.setItem('projectList', _updateList)
+        localStorage.setItem('projectList', _updateList);
     }
 
 
