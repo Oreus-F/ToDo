@@ -182,10 +182,13 @@ const updateProjectButton = function(){
 
         deleteButton.addEventListener('click', ()=> {
 
-            control.removeProject(project);
-            const projectList = control.getProjectList()
-            updateSidebarProjectList(projectList)
-            displayToday();
+            if(window.confirm(`Do you want to delete ${projectName} project ?`)){
+                control.removeProject(project);
+                const projectList = control.getProjectList()
+                updateSidebarProjectList(projectList)
+                displayToday();
+                
+            }
         })
     } 
     
@@ -209,10 +212,13 @@ const updateProjectButton = function(){
 
 
                     deleteButton.addEventListener('click', ()=> {
-                        control.removeProject(project);
-                        const projectList = control.getProjectList();
-                        updateSidebarProjectList(projectList);
-                        displayToday();
+                        
+                        if(window.confirm(`Do you want to delete ${projectName} project ?`)){
+                            control.removeProject(project);
+                            const projectList = control.getProjectList();
+                            updateSidebarProjectList(projectList);
+                            displayToday();
+                        }
                     })
 
                 }
