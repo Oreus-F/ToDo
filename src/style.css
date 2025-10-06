@@ -433,7 +433,6 @@ button[data-active = "true"]:hover{
 }
 
 
-
 .icon-menu-add-task{
     mask-image: url(../asset/ressource/plus-circle.svg);
     mask-position: center;
@@ -537,6 +536,32 @@ div[data-inline='true'] .extraIcon{
 .extraIcon{
     min-width: 20px;
 }
+
+
+button.menu-button[data-active='true']:hover .delete-project-icon{
+    background-color: var(--ascent-color);
+    mask-image: url(../asset/ressource/square-x.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-image: none;
+}
+
+
+
+.delete-project-icon{
+    background-image: url(../asset/ressource/square-x.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 0;
+}
+
+
+button.menu-button:hover .delete-project-icon{
+    opacity: 1;
+    transition: 400ms;
+}
+
 
 
 .calendar-date{

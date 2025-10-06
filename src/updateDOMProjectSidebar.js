@@ -28,8 +28,7 @@ const createProjectButton = function(projectName){
     deleteSpan.style.width = '20px';
     
     const deleteButton = document.createElement('button');
-    deleteButton.setAttribute('class', 'full-w full-h');
-    deleteButton.style.background = 'red';
+    deleteButton.setAttribute('class', 'full-w full-h delete-project-icon');
 
     deleteButton.setAttribute('data-delete', 'true');
 
