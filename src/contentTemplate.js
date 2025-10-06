@@ -331,4 +331,9 @@ const displayNoTaskText = function(){
     return div
 }
 
+
+const createCompletedTask = function(){
+    
+}
+
 export {createContentTemplate, displayTasks}
