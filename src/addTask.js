@@ -126,9 +126,17 @@ const extraTask_Date = function(task){
     button.setAttribute('class', 'extraTask-button flex-display pos-rel');
     button.setAttribute('type', 'button');
 
+
+    const content = document.querySelector('#content');
+    const contentDisplayed = content.getAttribute('data-displayed');
+    
     if(task){
         button.setAttribute('value', task.dueDate)
         hiddenInput.setAttribute('value', task.formatedDueDate)
+    } else if (contentDisplayed === 'today'){
+        const TODAY = new Date;
+        button.setAttribute('value', TODAY);
+        hiddenInput.setAttribute('value', format(TODAY, 'dd/MM/yyyy'))
     }
 
     const buttonContent = document.createElement('div');
@@ -660,12 +668,30 @@ const task_choose_project = function(task){
     const p = document.createElement('p');
     p.setAttribute('class', 'flex-first-grow');
     p.setAttribute('id', 'project_text_button');
+
+
+    const content = document.querySelector('#content');
+    const contentDisplayed = content.getAttribute('data-displayed')
     
     if(task && (buttonValue === null)){
         const value = task.origin;
         p.textContent = value;
         hiddenInput.setAttribute('value', value);
         button.setAttribute('value', value)
+    } else if ((buttonValue === null) && (contentDisplayed === 'projects' || contentDisplayed === 'Inbox')) {
+        if (contentDisplayed === 'Inbox'){
+            const value = 'Inbox';
+            p.textContent = value;
+            hiddenInput.setAttribute('value', value);
+            button.setAttribute('value', value); 
+        } else {
+            const title = content.firstChild.firstChild.firstChild.firstChild.firstChild.textContent;
+            const value = title;
+            p.textContent = value;
+            hiddenInput.setAttribute('value', value);
+            button.setAttribute('value', value)
+        }
+
     } else {
         const value = 'Inbox';
         p.textContent = value;
