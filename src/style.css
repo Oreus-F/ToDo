@@ -441,16 +441,6 @@ button[data-active = "true"]:hover{
 }
 
 
-.icon-menu-search{
-    background-image: url(../asset/ressource/search.svg);
-}
-
-
-[data-active = "true"] > span.icon-menu-search{
-    mask-image: url(../asset/ressource/search.svg);
-}
-
-
 .icon-menu-inbox{
     background-image: url(../asset/ressource/inbox.svg);
 }
