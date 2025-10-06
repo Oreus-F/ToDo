@@ -167,21 +167,26 @@ const updateProjectButton = function(){
     for(let x= 0; x<buttons.length;x++){
         const button = buttons[x];
         button.setAttribute('data-event-click', 'true');
-        const projectName = button.lastChild.previousSibling.lastChild.textContent
+        const projectName = button.lastChild.previousSibling.lastChild.textContent;
 
-        button.addEventListener('click', ()=> {
-            displayProject(projectName);
-            changeActiveAttribute()
+        const deleteButton = button.lastChild.lastChild;
+
+        button.addEventListener('click', (event)=> {
+            if(event.currentTarget === event.target){
+                displayProject(projectName);
+                changeActiveAttribute();
+            }
+
         })
 
-        // const deleteButton = button.lastChild.lastChild;
-        // deleteButton.addEventListener('click', ()=> {
-        //     const project = control.getProject(projectName);
-        //     control.removeProject(project);
-        //     const projectList = control.getProjectList()
-        //     updateSidebarProjectList(projectList)
-        //     displayToday();
-        // })
+
+        deleteButton.addEventListener('click', ()=> {
+
+            control.removeProject(project);
+            const projectList = control.getProjectList()
+            updateSidebarProjectList(projectList)
+            displayToday();
+        })
     } 
     
 
@@ -189,14 +194,25 @@ const updateProjectButton = function(){
         for (const record of records){
             for (const addedNode of record.addedNodes){
                 const button = addedNode.lastChild;
-                const dataButton = button.getAttribute('data-event-click')
-                const projectName = button.lastChild.lastChild.textContent;
-
+                const dataButton = button.getAttribute('data-event-click');
+                const projectName = button.lastChild.previousSibling.lastChild.textContent;
+                const deleteButton = button.lastChild.lastChild;
+                const project = control.getProject(projectName);
 
                 if(dataButton !== 'true'){
-                    button.addEventListener('click', ()=> {
-                        displayProject(projectName);
-                        changeActiveAttribute()
+                    button.addEventListener('click', (event)=> {
+                        if(event.currentTarget === event.target){
+                            displayProject(projectName);
+                            changeActiveAttribute();
+                        }
+                    })
+
+
+                    deleteButton.addEventListener('click', ()=> {
+                        control.removeProject(project);
+                        const projectList = control.getProjectList();
+                        updateSidebarProjectList(projectList);
+                        displayToday();
                     })
 
                 }
