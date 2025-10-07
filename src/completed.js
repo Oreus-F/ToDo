@@ -1,7 +1,6 @@
-import { createContentTemplate, displayTasks } from "./contentTemplate";
+import { createContentTemplate, displayCompletedTasks} from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
 import { format} from "date-fns";
-import { createInlineAddTask } from "./addTask";
 
 
 const control = ProjectManager();
@@ -22,9 +21,8 @@ const displayCompleted = function(){
 
     const taskContainer = document.querySelector('#taskContainer');
 
-    taskContainer.appendChild(createInlineAddTask());
     
-    displayTasks(tasksList)
+    displayCompletedTasks(tasksList)
 }
 
 

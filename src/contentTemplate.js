@@ -332,11 +332,14 @@ const displayNoTaskText = function(){
 }
 
 
-const createCompletedTaskTemplate = function(){
+const createCompletedTaskTemplate = function(task){
     const div = document.createElement('div');
+    div.setAttribute('class', 'flex-display completed-task');
+    div.style.border = 'solid 1px black'
+
 
     div.appendChild(createPictureProfileSection());
-    div.replaceChild(createTextSection())
+    div.appendChild(createTextSection(task));
 
     return div
 }
@@ -344,25 +347,38 @@ const createCompletedTaskTemplate = function(){
 
 const createPictureProfileSection = function(){
     const div = document.createElement('div');
+    div.setAttribute('class', 'flex-basis80px');
+
+    const divContent = document.createElement('div');
+    divContent.setAttribute('class', 'flex-display justif-content-center')
+    const img = document.createElement('img');
+    img.setAttribute('class', 'user-picture-task')
+    const currentUserPicture = JSON.stringify(localStorage.getItem('profilePicture'));
+    img.src = JSON.parse(currentUserPicture);
+
+    divContent.appendChild(img);
+    div.appendChild(divContent)
+
+    return div
+}
+
+
+const createTextSection = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-first-grow flex-display column-direction');
+
+    div.appendChild(createExpSection(task));
+    div.appendChild(createInfoSection(task));
 
 
     return div
 }
 
 
-const createTextSection = function(){
+const createExpSection = function(task){
     const div = document.createElement('div');
-
-    div.appendChild(createExpSection());
-    div.appendChild(createInfoSection());
-
-
-    return div
-}
-
-
-const createExpSection = function(){
-    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-first-grow');
+    const currentUsername = localStorage.getItem('username')
 
 
     return div
@@ -371,6 +387,7 @@ const createExpSection = function(){
 
 const createInfoSection = function(){
     const div = document.createElement('div');
+    div.setAttribute('class', 'flex-first-grow flex-display');
 
     div.appendChild(createCompletedDateSection());
     div.appendChild(createProjectSection());
@@ -380,6 +397,7 @@ const createInfoSection = function(){
 
 const createCompletedDateSection = function(){
     const div = document.createElement('div');
+    div.setAttribute('class', 'first-set-grow');
 
 
     return div
@@ -388,10 +406,74 @@ const createCompletedDateSection = function(){
 
 const createProjectSection = function(){
     const div = document.createElement('div');
+    div.setAttribute('class', 'first-set-grow');
 
 
     return div
 }
 
 
-export {createContentTemplate, displayTasks}
+
+const displayCompletedTasks = function(tasksList){
+
+    const taskContainer = document.querySelector('#taskContainer');
+
+    if(tasksList.length > 0){
+
+        const taskListContainer = document.createElement('ul');
+        taskListContainer.setAttribute('id', 'taskListContainer')
+        taskListContainer.setAttribute('class', 'taskList-container')
+        
+        for(let x=0; x < tasksList.length; x++){
+
+            const actualTask = tasksList[x];
+            
+            taskListContainer.appendChild(createCompletedTaskTemplate(actualTask))
+        }
+
+        taskContainer.appendChild(taskListContainer)
+
+    } else {
+        taskContainer.appendChild(displayNoCompletedTask());
+    }
+
+
+}
+
+
+const displayNoCompletedTask = function(){
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'noTaskContainer');
+    div.setAttribute('class', 'flex-display full-h aligned-item-center justif-content-center');
+
+    div.appendChild(displayNoCompletedTaskText())
+    
+    return div
+}
+
+
+const displayNoCompletedTaskText = function(){
+
+    const div = document.createElement('div');
+    div.setAttribute('class', 'text-align-center fs11')
+    
+    const p1 = document.createElement('p');
+    p1.textContent = 'No task completed ?';
+    p1.setAttribute('class', 'fs14 bold-text text-color-ascent')
+    
+    const p2 = document.createElement('p');
+    p2.textContent = "I'd like to relax too, but we got some work to do";
+
+    const p3 = document.createElement('p');
+    p3.textContent = "Try to finish one in the 'Inbox' page";
+
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+    div.appendChild(p3);
+
+    return div
+}
+
+export {createContentTemplate, displayTasks, displayCompletedTasks}

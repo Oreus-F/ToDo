@@ -331,6 +331,20 @@ body{
 }
 
 
+.completed-task{
+    display: flex;
+    padding: 6px;
+}
+
+
+.user-picture-task{
+    overflow: hidden;
+    height: 70px;
+    width: 70px;
+    border: var(--ascent-color-hover) 3px solid;
+    border-radius: 40px;
+}
+
 
 .menu-button{
     height: 50px;
