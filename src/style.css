@@ -346,6 +346,20 @@ body{
 }
 
 
+.user-completed-task{
+    font-weight: bold;
+    min-width: max-content;
+    padding-left: 8px;
+}
+
+
+.task-name-completed{
+    text-decoration: underline;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+
 .menu-button{
     height: 50px;
     width: var(--hundred-percent);

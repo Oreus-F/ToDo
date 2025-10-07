@@ -333,15 +333,19 @@ const displayNoTaskText = function(){
 
 
 const createCompletedTaskTemplate = function(task){
+    const li = document.createElement('li');
+    li.setAttribute('class', 'taskList-Element');
+
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display completed-task');
-    div.style.border = 'solid 1px black'
 
 
     div.appendChild(createPictureProfileSection());
     div.appendChild(createTextSection(task));
 
-    return div
+    li.appendChild(div)
+    
+    return li
 }
 
 
@@ -377,8 +381,30 @@ const createTextSection = function(task){
 
 const createExpSection = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-first-grow');
-    const currentUsername = localStorage.getItem('username')
+    div.setAttribute('class', 'flex-first-grow flex-display aligned-item-center');
+    const currentUsername = localStorage.getItem('username');
+    const completedText = 'completed the task :';
+    const taskName = task.title;
+
+    const p = document.createElement('p');
+    p.setAttribute('class', 'flex-display gap-8')
+    const span1 = document.createElement('span');
+    span1.setAttribute('class', 'user-completed-task')
+    const span2 = document.createElement('span');
+    span2.style.minWidth = 'max-content'
+    const span3 = document.createElement('span');
+    span3.setAttribute('class', 'task-name-completed')
+
+    span1.textContent = currentUsername;
+    span2.textContent = completedText;
+    span3.textContent = taskName;
+
+    p.appendChild(span1);
+    p.appendChild(span2);
+    p.appendChild(span3);
+
+
+    div.appendChild(p)
 
 
     return div
