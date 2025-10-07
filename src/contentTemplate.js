@@ -332,8 +332,66 @@ const displayNoTaskText = function(){
 }
 
 
-const createCompletedTask = function(){
-    
+const createCompletedTaskTemplate = function(){
+    const div = document.createElement('div');
+
+    div.appendChild(createPictureProfileSection());
+    div.replaceChild(createTextSection())
+
+    return div
 }
+
+
+const createPictureProfileSection = function(){
+    const div = document.createElement('div');
+
+
+    return div
+}
+
+
+const createTextSection = function(){
+    const div = document.createElement('div');
+
+    div.appendChild(createExpSection());
+    div.appendChild(createInfoSection());
+
+
+    return div
+}
+
+
+const createExpSection = function(){
+    const div = document.createElement('div');
+
+
+    return div
+}
+
+
+const createInfoSection = function(){
+    const div = document.createElement('div');
+
+    div.appendChild(createCompletedDateSection());
+    div.appendChild(createProjectSection());
+    return div
+}
+
+
+const createCompletedDateSection = function(){
+    const div = document.createElement('div');
+
+
+    return div
+}
+
+
+const createProjectSection = function(){
+    const div = document.createElement('div');
+
+
+    return div
+}
+
 
 export {createContentTemplate, displayTasks}
