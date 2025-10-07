@@ -53,12 +53,10 @@ class Project {
                 const actualTask = completedTasks[x];
 
                 const newTask = taskControl.createTask(actualTask.title, actualTask._priority, actualTask.formatedDueDate, actualTask.description);
-                console.log(actualTask.completedDate)
                 newTask.changeOrigin(origin);
-                newTask.changeStatus();
+                newTask.changeStatus(actualTask.completedDate);
                 _complete.push(newTask);
 
-       
             };
 
 
@@ -231,7 +229,6 @@ const ProjectManager = function(){
             project.completeTask(task);
             project.removeTask(task);
 
-            console.log(task)
 
             updateLocalStorageProjectList(); 
         }

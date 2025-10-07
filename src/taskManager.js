@@ -84,7 +84,12 @@ Task.prototype.changeOrigin = function(_newOrigin){
 Task.prototype.changeStatus = function(newCompletedDate){
     const TODAY = new Date;
     this.status = this.status === 'to-do' ? 'completed' : 'to-do';
-    newCompletedDate ? this.completedDate = newCompletedDate : this.completedDate = TODAY
+   if(newCompletedDate){
+    const newDate = new Date(newCompletedDate);
+    this.completedDate = newDate;
+   } else {
+    this.completedDate = TODAY
+   }
 }
 
 
