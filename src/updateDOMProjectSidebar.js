@@ -15,7 +15,7 @@ const createProjectButton = function(projectName){
     iconSpan.setAttribute('class', iconClass);
 
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-first-grow');
+    div.setAttribute('class', 'flex-first-grow full-w');
 
     const nameSpan = document.createElement('p');
     nameSpan.setAttribute('class', 'fs11 text-overflow');

@@ -353,12 +353,19 @@ body{
 }
 
 
-.task-name-completed{
-    text-decoration: underline;
+.text-overflow{
+    overflow: hidden;
     text-overflow:ellipsis;
-    white-space: nowrap;
+    white-space:initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
+
+p > span:last-child.text-overflow{
+    text-decoration: underline;
+}
 
 .menu-button{
     height: 50px;
@@ -370,16 +377,6 @@ body{
     padding: 12px;
     border-radius: var(--px8);
 }
-
-
-.text-overflow{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-
-    width: 70%;
-}
-
 
 .menu-button-help{
     width: 0;
