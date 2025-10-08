@@ -182,7 +182,7 @@ const updateProjectButton = function(){
 
         deleteButton.addEventListener('click', ()=> {
 
-            if(window.confirm(`Do you want to delete ${projectName} project ?`)){
+            if(window.confirm(`Do you want to delete "${projectName}" project ?`)){
                 control.removeProject(project);
                 const projectList = control.getProjectList()
                 updateSidebarProjectList(projectList)
