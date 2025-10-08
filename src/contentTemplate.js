@@ -111,8 +111,9 @@ const createUpDiv = function(task, taskContent){
     upDiv.appendChild(completeTaskButton(task, taskContent));
 
     const divTitle = document.createElement('div');
-    divTitle.setAttribute('class', 'flex-first-grow fs12')
+    divTitle.setAttribute('class', 'flex-first-grow fs12 full-w')
     const titleText = document.createElement('p');
+    titleText.setAttribute('class', 'text-overflow')
 
     titleText.textContent = task.title;
 
@@ -387,13 +388,13 @@ const createExpSection = function(task){
     const taskName = task.title;
 
     const p = document.createElement('p');
-    p.setAttribute('class', 'flex-display gap-8')
+    p.setAttribute('class', 'flex-display gap-8 full-w')
     const span1 = document.createElement('span');
     span1.setAttribute('class', 'user-completed-task')
     const span2 = document.createElement('span');
     span2.style.minWidth = 'max-content'
     const span3 = document.createElement('span');
-    span3.setAttribute('class', 'task-name-completed')
+    span3.setAttribute('class', 'text-overflow')
 
     span1.textContent = currentUsername;
     span2.textContent = completedText;
