@@ -172,7 +172,7 @@ const updateProjectButton = function(){
         const deleteButton = button.lastChild.lastChild;
 
         button.addEventListener('click', (event)=> {
-            if(event.currentTarget === event.target){
+            if(event.target !== deleteButton){
                 displayProject(projectName);
                 changeActiveAttribute();
             }
