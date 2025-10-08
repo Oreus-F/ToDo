@@ -1,4 +1,4 @@
-import { createContentTemplate, displayTasks } from "./contentTemplate";
+import { createContentTemplate, displayUpcommingTasks } from "./contentTemplate";
 import { ProjectManager } from "./projectManager";
 import { format, isAfter } from "date-fns";
 import { createInlineAddTask } from "./addTask";
@@ -26,7 +26,7 @@ const displayUpcomming = function(){
 
     taskContainer.appendChild(createInlineAddTask());
     
-    displayTasks(upcommingList);
+    displayUpcommingTasks(upcommingList);
 }
 
 

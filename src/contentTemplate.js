@@ -1,5 +1,7 @@
 import { ProjectManager } from "./projectManager";
 import { createAddTaskPanel, updateTasksDisplayed } from "./addTask";
+import { format } from "date-fns";
+import { displayUpcomming } from "./upcomming";
 
 const control = ProjectManager();
 
@@ -412,38 +414,45 @@ const createExpSection = function(task){
 }
 
 
-const createInfoSection = function(){
+const createInfoSection = function(task){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-first-grow flex-display');
 
-    div.appendChild(createCompletedDateSection());
-    div.appendChild(createProjectSection());
+    div.appendChild(createCompletedDateSection(task));
+    div.appendChild(createProjectSection(task));
     return div
 }
 
 
-const createCompletedDateSection = function(){
+const createCompletedDateSection = function(task){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'first-set-grow');
+
+    const formatedHour = format(task.completedDate, 'p');
+    const p = document.createElement('p');
+    p.textContent = formatedHour;
+
+    div.appendChild(p)
+    
+    console.log(formatedHour)
+
+    return div
+}
+
+
+const createProjectSection = function(task){
     const div = document.createElement('div');
     div.setAttribute('class', 'first-set-grow');
 
 
     return div
 }
-
-
-const createProjectSection = function(){
-    const div = document.createElement('div');
-    div.setAttribute('class', 'first-set-grow');
-
-
-    return div
-}
-
 
 
 const displayCompletedTasks = function(tasksList){
 
     const taskContainer = document.querySelector('#taskContainer');
+	sortTasksbyDates(tasksList, 'completed')
 
     if(tasksList.length > 0){
 
@@ -465,6 +474,84 @@ const displayCompletedTasks = function(tasksList){
     }
 
 
+}
+
+
+const sortTasksbyDates = function(taskList, target){
+
+    let result = {};
+    let keys;
+
+    taskList.forEach(task => {
+        
+        keys = Object.keys(result)
+        const formatedDate = target === 'upcomming' ? task.formatedDueDate : format(task.completedDate, 'dd/MM/yyyy');
+						
+		if(keys.length === 0){
+			result[`${formatedDate}`] = [];
+			keys = Object.keys(result)
+		};
+
+		console.log(task)
+		for(let x=0; x < keys.length; x++){
+			if(formatedDate === keys[x]){
+				result[keys[x]].push(task);
+				break
+			} else if ((x === keys.length -1) && (formatedDate !== keys[x])){
+				result[`${formatedDate}`] = [task];
+				break
+			} 
+
+		}
+
+		
+    });
+
+	const orderedResult = {};
+	Object.keys(result).sort(function(a,b) {
+		console.log(a.split('/').reverse().join(''));
+		console.log(b.split('/').reverse().join(''))
+		return a.split('/').reverse().join('').localeCompare(b.split('/').reverse().join(''));
+	}).forEach(function(key) {
+		orderedResult[key] = result[key];
+	})
+	
+	return orderedResult
+}
+
+
+const displayUpcommingTasks = function(taskList){
+    const taskContainer = document.querySelector('#taskContainer');
+	const newTaskList = sortTasksbyDates(taskList, 'upcomming');
+
+	console.log(taskList)
+
+    if(taskList.length > 0){
+		const div = document.createElement('div');
+		const divTitle = document.createElement('div')
+
+        const taskListContainer = document.createElement('ul');
+        taskListContainer.setAttribute('id', 'taskListContainer')
+        taskListContainer.setAttribute('class', 'taskList-container')
+
+
+		for(const [key, value] in newTaskList){
+			
+		}
+
+
+        // for(let x=0; x < taskList.length; x++){
+
+        //     const actualTask = taskList[x];
+            
+        //     taskListContainer.appendChild(taskTemplate(actualTask))
+        // }
+
+        taskContainer.appendChild(div)
+
+    } else {
+        taskContainer.appendChild(displayNoTask());
+    }	
 }
 
 
@@ -503,4 +590,5 @@ const displayNoCompletedTaskText = function(){
     return div
 }
 
-export {createContentTemplate, displayTasks, displayCompletedTasks}
+
+export {createContentTemplate, displayTasks, displayCompletedTasks, displayUpcommingTasks}
