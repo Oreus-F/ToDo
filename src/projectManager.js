@@ -314,13 +314,13 @@ const ProjectManager = function(){
 
     const createFirstTask = function(){
 
-        createTask('Edit username', 'low', '10/10/2025', 'In the sidebar you will find a button next to your actual username');
+        createTask('Edit username', 'low', '15/10/2025', 'In the sidebar you will find a button next to your actual username');
         createTask('Edit profile picture', 'low', '02/11/2025', 'In the sidebar you will find a button next to your actual username');
         createTask('Create a new project', 'medium', '15/10/2025', 'In the sidebar you will find a button next to My Projects');
     
         createTask('Create a new task', 'medium', '25/10/2025', '');
-        createTask('Remove and complete a task', 'high', '20/11/2025', 'Do both in order to complete this one');
-        createTask('Edit a task', 'high', '04/11/2025', 'change the title, priority, description, date or all of it');
+        createTask('Remove and complete a task', 'high', '25/10/2025', 'Do both in order to complete this one');
+        createTask('Edit a task', 'high', '15/10/2025', 'change the title, priority, description, date or all of it');
         createTask('Reset your data', 'low', '13/02/2026', '2 day befors this due date was my birthday and you forgot, you can forget your local data in exchange !');
         
         
