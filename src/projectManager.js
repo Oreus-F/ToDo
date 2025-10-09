@@ -90,7 +90,8 @@ Project.prototype.getTask = function(x){
 
 
 Project.prototype.removeTask = function(task){
-    this.tasks.splice(task, 1);
+    const index = this.tasks.indexOf(task)
+    this.tasks.splice(index, 1);
 }
 
 
@@ -211,10 +212,13 @@ const ProjectManager = function(){
 
 
     const removeSelectedTask = function(task){
-
+        const actualTask = getTask(task);
+        console.log(actualTask)
         const thisProject = getProject(task);
+        console.log(thisProject)
+        thisProject.removeTask(actualTask);
 
-        thisProject.removeTask(task);
+        console.log(projectList)
 
         updateLocalStorageProjectList();
     }

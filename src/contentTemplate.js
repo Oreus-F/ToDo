@@ -1,5 +1,5 @@
 import { ProjectManager } from "./projectManager";
-import { createAddTaskPanel, updateTasksDisplayed } from "./addTask";
+import { createAddTaskPanel, createInlineAddTask, updateTasksDisplayed } from "./addTask";
 import { format } from "date-fns";
 import { displayUpcomming } from "./upcomming";
 
@@ -130,9 +130,24 @@ const createUpDiv = function(task, taskContent){
 
 
 const removeTaskDOM = function(task){
-    const taskListContainer = document.querySelector('#taskListContainer');
+    const taskListContainer = task.parentNode;
+    taskListContainer.removeChild(task);
 
-    taskListContainer.removeChild(task)
+
+    const content = document.querySelector('#content');
+    const displayed = content.getAttribute('data-displayed');
+    if (displayed === 'upcomming'){checkDateSection(taskListContainer)}
+}
+
+
+const checkDateSection = function(container){
+    const tasks = container.childNodes;
+    
+    if(tasks.length === 0){
+        const dateContainer = container.parentNode.parentNode;
+        const divContainer = dateContainer.parentNode;
+        divContainer.removeChild(dateContainer)        
+    }
 }
 
 
@@ -198,7 +213,7 @@ const createEditTaskButton = function(task){
 
 const createDeleteTaskButton = function(task, taskContent){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-display full-w')
+    div.setAttribute('class', 'flex-display full-w');
 
     const button = document.createElement('button');
     button.setAttribute('class', 'flex-display full-w justif-content-center inside-task-button');
@@ -212,6 +227,7 @@ const createDeleteTaskButton = function(task, taskContent){
 
         if (window.confirm("Do you really want to delete this task ?")){
             removeTaskDOM(taskContent);
+
             control.removeSelectedTask(task);
 
         }
@@ -492,7 +508,6 @@ const sortTasksbyDates = function(taskList, target){
 			keys = Object.keys(result)
 		};
 
-		console.log(task)
 		for(let x=0; x < keys.length; x++){
 			if(formatedDate === keys[x]){
 				result[keys[x]].push(task);
@@ -509,8 +524,6 @@ const sortTasksbyDates = function(taskList, target){
 
 	const orderedResult = {};
 	Object.keys(result).sort(function(a,b) {
-		console.log(a.split('/').reverse().join(''));
-		console.log(b.split('/').reverse().join(''))
 		return a.split('/').reverse().join('').localeCompare(b.split('/').reverse().join(''));
 	}).forEach(function(key) {
 		orderedResult[key] = result[key];
@@ -520,23 +533,57 @@ const sortTasksbyDates = function(taskList, target){
 }
 
 
+const createTemplateByDates = function(date, list){
+    const div = document.createElement('div');
+
+    const dateContainer = document.createElement('div');
+    const p = document.createElement('p');
+    
+    let newDate = date.split('/');
+    newDate = new Date(newDate[2], (newDate[1] - 1), newDate[0])
+    newDate = format(newDate, 'dd.MMMM  -  EEEE');
+    
+    p.textContent = newDate;
+
+    dateContainer.appendChild(p);
+
+    const inlineTask = createInlineAddTask();
+
+    const tasksBox = document.createElement('div');
+    const taskListContainer = document.createElement('ul');
+
+    for(let x=0; x < list.length; x++){
+        taskListContainer.appendChild(taskTemplate(list[x]))
+    }
+
+    tasksBox.appendChild(taskListContainer);
+
+    div.appendChild(dateContainer);
+    div.appendChild(inlineTask);
+    div.appendChild(tasksBox)
+
+    return div
+}
+
+
 const displayUpcommingTasks = function(taskList){
     const taskContainer = document.querySelector('#taskContainer');
 	const newTaskList = sortTasksbyDates(taskList, 'upcomming');
 
-	console.log(taskList)
-
     if(taskList.length > 0){
 		const div = document.createElement('div');
-		const divTitle = document.createElement('div')
 
         const taskListContainer = document.createElement('ul');
         taskListContainer.setAttribute('id', 'taskListContainer')
         taskListContainer.setAttribute('class', 'taskList-container')
 
 
-		for(const [key, value] in newTaskList){
-			
+		for(const key in newTaskList){
+			const date = key;
+            const list = newTaskList[key];
+
+            div.appendChild(createTemplateByDates(date, list));
+
 		}
 
 
