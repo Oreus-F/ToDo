@@ -573,11 +573,7 @@ const displayUpcommingTasks = function(taskList){
     if(taskList.length > 0){
 		const div = document.createElement('div');
 
-        const taskListContainer = document.createElement('ul');
-        taskListContainer.setAttribute('id', 'taskListContainer')
-        taskListContainer.setAttribute('class', 'taskList-container')
-
-
+        
 		for(const key in newTaskList){
 			const date = key;
             const list = newTaskList[key];
@@ -585,14 +581,6 @@ const displayUpcommingTasks = function(taskList){
             div.appendChild(createTemplateByDates(date, list));
 
 		}
-
-
-        // for(let x=0; x < taskList.length; x++){
-
-        //     const actualTask = taskList[x];
-            
-        //     taskListContainer.appendChild(taskTemplate(actualTask))
-        // }
 
         taskContainer.appendChild(div)
 
