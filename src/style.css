@@ -1559,3 +1559,20 @@ div[data-inline='true'] .task-project-button{
 .add-task-inline-button:hover .icon-inline-add-task{
     background-color: var(--ascent-color);
 }
+
+
+.container-date-tasks{
+  margin-top: 48px;  
+}
+
+
+.date-container{
+    font-weight: bold;
+    border-bottom: var(--main-dark-grey) 1px solid;
+    padding: 12px 0;
+}
+
+
+[data-displayed='upcomming'] .taskList-container{
+    margin-bottom: 12px;
+}

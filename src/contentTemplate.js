@@ -535,13 +535,15 @@ const sortTasksbyDates = function(taskList, target){
 
 const createTemplateByDates = function(date, list){
     const div = document.createElement('div');
+    div.setAttribute('class', 'container-date-tasks')
 
     const dateContainer = document.createElement('div');
+    dateContainer.setAttribute('class', 'date-container')
     const p = document.createElement('p');
     
     let newDate = date.split('/');
     newDate = new Date(newDate[2], (newDate[1] - 1), newDate[0])
-    newDate = format(newDate, 'dd.MMMM  -  EEEE');
+    newDate = format(newDate, 'dd MMMM  -  EEEE');
     
     p.textContent = newDate;
 
@@ -551,6 +553,7 @@ const createTemplateByDates = function(date, list){
 
     const tasksBox = document.createElement('div');
     const taskListContainer = document.createElement('ul');
+    taskListContainer.setAttribute('class', 'taskList-container')
 
     for(let x=0; x < list.length; x++){
         taskListContainer.appendChild(taskTemplate(list[x]))
@@ -559,8 +562,8 @@ const createTemplateByDates = function(date, list){
     tasksBox.appendChild(taskListContainer);
 
     div.appendChild(dateContainer);
-    div.appendChild(inlineTask);
     div.appendChild(tasksBox)
+    div.appendChild(inlineTask);
 
     return div
 }
