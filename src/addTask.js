@@ -137,6 +137,8 @@ const extraTask_Date = function(task){
         const TODAY = new Date;
         button.setAttribute('value', TODAY);
         hiddenInput.setAttribute('value', format(TODAY, 'dd/MM/yyyy'))
+    } else if (contentDisplayed === 'upcomming'){
+        // trouver un moyen de mettre la bonne date
     }
 
     const buttonContent = document.createElement('div');

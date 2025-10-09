@@ -56,6 +56,9 @@ body{
 #mainContainer {
 
     min-height: 100dvh;
+    max-height: 100dvh;
+    
+    overflow: hidden;
 }
 
 
@@ -1350,6 +1353,8 @@ button.completed-button[data-priority='high']:hover{
 }
 
 
+
+
 .task-class:hover .hide-task-button{
     opacity: 1;
     transition: 200ms;
@@ -1562,7 +1567,7 @@ div[data-inline='true'] .task-project-button{
 
 
 .container-date-tasks{
-  margin-top: 48px;  
+  margin-top: 24px;  
 }
 
 

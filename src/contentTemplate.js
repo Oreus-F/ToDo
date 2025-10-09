@@ -311,7 +311,7 @@ const displayTasks = function(tasksList){
         taskContainer.appendChild(displayNoTask());
     }
 
-
+    taskContainer.appendChild(createFooter())
 }
 
 
@@ -489,7 +489,7 @@ const displayCompletedTasks = function(tasksList){
         taskContainer.appendChild(displayNoCompletedTask());
     }
 
-
+    taskContainer.appendChild(createFooter())
 }
 
 
@@ -589,7 +589,17 @@ const displayUpcommingTasks = function(taskList){
 
     } else {
         taskContainer.appendChild(displayNoTask());
-    }	
+    }
+
+    taskContainer.appendChild(createFooter())
+}
+
+
+const createFooter = function(){
+    const div = document.createElement('div');
+    div.style.height = '40px';
+
+    return div
 }
 
 
