@@ -471,22 +471,21 @@ const createProjectSection = function(task){
 const displayCompletedTasks = function(tasksList){
 
     const taskContainer = document.querySelector('#taskContainer');
-	sortTasksbyDates(tasksList, 'completed')
+	const newTaskList = sortTasksbyDates(tasksList, 'completed')
 
     if(tasksList.length > 0){
+		const div = document.createElement('div');
 
-        const taskListContainer = document.createElement('ul');
-        taskListContainer.setAttribute('id', 'taskListContainer')
-        taskListContainer.setAttribute('class', 'taskList-container')
         
-        for(let x=0; x < tasksList.length; x++){
+		for(const key in newTaskList){
+			const date = key;
+            const list = newTaskList[key];
 
-            const actualTask = tasksList[x];
-            
-            taskListContainer.appendChild(createCompletedTaskTemplate(actualTask))
-        }
+            div.appendChild(createTemplateByDates(date, list));
 
-        taskContainer.appendChild(taskListContainer)
+		}
+
+        taskContainer.appendChild(div)
 
     } else {
         taskContainer.appendChild(displayNoCompletedTask());
@@ -558,19 +557,29 @@ const createTemplateByDates = function(date, list){
     
     const tasksBox = document.createElement('div');
     const taskListContainer = document.createElement('ul');
-    taskListContainer.setAttribute('class', 'taskList-container')
+    taskListContainer.setAttribute('class', 'taskList-container');
+
+    const content = document.querySelector('#content');
+    const data = content.getAttribute('data-displayed');
     
-    for(let x=0; x < list.length; x++){
-        taskListContainer.appendChild(taskTemplate(list[x]))
+    if(data === 'upcomming'){
+        for(let x=0; x < list.length; x++){
+            taskListContainer.appendChild(taskTemplate(list[x]))
+        }
+        
+    } else {
+        for(let x=0; x < list.length; x++){
+            taskListContainer.appendChild(createCompletedTaskTemplate(list[x]))
+        }
     }
+
     
     tasksBox.appendChild(taskListContainer);
     
     div.appendChild(dateContainer);
     div.appendChild(tasksBox);
 
-    const content = document.querySelector('#content');
-    const data = content.getAttribute('data-displayed');
+
 
     if(data === 'upcomming'){
         const inlineTask = createInlineAddTask();
