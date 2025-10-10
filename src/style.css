@@ -342,8 +342,8 @@ body{
 
 .user-picture-task{
     overflow: hidden;
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     border: var(--ascent-color-hover) 3px solid;
     border-radius: 40px;
 }
@@ -352,7 +352,6 @@ body{
 .user-completed-task{
     font-weight: bold;
     min-width: max-content;
-    padding-left: 8px;
 }
 
 
@@ -1580,4 +1579,11 @@ div[data-inline='true'] .task-project-button{
 
 [data-displayed='upcomming'] .taskList-container{
     margin-bottom: 12px;
+}
+
+
+.completed-info-section{
+    font-size: 0.85rem;
+    align-items: center;
+    color: #00000093;
 }

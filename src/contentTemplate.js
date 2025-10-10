@@ -389,6 +389,7 @@ const createPictureProfileSection = function(){
 const createTextSection = function(task){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-first-grow flex-display column-direction');
+    div.style.paddingLeft = '8px';
 
     div.appendChild(createExpSection(task));
     div.appendChild(createInfoSection(task));
@@ -432,7 +433,7 @@ const createExpSection = function(task){
 
 const createInfoSection = function(task){
     const div = document.createElement('div');
-    div.setAttribute('class', 'flex-first-grow flex-display');
+    div.setAttribute('class', 'flex-first-grow flex-display justif-space-bet completed-info-section');
 
     div.appendChild(createCompletedDateSection(task));
     div.appendChild(createProjectSection(task));
@@ -459,7 +460,10 @@ const createProjectSection = function(task){
     const div = document.createElement('div');
     div.setAttribute('class', 'first-set-grow');
 
+    const p = document.createElement('p');
+    p.textContent = task.origin;
 
+    div.appendChild(p)
     return div
 }
 
