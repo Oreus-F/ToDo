@@ -5,6 +5,7 @@ import { format} from "date-fns";
 
 const control = ProjectManager();
 
+
 const displayCompleted = function(){
     const content = document.querySelector('#content');
     
@@ -24,7 +25,6 @@ const displayCompleted = function(){
     
     displayCompletedTasks(tasksList)
 }
-
 
 
 export {displayCompleted}

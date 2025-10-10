@@ -5,6 +5,7 @@ import { format, isAfter } from "date-fns";
 
 const control = ProjectManager();
 
+
 const displayUpcomming = function(){
     const content = document.querySelector('#content');
     
@@ -23,7 +24,6 @@ const displayUpcomming = function(){
     
     displayUpcommingTasks(upcommingList);
 }
-
 
 
 export {displayUpcomming}

@@ -6,6 +6,7 @@ import { ProjectManager } from "./projectManager";
 
 const control = ProjectManager();
 
+
 const displayProject = function(projectTitle){
     const content = document.querySelector('#content');
     
@@ -29,7 +30,5 @@ const displayProject = function(projectTitle){
     
     displayTasks(taskList)
 }
-
-
 
 export {displayProject}

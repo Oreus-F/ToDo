@@ -5,6 +5,7 @@ import { createInlineAddTask } from "./addTask";
 
 const control = ProjectManager()
 
+
 const displayToday = function(){
     const content = document.querySelector('#content');
     

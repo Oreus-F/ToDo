@@ -10,6 +10,7 @@ import { displayProject } from "./projects";
 
 const control = ProjectManager();
 
+
 const createAddTaskPanel = function(inline, task){
 
     const div = document.createElement('div');

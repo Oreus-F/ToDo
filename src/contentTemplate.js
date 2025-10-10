@@ -1,7 +1,6 @@
 import { ProjectManager } from "./projectManager";
 import { createAddTaskPanel, createInlineAddTask, updateTasksDisplayed } from "./addTask";
 import { format } from "date-fns";
-import { displayUpcomming } from "./upcomming";
 
 const control = ProjectManager();
 

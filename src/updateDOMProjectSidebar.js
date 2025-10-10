@@ -61,5 +61,4 @@ const updateSidebarProjectList = function(projectsList){
 }
 
 
-
 export {updateSidebarProjectList}
