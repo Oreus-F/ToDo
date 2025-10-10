@@ -120,6 +120,7 @@ const setUpAddTaskButton = function(){
     })
 }
 
+
 const setUpTodayButton = function(){
     const todayButton = document.querySelector('#today_button');
 
@@ -253,10 +254,6 @@ const activateSidebarButtons = function(){
     setUpCompletedButton();
     updateProjectButton();
 }
-
-
-
-
 
 
 export {activateSidebarButtons}

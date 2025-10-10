@@ -284,6 +284,7 @@ const createEditUser_DivResetStorage = function(){
     const button = document.createElement('button');
     button.setAttribute('class', 'button-reset-data flex-basis200px');
     button.setAttribute('id', 'reset-personnal-data');
+    button.setAttribute('type', 'button');
     button.textContent = 'Personnal data';
     div_span_interaction.appendChild(button);
 
