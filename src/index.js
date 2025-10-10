@@ -1,4 +1,4 @@
-import './style.css'
+import './styles.css'
 import { launchPage } from './launch'
 import { displayInbox } from './inbox';
 
