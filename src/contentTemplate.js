@@ -555,21 +555,27 @@ const createTemplateByDates = function(date, list){
 
     dateContainer.appendChild(p);
 
-    const inlineTask = createInlineAddTask();
-
+    
     const tasksBox = document.createElement('div');
     const taskListContainer = document.createElement('ul');
     taskListContainer.setAttribute('class', 'taskList-container')
-
+    
     for(let x=0; x < list.length; x++){
         taskListContainer.appendChild(taskTemplate(list[x]))
     }
-
+    
     tasksBox.appendChild(taskListContainer);
-
+    
     div.appendChild(dateContainer);
-    div.appendChild(tasksBox)
-    div.appendChild(inlineTask);
+    div.appendChild(tasksBox);
+
+    const content = document.querySelector('#content');
+    const data = content.getAttribute('data-displayed');
+
+    if(data === 'upcomming'){
+        const inlineTask = createInlineAddTask();
+        div.appendChild(inlineTask);
+    }
 
     return div
 }
