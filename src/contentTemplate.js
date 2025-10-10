@@ -450,7 +450,6 @@ const createCompletedDateSection = function(task){
 
     div.appendChild(p)
     
-    console.log(formatedHour)
 
     return div
 }
@@ -542,7 +541,10 @@ const createTemplateByDates = function(date, list){
     const p = document.createElement('p');
     
     let newDate = date.split('/');
-    newDate = new Date(newDate[2], (newDate[1] - 1), newDate[0])
+    newDate = new Date(newDate[2], (newDate[1] - 1), newDate[0]);
+
+    div.setAttribute('data-date', newDate);
+
     newDate = format(newDate, 'dd MMMM  -  EEEE');
     
     p.textContent = newDate;

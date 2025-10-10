@@ -15,7 +15,8 @@ const createAddTaskPanel = function(inline, task){
     const div = document.createElement('div');
     div.setAttribute('data-taskPanel', 'true');
     div.setAttribute('data-inline', inline);
-    
+
+
     inline === 'true' ? div.setAttribute('class', 'inline-modal flex-display column-direction') : div.setAttribute('class', 'modal modal-newTask flex-display column-direction');
     
     const form = document.createElement('form');
@@ -102,7 +103,7 @@ const task_Extra = function(task){
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-display gap-16 taskExtra-border');
 
-    div.appendChild(extraTask_Date(task));
+    div.appendChild(extraTask_Date(task, div));
     div.appendChild(extraTask_Priority(task))
 
 
@@ -110,7 +111,7 @@ const task_Extra = function(task){
 }
 
 
-const extraTask_Date = function(task){
+const extraTask_Date = function(task, container){
 
     const div = document.createElement('div');
     div.setAttribute('id', 'dateContainer');
@@ -138,7 +139,12 @@ const extraTask_Date = function(task){
         button.setAttribute('value', TODAY);
         hiddenInput.setAttribute('value', format(TODAY, 'dd/MM/yyyy'))
     } else if (contentDisplayed === 'upcomming'){
-        // trouver un moyen de mettre la bonne date
+        const target = document.querySelector("[data-hidden='true'");
+        const parent = target.parentElement.parentElement;
+        const data = parent.getAttribute("data-date");
+        button.setAttribute('value', data);
+        hiddenInput.setAttribute('value', format(data, 'dd/MM/yyyy'))
+        
     }
 
     const buttonContent = document.createElement('div');
@@ -962,9 +968,9 @@ const createInlineAddTask = function(){
 
     button.addEventListener('click', (event) => {
         const inline = event.currentTarget.getAttribute('data-inline');
+        button.setAttribute('data-hidden', true);
         div.appendChild(createAddTaskPanel(inline));
 
-        button.setAttribute('data-hidden', true);
 
     })
 
