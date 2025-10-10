@@ -259,6 +259,11 @@ body{
 }
 
 
+.fs1{
+    font-size: 1rem;
+}
+
+
 .fs4r{
     font-size: 4rem;
 }
@@ -1236,8 +1241,8 @@ button{
 
 
 .completed-button{
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
 
     border-radius: 24px;
     
@@ -1279,21 +1284,21 @@ button.completed-button[data-priority='high']:hover{
 
 
 .task-icon-displayed{
-    background-repeat: no-repeat;
-    background-position: center;
-    height: var(--hundred-percent);
-    width: var(--hundred-percent);
+    background-color: #000000b8;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 65%;
 }
 
 
 
 .edit-task-icon{
-    background-image: url(../asset/ressource/edit.svg);
+    mask-image: url(../asset/ressource/edit.svg);
 }
 
 
 .delete-task-icon{
-    background-image: url(../asset/ressource/trash.svg);
+    mask-image: url(../asset/ressource/trash.svg);
 }
 
 
@@ -1314,6 +1319,8 @@ button.completed-button[data-priority='high']:hover{
 .task-down-div{
     align-items: center;
     justify-content: space-between;
+    font-size: 0.85rem;
+    color: #000000b1;
 }
 
 
@@ -1362,7 +1369,7 @@ button.completed-button[data-priority='high']:hover{
 
 .task-class{
     padding: 12px 12px 12px 0;
-    height: 100px;
+    height: 90px;
 }
 
 

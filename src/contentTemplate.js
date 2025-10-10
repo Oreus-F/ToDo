@@ -113,7 +113,7 @@ const createUpDiv = function(task, taskContent){
     upDiv.appendChild(completeTaskButton(task, taskContent));
 
     const divTitle = document.createElement('div');
-    divTitle.setAttribute('class', 'flex-first-grow fs12 full-w')
+    divTitle.setAttribute('class', 'flex-first-grow fs1 full-w')
     const titleText = document.createElement('p');
     titleText.setAttribute('class', 'text-overflow')
 
@@ -177,7 +177,7 @@ const completeTaskButton = function(task, taskContent){
 
 const createTaskButtons = function(task, taskContent){
     const div = document.createElement('div');
-    div.setAttribute('class', ' full-h flex-display gap-8 flex-basis80px justif-content-end hide-task-button')
+    div.setAttribute('class', ' full-h flex-display gap-8 flex-basis120px justif-content-end hide-task-button')
 
     div.appendChild(createEditTaskButton(task));
     div.appendChild(createDeleteTaskButton(task, taskContent));
