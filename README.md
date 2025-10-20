@@ -2,7 +2,7 @@
 
 ## To-do list page
 
-This is a project for The Odin Project, the purpose of this project was to handle the localStorage and JSON files alongs with classes. 
+This is a project for The Odin Project, the purpose of this project was to handle the localStorage and JSON files along with classes. 
 I wanted to create something that kinda looks functionnal, with differents pages
 
 ## features
@@ -20,7 +20,7 @@ I wanted to create something that kinda looks functionnal, with differents pages
     - today's tasks
     - upcomming tasks
     - completed tasks
-    - personnal tasks (once created)
+    - personnal project (once created)
 
 
 ## how to clone locally
