@@ -30,9 +30,10 @@ clone the next link on your local repository
 
 `git clone git@github.com:Oreus-F/ToDo.git`
 
-then you can paste the next lines wich will move you to the right repo and install the differents packages 
+Then you move into the new repo
 
-```
-cd Todo\
-npm install --save-dev webpack webpack-cli webpack-merge webpack-dev-server html-loader html-webpack-plugin style-loader css-loader date-fns
-```
+`cd Todo\`
+
+and paste the next line
+
+`npm install --save-dev webpack webpack-cli webpack-merge webpack-dev-server html-loader html-webpack-plugin style-loader css-loader date-fns`
