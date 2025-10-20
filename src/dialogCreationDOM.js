@@ -6,7 +6,7 @@ const control = ProjectManager();
 const createDialogProjectName = function(){
     const dialog = document.createElement('dialog');
     dialog.setAttribute("id", "getProjectName");
-    dialog.setAttribute("class", "dialog")
+    dialog.setAttribute("class", "dialog-project")
 
     const form = document.createElement('form');
     form.setAttribute('class', 'full-h');
@@ -53,15 +53,16 @@ const createDialogProjectName = function(){
             document.querySelector('#getProjectName').remove();
         }
 
-    }, {once:true})
+    }, {once:true});
     
 
 }
 
+
 const createDialogEditUser = function(){
     const dialog = document.createElement('dialog');
     dialog.setAttribute("id", "editUserDialog");
-    dialog.setAttribute('class', "dialog dialog-edit-user")
+    dialog.setAttribute('class', "dialog-edit-user")
 
     const form = document.createElement('form');
     form.setAttribute('class', 'full-h');
@@ -92,6 +93,13 @@ const createDialogEditUser = function(){
     body.appendChild(dialog);
 
     dialog.showModal();
+
+    document.addEventListener('keydown', (event)=> {
+        if(event.key === "Escape"){
+            document.querySelector('#editUserDialog').remove();
+        }
+
+    }, {once:true});    
 }
 
 
