@@ -34,7 +34,7 @@ class Task {
 
 
     set priority(newPriority) {
-        if(newPriority === undefined){newPriority = 'none'}
+        if(newPriority === undefined || newPriority == ''){newPriority = 'none'}
 
         newPriority = newPriority.toLowerCase();
         const choices = ['none', 'low', 'medium', 'high'];
