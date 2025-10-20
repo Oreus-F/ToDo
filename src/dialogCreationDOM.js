@@ -46,8 +46,17 @@ const createDialogProjectName = function(){
     body.appendChild(dialog);
 
     dialog.showModal();
-}
 
+
+    document.addEventListener('keydown', (event)=> {
+        if(event.key === "Escape"){
+            document.querySelector('#getProjectName').remove();
+        }
+
+    }, {once:true})
+    
+
+}
 
 const createDialogEditUser = function(){
     const dialog = document.createElement('dialog');
